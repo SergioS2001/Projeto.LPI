@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <title>Register</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -23,8 +24,8 @@
             <label for="password">Password</label>
             <input id="password" type="password" name="password" placeholder="Password" required/>
             <label for="password">Repetir Password</label>
-            <input id="password-confirm" type="password" placeholder="Confirm Password" name="password_confirmation" required/>
-            </p>    
+            <input id="password-v2" type="password" placeholder="Confirm Password" name="password-v2" required/>
+            </p>
             <p>
             <label for="telemovel">Telemovel</label>
             <input id="telemovel" type="text" name="telemovel" required/>
@@ -49,7 +50,5 @@
             <input type="submit" value="Registar" class="btn solid" />
         </form>
     </div>
-
-</body> 
-
+</body>
 </html>

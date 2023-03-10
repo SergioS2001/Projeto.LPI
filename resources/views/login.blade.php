@@ -1,6 +1,6 @@
 <html>
-
 <head>
+<title>Login</title>
 </head>
 <body>
     <div id="inputContainer">
@@ -17,7 +17,5 @@
             <input type="submit" value="Login" class="btn solid" />
         </form>
     </div>
-
 </body>
-
 </html>
