@@ -17,12 +17,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-
 
 Route::get('/homepage', [HomepageController::class,'index'])->name('index');
-Route::get('/login', [LoginController::class,'login'])->name('login');
+Route::get('/', [LoginController::class,'login'])->name('login');
 Route::get('/register', [RegisterController::class,'register'])->name('register');
 Route::get('/admin', [AdminController::class,'admin'])->name('admin');
