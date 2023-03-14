@@ -15,6 +15,7 @@ use Filament\Tables;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
+use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -28,13 +29,13 @@ class EstagiosResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('Nome do Estagio')->required(),
+                TextInput::make('Nome')->required(),
                 //TextInput::make('Nome do Orientador'),
                 Select::make('id_orientador')->required()
                 ->label('Orientador')
                 ->options(User::all()->pluck('name', 'id'))
                 ->searchable(),
-                TextInput::make('Servico')->required(),
+                TextInput::make('Serviço')->required(),
                 TextInput::make('Tipologia')->required(),
                 TextInput::make('Ano curricular')->required()
                 ->numeric()
@@ -57,7 +58,10 @@ class EstagiosResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('Nome')->sortable()->searchable(),
+                TextColumn::make('Orientador')->sortable()->searchable(),
+                TextColumn::make('Serviço')->sortable()->searchable(),
+                TextColumn::make('Ano curricular')->sortable()->searchable(),
             ])
             ->filters([
                 //
