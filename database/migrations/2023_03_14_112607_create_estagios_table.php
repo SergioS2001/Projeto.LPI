@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('estagios', function (Blueprint $table) {
-            $table->id();
+        Schema::create('estagios', function (Blueprint $table) {           
+            $table->id()->bigIncrements();
             $table->string('estagio_nome');
             $table->string('estagio_orientador');
             $table->string('estagio_servico');
             $table->string('estagio_tipologia');
-            $table->string('estagio_ano_curricular');
+            $table->integer('estagio_ano_curricular');
             $table->date('data_inicial');
             $table->date('data_final')->nullable();
             $table->string('estagio_avalicacao');

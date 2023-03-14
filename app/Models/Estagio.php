@@ -8,10 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Estagio extends Model
 {
     use HasFactory;
-
-    protected $fillable = [
-        'estagio_orientador',
-        'estagio_avaliacao',
-    ];
-
 }
