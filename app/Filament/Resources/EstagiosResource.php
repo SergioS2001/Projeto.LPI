@@ -47,8 +47,6 @@ class EstagiosResource extends Resource
                 DatePicker::make('Data final')
                 ->minDate(now()),
                 //->maxDate(now()->addYear(1)),
-                //TextInput::make('Data inicial'),
-                //TextInput::make('Data final'),
                 TextInput::make('Avaliação'),
                 FileUpload::make('Ficheiros')->multiple()
             ]);
