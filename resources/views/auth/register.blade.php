@@ -15,9 +15,6 @@
             <x-input-label for="user_idade" :value="__('Idade')" />
             <x-text-input id="idade" class="block mt-1" type="text" name="idade" :value="old('idade')" required autofocus autocomplete="idade" />
             <x-input-error :messages="$errors->get('user_idade')" class="mt-2" />
-            <x-input-label for="user_idade" :value="__('Idade')" />
-            <x-text-input id="idade" class="block mt-1" type="text" name="idade" :value="old('idade')" required autofocus autocomplete="idade" />
-            <x-input-error :messages="$errors->get('user_idade')" class="mt-2" />
         </div>
 
         <!-- Email Address -->
