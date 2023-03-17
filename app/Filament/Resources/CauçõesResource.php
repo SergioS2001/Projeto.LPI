@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\HistoricoResource\Pages;
-use App\Filament\Resources\HistoricoResource\RelationManagers;
-use App\Models\Historico;
+use App\Filament\Resources\CauçõesResource\Pages;
+use App\Filament\Resources\CauçõesResource\RelationManagers;
+use App\Models\Cauções;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -13,11 +13,12 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class HistoricoResource extends Resource
+class CauçõesResource extends Resource
 {
-    protected static ?string $model = Historico::class;
+    protected static ?string $model = Cauções::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationGroup = 'Estágios/Ensinos Clínicos';
 
     public static function form(Form $form): Form
     {
@@ -54,9 +55,9 @@ class HistoricoResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListHistoricos::route('/'),
-            'create' => Pages\CreateHistorico::route('/create'),
-            'edit' => Pages\EditHistorico::route('/{record}/edit'),
+            'index' => Pages\ListCauções::route('/'),
+            'create' => Pages\CreateCauções::route('/create'),
+            'edit' => Pages\EditCauções::route('/{record}/edit'),
         ];
     }    
 }

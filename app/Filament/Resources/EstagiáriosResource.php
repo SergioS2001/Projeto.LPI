@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\AgendamentoResource\Pages;
-use App\Filament\Resources\AgendamentoResource\RelationManagers;
-use App\Models\Agendamento;
+use App\Filament\Resources\EstagiáriosResource\Pages;
+use App\Filament\Resources\EstagiáriosResource\RelationManagers;
+use App\Models\Estagiários;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -13,12 +13,12 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class AgendamentoResource extends Resource
+class EstagiáriosResource extends Resource
 {
-    protected static ?string $model = Agendamento::class;
+    protected static ?string $model = Estagiários::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
-    protected static ?string $navigationGroup = 'Agendamentos';
+    protected static ?string $navigationGroup = 'Utilizadores';
 
     public static function form(Form $form): Form
     {
@@ -55,9 +55,9 @@ class AgendamentoResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListAgendamentos::route('/'),
-            'create' => Pages\CreateAgendamento::route('/create'),
-            'edit' => Pages\EditAgendamento::route('/{record}/edit'),
+            'index' => Pages\ListEstagiários::route('/'),
+            'create' => Pages\CreateEstagiários::route('/create'),
+            'edit' => Pages\EditEstagiários::route('/{record}/edit'),
         ];
     }    
 }
