@@ -4,17 +4,9 @@
 
         <!-- First and Last name -->
         <div>
-            <x-input-label for="firstName" :value="__('Primeiro nome')" />
-            <x-text-input id="firstName" class="block mt-1" type="text" name="firstName" :value="old('firstName')" required autofocus autocomplete="firstName" />
-            <x-input-error :messages="$errors->get('firstName')" class="mt-2" />
-            <x-input-label for="lastName" :value="__('Ultimo nome')" />
-            <x-text-input id="lastName" class="block mt-1" type="text" name="lastName" :value="old('lastName')" required autofocus autocomplete="lastName" />
-            <x-input-error :messages="$errors->get('lastName')" class="mt-2" />
-        </div>
-        <div>
-            <x-input-label for="user_idade" :value="__('Idade')" />
-            <x-text-input id="idade" class="block mt-1" type="text" name="idade" :value="old('idade')" required autofocus autocomplete="idade" />
-            <x-input-error :messages="$errors->get('user_idade')" class="mt-2" />
+            <x-input-label for="name" :value="__('Nome')" />
+            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+            <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
         <!-- Email Address -->

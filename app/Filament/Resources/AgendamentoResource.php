@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\EnsinosClínicosResource\Pages;
-use App\Filament\Resources\EnsinosClínicosResource\RelationManagers;
-use App\Models\EnsinosClínicos;
+use App\Filament\Resources\AgendamentoResource\Pages;
+use App\Filament\Resources\AgendamentoResource\RelationManagers;
+use App\Models\Agendamento;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -13,9 +13,9 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class EnsinosClínicosResource extends Resource
+class AgendamentoResource extends Resource
 {
-    protected static ?string $model = EnsinosClínicos::class;
+    protected static ?string $model = Agendamento::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
@@ -54,9 +54,9 @@ class EnsinosClínicosResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListEnsinosClínicos::route('/'),
-            'create' => Pages\CreateEnsinosClínicos::route('/create'),
-            'edit' => Pages\EditEnsinosClínicos::route('/{record}/edit'),
+            'index' => Pages\ListAgendamentos::route('/'),
+            'create' => Pages\CreateAgendamento::route('/create'),
+            'edit' => Pages\EditAgendamento::route('/{record}/edit'),
         ];
     }    
 }
