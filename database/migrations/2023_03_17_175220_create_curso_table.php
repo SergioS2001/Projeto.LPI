@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('orientadors', function (Blueprint $table) {
+        Schema::create('curso', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_user');
+            $table->string('nome');
             $table->timestamps();
         });
     }
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('orientadors');
+        Schema::dropIfExists('curso');
     }
 };

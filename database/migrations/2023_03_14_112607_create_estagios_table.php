@@ -13,14 +13,17 @@ return new class extends Migration
     {
         Schema::create('estagios', function (Blueprint $table) {           
             $table->id()->bigIncrements();
-            $table->string('estagio_nome');
-            $table->string('estagio_orientador');
-            $table->string('estagio_servico');
-            $table->string('estagio_tipologia');
-            $table->integer('estagio_ano_curricular');
+            $table->string('nome')->unique();
+            $table->string('orientador');
+            $table->string('servico');
+            $table->string('tipologia');
+            $table->integer('ano_curricular');
             $table->date('data_inicial');
             $table->date('data_final')->nullable();
-            $table->string('estagio_avalicacao');
+            $table->integer('avaliacacao');
+            $table->integer('presencas');
+            $table->integer('cacifos');
+            $table->timestamps();
         });
     }
 

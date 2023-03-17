@@ -17,6 +17,14 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->date('data_nascimento')->max(now());
+            $table->string('instituicao');
+            $table->smallInteger('tipo')->default(0)->max(1);
+            $table->bigInteger('cc')->unique();
+            $table->bigInteger('telemovel')->unique();
+            $table->smallInteger('permissions')->default(0)->max(2);
+            $table->string('curso');
+            $table->string('uc');
             $table->rememberToken();
             $table->timestamps();
         });
