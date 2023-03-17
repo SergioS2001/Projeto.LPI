@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('estagios', function (Blueprint $table) {           
+        Schema::create('estágios', function (Blueprint $table) {           
             $table->id()->bigIncrements();
             $table->string('nome')->unique();
             $table->string('orientador');
@@ -20,8 +20,8 @@ return new class extends Migration
             $table->integer('ano_curricular');
             $table->date('data_inicial');
             $table->date('data_final')->nullable();
-            $table->integer('avaliacacao');
-            $table->integer('presencas');
+            $table->integer('avaliacao');
+            $table->integer('presenças');
             $table->integer('cacifos');
             $table->timestamps();
         });
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('estagios');
+        Schema::dropIfExists('estágios');
     }
 };

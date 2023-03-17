@@ -2,37 +2,35 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\EstagiosResource\Pages;
-use App\Filament\Resources\EstagiosResource\RelationManagers;
-use App\Models\Estagio;
+use App\Filament\Resources\EstágiosResource\Pages;
+use App\Filament\Resources\EstágiosResource\RelationManagers;
+use App\Models\Estágios;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Models\User;
 use Filament\Forms;
-use Filament\Forms\Components\Select;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Columns\TextColumn;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class EstagiosResource extends Resource
+class EstágiosResource extends Resource
 {
-    protected static ?string $model = Estagio::class;
+    protected static ?string $model = Estágios::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
     protected static ?string $navigationGroup = 'Estágios/Ensinos Clínicos';
-
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 TextInput::make('Nome')->required(),
-                //TextInput::make('Nome do Orientador'),
                 Select::make('id_orientador')->required()
                 ->label('Orientador')
                 ->options(User::all()->pluck('name', 'id'))
@@ -43,14 +41,15 @@ class EstagiosResource extends Resource
                 ->numeric()
                 ->minValue(1)
                 ->maxValue(5),
-                DatePicker::make('Data inicial')
-                ->minDate(now()),
-                //->maxDate(now()->addYear(1)),
-                DatePicker::make('Data final')
-                ->minDate(now()),
-                //->maxDate(now()->addYear(1)),
-                TextInput::make('Avaliação'),
-                FileUpload::make('Ficheiros')->multiple()
+                DateTimePicker::make('Data Inicial')
+                ->hoursStep(1)
+                ->minutesStep(15)
+                ->withoutSeconds(),
+                DateTimePicker::make('Data Final')
+                ->hoursStep(1)
+                ->minutesStep(15)
+                ->withoutSeconds(),
+                FileUpload::make('Avaliação')->multiple()
             ]);
     }
 
@@ -84,9 +83,9 @@ class EstagiosResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListEstagios::route('/'),
-            'create' => Pages\CreateEstagios::route('/create'),
-            'edit' => Pages\EditEstagios::route('/{record}/edit'),
+            'index' => Pages\ListEstágios::route('/'),
+            'create' => Pages\CreateEstágios::route('/create'),
+            'edit' => Pages\EditEstágios::route('/{record}/edit'),
         ];
     }    
 }
