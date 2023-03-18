@@ -18,13 +18,11 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->date('data_nascimento')->max(now());
-            $table->string('instituicao');
+            $table->bigInteger('cartão_cidadão')->unique();
+            $table->bigInteger('telemóvel')->unique();
+            $table->string('email_alternativo')->nullable();
             $table->smallInteger('tipo')->default(0)->max(1);
-            $table->bigInteger('cc')->unique();
-            $table->bigInteger('telemovel')->unique();
             $table->smallInteger('permissions')->default(0)->max(2);
-            $table->string('curso');
-            $table->string('uc');
             $table->rememberToken();
             $table->timestamps();
         });

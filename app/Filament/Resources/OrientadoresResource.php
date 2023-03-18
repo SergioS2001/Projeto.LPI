@@ -4,7 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\OrientadoresResource\Pages;
 use App\Filament\Resources\OrientadoresResource\RelationManagers;
-use App\Models\Orientadores;
+use App\Models\Orientador;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class OrientadoresResource extends Resource
 {
-    protected static ?string $model = Orientadores::class;
+    protected static ?string $model = Orientador::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
     protected static ?string $navigationGroup = 'Utilizadores';

@@ -4,7 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\EstagiáriosResource\Pages;
 use App\Filament\Resources\EstagiáriosResource\RelationManagers;
-use App\Models\Estagiários;
+use App\Models\User;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class EstagiáriosResource extends Resource
 {
-    protected static ?string $model = Estagiários::class;
+    protected static ?string $model = User::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
     protected static ?string $navigationGroup = 'Utilizadores';

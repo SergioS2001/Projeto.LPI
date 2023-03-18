@@ -15,7 +15,7 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Columns\TextColumn;
 
@@ -35,20 +35,18 @@ class EstágiosResource extends Resource
                 ->label('Orientador')
                 ->options(User::all()->pluck('name', 'id'))
                 ->searchable(),
-                TextInput::make('Serviço')->required(),
-                TextInput::make('Tipologia')->required(),
+                TextInput::make('Instituição')->required(),
+                TextInput::make('Curso')->required(),
                 TextInput::make('Ano curricular')->required()
                 ->numeric()
                 ->minValue(1)
                 ->maxValue(5),
-                DateTimePicker::make('Data Inicial')
-                ->hoursStep(1)
-                ->minutesStep(15)
-                ->withoutSeconds(),
-                DateTimePicker::make('Data Final')
-                ->hoursStep(1)
-                ->minutesStep(15)
-                ->withoutSeconds(),
+                TextInput::make('Serviço')->required(),
+                TextInput::make('Tipologia')->required(),
+                DatePicker::make('Data Inicial')
+                ->minDate(now()),
+                DatePicker::make('Data Final')
+                ->minDate(now()),
                 FileUpload::make('Avaliação')->multiple()
             ]);
     }

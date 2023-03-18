@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tipo__agendamento', function (Blueprint $table) {
-            $table->id();
+            $table->id()->bigIncrements();
             $table->string('nome');
             $table->timestamps();
         });

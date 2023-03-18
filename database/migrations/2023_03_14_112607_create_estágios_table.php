@@ -15,12 +15,15 @@ return new class extends Migration
             $table->id()->bigIncrements();
             $table->string('nome')->unique();
             $table->string('orientador');
-            $table->string('servico');
+            $table->string('instituição');
+            $table->string('curso');
+            $table->string('unidade_curricular');
+            $table->string('serviço');
             $table->string('tipologia');
             $table->integer('ano_curricular');
             $table->date('data_inicial');
             $table->date('data_final')->nullable();
-            $table->integer('avaliacao');
+            $table->integer('avaliação');
             $table->integer('presenças');
             $table->integer('cacifos');
             $table->timestamps();

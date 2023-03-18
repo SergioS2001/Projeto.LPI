@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('unidade__curricular', function (Blueprint $table) {
-            $table->id();
+            $table->id()->bigIncrements();
             $table->string('nome');
             $table->timestamps();
         });
