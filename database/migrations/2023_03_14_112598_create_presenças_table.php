@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('unidade__curricular', function (Blueprint $table) {
+        Schema::create('presenças', function (Blueprint $table) {
             $table->id()->bigIncrements();
-            $table->string('nome');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');;
+            $table->integer('count')->default(0);
             $table->timestamps();
         });
     }
@@ -23,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('unidade__curricular');
+        Schema::dropIfExists('presenças');
     }
 };

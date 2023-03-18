@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tipo__agendamento', function (Blueprint $table) {
+        Schema::create('unidade_curricular', function (Blueprint $table) {
             $table->id()->bigIncrements();
             $table->string('nome');
             $table->timestamps();
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tipo__agendamento');
+        Schema::dropIfExists('unidade_curricular');
     }
 };

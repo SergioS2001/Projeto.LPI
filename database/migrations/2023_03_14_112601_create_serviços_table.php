@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('serviço', function (Blueprint $table) {
+        Schema::create('serviços', function (Blueprint $table) {
             $table->id()->bigIncrements();
             $table->string('nome');
             $table->timestamps();
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('serviço');
+        Schema::dropIfExists('serviços');
     }
 };

@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cauções', function (Blueprint $table) {
+        Schema::create('tipo_agendamento', function (Blueprint $table) {
             $table->id()->bigIncrements();
-            $table->float('valor');
+            $table->string('nome');
             $table->timestamps();
         });
     }
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cauções');
+        Schema::dropIfExists('tipo_agendamento');
     }
 };
