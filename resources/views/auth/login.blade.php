@@ -42,6 +42,9 @@
             <x-primary-button class="ml-3">
                 {{ __('Log in') }}
             </x-primary-button>
+            <x-primary-button class="ml-4" href="{{ route('register') }}">
+            {{ __('Register') }}
+            </x-primary-button>
         </div>
     </form>
 </x-guest-layout>
