@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Avaliações;
 use App\Models\Cacifos;
 use App\Models\Instituicao;
 use App\Models\Orientador;
@@ -21,19 +22,20 @@ return new class extends Migration
     {
         Schema::create('estágios', function (Blueprint $table) {           
             $table->id()->bigIncrements();
-            $table->foreignId('orientador_id')->constrained()->onDelete('cascade');;
-            $table->foreignId('instituição_id')->references('id')->on('Instituição')->onDelete('cascade');; 
-            $table->foreignId('curso_id')->constrained()->onDelete('cascade');;
-            $table->foreignId('unidade_curricular_id')->references('id')->on('Unidade_Curricular')->onDelete('cascade');; 
-            $table->integer('ano_curricular')->min(2)->max(6);
             $table->string('nome')->unique();
-            $table->foreignId('serviços_id')->references('id')->on('Serviços')->onDelete('cascade');; 
-            $table->foreignId('tipologia_id')->references('id')->on('Tipologia')->onDelete('cascade');;
+            $table->foreignId('instituição_id')->references('id')->on('Instituição')->onDelete('cascade'); 
+            $table->string('curso');
+            $table->foreignId('unidade_curricular_id')->references('id')->on('Unidade_Curricular')->onDelete('cascade'); 
+            $table->integer('ano_curricular')->min(2)->max(6);
+            $table->foreignId('serviços_id')->references('id')->on('Serviços')->onDelete('cascade');
+            $table->foreignId('tipologia_id')->references('id')->on('Tipologia')->onDelete('cascade');
+            $table->foreignId('orientador_id')->constrained()->onDelete('cascade');
             $table->date('data_inicial')->min(now());
             $table->date('data_final')->nullable()->min(now());
-            $table->float('avaliação')->min(0.0)->max(20.0);
-            $table->foreignId('presenças_id')->references('id')->on('Presenças')->onDelete('cascade');; 
-            $table->foreignId('cacifos_id')->references('id')->on('Cacifos')->onDelete('cascade');;
+            $table->foreignId('avaliacao_id')->references('id')->on('Avaliações')->onDelete('cascade');
+            $table->foreignId('presenças_id')->references('id')->on('Presenças')->onDelete('cascade'); 
+            $table->foreignId('cacifos_id')->references('id')->on('Cacifos')->onDelete('cascade');
+            $table->smallInteger('estado')->default(0)->max(1); //1-admitido
             $table->timestamps();
         });
     }

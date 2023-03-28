@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Curso;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,10 +14,10 @@ return new class extends Migration
     {
         Schema::create('instituição', function (Blueprint $table) {
             $table->id()->bigIncrements();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');;
             $table->string('nome')->unique();
             $table->string('sigla')->unique();
             $table->bigInteger('numero_aluno')->unique();
+            $table->foreignId('cursos_id')->references('id')->on('Curso')->onDelete('cascade');
             $table->timestamps();
         });
     }
