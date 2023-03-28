@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Cauções extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'valor',
+        'isPago',
+        'IsDevolvido'
+    ];
 }

@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Tipo_Agendamento extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'nome_evento',
+    ];
 }

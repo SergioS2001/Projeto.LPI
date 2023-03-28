@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Avaliações extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'nota',
+        'isDone',
+    ];
+
 }

@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Agendamentos extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'data',
+        'descrição',
+        'duração',
+    ];
 }
