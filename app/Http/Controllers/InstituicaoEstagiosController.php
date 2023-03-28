@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cacifos;
+use App\Models\Instituicao_Estagios;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class CacifoController extends Controller
+class InstituicaoEstagiosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,7 +35,7 @@ class CacifoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Cacifos $cacifo)
+    public function show(Instituicao_Estagios $instituicao_Estagios)
     {
         //
     }
@@ -43,7 +43,7 @@ class CacifoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Cacifos $cacifo)
+    public function edit(Instituicao_Estagios $instituicao_Estagios)
     {
         //
     }
@@ -51,7 +51,7 @@ class CacifoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Cacifos $cacifo)
+    public function update(Request $request, Instituicao_Estagios $instituicao_Estagios)
     {
         //
     }
@@ -59,7 +59,7 @@ class CacifoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Cacifos $cacifo)
+    public function destroy(Instituicao_Estagios $instituicao_Estagios)
     {
         //
     }

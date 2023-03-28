@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('avaliações', function (Blueprint $table) {
             $table->id();
-            $table->float('value')->minValue(0.0)->maxValue(20.0);
+            $table->float('nota')->minValue(0.0)->maxValue(20.0);
             $table->boolean('isDone')->default('False');
             $table->timestamps();
         });

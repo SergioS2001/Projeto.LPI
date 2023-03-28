@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('serviços', function (Blueprint $table) {
             $table->id()->bigIncrements();
-            $table->string('nome');
+            $table->string('titulo');
+            $table->string('nome_responsavel');
             $table->timestamps();
         });
     }

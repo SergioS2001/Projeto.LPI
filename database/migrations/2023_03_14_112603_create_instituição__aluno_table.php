@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Curso;
+use App\Models\Curso_Aluno;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,9 +13,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tipologia', function (Blueprint $table) {
+        Schema::create('instituição_aluno', function (Blueprint $table) {
             $table->id()->bigIncrements();
-            $table->string('titulo');
+            $table->string('nome')->unique();
+            $table->bigInteger('numero_aluno')->unique();
+            $table->foreignId('curso_aluno_id')->references('id')->on('Curso_Aluno')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -23,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tipologia');
+        Schema::dropIfExists('instituição_aluno');
     }
 };

@@ -14,11 +14,10 @@ return new class extends Migration
     {
         Schema::create('agendamentos', function (Blueprint $table) {
             $table->id()->bigIncrements();
-            //$table->foreignId('user_id')->constrained()->onDelete('cascade');;
             $table->foreignId('tipo_agendamento_id')->references('id')->on('Tipo_Agendamento')->onDelete('cascade');
             $table->date('data');
-            $table->string('descrição');
-            $table->float('duração');
+            $table->string('descrição')->max(255);
+            $table->integer('duração')->min(0);
             $table->timestamps();
         });
     }

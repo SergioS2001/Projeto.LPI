@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('orientadores', function (Blueprint $table) {
             $table->id()->bigIncrements();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->references('id')->on('User')->onDelete('cascade');
             $table->timestamps();
         });
     }

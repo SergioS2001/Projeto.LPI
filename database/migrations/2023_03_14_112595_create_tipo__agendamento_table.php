@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tipo_agendamento', function (Blueprint $table) {
             $table->id()->bigIncrements();
-            $table->string('nome');
+            $table->string('nome_evento');
             $table->timestamps();
         });
     }

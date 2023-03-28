@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Servico;
+use App\Models\Instituicao_Aluno;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ServicoController extends Controller
+class InstituicaoAlunoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,7 +35,7 @@ class ServicoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Servico $servico)
+    public function show(Instituicao_Aluno $instituicao)
     {
         //
     }
@@ -43,7 +43,7 @@ class ServicoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Servico $servico)
+    public function edit(Instituicao_Aluno $instituicao)
     {
         //
     }
@@ -51,7 +51,7 @@ class ServicoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Servico $servico)
+    public function update(Request $request, Instituicao_Aluno $instituicao)
     {
         //
     }
@@ -59,7 +59,7 @@ class ServicoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Servico $servico)
+    public function destroy(Instituicao_Aluno $instituicao)
     {
         //
     }

@@ -13,12 +13,11 @@ return new class extends Migration
     {
         Schema::create('presenças', function (Blueprint $table) {
             $table->id()->bigIncrements();
-            //$table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->date('data')->min(now());
-            $table->float('entrada')->max(24.00);
-            $table->float('saida');
-            $table->float('horas');
-            $table->integer('count')->default(0);
+            $table->float('h_entrada')->min(0.0)->max(24.00);
+            $table->float('h_saida')->min(0.0)->max(24.00);;
+            $table->float('horas_mes');
+            $table->integer('count_dias')->default(0);
             $table->timestamps();
         });
     }
