@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tipologia;
+use App\Models\Solicitacao_Vagas;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class TipologiaController extends Controller
+class SolicitacaoVagasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,7 +35,7 @@ class TipologiaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Tipologia $tipologia)
+    public function show(Solicitacao_Vagas $solicitacao_Vagas)
     {
         //
     }
@@ -43,7 +43,7 @@ class TipologiaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Tipologia $tipologia)
+    public function edit(Solicitacao_Vagas $solicitacao_Vagas)
     {
         //
     }
@@ -51,7 +51,7 @@ class TipologiaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Tipologia $tipologia)
+    public function update(Request $request, Solicitacao_Vagas $solicitacao_Vagas)
     {
         //
     }
@@ -59,7 +59,7 @@ class TipologiaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Tipologia $tipologia)
+    public function destroy(Solicitacao_Vagas $solicitacao_Vagas)
     {
         //
     }
