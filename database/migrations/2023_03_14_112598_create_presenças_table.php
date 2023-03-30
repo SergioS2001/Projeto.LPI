@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id()->bigIncrements();
             $table->date('data')->min(now());
             $table->float('h_entrada')->min(0.0)->max(24.00);
-            $table->float('h_saida')->min(0.0)->max(24.00);;
+            $table->float('h_saida')->min(0.0)->max(24.00);
             $table->float('horas_mes');
             $table->integer('count_dias')->default(0);
             $table->timestamps();

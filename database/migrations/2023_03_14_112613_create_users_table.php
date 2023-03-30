@@ -4,6 +4,7 @@ use App\Models\Agendamento;
 use App\Models\Estágios;
 use App\Models\Historico;
 use App\Models\Instituicao;
+use App\Models\Instituicao_Aluno;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;

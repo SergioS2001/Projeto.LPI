@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\Agendamento;
-use App\Models\Estágios;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('historico', function (Blueprint $table) {
+        Schema::create('curso_estagio', function (Blueprint $table) {
             $table->id()->bigIncrements();
-            $table->foreignId('agendamentos_id')->references('id')->on('Agendamento')->onDelete('cascade');
-            $table->foreignId('estágios_id')->references('id')->on('Estágios')->onDelete('cascade');
+            $table->string('curso')->unique();
+            $table->integer('ects')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('historico');
+        Schema::dropIfExists('curso_estagio');
     }
 };
