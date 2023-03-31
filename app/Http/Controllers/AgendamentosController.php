@@ -13,7 +13,8 @@ class AgendamentosController extends Controller
      */
     public function index()
     {
-        //
+        $agendamentos = Agendamentos::paginate();
+        return view('agendamentos.index', compact('agendamentos'));
     }
 
     /**

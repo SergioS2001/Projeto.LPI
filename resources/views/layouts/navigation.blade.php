@@ -16,19 +16,19 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('estágios.index')" :active="request()->routeIs('estágios.index')">
                         {{ __('Estágios') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('orientação.index')" :active="request()->routeIs('orientação.index')">
                         {{ __('Orientação') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Agendamento') }}
+                    <x-nav-link :href="route('agendamentos.index')" :active="request()->routeIs('agendamentos.index')">
+                        {{ __('Agendamentos') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('histórico.index')" :active="request()->routeIs('histórico.index')">
                         {{ __('Histórico') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('contactos.index')" :active="request()->routeIs('contactos.index')">
                         {{ __('Contactos') }}
                     </x-nav-link>
                 </div>

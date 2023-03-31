@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Instituicao_Estagio extends Model
+class Histórico extends Model
 {
     use HasFactory;
+    protected $table = 'historico';
 
     protected $fillable = [
-        'nome',
-        'sigla',
+        'agendamentos_id',
+        'estágios_id',
     ];
 }
