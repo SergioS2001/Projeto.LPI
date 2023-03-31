@@ -21,7 +21,8 @@ class InstituicaoEstagioController extends Controller
      */
     public function create()
     {
-        //
+        $instituicao_estagio = Instituicao_Estagio::all();
+        return view('estágios.create', compact('instituicao_estagio'));
     }
 
     /**

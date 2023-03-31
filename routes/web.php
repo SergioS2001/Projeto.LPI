@@ -40,4 +40,6 @@ Route::resource('agendamentos', AgendamentosController::class);
 Route::resource('histórico', HistóricoController::class);
 Route::resource('contactos', Controller::class);
 
+Route::post('/estagios', [EstágiosController::class, 'store'])->name('estagios.store');
+
 require __DIR__.'/auth.php';
