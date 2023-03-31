@@ -13,7 +13,8 @@ class OrientacaoEstagiosController extends Controller
      */
     public function index()
     {
-        //
+        $orientação = Orientacao_Estagios::paginate();
+        return view('orientação.index', compact('orientação'));
     }
 
     /**

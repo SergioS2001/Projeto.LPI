@@ -6,6 +6,7 @@ use App\Filament\Resources\EstágiosResource\Pages;
 use App\Filament\Resources\EstágiosResource\RelationManagers;
 use App\Models\Estágios;
 use App\Models\Orientador;
+use App\Models\Orientadores;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Models\User;
@@ -33,8 +34,8 @@ class EstágiosResource extends Resource
             ->schema([
                 TextInput::make('Nome')->required(),
                 Select::make('id_orientador')->required()
-                ->label('Orientador')
-                ->options(Orientador::all()->pluck('name', 'id'))
+                ->label('Orientadores')
+                ->options(Orientadores::all()->pluck('name', 'id'))
                 ->searchable(),
                 TextInput::make('Instituição')->required(),
                 TextInput::make('Curso')->required(),
@@ -50,7 +51,6 @@ class EstágiosResource extends Resource
                 ->required(),
                 DatePicker::make('Data Final')
                 ->minDate(now()),
-                //FileUpload::make('Avaliação')->multiple()
             ]);
     }
 

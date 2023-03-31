@@ -22,9 +22,9 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->date('data_nascimento')->max(now());
-            $table->bigInteger('cartão_cidadão')->unique();
-            $table->bigInteger('telemóvel')->unique();
+            $table->date('data_nascimento')->max(now())->nullable();
+            $table->bigInteger('cartão_cidadão')->unique()->nullable();
+            $table->bigInteger('telemóvel')->unique()->nullable();
             $table->string('morada')->nullable()->max(255);
             $table->string('email_alternativo')->nullable();
             $table->foreignId('instituicao_aluno_id')->references('id')->on('Instituicao_Aluno')->onDelete('cascade');

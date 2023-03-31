@@ -12,6 +12,8 @@ class Solicitacao_Vagas extends Model
     protected $fillable = [
         'ano_letivo',
         'vagas',
+        'carga_horaria_total',
+        'objetivos',
         'isExterno',
     ];
 }

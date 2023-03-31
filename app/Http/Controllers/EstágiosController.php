@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Historico;
+use App\Models\Estágios;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class HistoricoController extends Controller
+class EstágiosController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $estágios = Estágios::paginate();
+        return view('estágios.index', compact('estágios'));
     }
 
     /**
@@ -35,7 +36,7 @@ class HistoricoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Historico $historico)
+    public function show(EstágiosController $estágiosController)
     {
         //
     }
@@ -43,7 +44,7 @@ class HistoricoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Historico $historico)
+    public function edit(EstágiosController $estágiosController)
     {
         //
     }
@@ -51,7 +52,7 @@ class HistoricoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Historico $historico)
+    public function update(Request $request, EstágiosController $estágiosController)
     {
         //
     }
@@ -59,7 +60,7 @@ class HistoricoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Historico $historico)
+    public function destroy(EstágiosController $estágiosController)
     {
         //
     }

@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\EstagiáriosResource\Pages;
-use App\Filament\Resources\EstagiáriosResource\RelationManagers;
-use App\Models\User;
+use App\Filament\Resources\HistóricoResource\Pages;
+use App\Filament\Resources\HistóricoResource\RelationManagers;
+use App\Models\Histórico;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -13,12 +13,11 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class EstagiáriosResource extends Resource
+class HistóricoResource extends Resource
 {
-    protected static ?string $model = User::class;
-
+    protected static ?string $model = Histórico::class;
     protected static ?string $navigationIcon = 'heroicon-o-collection';
-    protected static ?string $navigationGroup = 'Utilizadores';
+    protected static ?string $navigationGroup = 'Estágios/Ensinos Clínicos';
 
     public static function form(Form $form): Form
     {
@@ -55,9 +54,9 @@ class EstagiáriosResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListEstagiários::route('/'),
-            'create' => Pages\CreateEstagiários::route('/create'),
-            'edit' => Pages\EditEstagiários::route('/{record}/edit'),
+            'index' => Pages\ListHistórico::route('/'),
+            'create' => Pages\CreateHistórico::route('/create'),
+            'edit' => Pages\EditHistórico::route('/{record}/edit'),
         ];
     }    
 }

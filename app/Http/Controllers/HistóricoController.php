@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cacifos;
+use App\Models\Histórico;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class CacifosController extends Controller
+class HistóricoController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $histórico = Histórico::paginate();
+        return view('histórico.index', compact('histórico'));
     }
 
     /**
@@ -35,7 +36,7 @@ class CacifosController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Cacifos $cacifo)
+    public function show(Histórico $historico)
     {
         //
     }
@@ -43,7 +44,7 @@ class CacifosController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Cacifos $cacifo)
+    public function edit(Histórico $historico)
     {
         //
     }
@@ -51,7 +52,7 @@ class CacifosController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Cacifos $cacifo)
+    public function update(Request $request, Histórico $historico)
     {
         //
     }
@@ -59,8 +60,9 @@ class CacifosController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Cacifos $cacifo)
+    public function destroy(Histórico $historico)
     {
         //
     }
+    
 }
