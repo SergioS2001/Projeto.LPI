@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Curso_Aluno extends Model
 {
+    protected $table = 'curso_aluno';
+
     use HasFactory;
 }

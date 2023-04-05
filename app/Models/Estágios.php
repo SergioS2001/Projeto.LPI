@@ -17,7 +17,7 @@ class Estágios extends Model
         'curso_estagio_id',
         'unidade_curricular_id',
         'serviços_id',
-        'tipologiaestagio_id',
+        'tipologia_estagio_id',
         'presenças_id',
         'cacifos_id',
         'avaliacao_id',
