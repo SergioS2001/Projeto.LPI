@@ -1,3 +1,5 @@
+use \PDO;
+
 <?php
 
 // Set up database connection
@@ -45,9 +47,7 @@ $result = $db->query($query);
 
 ?>
 
-<h2>Estágios disponiveis</h2>
-<br>
-<form method="POST" action="{{ route('estágios.store') }}">
+<form method="POST" action="{{ route('estagios.store') }}">
     @csrf
 
     <div class="form-group">
@@ -108,10 +108,12 @@ $result = $db->query($query);
 
     <div class="form-group">
         <label for="data_inicial">Data Inicial</label>
+        <input type="date" class="form-control" id="data_inicial" name="data_inicial" required>
     </div>
 
     <div class="form-group">
         <label for="data_final">Data Final</label>
+        <input type="date" class="form-control" id="data_final" name="data_final" required>
     </div>
 
     <button type="submit" class="btn btn-primary">

@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Solicitacao_Vagas extends Model
 {
-    protected $table = 'solicitacao_vagas';
-
     use HasFactory;
 
     protected $fillable = [
