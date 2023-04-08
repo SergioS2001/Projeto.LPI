@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('cacifos', function (Blueprint $table) {
             $table->id()->bigIncrements();
-            $table->bigInteger('numero_cacifo')->unique();
+            $table->bigInteger('numero')->unique();
             $table->foreignId('cauções_id')->constrained('Cauções')->onDelete('cascade');
             $table->timestamps();
         });

@@ -10,8 +10,7 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Columns\TextColumn;
 
 class HistóricoResource extends Resource
 {
@@ -31,7 +30,10 @@ class HistóricoResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('users.name')->sortable()->searchable()->limit(12)->label('Aluno'),
+                TextColumn::make('')->sortable()->searchable()->label('Data'),
+                TextColumn::make('')->sortable()->limit(9)->label('Cacifo'),
+                TextColumn::make('')->sortable()->label('Valor Caução'),
             ])
             ->filters([
                 //

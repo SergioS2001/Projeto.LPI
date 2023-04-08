@@ -10,8 +10,7 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Columns\TextColumn;
 
 class UsersResource extends Resource
 {
@@ -32,7 +31,16 @@ class UsersResource extends Resource
     {
         return $table
             ->columns([
-                //
+                //TextColumn::make('id')->sortable()->searchable(),
+                TextColumn::make('tipo Aluno')->sortable()->label('tipo'),
+                TextColumn::make('name')->sortable()->searchable()->limit(12)->label('Nome'),
+                TextColumn::make('email')->sortable()->searchable()->limit(15),
+                TextColumn::make('data_nascimento')->date()->sortable()->searchable(),
+                TextColumn::make('telemóvel')->sortable()->limit(9),
+                TextColumn::make('cartão_cidadão')->sortable()->searchable()->limit(8)->label('CC'),
+                TextColumn::make('morada')->sortable()->searchable()->limit(12),
+                TextColumn::make('email_alternativo')->sortable()->searchable()->limit(15),
+                TextColumn::make('permissions')->sortable(),
             ])
             ->filters([
                 //

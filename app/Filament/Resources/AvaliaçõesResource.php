@@ -10,8 +10,11 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\IconColumn;
+use App\Models\Estágios;
+use App\Models\User;
+
 
 class AvaliaçõesResource extends Resource
 {
@@ -32,7 +35,11 @@ class AvaliaçõesResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('users.name')->sortable()->searchable()->limit(12)->label('Aluno'),
+                TextColumn::make('estágios.nome')->sortable()->searchable()->label('Estágio'),
+                TextColumn::make('Orientador')->sortable()->searchable()->label('Orientadores'),
+                TextColumn::make('nota')->sortable()->label('Nota Final'),
+                IconColumn::make('isDone')->label('Concluído')->boolean(),
             ])
             ->filters([
                 //

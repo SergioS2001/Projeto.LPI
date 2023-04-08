@@ -5,12 +5,16 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\EstágiosResource\Pages;
 use App\Filament\Resources\EstágiosResource\RelationManagers;
 use App\Models\Estágios;
-use App\Models\Orientador;
+use App\Models\Instituicao_Estagio;
+use App\Models\Curso_Estagio;
 use App\Models\Orientadores;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Models\Cacifos;
+use App\Models\Orientacao_Estagios;
+use App\Models\Serviços;
+use App\Models\Tipologia_Estagio;
+use App\Models\Unidade_Curricular;
 use App\Models\User;
-use Filament\Forms;
+use Filament\Forms\Components\Card;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -18,7 +22,6 @@ use Filament\Tables;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Columns\TextColumn;
 
 class EstágiosResource extends Resource
@@ -32,25 +35,45 @@ class EstágiosResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('Nome')->required(),
-                Select::make('id_orientador')->required()
+                Card::make()->schema([TextInput::make('nome')->label('Nome')->required(),
+                Select::make('orientadores_id')->required()
                 ->label('Orientadores')
-                ->options(Orientadores::all()->pluck('name', 'id'))
+                ->options(Orientacao_Estagios::all()->pluck('nome', 'id'))
                 ->searchable(),
-                TextInput::make('Instituição')->required(),
-                TextInput::make('Curso')->required(),
-                TextInput::make('Unidade curricular')->required(),
+                Select::make('instituicao_estagio_id')->required()
+                ->label('Instituição')
+                ->options(Instituicao_Estagio::all()->pluck('nome', 'id'))
+                ->searchable(),
+                Select::make('curso_estagio_id')->required()
+                ->label('Curso')
+                ->options(Curso_Estagio::all()->pluck('curso', 'id'))
+                ->searchable(),
+                Select::make('unidade_curricular_id')->required()
+                ->label('Unidade Curricular')
+                ->options(Unidade_Curricular::all()->pluck('nome', 'id'))
+                ->searchable(),
                 TextInput::make('Ano curricular')->required()
                 ->numeric()
                 ->minValue(1)
                 ->maxValue(5),
-                TextInput::make('Serviço')->required(),
-                TextInput::make('Tipologia')->required(),
+                Select::make('serviços_id')->required()
+                ->label('Serviços')
+                ->options(Serviços::all()->pluck('titulo', 'id'))
+                ->searchable(),
+                Select::make('tipologia_estagio_id')->required()
+                ->label('Tipologia')
+                ->options(Tipologia_Estagio::all()->pluck('titulo', 'id'))
+                ->searchable(),
                 DatePicker::make('Data Inicial')
                 ->minDate(now())
                 ->required(),
                 DatePicker::make('Data Final')
                 ->minDate(now()),
+                Select::make('cacifos_id')->required()
+                ->label('Cacifo')
+                ->options(Cacifos::all()->pluck('numero', 'id'))
+                ->searchable(),
+                ])
             ]);
     }
 
@@ -58,10 +81,16 @@ class EstágiosResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('Nome')->sortable()->searchable(),
-                TextColumn::make('Orientador')->sortable()->searchable(),
-                TextColumn::make('Serviço')->sortable()->searchable(),
-                TextColumn::make('Ano curricular')->sortable()->searchable(),
+                TextColumn::make('nome')->sortable()->searchable(),
+                TextColumn::make('instituicao_estagio_id')->label('Instituição')->limit(12),
+                TextColumn::make('curso_estagio_id')->label('Curso')->limit(12),
+                TextColumn::make('unidade_curricular_id')->label('UC')->limit(12),
+                TextColumn::make('ano_curricular')->label('Ano'),
+                TextColumn::make('serviços_id')->label('Serviços')->limit(12),
+                TextColumn::make('tipologia_estagio_id')->label('Tipologia')->limit(12),
+                TextColumn::make('data_inicial')->label('Data Inicial'),
+                TextColumn::make('data_final')->label('Data Final'),
+                TextColumn::make('cacifos_id')->label('Cacifo'),
             ])
             ->filters([
                 //

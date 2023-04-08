@@ -10,8 +10,8 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\TextColumn;
 
 class CacifosResource extends Resource
 {
@@ -32,7 +32,12 @@ class CacifosResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('users.name')->sortable()->searchable()->limit(12)->label('Aluno'),
+                TextColumn::make('estágios.nome')->sortable()->searchable()->label('Estágio'),
+                TextColumn::make('numero')->sortable()->limit(9)->label('Cacifo'),
+                TextColumn::make('cauções_id.valor')->sortable()->label('Valor Caução'),
+                IconColumn::make('cauções_id.isPago')->label('Pagamento')->boolean(),
+                IconColumn::make('cauções_id.isDevolvido')->label('Reembolso')->boolean(),
             ])
             ->filters([
                 //
