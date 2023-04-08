@@ -33,14 +33,14 @@ return new class extends Migration
             $table->foreignId('unidade_curricular_id')->references('id')->on('Unidade_Curricular')->onDelete('cascade');
             $table->integer('ano_curricular')->min(2)->max(6);
             $table->foreignId('serviços_id')->references('id')->on('Serviços')->onDelete('cascade');
-            $table->foreignId('tipologiaestagio_id')->references('id')->on('TipologiaEstagio')->onDelete('cascade');
+            $table->foreignId('tipologia_estagio_id')->references('id')->on('Tipologia_Estagio')->onDelete('cascade');
             $table->date('data_inicial')->min(now());
             $table->date('data_final')->nullable()->min(now());
             $table->foreignId('presenças_id')->references('id')->on('Presenças')->onDelete('cascade');
             $table->foreignId('cacifos_id')->references('id')->on('Cacifos')->onDelete('cascade');
             $table->foreignId('avaliacao_id')->references('id')->on('Avaliações')->onDelete('cascade');
-            $table->foreignId('solicitacao_vagas_id')->references('id')->on('Solicitacao_Vagas')->onDelete('cascade');
-            $table->foreignId('estado_estagio_id')->references('id')->on('Estado_Estagio')->onDelete('cascade');
+            $table->foreignId('solicitacao_vagas_id')->nullable()->references('id')->on('Solicitacao_Vagas')->onDelete('cascade');
+            $table->foreignId('estado_estagio_id')->nullable()->references('id')->on('Estado_Estagio')->onDelete('cascade');
             $table->timestamps();
         });
     }

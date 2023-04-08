@@ -1,10 +1,5 @@
 <?php
 
-use App\Models\Agendamento;
-use App\Models\Estágios;
-use App\Models\Historico;
-use App\Models\Instituicao;
-use App\Models\Instituicao_Aluno;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -24,15 +19,11 @@ return new class extends Migration
             $table->string('password');
             $table->date('data_nascimento')->max(now())->nullable();
             $table->bigInteger('cartão_cidadão')->unique()->nullable();
-<<<<<<< HEAD
-            $table->bigInteger('telemóvel')->unique();
-=======
             $table->bigInteger('telemóvel')->unique()->nullable();
->>>>>>> 4a0dab567efe9dc78e384eb91672e067138dc93e
             $table->string('morada')->nullable()->max(255);
             $table->string('email_alternativo')->nullable();
-            $table->foreignId('instituicao_aluno_id')->references('id')->on('Instituicao_Aluno')->onDelete('cascade');
-            $table->foreignId('historico_id')->references('id')->on('Historico')->onDelete('cascade');
+            $table->foreignId('instituicao_aluno_id')->nullable()->references('id')->on('Instituicao_Aluno')->onDelete('cascade');
+            $table->foreignId('historico_id')->nullable()->references('id')->on('Historico')->onDelete('cascade');
             $table->smallInteger('tipo_aluno')->default(0)->max(1);
             $table->smallInteger('permissions')->default(0)->max(2);
             $table->rememberToken();

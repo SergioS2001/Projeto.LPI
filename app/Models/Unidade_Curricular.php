@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Unidade_Curricular extends Model
 {
+    protected $table = 'unidade_curricular';
+
     use HasFactory;
+    protected $fillable = [
+        'nome',
+    ];
 }
