@@ -23,10 +23,10 @@ class CacifosSeeder extends Seeder
 
         // Use the cauções to create some sample cacifos
         $cacifos = [
-            ['numero_cacifo' => 1, 'cauções_id' => 1,'created_at' => now(),'updated_at' => now()],
-            ['numero_cacifo' => 2, 'cauções_id' => 2,'created_at' => now(),'updated_at' => now()],
-            ['numero_cacifo' => 3, 'cauções_id' => 3,'created_at' => now(),'updated_at' => now()],
-            ['numero_cacifo' => 4, 'cauções_id' => 4,'created_at' => now(),'updated_at' => now()],
+            ['numero' => 1, 'cauções_id' => 1,'created_at' => now(),'updated_at' => now()],
+            ['numero' => 2, 'cauções_id' => 2,'created_at' => now(),'updated_at' => now()],
+            ['numero' => 3, 'cauções_id' => 3,'created_at' => now(),'updated_at' => now()],
+            ['numero' => 4, 'cauções_id' => 4,'created_at' => now(),'updated_at' => now()],
         ];
 
         foreach ($cacifos as $cacifo) {

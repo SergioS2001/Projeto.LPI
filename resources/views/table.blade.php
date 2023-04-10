@@ -21,7 +21,7 @@ try {
 }
 
 // SQL query to fetch data
-$query = "SELECT historico.id, agendamentos.data AS agendamentos_data, agendamentos.descrição AS agendamento_descrição, estágios.nome AS estágios_nome, tipo_agendamento.nome_evento AS tipo_agendamento_nome_evento, instituicao_estagio.nome AS instituicao_estagio_nome, curso_estagio.curso AS curso_estagio_curso, unidade_curricular.nome AS unidade_curricular_nome, estágios.data_inicial, estágios.data_final, serviços.titulo AS serviços_titulo, tipologiaestagio.titulo AS tipologiaestagio_titulo, estágios.ano_curricular
+$query = "SELECT historico.id, agendamentos.data AS agendamentos_data, agendamentos.descrição AS agendamentos_descrição, estágios.nome AS estágios_nome, tipo_agendamento.nome_evento AS tipo_agendamento_nome_evento, instituicao_estagio.nome AS instituicao_estagio_nome, curso_estagio.curso AS curso_estagio_curso, unidade_curricular.nome AS unidade_curricular_nome, estágios.data_inicial AS estágios_data_inicial, estágios.data_final AS estágios_data_final, serviços.titulo AS serviços_titulo, tipologia_estagio.titulo AS tipologia_estagio_titulo, estágios.ano_curricular AS estágios_ano_curricular
 FROM historico
 JOIN agendamentos ON historico.agendamentos_id = agendamentos.id
 JOIN estágios ON historico.estágios_id = estágios.id
@@ -30,7 +30,7 @@ JOIN instituicao_estagio ON estágios.instituição_estagio_id = instituicao_est
 JOIN curso_estagio ON estágios.curso_estagio_id = curso_estagio.id
 JOIN unidade_curricular ON estágios.unidade_curricular_id = unidade_curricular.id
 JOIN serviços ON estágios.serviços_id = serviços.id
-JOIN tipologiaestagio ON estágios.tipologiaestagio_id = tipologiaestagio.id";
+JOIN tipologia_estagio ON estágios.tipologia_estagio_id = tipologia_estagio.id";
 
 
 // Fetch data and store in $result variable
@@ -54,8 +54,8 @@ $result = $db->query($query);
       <tr>
         <td><?= $row['id'] ?></td>
         <td><?= $row['tipo_agendamento_nome_evento'] ?></td>
-        <td><?= $row['agendamento_data'] ?></td>
-        <td><?= $row['agendamento_descrição'] ?></td>
+        <td><?= $row['agendamentos_data'] ?></td>
+        <td><?= $row['agendamentos_descrição'] ?></td>
       </tr>
     <?php endwhile; ?>
   </tbody>
@@ -89,11 +89,11 @@ $result = $db->query($query);
         <td><?= $row['instituicao_estagio_nome'] ?></td>
         <td><?= $row['curso_estagio_curso'] ?></td>
         <td><?= $row['unidade_curricular_nome'] ?></td>
-        <td><?= $row['estagios.ano_curricular'] ?></td>
+        <td><?= $row['estágios_ano_curricular'] ?></td>
         <td><?= $row['serviços_titulo'] ?></td>
-        <td><?= $row['tipologiaestagio.titulo'] ?></td>
-        <td><?= $row['estágios.data_inicial'] ?></td>
-        <td><?= $row['estágios.data_final'] ?></td>
+        <td><?= $row['tipologia_estagio_titulo'] ?></td>
+        <td><?= $row['estágios_data_inicial'] ?></td>
+        <td><?= $row['estágios_data_final'] ?></td>
       </tr>
     <?php endwhile; ?>
   </tbody>

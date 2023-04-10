@@ -47,6 +47,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // Define the relationship with the InstituicaoAluno model
+    public function instituicao_Aluno()
+    {
+        return $this->belongsTo(Instituicao_Aluno::class, 'instituicao_aluno_id');
+    }
+
+    // Define the relationship with the Historico model
+    public function histórico()
+    {
+        return $this->belongsTo(Histórico::class, 'historico_id');
+    }
+
     //public function canAccessFilament(): bool
     //{
         //return str_ends_with($this->email, '@yourdomain.com') && $this->hasVerifiedEmail();

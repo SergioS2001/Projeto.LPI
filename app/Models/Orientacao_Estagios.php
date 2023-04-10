@@ -14,4 +14,15 @@ class Orientacao_Estagios extends Model
         'orientadores_id',
         'estágios_id',
     ];
+
+    public function estagios()
+{
+    return $this->belongsTo(Estágio::class, 'estágios_id');
+}
+
+public function orientador()
+{
+    return $this->belongsTo(Orientadores::class, 'orientadores_id');
+}
+
 }

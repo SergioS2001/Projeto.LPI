@@ -16,4 +16,10 @@ class Instituicao_Aluno extends Model
         'numero_aluno',
         'curso_aluno_id',
     ];
+
+    public function curso()
+{
+    return $this->belongsTo(Curso_Aluno::class, 'curso_aluno_id');
+}
+
 }

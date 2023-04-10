@@ -13,4 +13,10 @@ class Cacifos extends Model
         'numero_cacifo',
         'cauções_id',
     ];
+
+    public function caucao()
+{
+    return $this->belongsTo(Cauções::class, 'cauções_id');
+}
+
 }

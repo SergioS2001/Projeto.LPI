@@ -14,4 +14,10 @@ class Agendamentos extends Model
         'descrição',
         'duração',
     ];
+
+    public function tipo_agendamentos()
+{
+    return $this->belongsTo(Tipo_Agendamento::class, 'tipo_agendamento_id');
+}
+
 }

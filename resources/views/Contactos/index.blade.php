@@ -11,31 +11,25 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     
                 <table class="table">
-  <thead class="table-light">
-    <tr>
-      <th scope="col">Nome</th>
-      <th scope="col">Instituição</th>
-      <th scope="col">Email</th>
-      <th scope="col">Telemóvel</th>
-    </tr>
-  </thead>
-  <tbody class="table-group-divider">
-    <tr>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+                  <thead class="table-light">
+                    <tr>
+                      <th scope="col">Nome</th>
+                      <th scope="col">Instituição</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Telemóvel</th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-group-divider">
+                    @foreach($users as $user)
+                      <tr>
+                        <td>{{ $users->name }}</td>
+                        <td>{{ $users->estagio->instituicao }}</td>
+                        <td>{{ $users->email }}</td>
+                        <td>{{ $users->telemóvel }}</td>
+                      </tr>
+                    @endforeach
+                  </tbody>
+                </table>
 
                 </div>
             </div>
