@@ -15,5 +15,6 @@ class Presenças extends Model
         'h_saida',
         'horas_mes',
         'count_dias',
+        'isValidated',
     ];
 }

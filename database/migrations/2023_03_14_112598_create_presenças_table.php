@@ -18,6 +18,7 @@ return new class extends Migration
             $table->float('h_saida')->min(0.0)->max(24.00);
             $table->float('horas_mes');
             $table->integer('count_dias')->default(0);
+            $table->boolean('isValidated')->default(false);
             $table->timestamps();
         });
     }

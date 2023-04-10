@@ -10,6 +10,8 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -32,7 +34,14 @@ class PresençasResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('user.name')->sortable()->searchable()->limit(12)->label('Aluno'),
+                TextColumn::make('name')->sortable()->searchable()->limit(12)->label('Estágio'),
+                TextColumn::make('data')->date()->sortable()->searchable(),
+                TextColumn::make('h_entrada')->sortable()->label('Hora Entrada'),
+                TextColumn::make('h_saida')->sortable()->label('Hora Saída'),
+                //TextColumn::make('h_mes')->sortable()->label('Horas Mês'),
+                //TextColumn::make('count_dias')->sortable()->label('Presenças'),
+                TextColumn::make('isValidated')->sortable()->searchable()->label('Validada'),
             ])
             ->filters([
                 //

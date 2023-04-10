@@ -19,6 +19,7 @@ class PresençasSeeder extends Seeder
             'h_saida' => 17.0,
             'horas_mes' => 172.5,
             'count_dias' => 22,
+            'isValidated'=> false,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -29,6 +30,7 @@ class PresençasSeeder extends Seeder
             'h_saida' => 17.5,
             'horas_mes' => 170.5,
             'count_dias' => 21,
+            'isValidated'=> false,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -39,6 +41,7 @@ class PresençasSeeder extends Seeder
             'h_saida' => 16.0,
             'horas_mes' => 168.0,
             'count_dias' => 20,
+            'isValidated'=> false,
             'created_at' => now(),
             'updated_at' => now(),
         ]);

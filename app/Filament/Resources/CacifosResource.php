@@ -36,8 +36,8 @@ class CacifosResource extends Resource
                 TextColumn::make('estágios.nome')->sortable()->searchable()->label('Estágio'),
                 TextColumn::make('numero')->sortable()->limit(9)->label('Cacifo'),
                 TextColumn::make('cauções_id.valor')->sortable()->label('Valor Caução'),
-                IconColumn::make('cauções_id.isPago')->label('Pagamento')->boolean(),
-                IconColumn::make('cauções_id.isDevolvido')->label('Reembolso')->boolean(),
+                IconColumn::make('cauções.isPago')->label('Pagamento')->boolean(),
+                IconColumn::make('cauções.isDevolvido')->label('Reembolso')->boolean(),
             ])
             ->filters([
                 //

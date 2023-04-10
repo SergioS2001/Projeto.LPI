@@ -10,6 +10,7 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 
 class UsersResource extends Resource
@@ -32,7 +33,7 @@ class UsersResource extends Resource
         return $table
             ->columns([
                 //TextColumn::make('id')->sortable()->searchable(),
-                TextColumn::make('tipo Aluno')->sortable()->label('tipo'),
+                IconColumn::make('tipo_aluno')->label('Externo')->boolean(),
                 TextColumn::make('name')->sortable()->searchable()->limit(12)->label('Nome'),
                 TextColumn::make('email')->sortable()->searchable()->limit(15),
                 TextColumn::make('data_nascimento')->date()->sortable()->searchable(),
