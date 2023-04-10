@@ -54,10 +54,36 @@ class User extends Authenticatable
     }
 
     // Define the relationship with the Historico model
-    public function histórico()
+    public function historico()
     {
-        return $this->belongsTo(Histórico::class, 'historico_id');
+        return $this->belongsTo(Histórico::class, 'historico_id')->withDefault();
     }
+
+    public function estagio()
+    {
+        return $this->hasOneThrough(
+            Estágios::class,
+            Histórico::class,
+            'user_id', // foreign key on the Estágios table
+            'id', // local key on the Historico table
+            'id', // local key on the User table
+            'estágios_id' // foreign key on the Historico table
+        )->withDefault();
+    }
+    
+
+public function instituicaoEstagio()
+{
+    return $this->hasOneThrough(
+        Instituicao_Estagio::class,
+        Estágios::class,
+        'id', // foreign key on the Instituicao_Estagio table
+        'id', // local key on the Estagio table
+        'instituição_estagio_id', // foreign key on the Estagio table
+        'id' // local key on the User table
+    )->withDefault();
+}
+
 
     //public function canAccessFilament(): bool
     //{

@@ -12,8 +12,10 @@ class Controller extends BaseController
     use AuthorizesRequests, ValidatesRequests;
 
     public function index()
-    {
-        $contactos = User::paginate();
-        return view('contactos.index', compact('contactos'));
-    }
+{
+    $users = User::with(['historico.estagio.instituicaoEstagio'])->get();
+    return view('Contactos.index', compact('users'));
+}
+
+
 }

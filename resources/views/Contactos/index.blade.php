@@ -20,14 +20,18 @@
                     </tr>
                   </thead>
                   <tbody class="table-group-divider">
-                    @foreach($users as $user)
-                      <tr>
-                        <td>{{ $users->name }}</td>
-                        <td>{{ $users->estagio->instituicao }}</td>
-                        <td>{{ $users->email }}</td>
-                        <td>{{ $users->telemóvel }}</td>
-                      </tr>
-                    @endforeach
+                  @foreach($users as $user)
+                  <tr>
+                   <td>{{ $user->name }}</td>
+                  @if ($user->historico && $user->historico->estagio && $user->historico->estagio->instituicaoEstagio)
+                  <td>{{ $user->historico->estagio->instituicaoEstagio->nome ?? 'N/A' }}</td>
+                  @else
+                  <td>N/A</td>
+                  @endif
+                  <td>{{ $user->email }}</td>
+                  <td>{{ $user->telemóvel }}</td>
+                  </tr>
+                  @endforeach
                   </tbody>
                 </table>
 

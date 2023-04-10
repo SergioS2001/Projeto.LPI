@@ -50,10 +50,10 @@ class Estágios extends Model
         return $this->belongsTo(Cacifos::class, 'cacifos_id');
     }
 
-    public function instituicao_estagio()
-    {
-        return $this->belongsTo(Instituicao_Estagio::class, 'instituição_estagio_id');
-    }
+    public function instituicaoEstagio()
+{
+    return $this->belongsTo(Instituicao_Estagio::class, 'instituição_estagio_id');
+}
 
     public function unidade_curricular()
     {

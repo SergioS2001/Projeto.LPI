@@ -35,8 +35,8 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('estágios', EstágiosController::class);
-Route::resource('orientação', OrientacaoEstagiosController::class);
 Route::resource('agendamentos', AgendamentosController::class);
+Route::resource('orientação', OrientacaoEstagiosController::class);
 Route::resource('histórico', HistóricoController::class);
 Route::resource('contactos', Controller::class);
 

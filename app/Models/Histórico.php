@@ -17,11 +17,11 @@ class Histórico extends Model
 
     public function agendamentos()
     {
-        return $this->belongsTo(Agendamentos::class);
+        return $this->belongsTo(Agendamentos::class, 'agendamentos_id');
     }
 
-    public function estágios()
+    public function estagio()
     {
-        return $this->belongsTo(Estágios::class);
+        return $this->belongsTo(Estágios::class, 'estágios_id')->withDefault();
     }
 }

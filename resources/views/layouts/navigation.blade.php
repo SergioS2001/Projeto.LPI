@@ -19,9 +19,6 @@
                     <x-nav-link :href="route('estágios.index')" :active="request()->routeIs('estágios.index')">
                         {{ __('Estágios') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('orientação.index')" :active="request()->routeIs('orientação.index')">
-                        {{ __('Orientação') }}
-                    </x-nav-link>
                     <x-nav-link :href="route('agendamentos.index')" :active="request()->routeIs('agendamentos.index')">
                         {{ __('Agendamentos') }}
                     </x-nav-link>
@@ -30,6 +27,9 @@
                     </x-nav-link>
                     <x-nav-link :href="route('contactos.index')" :active="request()->routeIs('contactos.index')">
                         {{ __('Contactos') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('orientação.index')" :active="request()->routeIs('orientação.index')">
+                        {{ __('Orientação') }}
                     </x-nav-link>
                 </div>
             </div>

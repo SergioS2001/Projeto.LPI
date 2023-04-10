@@ -36,7 +36,7 @@ class EstágiosResource extends Resource
         return $form
             ->schema([
                 Card::make()->schema([TextInput::make('nome')->label('Nome')->required(),
-                Select::make('orientadores_id')->required()
+                Select::make('orientadores_id')
                 ->label('Orientadores')
                 ->options(Orientacao_Estagios::all()->pluck('nome', 'id'))
                 ->searchable(),
