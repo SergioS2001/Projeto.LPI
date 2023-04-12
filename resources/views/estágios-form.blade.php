@@ -34,7 +34,7 @@ estágios.data_inicial AS estágios_data_inicial,
 estágios.data_final AS estágios_data_final
 FROM
 estágios
-JOIN instituicao_estagio ON estágios.instituição_estagio_id = instituicao_estagio.id
+JOIN instituicao_estagio ON estágios.instituicao_estagio_id = instituicao_estagio.id
 JOIN curso_estagio ON estágios.curso_estagio_id = curso_estagio.id
 JOIN unidade_curricular ON estágios.unidade_curricular_id = unidade_curricular.id
 JOIN serviços ON estágios.serviços_id = serviços.id

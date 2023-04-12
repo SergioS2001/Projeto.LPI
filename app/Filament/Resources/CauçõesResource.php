@@ -17,8 +17,6 @@ class CauçõesResource extends Resource
     protected static ?string $model = Cauções::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
-    protected static ?string $navigationGroup = 'Estágios/Ensinos Clínicos';
-
     public static function form(Form $form): Form
     {
         return $form

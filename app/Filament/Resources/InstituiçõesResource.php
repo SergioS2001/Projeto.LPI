@@ -16,6 +16,7 @@ class InstituiçõesResource extends Resource
     protected static ?string $model = Instituição_Estágio::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationGroup = 'Estágios/Ensinos Clínicos';
 
     public static function form(Form $form): Form
     {

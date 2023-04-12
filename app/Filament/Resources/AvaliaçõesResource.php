@@ -21,7 +21,7 @@ class AvaliaçõesResource extends Resource
     protected static ?string $model = Avaliações::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
-    protected static ?string $navigationGroup = 'Estágios/Ensinos Clínicos';
+    protected static ?string $navigationGroup = 'Orientação';
 
     public static function form(Form $form): Form
     {
