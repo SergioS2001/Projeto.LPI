@@ -2,22 +2,20 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CauçõesResource\Pages;
-use App\Filament\Resources\CauçõesResource\RelationManagers;
-use App\Models\Cauções;
+use App\Filament\Resources\ServiçosResource\Pages;
+use App\Filament\Resources\ServiçosResource\RelationManagers;
+use App\Models\Serviços;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
-class CauçõesResource extends Resource
+class ServiçosResource extends Resource
 {
-    protected static ?string $model = Cauções::class;
+    protected static ?string $model = Serviços::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
-    protected static ?string $navigationGroup = 'Estágios/Ensinos Clínicos';
 
     public static function form(Form $form): Form
     {
@@ -31,13 +29,11 @@ class CauçõesResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('users.name')->sortable()->searchable()->limit(12)->label('Aluno'),
+                TextColumn::make('id')->sortable()->searchable()->label('id'),
+                TextColumn::make('titulo')->sortable()->searchable()->limit(25)->label('Serviço'),
+                TextColumn::make('nome_responsavel')->sortable()->searchable()->label('Responsável'),
                 TextColumn::make('estágios.nome')->sortable()->searchable()->limit(12)->label('Estágio'),
-                TextColumn::make('cacifos.numero')->sortable()->searchable()->limit(12)->label('Cacifo'),
-                TextColumn::make('valor')->sortable()->searchable()->label('Montante'),
-                IconColumn::make('isPago')->label('Pagamento')->boolean(),
-                IconColumn::make('isDevolvido')->label('Reembolso')->boolean(),
-            ])
+                ])
             ->filters([
                 //
             ])
@@ -59,9 +55,9 @@ class CauçõesResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCauções::route('/'),
-            'create' => Pages\CreateCauções::route('/create'),
-            'edit' => Pages\EditCauções::route('/{record}/edit'),
+            'index' => Pages\ListServiços::route('/'),
+            'create' => Pages\CreateServiços::route('/create'),
+            'edit' => Pages\EditServiços::route('/{record}/edit'),
         ];
     }    
 }

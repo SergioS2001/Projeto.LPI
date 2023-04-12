@@ -2,23 +2,19 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CacifosResource\Pages;
-use App\Filament\Resources\CacifosResource\RelationManagers;
-use App\Models\Cacifos;
+use App\Filament\Resources\UnidadesCurricularesResource\Pages;
+use App\Filament\Resources\UnidadesCurricularesResource\RelationManagers;
+use App\Models\Unidade_Curricular;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
-
-class CacifosResource extends Resource
+class UnidadesCurricularesResource extends Resource
 {
-    protected static ?string $model = Cacifos::class;
-
+    protected static ?string $model = Unidade_Curricular::class;
     protected static ?string $navigationIcon = 'heroicon-o-collection';
-    protected static ?string $navigationGroup = 'Estágios/Ensinos Clínicos';
 
     public static function form(Form $form): Form
     {
@@ -32,11 +28,10 @@ class CacifosResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('numero')->sortable()->label('Cacifo'),
-                TextColumn::make('users.name')->sortable()->searchable()->limit(12)->label('Aluno'),
-                TextColumn::make('estágios.nome')->sortable()->searchable()->label('Estágio'),
-                TextColumn::make('cauções_id.valor')->sortable()->label('Valor Caução'),
-            ])
+                TextColumn::make('id')->sortable()->searchable()->limit(12)->label('id'),
+                TextColumn::make('nome')->sortable()->searchable()->label('Unidade Curricular'),
+                TextColumn::make('estágios.unidade_curricular_id.nome')->sortable()->searchable()->label('Estágio'),
+                ])
             ->filters([
                 //
             ])
@@ -58,9 +53,9 @@ class CacifosResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCacifos::route('/'),
-            'create' => Pages\CreateCacifos::route('/create'),
-            'edit' => Pages\EditCacifos::route('/{record}/edit'),
+            'index' => Pages\ListUnidadesCurriculares::route('/'),
+            'create' => Pages\CreateUnidadesCurriculares::route('/create'),
+            'edit' => Pages\EditUnidadesCurriculares::route('/{record}/edit'),
         ];
     }    
 }

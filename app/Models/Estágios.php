@@ -13,7 +13,7 @@ class Estágios extends Model
         'nome',
         'data_inicial',
         'data_final',
-        'instituição_estagio_id',
+        'instituicao_estagio_id',
         'curso_estagio_id',
         'unidade_curricular_id',
         'serviços_id',
@@ -32,7 +32,7 @@ class Estágios extends Model
 
     public function tipologia_estagio()
     {
-        return $this->belongsTo(Tipologia_Estagio::class, 'tipologia_estagio_id');
+        return $this->belongsTo(Tipologia_Estágio::class, 'tipologia_estagio_id');
     }
 
     public function avaliações()
@@ -52,7 +52,12 @@ class Estágios extends Model
 
     public function instituicaoEstagio()
 {
-    return $this->belongsTo(Instituicao_Estagio::class, 'instituição_estagio_id');
+    return $this->belongsTo(Instituição_Estágio::class, 'instituição_estagio_id');
+}
+
+public function instituicao_estagio()
+{
+    return $this->belongsTo(Instituição_Estágio::class, 'instituição_estagio_id');
 }
 
     public function unidade_curricular()
@@ -72,7 +77,7 @@ class Estágios extends Model
 
     public function solicitacao_vagas()
     {
-        return $this->belongsTo(Solicitacao_Vagas::class, 'solicitacao_vagas_id');
+        return $this->belongsTo(Solicitação_Vagas::class, 'solicitacao_vagas_id');
     }
 
     public function historicos()

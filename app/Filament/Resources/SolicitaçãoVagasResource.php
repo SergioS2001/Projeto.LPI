@@ -2,23 +2,19 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CacifosResource\Pages;
-use App\Filament\Resources\CacifosResource\RelationManagers;
-use App\Models\Cacifos;
+use App\Filament\Resources\SolicitaçãoVagasResource\Pages;
+use App\Filament\Resources\SolicitaçãoVagasResource\RelationManagers;
+use App\Models\Solicitação_Vagas;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Filament\Tables\Columns\IconColumn;
-use Filament\Tables\Columns\TextColumn;
-
-class CacifosResource extends Resource
+class SolicitaçãoVagasResource extends Resource
 {
-    protected static ?string $model = Cacifos::class;
+    protected static ?string $model = Solicitação_Vagas::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
-    protected static ?string $navigationGroup = 'Estágios/Ensinos Clínicos';
 
     public static function form(Form $form): Form
     {
@@ -32,10 +28,7 @@ class CacifosResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('numero')->sortable()->label('Cacifo'),
-                TextColumn::make('users.name')->sortable()->searchable()->limit(12)->label('Aluno'),
-                TextColumn::make('estágios.nome')->sortable()->searchable()->label('Estágio'),
-                TextColumn::make('cauções_id.valor')->sortable()->label('Valor Caução'),
+                //
             ])
             ->filters([
                 //
@@ -58,9 +51,9 @@ class CacifosResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCacifos::route('/'),
-            'create' => Pages\CreateCacifos::route('/create'),
-            'edit' => Pages\EditCacifos::route('/{record}/edit'),
+            'index' => Pages\ListSolicitaçãoVagas::route('/'),
+            'create' => Pages\CreateSolicitaçãoVagas::route('/create'),
+            'edit' => Pages\EditSolicitaçãoVagas::route('/{record}/edit'),
         ];
     }    
 }

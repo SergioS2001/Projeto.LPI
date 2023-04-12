@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('email_alternativo')->nullable();
             $table->foreignId('instituicao_aluno_id')->nullable()->references('id')->on('Instituicao_Aluno')->onDelete('cascade');
             $table->foreignId('historico_id')->nullable()->references('id')->on('Historico')->onDelete('cascade');
-            $table->boolean('tipo_aluno')->default(false);
+            $table->boolean('isExterno')->default(false);
             $table->smallInteger('permissions')->default(0)->max(2);
             $table->rememberToken();
             $table->timestamps();

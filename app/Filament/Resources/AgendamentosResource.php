@@ -2,23 +2,20 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CacifosResource\Pages;
-use App\Filament\Resources\CacifosResource\RelationManagers;
-use App\Models\Cacifos;
+use App\Filament\Resources\AgendamentosResource\Pages;
+use App\Filament\Resources\AgendamentosResource\RelationManagers;
+use App\Models\Agendamentos;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
-
-class CacifosResource extends Resource
+class AgendamentosResource extends Resource
 {
-    protected static ?string $model = Cacifos::class;
+    protected static ?string $model = Agendamentos::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
-    protected static ?string $navigationGroup = 'Estágios/Ensinos Clínicos';
 
     public static function form(Form $form): Form
     {
@@ -32,10 +29,11 @@ class CacifosResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('numero')->sortable()->label('Cacifo'),
-                TextColumn::make('users.name')->sortable()->searchable()->limit(12)->label('Aluno'),
-                TextColumn::make('estágios.nome')->sortable()->searchable()->label('Estágio'),
-                TextColumn::make('cauções_id.valor')->sortable()->label('Valor Caução'),
+                TextColumn::make('id')->sortable()->searchable()->label('id'),
+                TextColumn::make('tipo_agendamento.nome_evento')->sortable()->searchable()->label('Tipo'),
+                TextColumn::make('data')->date()->sortable()->searchable(),
+                TextColumn::make('descrição')->sortable()->searchable()->label('Descrição'),
+                TextColumn::make('duração')->sortable()->searchable()->label('Duração'),
             ])
             ->filters([
                 //
@@ -58,9 +56,9 @@ class CacifosResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCacifos::route('/'),
-            'create' => Pages\CreateCacifos::route('/create'),
-            'edit' => Pages\EditCacifos::route('/{record}/edit'),
+            'index' => Pages\ListAgendamentos::route('/'),
+            'create' => Pages\CreateAgendamentos::route('/create'),
+            'edit' => Pages\EditAgendamentos::route('/{record}/edit'),
         ];
     }    
 }

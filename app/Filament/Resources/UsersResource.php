@@ -33,6 +33,7 @@ class UsersResource extends Resource
         return $table
             ->columns([
                 //TextColumn::make('id')->sortable()->searchable(),
+                //IconColumn::make('isExterno')->label('Externo')->boolean(),
                 IconColumn::make('tipo_aluno')->label('Externo')->boolean(),
                 TextColumn::make('name')->sortable()->searchable()->limit(12)->label('Nome'),
                 TextColumn::make('email')->sortable()->searchable()->limit(15),

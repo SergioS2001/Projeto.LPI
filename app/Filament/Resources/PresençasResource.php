@@ -12,15 +12,12 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-
 class PresençasResource extends Resource
 {
     protected static ?string $model = Presenças::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
-    protected static ?string $navigationGroup = 'Estágios/Ensinos Clínicos';
+    protected static ?string $navigationGroup = 'Orientação';
 
     public static function form(Form $form): Form
     {
@@ -36,12 +33,13 @@ class PresençasResource extends Resource
             ->columns([
                 TextColumn::make('user.name')->sortable()->searchable()->limit(12)->label('Aluno'),
                 TextColumn::make('name')->sortable()->searchable()->limit(12)->label('Estágio'),
+                TextColumn::make('')->sortable()->searchable()->limit(12)->label('Orientador'),
+                TextColumn::make('isValidated')->sortable()->searchable()->label('Presença Validada'),
                 TextColumn::make('data')->date()->sortable()->searchable(),
                 TextColumn::make('h_entrada')->sortable()->label('Hora Entrada'),
                 TextColumn::make('h_saida')->sortable()->label('Hora Saída'),
                 //TextColumn::make('h_mes')->sortable()->label('Horas Mês'),
                 //TextColumn::make('count_dias')->sortable()->label('Presenças'),
-                TextColumn::make('isValidated')->sortable()->searchable()->label('Validada'),
             ])
             ->filters([
                 //
