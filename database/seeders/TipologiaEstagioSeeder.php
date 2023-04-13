@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 use Illuminate\Database\Seeder;
-use App\Models\Tipologia_Estagio;
+use App\Models\Tipologia_Estágio;
 
 class TipologiaEstagioSeeder extends Seeder
 {
@@ -13,19 +13,19 @@ class TipologiaEstagioSeeder extends Seeder
      */
     public function run()
     {
-        Tipologia_Estagio::create([
+        Tipologia_Estágio::create([
             'titulo' => 'Estágio Curricular Obrigatório',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
         
-        Tipologia_Estagio::create([
+        Tipologia_Estágio::create([
             'titulo' => 'Estágio Curricular Não Obrigatório',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
         
-        Tipologia_Estagio::create([
+        Tipologia_Estágio::create([
             'titulo' => 'Estágio Profissional',
             'created_at' => now(),
             'updated_at' => now(),

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 use Illuminate\Database\Seeder;
-use App\Models\Instituicao_Estagio;
+use App\Models\Instituição_Estágio;
 
 class InstituiçãoSeeder extends Seeder
 {
@@ -36,7 +36,7 @@ class InstituiçãoSeeder extends Seeder
         ];
 
         foreach ($instituicoes as $instituicao) {
-            Instituicao_Estagio::create($instituicao);
+            Instituição_Estágio::create($instituicao);
         }
     }
 }

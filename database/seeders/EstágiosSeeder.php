@@ -3,11 +3,11 @@
 namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Estágios;
-use App\Models\Instituicao_Estagio;
+use App\Models\Instituição_Estágio;
 use App\Models\Curso_Estagio;
 use App\Models\Unidade_Curricular;
 use App\Models\Serviços;
-use App\Models\Tipologia_Estagio;
+use App\Models\Tipologia_Estágio;
 use App\Models\Presenças;
 use App\Models\Cacifos;
 use App\Models\Avaliações;
@@ -19,11 +19,11 @@ class EstágiosSeeder extends Seeder
     public function run()
     {
         // Get some related data
-        $instituicao_estagio = Instituicao_Estagio::first();
+        $instituicao_estagio = Instituição_Estágio::first();
         $curso_estagio = Curso_Estagio::first();
         $unidade_curricular = Unidade_Curricular::first();
         $serviço = Serviços::first();
-        $tipologia_estagio = Tipologia_Estagio::first();
+        $tipologia_estagio = Tipologia_Estágio::first();
         $presença = Presenças::first();
         $cacifo = Cacifos::first();
         $avaliação = Avaliações::first();
