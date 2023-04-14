@@ -19,7 +19,6 @@ class Estágios extends Model
         'serviços_id',
         'tipologia_estagio_id',
         'presenças_id',
-        'cacifos_id',
         'avaliacao_id',
         'solicitacao_vagas_id',
         'estado_estagio_id',

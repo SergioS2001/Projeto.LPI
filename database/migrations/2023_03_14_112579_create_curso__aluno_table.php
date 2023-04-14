@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('curso_aluno', function (Blueprint $table) {
             $table->id()->bigIncrements();
-            $table->string('cuso')->unique();
+            $table->string('curso')->unique();
             $table->integer('ects')->nullable();
             $table->timestamps();
         });

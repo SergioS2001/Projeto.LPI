@@ -25,6 +25,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'cartão_cidadão',
+        'telemóvel',
+        'morada',
         'permissions',     //protected
     ];
 

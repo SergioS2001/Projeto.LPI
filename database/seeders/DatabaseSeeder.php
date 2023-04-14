@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
          \App\Models\User::factory()->create([
              'name' => 'testUser',
              'email' => 'test@example.com',
+             //'password' =>'12345678',
          ]);
          $this->call([CacifosSeeder::class,],);
          $this->call([CursoEstagioSeeder::class,],);
@@ -25,7 +26,11 @@ class DatabaseSeeder extends Seeder
          $this->call([PresençasSeeder::class,],);
          $this->call([AvaliaçõesSeeder::class,],);
          $this->call([UnidadeCurricularSeeder::class,],);
+         $this->call([SolicitaçãoVagasSeeder::class,],);
+         $this->call([EstadoEstágioSeeder::class,],);
          $this->call([EstágiosSeeder::class,],);
          $this->call([HistóricoSeeder::class,],);
+         $this->call([OrientadoresSeeder::class,],);
+
     }
 }

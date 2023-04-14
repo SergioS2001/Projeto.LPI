@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('orientadores', function (Blueprint $table) {
+        Schema::create('historico', function (Blueprint $table) {
             $table->id()->bigIncrements();
             $table->foreignId('users_id')->references('id')->on('Users')->onDelete('cascade');
+            $table->foreignId('agendamentos_id')->references('id')->on('Agendamentos')->onDelete('cascade');
+            $table->foreignId('estágios_id')->references('id')->on('Estágios')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('orientadores');
+        Schema::dropIfExists('historico');
     }
 };

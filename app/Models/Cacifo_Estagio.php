@@ -5,18 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cacifos extends Model
+class Cacifo_Estagio extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'numero',
-        'cauções_id',
+        'estágios_id',
+        'cacifos_id',
     ];
-
-    public function caucao()
-{
-    return $this->belongsTo(Cauções::class, 'cauções_id');
-}
 
 }

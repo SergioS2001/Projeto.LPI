@@ -11,6 +11,7 @@ class Histórico extends Model
     protected $table = 'historico';
 
     protected $fillable = [
+        'users_id',
         'agendamentos_id',
         'estágios_id',
     ];

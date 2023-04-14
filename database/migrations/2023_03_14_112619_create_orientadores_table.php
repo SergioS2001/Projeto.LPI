@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('estado_estagio', function (Blueprint $table) {
+        Schema::create('orientadores', function (Blueprint $table) {
             $table->id()->bigIncrements();
-            $table->boolean('solicitado')->default(false);
-            $table->boolean('waiting')->default(false);
-            $table->boolean('admitido')->default(false);
+            $table->foreignId('users_id')->references('id')->on('Users')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -25,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('estado_estagio');
+        Schema::dropIfExists('orientadores');
     }
 };

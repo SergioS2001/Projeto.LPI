@@ -13,8 +13,9 @@ class Presenças extends Model
         'data',
         'h_entrada',
         'h_saida',
+        'horas_dia',
         'horas_mes',
-        'count_dias',
+        'count_presenças',
         'isValidated',
     ];
 }

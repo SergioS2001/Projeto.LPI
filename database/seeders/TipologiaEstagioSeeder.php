@@ -20,7 +20,7 @@ class TipologiaEstagioSeeder extends Seeder
         ]);
         
         Tipologia_Estágio::create([
-            'titulo' => 'Estágio Curricular Não Obrigatório',
+            'titulo' => 'Estágio Curricular Externo',
             'created_at' => now(),
             'updated_at' => now(),
         ]);

@@ -15,6 +15,12 @@ class InstituiçãoSeeder extends Seeder
     {
         $instituicoes = [
             [
+                'nome' => 'Universidade Fernando Pessoa',
+                'sigla' => 'UFP',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
                 'nome' => 'Instituicao 1',
                 'sigla' => 'I1',
                 'created_at' => now(),

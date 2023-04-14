@@ -12,6 +12,7 @@ class Solicitação_Vagas extends Model
     use HasFactory;
 
     protected $fillable = [
+        'designação',
         'ano_letivo',
         'vagas',
         'carga_horaria_total',

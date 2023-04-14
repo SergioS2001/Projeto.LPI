@@ -1,6 +1,8 @@
 <?php
 
 namespace Database\Seeders;
+
+use App\Models\Cacifo_Estagio;
 use Illuminate\Database\Seeder;
 use App\Models\Cacifos;
 use App\Models\Cauções;
@@ -32,5 +34,6 @@ class CacifosSeeder extends Seeder
         foreach ($cacifos as $cacifo) {
             Cacifos::create($cacifo);
         }
+
     }
 }

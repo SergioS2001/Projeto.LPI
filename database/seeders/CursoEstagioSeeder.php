@@ -15,19 +15,19 @@ class CursoEstagioSeeder extends Seeder
     {
         $cursoestagio = [
             [
-                'curso' => 'Computer Science',
+                'curso' => 'Fisioterapia',
             'ects' => 180,
             'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'curso' => 'Electrical Engineering',
+                'curso' => 'Enfermagem',
             'ects' => 240,
             'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'curso' => 'Mechanical Engineering',
+                'curso' => 'Farmácia',
                 'ects' => 240,
                 'created_at' => now(),
                 'updated_at' => now(),

@@ -10,27 +10,27 @@ class UnidadeCurricularSeeder extends Seeder
     {
         $unidadesCurriculares = [
             [
-                'nome' => 'Matemática',
+                'nome' => 'Bioquímica',
                 'created_at' => now(),
             'updated_at' => now(),
             ],
             [
-                'nome' => 'Português',
+                'nome' => 'Nutrição',
                 'created_at' => now(),
             'updated_at' => now(),
             ],
             [
-                'nome' => 'Física',
+                'nome' => 'Anatomia Humana',
                 'created_at' => now(),
             'updated_at' => now(),
             ],
             [
-                'nome' => 'Química',
+                'nome' => 'Epidemiologia',
                 'created_at' => now(),
             'updated_at' => now(),
             ],
             [
-                'nome' => 'Biologia',
+                'nome' => 'Farmacologia',
                 'created_at' => now(),
             'updated_at' => now(),
             ],

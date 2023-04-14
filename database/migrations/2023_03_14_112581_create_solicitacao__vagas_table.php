@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('solicitacao_vagas', function (Blueprint $table) {
             $table->id();
-            $table->string('descrição');
+            $table->string('designação');
             $table->string('objetivos');
             $table->string('ano_letivo');
             $table->integer('vagas')->min(0);

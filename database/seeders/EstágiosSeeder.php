@@ -11,7 +11,7 @@ use App\Models\Tipologia_Estágio;
 use App\Models\Presenças;
 use App\Models\Cacifos;
 use App\Models\Avaliações;
-use App\Models\Solicitacao_Vagas;
+use App\Models\Solicitação_Vagas;
 use App\Models\Estado_Estagio;
 
 class EstágiosSeeder extends Seeder
@@ -25,10 +25,9 @@ class EstágiosSeeder extends Seeder
         $serviço = Serviços::first();
         $tipologia_estagio = Tipologia_Estágio::first();
         $presença = Presenças::first();
-        $cacifo = Cacifos::first();
         $avaliação = Avaliações::first();
-        //$solicitacao_vaga = Solicitacao_Vagas::first();
-        //$estado_estagio = Estado_Estagio::first();
+        $solicitacao_vagas = Solicitação_Vagas::first();
+        $estado_estagio = Estado_Estagio::first();
 
         // Create some estagios
         Estágios::create([
@@ -43,12 +42,11 @@ class EstágiosSeeder extends Seeder
             'data_inicial' => '2022-01-01',
             'data_final' => '2022-06-30',
             'presenças_id' => $presença->id,
-            'cacifos_id' => $cacifo->id,
             'avaliacao_id' => $avaliação->id,
-            //'solicitacao_vagas_id' => $solicitacao_vaga->id,
-            //'estado_estagio_id' => $estado_estagio->id,
+            'solicitacao_vagas_id' => $solicitacao_vagas->id,
+            'estado_estagio_id' => $estado_estagio->id,
             'created_at' => now(),
-                'updated_at' => now(),
+            'updated_at' => now(),
         ]);
 
         Estágios::create([
@@ -62,12 +60,11 @@ class EstágiosSeeder extends Seeder
             'data_inicial' => '2022-07-01',
             'data_final' => '2022-12-31',
             'presenças_id' => 2,
-            'cacifos_id' => 2,
             'avaliacao_id' => 2,
-            //'solicitacao_vagas_id' => $solicitacao_vaga->id,
-            //'estado_estagio_id' => $estado_estagio->id,
+            'solicitacao_vagas_id' => $solicitacao_vagas->id,
+            'estado_estagio_id' => $estado_estagio->id,
             'created_at' => now(),
-                'updated_at' => now(),
+            'updated_at' => now(),
         ]);
     }
 }
