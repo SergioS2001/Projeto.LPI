@@ -33,6 +33,7 @@ class EstágiosSeeder extends Seeder
         // Create some estagios
         Estágios::create([
             'nome' => 'Estágio 1',
+            'isExterno' => false,
             'instituição_estagio_id' => $instituicao_estagio->id,
             'curso_estagio_id' => $curso_estagio->id,
             'unidade_curricular_id' => $unidade_curricular->id,

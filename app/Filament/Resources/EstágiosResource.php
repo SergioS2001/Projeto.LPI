@@ -70,10 +70,6 @@ class EstágiosResource extends Resource
                 ->required(),
                 DatePicker::make('Data Final')
                 ->minDate(now()),
-                Select::make('cacifos_id')->required()
-                ->label('Cacifo')
-                ->options(Cacifos::all()->pluck('numero', 'id'))
-                ->searchable(),
                 ])
             ]);
     }
@@ -92,7 +88,6 @@ class EstágiosResource extends Resource
                 TextColumn::make('tipologia_estagio.titulo')->label('Tipologia')->limit(12),
                 TextColumn::make('data_inicial')->label('Data Inicial'),
                 TextColumn::make('data_final')->label('Data Final'),
-                TextColumn::make('cacifos.numero')->label('Cacifo'),
             ])
             ->filters([
                 //

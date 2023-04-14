@@ -6,6 +6,7 @@ use App\Filament\Resources\SolicitaçãoVagasResource\Pages;
 use App\Filament\Resources\SolicitaçãoVagasResource\RelationManagers;
 use App\Models\Cacifos;
 use App\Models\Curso_Estagio;
+use App\Models\Estágios;
 use App\Models\Instituição_Estágio;
 use App\Models\Orientacao_Estagios;
 use App\Models\Serviços;
@@ -15,12 +16,15 @@ use App\Models\Unidade_Curricular;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\TextColumn;
 class SolicitaçãoVagasResource extends Resource
 {
     protected static ?string $model = Solicitação_Vagas::class;
@@ -32,44 +36,25 @@ class SolicitaçãoVagasResource extends Resource
     {
         return $form
                 ->schema([
-                    Card::make()->schema([TextInput::make('nome')->label('Nome')->required(),
-                    Select::make('orientadores_id')
-                    ->label('Orientadores')
-                    ->options(Orientacao_Estagios::all()->pluck('nome', 'id'))
+                    Card::make()->schema([
+                    Select::make('estágios_id')
+                    ->label('Estágio')
+                    ->options(Estágios::all()->pluck('nome', 'id'))
                     ->searchable(),
-                    Select::make('instituicao_estagio_id')->required()
-                    ->label('Instituição')
-                    ->options(Instituição_Estágio::all()->pluck('nome', 'id'))
-                    ->searchable(),
-                    Select::make('curso_estagio_id')->required()
-                    ->label('Curso')
-                    ->options(Curso_Estagio::all()->pluck('curso', 'id'))
-                    ->searchable(),
-                    Select::make('unidade_curricular_id')->required()
-                    ->label('Unidade Curricular')
-                    ->options(Unidade_Curricular::all()->pluck('nome', 'id'))
-                    ->searchable(),
-                    TextInput::make('Ano curricular')->required()
+                    TextInput::make('isExterno')->required()
+                    ->label('Externo'),
+                    TextInput::make('ano_letivo')->required()
+                    ->label('Ano Letivo'),
+                    TextInput::make('vagas')->required()
+                    ->label('Vagas')
                     ->numeric()
-                    ->minValue(1)
-                    ->maxValue(5),
-                    Select::make('serviços_id')->required()
-                    ->label('Serviços')
-                    ->options(Serviços::all()->pluck('titulo', 'id'))
-                    ->searchable(),
-                    Select::make('tipologia_estagio_id')->required()
-                    ->label('Tipologia')
-                    ->options(Tipologia_Estágio::all()->pluck('titulo', 'id'))
-                    ->searchable(),
-                    DatePicker::make('Data Inicial')
-                    ->minDate(now())
-                    ->required(),
-                    DatePicker::make('Data Final')
-                    ->minDate(now()),
-                    Select::make('cacifos_id')->required()
-                    ->label('Cacifo')
-                    ->options(Cacifos::all()->pluck('numero', 'id'))
-                    ->searchable(),
+                    ->minValue(1),
+                    TextInput::make('carga_horaria_total')->required()
+                    ->label('Carga Horária')
+                    ->numeric()
+                    ->minValue(1),
+                    TextInput::make('objetivos')->required()
+                    ->label('Objetivos'),
                     ])
             ]);
     }
@@ -78,7 +63,10 @@ class SolicitaçãoVagasResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('id')->label('id')->limit(12),
+                TextColumn::make('estágios.solicitacao_vagas.nome')->sortable()->searchable()->label('Estágio'),
+                IconColumn::make('isExterno')->label('Externo')->boolean(),
+                IconColumn::make('estágios.estado_estagio.aprovado')->label('Aprovado')->boolean(),
             ])
             ->filters([
                 //

@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('solicitacao_vagas', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('ano_letivo');
+            $table->string('descrição');
+            $table->string('objetivos');
+            $table->string('ano_letivo');
             $table->integer('vagas')->min(0);
             $table->integer('carga_horaria_total')->min(0);
-            $table->string('objetivos');
-            $table->boolean('isExterno')->default(false);
             $table->timestamps();
         });
     }
