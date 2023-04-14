@@ -10,12 +10,13 @@ class Agendamentos extends Model
     use HasFactory;
 
     protected $fillable = [
+        'tipo_agendamento_id',
         'data',
         'descrição',
         'duração',
     ];
 
-    public function tipo_agendamentos()
+    public function tipo_agendamento()
 {
     return $this->belongsTo(Tipo_Agendamento::class, 'tipo_agendamento_id');
 }

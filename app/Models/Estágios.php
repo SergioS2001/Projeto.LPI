@@ -49,15 +49,10 @@ class Estágios extends Model
         return $this->belongsTo(Cacifos::class, 'cacifos_id');
     }
 
-    public function instituicaoEstagio()
-{
-    return $this->belongsTo(Instituição_Estágio::class, 'instituição_estagio_id');
-}
-
-public function instituicao_estagio()
-{
-    return $this->belongsTo(Instituição_Estágio::class, 'instituição_estagio_id');
-}
+    public function instituicao_estagio()
+    {
+       return $this->belongsTo(Instituição_Estágio::class, 'instituição_estagio_id');
+    }
 
     public function unidade_curricular()
     {
@@ -79,8 +74,13 @@ public function instituicao_estagio()
         return $this->belongsTo(Solicitação_Vagas::class, 'solicitacao_vagas_id');
     }
 
-    public function historicos()
+    public function historico()
     {
         return $this->hasMany(Histórico::class);
+    }
+
+    public function cacifo_estagio()
+    {
+        return $this->hasMany(Cacifo_Estagio::class);
     }
 }

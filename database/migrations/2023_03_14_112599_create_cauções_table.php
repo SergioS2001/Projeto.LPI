@@ -16,6 +16,7 @@ return new class extends Migration
             $table->float('valor')->min(0.0);
             $table->boolean('isPago')->default(false);
             $table->boolean('isDevolvido')->default(false);
+            $table->boolean('isAssinadoAluno')->default(false);
             $table->timestamps();
         });
     }

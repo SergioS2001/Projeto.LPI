@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id()->bigIncrements();
             $table->foreignId('estágios_id')->references('id')->on('Estágios')->onDelete('cascade');
             $table->foreignId('cacifos_id')->constrained('Cacifos')->onDelete('cascade');
+            $table->boolean('fardamento')->default(false);
             $table->timestamps();
         });
     }

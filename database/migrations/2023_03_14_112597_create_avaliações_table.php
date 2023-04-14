@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('avaliações', function (Blueprint $table) {
             $table->id();
             $table->float('nota')->minValue(0.0)->maxValue(20.0);
+            $table->boolean('fileSubmitted')->default(false);
             $table->boolean('isDone')->default(false);
             $table->timestamps();
         });

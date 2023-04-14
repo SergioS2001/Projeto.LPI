@@ -74,19 +74,23 @@ class User extends Authenticatable
         )->withDefault();
     }
     
+    /*
+    public function instituicaoEstagio()
+    {
+        return $this->hasOneThrough(
+            Instituicao_Estagio::class,
+            Estágios::class,
+            'id', // foreign key on the Instituicao_Estagio table
+            'id', // local key on the Estagio table
+            'instituição_estagio_id', // foreign key on the Estagio table
+            'id' // local key on the User table
+        )->withDefault();
+    }*/
 
-public function instituicaoEstagio()
-{
-    return $this->hasOneThrough(
-        Instituicao_Estagio::class,
-        Estágios::class,
-        'id', // foreign key on the Instituicao_Estagio table
-        'id', // local key on the Estagio table
-        'instituição_estagio_id', // foreign key on the Estagio table
-        'id' // local key on the User table
-    )->withDefault();
-}
-
+    public function cacifo_estagio()
+    {
+        return $this->belongsTo(Cacifo_Estagio::class, 'cacifo_estagio_id');
+    }
 
     //public function canAccessFilament(): bool
     //{

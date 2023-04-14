@@ -64,7 +64,8 @@ class SolicitaçãoVagasResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('id')->label('id')->limit(12),
-                TextColumn::make('estágios.solicitacao_vagas.nome')->sortable()->searchable()->label('Estágio'),
+                IconColumn::make('')->label('Solicitado')->boolean(),
+                TextColumn::make('estágios.nome')->sortable()->searchable()->label('Estágio'),
                 IconColumn::make('isExterno')->label('Externo')->boolean(),
                 IconColumn::make('estágios.estado_estagio.aprovado')->label('Aprovado')->boolean(),
             ])

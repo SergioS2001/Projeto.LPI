@@ -25,4 +25,9 @@ class Histórico extends Model
     {
         return $this->belongsTo(Estágios::class, 'estágios_id')->withDefault();
     }
+
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'users_id')->withDefault();
+    }
 }

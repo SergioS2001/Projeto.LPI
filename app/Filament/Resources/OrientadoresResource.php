@@ -32,8 +32,9 @@ class OrientadoresResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id_orientador')->sortable(),
-                TextColumn::make('name')->sortable()->searchable()->limit(12),
+                TextColumn::make('id')->sortable()->label('id Orientador'),
+                TextColumn::make('users.name')->sortable()->searchable()->label('Nome'),
+                TextColumn::make('')->sortable()->searchable()->label('Estágio'),
             ])
             ->filters([
                 //

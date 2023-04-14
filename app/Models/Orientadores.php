@@ -13,9 +13,9 @@ class Orientadores extends Model
         'user_id',
     ];
 
-    public function user()
+    public function users()
 {
-    return $this->belongsTo(User::class);
+    return $this->belongsTo(User::class, 'users_id');
 }
 
 }

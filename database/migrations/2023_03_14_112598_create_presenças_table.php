@@ -19,6 +19,7 @@ return new class extends Migration
             $table->float('h_pausa')->min(0.0)->max(24.00);
             $table->float('horas_dia')->min(0.0)->max(24.00);
             $table->float('horas_mes')->min(0.0);
+            $table->float('total_horas')->min(0.0);
             $table->integer('count_presenças')->default(0);
             $table->boolean('isValidated')->default(false);
             $table->timestamps();

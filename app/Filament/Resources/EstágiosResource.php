@@ -9,7 +9,7 @@ use App\Models\Instituição_Estágio;
 use App\Models\Curso_Estagio;
 use App\Models\Orientadores;
 use App\Models\Cacifos;
-use App\Models\Orientacao_Estagios;
+use App\Models\Orientação_Estagios;
 use App\Models\Serviços;
 use App\Models\Tipologia_Estágio;
 use App\Models\Unidade_Curricular;
@@ -39,7 +39,7 @@ class EstágiosResource extends Resource
                 Card::make()->schema([TextInput::make('nome')->label('Nome')->required(),
                 Select::make('orientadores_id')
                 ->label('Orientadores')
-                ->options(Orientacao_Estagios::all()->pluck('nome', 'id'))
+                ->options(Orientação_Estagios::all()->pluck('nome', 'id'))
                 ->searchable(),
                 Select::make('instituicao_estagio_id')->required()
                 ->label('Instituição')
@@ -78,7 +78,7 @@ class EstágiosResource extends Resource
     {
         return $table
             ->columns([
-                IconColumn::make('estado_estagio.aprovado')->label('Estado')->boolean(),
+                IconColumn::make('estado_estagio.admitido')->label('Aprovado')->boolean(),
                 TextColumn::make('nome')->sortable()->searchable(),
                 TextColumn::make('instituicao_estagio.nome')->label('Instituição')->limit(12),
                 TextColumn::make('curso_estagio.curso')->label('Curso')->limit(12),

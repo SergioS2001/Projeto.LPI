@@ -12,6 +12,7 @@ class AvaliaçõesSeeder extends Seeder
         Avaliações::create([
             'nota' => 16.5,
             'isDone' => true,
+            'fileSubmitted' => false,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -19,6 +20,7 @@ class AvaliaçõesSeeder extends Seeder
         Avaliações::create([
             'nota' => 12.0,
             'isDone' => false,
+            'fileSubmitted' => false,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -26,6 +28,7 @@ class AvaliaçõesSeeder extends Seeder
         Avaliações::create([
             'nota' => 18.5,
             'isDone' => true,
+            'fileSubmitted' => false,
             'created_at' => now(),
             'updated_at' => now(),
         ]);

@@ -14,4 +14,10 @@ class Tipo_Agendamento extends Model
     protected $fillable = [
         'nome_evento',
     ];
+
+    public function agendamentos()
+{
+    return $this->hasMany(Agendamentos::class, 'tipo_agendamento_id');
+}
+
 }
