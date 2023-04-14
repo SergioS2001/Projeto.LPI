@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    
+                    <h2>Orientadores</h2>
                 <table class="table">
                   <thead class="table-light">
                     <tr>
@@ -21,6 +21,7 @@
                   </thead>
                   <tbody class="table-group-divider">
                   @foreach($users as $user)
+                    @if($user->isOrientador)
                   <tr>
                    <td>{{ $user->name }}</td>
                   @if ($user->historico && $user->historico->estagio && $user->historico->estagio->instituicaoEstagio)
@@ -31,6 +32,7 @@
                   <td>{{ $user->email }}</td>
                   <td>{{ $user->telemóvel }}</td>
                   </tr>
+                  @endif
                   @endforeach
                   </tbody>
                 </table>
