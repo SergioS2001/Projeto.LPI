@@ -17,7 +17,7 @@ class Cacifo_Estagio extends Model
 
     public function estágios()
     {
-        return $this->belongsTo(EstágiosSeeder::class, 'estágios_id');
+        return $this->belongsTo(Estágios::class, 'estágios_id');
     }
 
     public function cacifos()
@@ -25,4 +25,8 @@ class Cacifo_Estagio extends Model
         return $this->belongsTo(Cacifos::class, 'cacifos_id');
     }
 
+    public function user()
+{
+    return $this->belongsTo(User::class, 'user_id');
+}
 }

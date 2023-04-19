@@ -23,11 +23,11 @@ class Histórico extends Model
 
     public function estagio()
     {
-        return $this->belongsTo(Estágios::class, 'estágios_id')->withDefault();
+        return $this->belongsTo(Estágios::class, 'estágios_id');
     }
 
     public function users()
     {
-        return $this->belongsTo(User::class, 'users_id')->withDefault();
+        return $this->belongsTo(User::class, 'users_id');
     }
 }

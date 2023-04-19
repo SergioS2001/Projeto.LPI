@@ -14,4 +14,14 @@ class Avaliações extends Model
         'isDone',
     ];
 
+    public function estagio()
+    {
+        return $this->belongsTo(Estágios::class, 'estágios_id');
+    }
+
+    public function orientador()
+    {
+        return $this->belongsTo(Orientadores::class, 'id');
+    }
+
 }

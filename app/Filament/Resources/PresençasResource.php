@@ -32,14 +32,16 @@ class PresençasResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('user.name')->sortable()->searchable()->limit(12)->label('Aluno'),
-                TextColumn::make('name')->sortable()->searchable()->limit(12)->label('Estágio'),
+                TextColumn::make('estagio.nome')->sortable()->searchable()->limit(12)->label('Estágio'),
                 TextColumn::make('')->sortable()->searchable()->limit(12)->label('Orientador'),
-                TextColumn::make('isValidated')->sortable()->searchable()->label('Presença Validada'),
+                IconColumn::make('isValidated')->sortable()->searchable()->label('Presença Validada')->boolean(),
                 TextColumn::make('data')->date()->sortable()->searchable(),
-                TextColumn::make('h_entrada')->sortable()->label('Hora Entrada'),
-                TextColumn::make('h_saida')->sortable()->label('Hora Saída'),
-                //TextColumn::make('h_mes')->sortable()->label('Horas Mês'),
-                //TextColumn::make('count_dias')->sortable()->label('Presenças'),
+                TextColumn::make('h_entrada')->sortable()->label('Entrada(h)'),
+                TextColumn::make('h_pausa')->sortable()->label('Tempo Pausa'),
+                TextColumn::make('h_saida')->sortable()->label('Saída(h)'),
+                TextColumn::make('horas_mes')->sortable()->label('Horas Mês'),
+                TextColumn::make('total_horas')->sortable()->label('Total Horas'),
+                TextColumn::make('count_presenças')->sortable()->label('Número Presenças'),
             ])
             ->filters([
                 //

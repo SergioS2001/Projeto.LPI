@@ -4,13 +4,17 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\TipologiaResource\Pages;
 use App\Filament\Resources\TipologiaResource\RelationManagers;
+use App\Models\Estágios;
 use App\Models\Tipologia_Estágio;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\Card;
 
 class TipologiaResource extends Resource
 {
@@ -23,7 +27,14 @@ class TipologiaResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Card::make()->schema([
+                    Select::make('estagios_id')
+                    ->label('Selecionar Estágio')
+                    ->options(Estágios::all()->pluck('nome', 'id'))
+                    ->searchable(),
+                    TextInput::make('tipologia_estagio_id')->required()
+                    ->label('Tipologia'),
+                    ])
             ]);
     }
 
@@ -33,7 +44,7 @@ class TipologiaResource extends Resource
             ->columns([
                 TextColumn::make('id')->sortable()->searchable()->limit(12)->label('id'),
                 TextColumn::make('titulo')->sortable()->searchable()->limit(25)->label('Tipologia'),
-                TextColumn::make('estágios.nome')->sortable()->searchable()->limit(12)->label('Estágio'),
+                TextColumn::make('estagio.nome')->sortable()->searchable()->limit(12)->label('Estágio'),
                 ])
             ->filters([
                 //

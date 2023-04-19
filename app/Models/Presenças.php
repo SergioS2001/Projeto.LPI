@@ -18,4 +18,11 @@ class Presenças extends Model
         'count_presenças',
         'isValidated',
     ];
+
+    public function estagio()
+    {
+        return $this->belongsTo(Estágios::class, 'estágios_id');
+    }
+
+
 }

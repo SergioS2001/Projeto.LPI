@@ -36,8 +36,8 @@ class AvaliaçõesResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('users.name')->sortable()->searchable()->limit(12)->label('Aluno'),
-                TextColumn::make('estágios.nome')->sortable()->searchable()->label('Estágio'),
-                TextColumn::make('Orientador')->sortable()->searchable()->label('Orientadores'),
+                TextColumn::make('estagio.nome')->sortable()->searchable()->label('Estágio'),
+                TextColumn::make('orientador.users.name')->sortable()->searchable()->label('Orientadores'),
                 TextColumn::make('nota')->sortable()->label('Nota Final'),
                 IconColumn::make('isDone')->label('Concluído')->boolean(),
             ])

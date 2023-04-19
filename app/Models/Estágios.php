@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Estágios extends Model
 {
     use HasFactory;
+    protected $table = 'estágios';
 
     protected $fillable = [
         'nome',
@@ -29,19 +30,19 @@ class Estágios extends Model
         return $this->belongsTo(Serviços::class, 'serviços_id');
     }
 
-    public function tipologia_estagio()
+    public function tipologia()
     {
-        return $this->belongsTo(Tipologia_Estágio::class, 'tipologia_estagio_id');
+        return $this->hasMany(Tipologia_Estágio::class, 'tipologia_estagio_id');
     }
 
     public function avaliações()
     {
-        return $this->belongsTo(Avaliações::class, 'avaliacao_id');
+        return $this->hasMany(Avaliações::class, 'avaliacao_id');
     }
 
     public function presenças()
     {
-        return $this->belongsTo(Presenças::class, 'presenças_id');
+        return $this->hasMany(Presenças::class, 'presenças_id');
     }
 
     public function cacifos()

@@ -21,4 +21,9 @@ class Agendamentos extends Model
     return $this->belongsTo(Tipo_Agendamento::class, 'tipo_agendamento_id');
 }
 
+public function historico()
+{
+    return $this->hasMany(Histórico::class, 'agendamentos_id');
+}
+
 }

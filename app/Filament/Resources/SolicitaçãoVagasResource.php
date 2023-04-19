@@ -15,9 +15,11 @@ use App\Models\Tipologia_Estágio;
 use App\Models\Unidade_Curricular;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
+use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -28,7 +30,6 @@ use Filament\Tables\Columns\TextColumn;
 class SolicitaçãoVagasResource extends Resource
 {
     protected static ?string $model = Solicitação_Vagas::class;
-
     protected static ?string $navigationIcon = 'heroicon-o-collection';
     protected static ?string $navigationGroup = 'Estágios/Ensinos Clínicos';
 
@@ -37,14 +38,15 @@ class SolicitaçãoVagasResource extends Resource
         return $form
                 ->schema([
                     Card::make()->schema([
-                    Select::make('estágios_id')
-                    ->label('Estágio')
+                    Select::make('estagios_id')
+                    ->label('Selecionar Estágio')
                     ->options(Estágios::all()->pluck('nome', 'id'))
                     ->searchable(),
-                    TextInput::make('isExterno')->required()
-                    ->label('Externo'),
+                    TextInput::make('designação')->required()
+                    ->label('Designação Solicitação'),
                     TextInput::make('ano_letivo')->required()
-                    ->label('Ano Letivo'),
+                    ->label('Ano Letivo')
+                    ->placeholder('formato: 20xx/20xx'),
                     TextInput::make('vagas')->required()
                     ->label('Vagas')
                     ->numeric()
@@ -53,8 +55,12 @@ class SolicitaçãoVagasResource extends Resource
                     ->label('Carga Horária')
                     ->numeric()
                     ->minValue(1),
-                    TextInput::make('objetivos')->required()
-                    ->label('Objetivos'),
+                    Textarea::make('objetivos')
+                    ->label('Objetivos')
+                    ->rows(5)
+                    ->cols(50),
+                    Checkbox::make('isExterno')
+                    ->label('Estágio Externo?'),
                     ])
             ]);
     }
@@ -63,11 +69,11 @@ class SolicitaçãoVagasResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id')->label('id')->limit(12),
-                IconColumn::make('')->label('Solicitado')->boolean(),
-                TextColumn::make('estágios.nome')->sortable()->searchable()->label('Estágio'),
+                TextColumn::make('id')->label('id'),
+                TextColumn::make('estagios.nome')->sortable()->searchable()->label('Estágio'),
+                IconColumn::make('estagios.estado_estagio.solicitado')->label('Solicitado')->boolean(),
+                IconColumn::make('estagios.estado_estagio.aprovado')->label('Aprovado')->boolean(),
                 IconColumn::make('isExterno')->label('Externo')->boolean(),
-                IconColumn::make('estágios.estado_estagio.aprovado')->label('Aprovado')->boolean(),
             ])
             ->filters([
                 //

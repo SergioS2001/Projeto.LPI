@@ -4,14 +4,18 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\OrientadoresResource\Pages;
 use App\Filament\Resources\OrientadoresResource\RelationManagers;
+use App\Models\Estágios;
 use App\Models\Orientadores;
+use App\Models\User;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
-
+use Filament\Forms\Components\Card;
 
 class OrientadoresResource extends Resource
 {
@@ -24,7 +28,12 @@ class OrientadoresResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Card::make()->schema([
+                    Select::make('users_id.name')
+                    ->label('Utilizadores')
+                    ->options(User::all()->pluck('name', 'id'))
+                    ->searchable(),
+                    ])
             ]);
     }
 

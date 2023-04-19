@@ -14,4 +14,9 @@ class Tipologia_Estágio extends Model
     protected $fillable = [
         'titulo',
     ];
+
+    public function estagio()
+    {
+        return $this->belongsTo(Estágios::class);
+    }
 }

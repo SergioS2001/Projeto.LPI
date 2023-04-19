@@ -4,14 +4,19 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\UsersResource\Pages;
 use App\Filament\Resources\UsersResource\RelationManagers;
+use App\Models\Instituicao_Aluno;
 use App\Models\User;
 use Filament\Forms;
+use Filament\Forms\Components\Checkbox;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\Card;
 
 class UsersResource extends Resource
 {
@@ -24,7 +29,27 @@ class UsersResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Card::make()->schema([
+                    TextInput::make('name')->required()
+                    ->label('Nome'),
+                    TextInput::make('email')->required()
+                    ->label('Email'),
+                    Select::make('instituicao_aluno_id')
+                    ->label('Instituição')
+                    ->options(Instituicao_Aluno::all()->pluck('nome', 'id'))
+                    ->searchable(),
+                    TextInput::make('cartão_cidadão')->required()
+                    ->label('Cartão Cidadão'),
+                    TextInput::make('telemóvel')->required()
+                    ->label('Número Telemóvel'),
+                    TextInput::make('morada')->required()
+                    ->label('Morada'),
+                    TextInput::make('Email alternativo')->label('Email alternativo'),
+                    Checkbox::make('isExterno')
+                    ->label('Externo?'),
+                    Checkbox::make('isOrientador')
+                    ->label('Orientador?'),
+                    ])
             ]);
     }
 
@@ -33,8 +58,8 @@ class UsersResource extends Resource
         return $table
             ->columns([
                 //TextColumn::make('id')->sortable()->searchable(),
-                IconColumn::make('isExternod')->label('Orientador')->boolean(),
-                IconColumn::make('isExterno')->label('Externo')->boolean(),
+                IconColumn::make('isOrientador')->label('Orientador')->boolean()->sortable()->searchable(),
+                IconColumn::make('isExterno')->label('Externo')->boolean()->sortable()->searchable(),
                 TextColumn::make('name')->sortable()->searchable()->limit(12)->label('Nome'),
                 TextColumn::make('email')->sortable()->searchable()->limit(15),
                 TextColumn::make('data_nascimento')->date()->sortable()->searchable(),

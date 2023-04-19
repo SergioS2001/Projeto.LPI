@@ -14,4 +14,10 @@ class Cauções extends Model
         'isPago',
         'IsDevolvido'
     ];
+
+    public function cacifos()
+    {
+        return $this->hasMany(Cacifos::class);
+    }
+
 }

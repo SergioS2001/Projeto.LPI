@@ -15,10 +15,10 @@ class Cacifos extends Model
     ];
 
     public function caucao()
-{
-    return $this->belongsTo(Cauções::class, 'cauções_id');
-}
-public function cacifo_estagio()
+    {
+        return $this->belongsTo(Cauções::class, 'cauções_id');
+    }
+    public function cacifo_estagio()
     {
         return $this->hasMany(Cacifo_Estagio::class);
     }

@@ -33,7 +33,7 @@ class CacifosResource extends Resource
                 TextColumn::make('numero')->sortable()->label('Cacifo'),
                 TextColumn::make('users.name')->sortable()->searchable()->limit(12)->label('Aluno'),
                 TextColumn::make('estágios.nome')->sortable()->searchable()->label('Estágio'),
-                TextColumn::make('cauções_id.valor')->sortable()->label('Valor Caução'),
+                TextColumn::make('caucao.valor')->sortable()->label('Valor Caução'),
             ])
             ->filters([
                 //

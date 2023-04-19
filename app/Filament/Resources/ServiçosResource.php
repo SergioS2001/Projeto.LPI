@@ -4,13 +4,18 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ServiçosResource\Pages;
 use App\Filament\Resources\ServiçosResource\RelationManagers;
+use App\Models\Estágios;
 use App\Models\Serviços;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\Card;
+
 class ServiçosResource extends Resource
 {
     protected static ?string $model = Serviços::class;
@@ -22,7 +27,16 @@ class ServiçosResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Card::make()->schema([
+                    Select::make('estagios_id')
+                    ->label('Selecionar Estágio')
+                    ->options(Estágios::all()->pluck('nome', 'id'))
+                    ->searchable(),
+                    TextInput::make('serviços_id')->required()
+                    ->label('Serviço'),
+                    TextInput::make('nome_responsavel')->required()
+                    ->label('Nome Responsável'),
+                    ])
             ]);
     }
 
