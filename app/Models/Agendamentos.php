@@ -10,6 +10,7 @@ class Agendamentos extends Model
     use HasFactory;
 
     protected $fillable = [
+        'nome',
         'tipo_agendamento_id',
         'data',
         'descrição',

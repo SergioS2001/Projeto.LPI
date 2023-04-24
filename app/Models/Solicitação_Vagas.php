@@ -20,7 +20,7 @@ class Solicitação_Vagas extends Model
         'isExterno',
     ];
 
-    public function estágios()
+    public function estagio()
     {
         return $this->hasMany(Estágios::class);
     }

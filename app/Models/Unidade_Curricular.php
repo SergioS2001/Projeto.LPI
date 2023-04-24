@@ -13,4 +13,9 @@ class Unidade_Curricular extends Model
     protected $fillable = [
         'nome',
     ];
+
+    public function estagio()
+    {
+        return $this->hasMany(Estágios::class);
+    }
 }

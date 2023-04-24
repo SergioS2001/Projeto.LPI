@@ -4,10 +4,8 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\UnidadesCurricularesResource\Pages;
 use App\Filament\Resources\UnidadesCurricularesResource\RelationManagers;
-use App\Models\Estágios;
 use App\Models\Unidade_Curricular;
 use Filament\Forms;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -27,11 +25,7 @@ class UnidadesCurricularesResource extends Resource
         return $form
             ->schema([
                 Card::make()->schema([
-                    Select::make('estagios_id')
-                    ->label('Selecionar Estágio')
-                    ->options(Estágios::all()->pluck('nome', 'id'))
-                    ->searchable(),
-                    TextInput::make('unidade_curricular_id')->required()
+                    TextInput::make('nome')->required()
                     ->label('Unidade Curricular'),
                     ])
             ]);
@@ -43,7 +37,6 @@ class UnidadesCurricularesResource extends Resource
             ->columns([
                 TextColumn::make('id')->sortable()->searchable()->limit(12)->label('id'),
                 TextColumn::make('nome')->sortable()->searchable()->label('Unidade Curricular'),
-                TextColumn::make('estágios.unidade_curricular_id.nome')->sortable()->searchable()->label('Estágio'),
                 ])
             ->filters([
                 //

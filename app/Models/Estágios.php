@@ -32,17 +32,17 @@ class Estágios extends Model
 
     public function tipologia()
     {
-        return $this->hasMany(Tipologia_Estágio::class, 'tipologia_estagio_id');
+        return $this->belongsTo(Tipologia_Estágio::class, 'tipologia_estagio_id');
     }
 
-    public function avaliações()
+    public function avaliacao()
     {
-        return $this->hasMany(Avaliações::class, 'avaliacao_id');
+        return $this->belongsTo(Avaliações::class, 'avaliacao_id');
     }
 
     public function presenças()
     {
-        return $this->hasMany(Presenças::class, 'presenças_id');
+        return $this->belongsTo(Presenças::class, 'presenças_id');
     }
 
     public function cacifos()

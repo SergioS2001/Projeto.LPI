@@ -13,4 +13,9 @@ class Serviços extends Model
         'titulo',
         'nome_responsavel',
     ];
+
+    public function estagio()
+    {
+        return $this->hasMany(Estágios::class);
+    }
 }

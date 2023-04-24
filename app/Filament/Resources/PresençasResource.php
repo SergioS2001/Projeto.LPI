@@ -6,12 +6,17 @@ use App\Filament\Resources\PresençasResource\Pages;
 use App\Filament\Resources\PresençasResource\RelationManagers;
 use App\Models\Presenças;
 use Filament\Forms;
+use Filament\Forms\Components\Checkbox;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\Card;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
+
 class PresençasResource extends Resource
 {
     protected static ?string $model = Presenças::class;
@@ -22,9 +27,21 @@ class PresençasResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                //
-            ]);
+        ->schema([
+            Card::make()->schema([
+                TextInput::make('nota')
+                ->required()
+                ->label('Nota final')
+                ->numeric()
+                ->minValue(1)
+                ->maxValue(20),
+                Checkbox::make('isDone')
+                ->required()
+                ->label('Concluído'),
+                Checkbox::make('fileSubmitted')
+                ->label('Relatório final enviado'),
+                ])
+        ]);
     }
 
     public static function table(Table $table): Table

@@ -16,7 +16,7 @@ class Avaliações extends Model
 
     public function estagio()
     {
-        return $this->belongsTo(Estágios::class, 'estágios_id');
+        return $this->hasMany(Estágios::class, 'avaliacao_id');
     }
 
     public function orientador()

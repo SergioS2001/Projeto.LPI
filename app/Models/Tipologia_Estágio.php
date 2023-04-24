@@ -17,6 +17,6 @@ class Tipologia_Estágio extends Model
 
     public function estagio()
     {
-        return $this->belongsTo(Estágios::class);
+        return $this->hasMany(Estágios::class);
     }
 }

@@ -9,4 +9,8 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateOrientadores extends CreateRecord
 {
     protected static string $resource = OrientadoresResource::class;
+    protected function getRedirectUrl(): string
+{
+    return $this->getResource()::getUrl('index');
+}
 }

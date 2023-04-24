@@ -4,7 +4,6 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\OrientadoresResource\Pages;
 use App\Filament\Resources\OrientadoresResource\RelationManagers;
-use App\Models\Estágios;
 use App\Models\Orientadores;
 use App\Models\User;
 use Filament\Forms;
@@ -29,9 +28,9 @@ class OrientadoresResource extends Resource
         return $form
             ->schema([
                 Card::make()->schema([
-                    Select::make('users_id.name')
+                    Select::make('users.name')
                     ->label('Utilizadores')
-                    ->options(User::all()->pluck('name', 'id'))
+                    ->options(Orientadores::all()->pluck('name', 'id'))
                     ->searchable(),
                     ])
             ]);

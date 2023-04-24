@@ -15,4 +15,9 @@ class Curso_Estagio extends Model
         'curso',
         'ects',
     ];
+
+    public function estagio()
+    {
+        return $this->hasMany(Estágios::class);
+    }
 }

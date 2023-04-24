@@ -28,11 +28,7 @@ class InstituiçõesResource extends Resource
         return $form
             ->schema([
                 Card::make()->schema([
-                    Select::make('estagios_id')
-                    ->label('Selecionar Estágio')
-                    ->options(Estágios::all()->pluck('nome', 'id'))
-                    ->searchable(),
-                    TextInput::make('instituicao_estagio_id')->required()
+                    TextInput::make('nome')->required()
                     ->label('Instituição'),
                     TextInput::make('sigla')->required()
                     ->label('Sigla'),

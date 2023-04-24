@@ -10,7 +10,7 @@ class Curso_Aluno extends Model
     protected $table = 'curso_aluno';
     use HasFactory;
 
-    public function instituicao_alunos()
+    public function instituicao_aluno()
 {
     return $this->hasMany(Instituicao_Aluno::class);
 }

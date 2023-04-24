@@ -13,6 +13,7 @@ class Cacifo_Estagio extends Model
     protected $fillable = [
         'estágios_id',
         'cacifos_id',
+        'fardamento',
     ];
 
     public function estágios()

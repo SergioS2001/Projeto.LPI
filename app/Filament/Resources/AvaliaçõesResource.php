@@ -5,16 +5,19 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\AvaliaçõesResource\Pages;
 use App\Filament\Resources\AvaliaçõesResource\RelationManagers;
 use App\Models\Avaliações;
+use App\Models\Estágios;
+use App\Models\Orientadores;
 use Filament\Forms;
+use Filament\Forms\Components\Checkbox;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\IconColumn;
-use App\Models\Estágios;
-use App\Models\User;
-
+use Filament\Forms\Components\Card;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 
 class AvaliaçõesResource extends Resource
 {
@@ -26,9 +29,31 @@ class AvaliaçõesResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                //
-            ]);
+        ->schema([
+            Card::make()->schema([
+                Select::make('estagio.nome')
+                ->label('Estágio')
+                ->options(Estágios::all()->pluck('nome', 'id'))
+                ->required()
+                ->searchable(),
+                Select::make('orientador.users.name')
+                ->label('Orientador')
+                ->options(Orientadores::all()->pluck('users_id', 'name'))
+                ->required()
+                ->searchable(),
+                TextInput::make('nota')
+                ->required()
+                ->label('Nota final')
+                ->numeric()
+                ->minValue(1)
+                ->maxValue(20),
+                Checkbox::make('isDone')
+                ->required()
+                ->label('Concluído'),
+                Checkbox::make('fileSubmitted')
+                ->label('Relatório final enviado'),
+                ])
+        ]);
     }
 
     public static function table(Table $table): Table
@@ -55,7 +80,7 @@ class AvaliaçõesResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+          //
         ];
     }
     

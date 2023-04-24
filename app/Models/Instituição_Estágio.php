@@ -15,4 +15,9 @@ class Instituição_Estágio extends Model
         'nome',
         'sigla',
     ];
+
+    public function estagio()
+    {
+        return $this->hasMany(Estágios::class);
+    }
 }

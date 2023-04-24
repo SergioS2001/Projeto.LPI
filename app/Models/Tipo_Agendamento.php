@@ -17,7 +17,7 @@ class Tipo_Agendamento extends Model
 
     public function agendamentos()
 {
-    return $this->hasMany(Agendamentos::class, 'tipo_agendamento_id');
+    return $this->hasMany(Agendamentos::class);
 }
 
 }
