@@ -31,11 +31,14 @@ class AgendamentosResource extends Resource
             Card::make()->schema([
                 TextInput::make('nome')->required()
                 ->label('Nome'),
-                Select::make('tipo_agendamento_id')
-                ->label('Tipo')
-                ->options(Tipo_Agendamento::all()->pluck('nome_evento', 'id'))
+                //Select::make('tipo_agendamento_id')
+                //->label('Tipo')
+                //->options(Tipo_Agendamento::all()->pluck('nome_evento', 'id'))
+                //->required()
+                //->searchable(),
+                TextInput::make('tipo_agendamento_id')
                 ->required()
-                ->searchable(),
+                ->label('Tipo'),
                 DatePicker::make('Data')
                 ->minDate(now())
                 ->required(),

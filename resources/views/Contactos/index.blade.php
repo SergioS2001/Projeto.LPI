@@ -24,8 +24,8 @@
                     @if($user->isOrientador)
                   <tr>
                    <td>{{ $user->name }}</td>
-                  @if ($user->historico && $user->historico->estagio && $user->historico->estagio->instituicaoEstagio)
-                  <td>{{ $user->historico->estagio->instituicaoEstagio->nome ?? 'N/A' }}</td>
+                  @if ($user->historico && $user->historico->estagio && $user->historico->estagio->instituicao_estagio)
+                  <td>{{ $user->historico->estagio->instituicao_estagio->nome ?? 'N/A' }}</td>
                   @else
                   <td>N/A</td>
                   @endif

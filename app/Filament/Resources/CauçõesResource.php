@@ -7,6 +7,7 @@ use App\Filament\Resources\CauçõesResource\RelationManagers;
 use App\Models\Cacifos;
 use App\Models\Cauções;
 use Filament\Forms;
+use Filament\Forms\Components\Checkbox;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -29,13 +30,10 @@ class CauçõesResource extends Resource
             Card::make()->schema([
                 TextInput::make('valor')->required()
                 ->label('Valor'),
-                TextInput::make('descrição')->required()
-                ->label('Descrição'),
-                TextInput::make('duração')->required()
-                ->label('Duração')
-                ->numeric()
-                ->minValue(1)
-                ->maxValue(5),
+                Checkbox::make('isPago')
+                ->label('Pagamento'),
+                Checkbox::make('isDevolvido')
+                ->label('Reembolso'),
                 ])
         ]);
     }
