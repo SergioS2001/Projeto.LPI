@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nome')->max(255);
             $table->foreignId('tipo_agendamento_id')->references('id')->on('Tipo_Agendamento')->onDelete('cascade');
             $table->date('data');
+            $table->float('hora')->min(0.0)->max(24.0);
             $table->string('descrição')->max(255);
             $table->integer('duração')->min(0);
             $table->timestamps();

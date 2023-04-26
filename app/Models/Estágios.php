@@ -84,4 +84,9 @@ class Estágios extends Model
     {
         return $this->hasMany(Cacifo_Estagio::class);
     }
+
+    public function instituicaoEstagio()
+    {
+       return $this->belongsTo(Instituição_Estágio::class);
+    }
 }

@@ -8,6 +8,7 @@ use App\Http\Controllers\OrientacaoEstagiosController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Orientacao_Estagios;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CalendarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,3 +44,7 @@ Route::resource('contactos', Controller::class);
 Route::post('/estagios', [EstágiosController::class, 'store'])->name('estagios.store');
 
 require __DIR__.'/auth.php';
+
+Route::get('calendar', [CalendarController::class, 'show']);
+Route::post('calendar/action', [CalendarController::class, 'action']);
+

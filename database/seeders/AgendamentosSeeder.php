@@ -11,27 +11,30 @@ class AgendamentosSeeder extends Seeder
     {
         DB::table('agendamentos')->insert([
             [
-                'nome' =>  'nome1',
+                'nome' =>  'agendamento1',
                 'tipo_agendamento_id' => 1,
                 'data' => '2023-04-01',
+                'hora' => '15.0',
                 'descrição' => 'Reunião de equipe',
                 'duração' => 60,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'nome' =>  'nome2',
+                'nome' =>  'agendamento2',
                 'tipo_agendamento_id' => 2,
                 'data' => '2023-04-05',
+                'hora' => '16.0',
                 'descrição' => 'Apresentação de projeto',
                 'duração' => 120,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'nome' =>  'nome3',
+                'nome' =>  'agendamento3',
                 'tipo_agendamento_id' => 3,
                 'data' => '2023-04-10',
+                'hora' => '17.0',
                 'descrição' => 'Treinamento de novos funcionários',
                 'duração' => 180,
                 'created_at' => now(),

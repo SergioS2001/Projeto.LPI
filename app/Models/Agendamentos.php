@@ -15,6 +15,7 @@ class Agendamentos extends Model
         'data',
         'descrição',
         'duração',
+        'hora'
     ];
 
     public function tipo_agendamento()

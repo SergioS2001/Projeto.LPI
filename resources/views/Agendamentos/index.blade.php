@@ -6,12 +6,60 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    //Calendário com datas
-                </div>
-            </div>
-        </div>
+  <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+      <div class="p-6 text-gray-900 dark:text-gray-100">
+        @include('calendar')
+        <br><br>
+        <style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+  }
+
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+</style>
+        <table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Data</th>
+              <th>Hora</th>
+              <th>Tipo</th>
+              <th>Descrição</th>
+              <th>Duração(minutos)</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach($agendamentos as $agendamento)
+            <tr>
+              <td>{{ $agendamento->nome }}</td>
+              <td>{{ $agendamento->data }}</td>
+              <td>{{ number_format($agendamento->hora, 2, '.', '') }}</td>
+              <td>{{ $agendamento->tipo_agendamento->nome_evento }}</td>
+              <td>{{ $agendamento->descrição }}</td>
+              <td>{{ $agendamento->duração }}</td>
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
+      </div>
     </div>
+  </div>
+</div>
+
 </x-app-layout>

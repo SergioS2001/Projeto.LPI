@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Orientacao_Estagios;
+use App\Models\Orientação_Estagios;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -13,7 +13,7 @@ class OrientacaoEstagiosController extends Controller
      */
     public function index()
     {
-        $orientação = Orientacao_Estagios::paginate();
+        $orientação = Orientação_Estagios::paginate();
         return view('orientação.index', compact('orientação'));
     }
 
@@ -36,7 +36,7 @@ class OrientacaoEstagiosController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Orientacao_Estagios $orientacao_Estagios)
+    public function show(Orientação_Estagios $orientacao_Estagios)
     {
         //
     }
@@ -44,7 +44,7 @@ class OrientacaoEstagiosController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Orientacao_Estagios $orientacao_Estagios)
+    public function edit(Orientação_Estagios $orientacao_Estagios)
     {
         //
     }
@@ -52,7 +52,7 @@ class OrientacaoEstagiosController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Orientacao_Estagios $orientacao_Estagios)
+    public function update(Request $request, Orientação_Estagios $orientacao_Estagios)
     {
         //
     }
@@ -60,7 +60,7 @@ class OrientacaoEstagiosController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Orientacao_Estagios $orientacao_Estagios)
+    public function destroy(Orientação_Estagios $orientacao_Estagios)
     {
         //
     }
