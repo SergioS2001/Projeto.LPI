@@ -122,12 +122,12 @@ $result = $db->query($query);
   }
   
   th {
-    background-color: #1E90FF;
+    background-color: DeepSkyBlue;
     color: white;
   }
   
   tr:hover {
-    background-color: #1E90FF;
+    background-color: #ADD8E6;
   }
   
   caption {
