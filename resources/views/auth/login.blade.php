@@ -42,9 +42,18 @@
             <x-primary-button class="ml-3">
                 {{ __('Log in') }}
             </x-primary-button>
-            <x-primary-button class="ml-4" href="{{ route('register') }}">
-            {{ __('Register') }}
-            </x-primary-button>
+            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">
+                {{ __('Register') }}</a>
+
+                <!-- AJUSTE- criar um novo div para o botão register de forma a ter mesma estétia de botão-->
         </div>
     </form>
+
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+<a class="google-btn" href="{{route('google_auth')}}">
+  <div class="google-icon-wrapper">
+  <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />  </div>
+  <p class="btn-text"><b>Sign in with google</b></p>
+</div>
+    </div>
 </x-guest-layout>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AgendamentosController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\EstágiosController;
+use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\HistóricoController;
 use App\Http\Controllers\OrientacaoEstagiosController;
 use App\Http\Controllers\ProfileController;
@@ -24,6 +25,10 @@ Route::get('/', function () {
     return view('/auth/login');
 });
 
+Route::get('/register', function () {
+    return view('auth.register');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -41,5 +46,10 @@ Route::resource('histórico', HistóricoController::class);
 Route::resource('contactos', Controller::class);
 
 Route::post('/estagios', [EstágiosController::class, 'store'])->name('estagios.store');
+
+#duas novas rotas uma para entrar na google login
+Route::get('auth/google', [GoogleAuthController::class, 'redirect'])->name('google_auth');
+#outra para redirecionar quando sai
+Route::get('auth/google/call-back', [GoogleAuthController::class, 'callbackGoogle']);
 
 require __DIR__.'/auth.php';

@@ -29,7 +29,7 @@ return new class extends Migration
             $table->id()->bigIncrements();
             $table->string('nome')->unique();
             $table->boolean('isExterno')->default(false);
-            $table->foreignId('instituição_estagio_id')->references('id')->on('Instituicao_Estagio')->onDelete('cascade');
+            $table->foreignId('instituicão_estagio_id')->references('id')->on('Instituicao_Estagio')->onDelete('cascade');
             $table->foreignId('curso_estagio_id')->references('id')->on('Curso_Estagio')->onDelete('cascade');
             $table->foreignId('unidade_curricular_id')->references('id')->on('Unidade_Curricular')->onDelete('cascade');
             $table->integer('ano_curricular')->min(2)->max(6);
