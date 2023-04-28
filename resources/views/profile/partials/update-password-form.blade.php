@@ -7,6 +7,12 @@
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
             {{ __('Ensure your account is using a long, random password to stay secure.') }}
         </p>
+
+        @if(is_null(auth()->user()->password))
+            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                {{ __("You created your account using Google authentication. You do not need to provide a current password to update your password.") }}
+            </p>
+        @endif
     </header>
 
     <form method="post" action="{{ route('password.update') }}" class="mt-6 space-y-6">
