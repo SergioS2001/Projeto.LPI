@@ -58,6 +58,7 @@ $user = User::create([
     'instituicao' => $instituicaoAluno->nome,
     'numero_aluno' => $instituicaoAluno->numero_aluno,
     'curso_aluno_id' => $instituicaoAluno->curso_aluno_id,
+    'isExterno' => true,
 ]);
 
     event(new Registered($user));

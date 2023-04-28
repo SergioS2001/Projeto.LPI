@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
          User::factory()->create([
              'name' => 'testUser',
              'email' => 'test@example.com',
+             'isOrientador' => true,
+             'permissions' => 1,
          ]);
          $this->call(InstituicaoAlunoSeeder::class);
          $this->call(CacifosSeeder::class);

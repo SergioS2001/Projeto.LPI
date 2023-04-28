@@ -33,6 +33,9 @@ class User extends Authenticatable
         'morada',
         'email_alternativo',
         'instituicao_aluno_id',
+        'isExterno',
+        'isOrientador',
+        'cacifo_estagio_id',
         'permissions',     //protected
     ];
 

@@ -38,17 +38,12 @@ class UsersResource extends Resource
                     ->label('Instituição')
                     ->options(Instituicao_Aluno::all()->pluck('nome', 'id'))
                     ->searchable(),
-                    TextInput::make('cartão_cidadão')->required()
-                    ->label('Cartão Cidadão'),
-                    TextInput::make('telemóvel')->required()
-                    ->label('Número Telemóvel'),
-                    TextInput::make('morada')->required()
-                    ->label('Morada'),
+                    TextInput::make('cartão_cidadão')->label('Cartão Cidadão'),
+                    TextInput::make('telemóvel')->label('Número Telemóvel'),
+                    TextInput::make('morada')->label('Morada'),
                     TextInput::make('Email alternativo')->label('Email alternativo'),
-                    Checkbox::make('isExterno')
-                    ->label('Externo?'),
-                    Checkbox::make('isOrientador')
-                    ->label('Orientador?'),
+                    Checkbox::make('isExterno')->label('Externo?'),
+                    Checkbox::make('isOrientador')->label('Orientador?'),
                     ])
             ]);
     }

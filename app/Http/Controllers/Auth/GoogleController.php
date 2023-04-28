@@ -41,6 +41,7 @@ class GoogleController extends Controller
             'google_token' => $googleUser->token,
             'instituicao_aluno_id' => $instituicao->id,
             'instituicao_Aluno' => $instituicao, // set the relationship with the Instituicao_Aluno model
+            'isExterno' => false, // Set isExterno to false for Google sign-ins
         ]);
         
         // Retrieve the Instituicao_Aluno model associated with the user
