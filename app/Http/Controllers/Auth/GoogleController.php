@@ -54,7 +54,7 @@ class GoogleController extends Controller
 
         return redirect('/dashboard');
         
-        //dd($user);
+        //dd($googleUser);        //check info from google auth in web
     }
 
 }

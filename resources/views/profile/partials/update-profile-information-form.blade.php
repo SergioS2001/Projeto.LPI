@@ -18,7 +18,7 @@
         @method('patch')
 
         <div>
-            <x-input-label for="name" :value="__('Name')" />
+            <x-input-label for="name" :value="__('Nome')" />
             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
@@ -45,6 +45,36 @@
                     @endif
                 </div>
             @endif
+        </div>
+
+        <div>
+            <x-input-label for="email_alternativo" :value="__('Email alternativo')" />
+            <x-text-input id="email_alternativo" name="email_alternativo" type="email" class="mt-1 block w-full" :value="old('email_alternativo', $user->email_alternativo)" required autofocus autocomplete="email_alternativo" />
+            <x-input-error class="mt-2" :messages="$errors->get('email_alternativo')" />
+        </div>
+
+        <div>
+            <x-input-label for="data_nascimento" :value="__('Data de Nascimento')" />
+            <x-text-input id="data_nascimento" name="data_nascimento" type="date" class="mt-1 block w-full" :value="old('data_nascimento', $user->data_nascimento)" required autofocus autocomplete="data_nascimento" />
+            <x-input-error class="mt-2" :messages="$errors->get('data_nascimento')" />
+        </div>
+
+        <div>
+            <x-input-label for="telemóvel" :value="__('Telemóvel')" />
+            <x-text-input id="telemóvel" name="telemóvel" type="text" class="mt-1 block w-full" :value="old('telemóvel', $user->telemóvel)" required autofocus autocomplete="telemóvel" />
+            <x-input-error class="mt-2" :messages="$errors->get('telemóvel')" />
+        </div>
+
+        <div>
+            <x-input-label for="cartão_cidadão" :value="__('Cartão de Cidadão')" />
+            <x-text-input id="cartão_cidadão" name="cartão_cidadão" type="text" class="mt-1 block w-full" :value="old('cartão_cidadão', $user->cartão_cidadão)" required autofocus autocomplete="cartão_cidadão" />
+            <x-input-error class="mt-2" :messages="$errors->get('cartão_cidadão')" />
+        </div>
+
+        <div>
+            <x-input-label for="morada" :value="__('Morada')" />
+            <x-text-input id="morada" name="morada" type="text" class="mt-1 block w-full" :value="old('morada', $user->morada)" required autofocus autocomplete="morada" />
+            <x-input-error class="mt-2" :messages="$errors->get('morada')" />
         </div>
 
         <div class="flex items-center gap-4">

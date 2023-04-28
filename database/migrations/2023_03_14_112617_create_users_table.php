@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('google_id')->nullable();
             $table->string('google_token')->nullable();
             $table->date('data_nascimento')->max(now())->nullable();
-            $table->bigInteger('cartão_cidadão')->unique()->nullable();
-            $table->bigInteger('telemóvel')->unique()->nullable();
+            $table->string('cartão_cidadão')->unique()->nullable();
+            $table->string('telemóvel')->unique()->nullable();
             $table->string('morada')->nullable()->max(255);
             $table->string('email_alternativo')->nullable();
             $table->foreignId('instituicao_aluno_id')->nullable()->references('id')->on('Instituicao_Aluno')->onDelete('cascade');
