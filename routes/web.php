@@ -1,12 +1,12 @@
 <?php
 
 use App\Http\Controllers\AgendamentosController;
+use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\EstágiosController;
 use App\Http\Controllers\HistóricoController;
 use App\Http\Controllers\OrientacaoEstagiosController;
 use App\Http\Controllers\ProfileController;
-use App\Models\Orientacao_Estagios;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CalendarController;
 
@@ -24,6 +24,11 @@ use App\Http\Controllers\CalendarController;
 Route::get('/', function () {
     return view('/auth/login');
 });
+
+Route::get('/auth/google/redirect', [GoogleController::class, 'redirect']);
+ 
+Route::get('/auth/google/callback', [GoogleController::class, 'callback']);
+ 
 
 Route::get('/dashboard', function () {
     return view('dashboard');

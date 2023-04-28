@@ -16,7 +16,9 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
+            $table->string('google_id')->nullable();
+            $table->string('google_token')->nullable();
             $table->date('data_nascimento')->max(now())->nullable();
             $table->bigInteger('cartão_cidadão')->unique()->nullable();
             $table->bigInteger('telemóvel')->unique()->nullable();

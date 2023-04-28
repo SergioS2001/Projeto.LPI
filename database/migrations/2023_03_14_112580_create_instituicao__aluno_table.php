@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('instituicao_aluno', function (Blueprint $table) {
             $table->id()->bigIncrements();
             $table->string('nome')->unique();
-            $table->bigInteger('numero_aluno')->unique();
-            $table->foreignId('curso_aluno_id')->references('id')->on('Curso_Aluno')->onDelete('cascade');
+            $table->string('numero_aluno')->nullable()->unique();
+            $table->foreignId('curso_aluno_id')->nullable()->references('id')->on('Curso_Aluno')->onDelete('cascade');
             $table->timestamps();
         });
     }

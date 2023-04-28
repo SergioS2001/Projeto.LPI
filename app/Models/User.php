@@ -25,9 +25,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'google_id',
+        'google_token',
         'cartão_cidadão',
         'telemóvel',
         'morada',
+        'instituicao_aluno_id',
         'permissions',     //protected
     ];
 
