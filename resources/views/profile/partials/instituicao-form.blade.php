@@ -11,19 +11,33 @@
         @method('patch')
 
         <div>
-            <x-input-label for="nome" :value="__('Instituição de Ensino')" />
-            <x-text-input id="nome" name="nome" type="text" class="mt-1 block w-full" :value="old('nome', $user->nome)" required autofocus autocomplete="nome" />
-            <x-input-error class="mt-2" :messages="$errors->get('nome')" />
+            <x-input-label for="instituicao" :value="__('Instituição de Ensino')" />
+            <x-text-input id="instituicao" name="instituicao" type="text" class="mt-1 block w-full" :value="old('instituicao', $user->instituicao_Aluno->nome)" required autofocus autocomplete="instituicao" readonly/>
+            <x-input-error class="mt-2" :messages="$errors->get('instituicao')" />
         </div>
         <div>
-            <x-input-label for="nome" :value="__('Número de Aluno')" />
-            <x-text-input id="nome" name="nome" type="text" class="mt-1 block w-full" :value="old('nome', $user->nome)" required autofocus autocomplete="nome" />
-            <x-input-error class="mt-2" :messages="$errors->get('nome')" />
+            <x-input-label for="numero_aluno" :value="__('Instituição de Ensino')" />
+            <x-text-input id="numero_aluno" name="numero_aluno" type="text" class="mt-1 block w-full" :value="old('numero_aluno', $user->instituicao_Aluno->numero_aluno)" required autofocus autocomplete="numero_aluno" readonly/>
+            <x-input-error class="mt-2" :messages="$errors->get('numero_aluno')" />
         </div>
         <div>
-            <x-input-label for="nome" :value="__('Curso')" />
-            <x-text-input id="nome" name="nome" type="text" class="mt-1 block w-full" :value="old('nome', $user->nome)" required autofocus autocomplete="nome" />
-            <x-input-error class="mt-2" :messages="$errors->get('nome')" />
+            <x-input-label for="curso" :value="__('Curso')" />
+            <x-text-input id="curso" name="curso" type="text" class="mt-1 block w-full" :value="old('curso', $user->instituicao_Aluno->curso)" required autofocus autocomplete="curso" />
+            <x-input-error class="mt-2" :messages="$errors->get('curso')" />
+        </div>
+
+        <div class="flex items-center gap-4">
+            <x-primary-button>{{ __('Save') }}</x-primary-button>
+
+            @if (session('status') === 'profile-updated')
+                <p
+                    x-data="{ show: true }"
+                    x-show="show"
+                    x-transition
+                    x-init="setTimeout(() => show = false, 2000)"
+                    class="text-sm text-gray-600 dark:text-gray-400"
+                >{{ __('Saved.') }}</p>
+            @endif
         </div>
         </form>
 </section>
