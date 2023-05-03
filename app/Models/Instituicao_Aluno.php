@@ -17,7 +17,7 @@ class Instituicao_Aluno extends Model
         'curso_aluno_id',
     ];
 
-    public function curso()
+    public function curso_aluno()
 {
     return $this->belongsTo(Curso_Aluno::class, 'curso_aluno_id');
 }
