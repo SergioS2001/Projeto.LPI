@@ -17,7 +17,7 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     <x-nav-link :href="route('estágios.index')" :active="request()->routeIs('estágios.index')">
-                        {{ __('Estágios') }}
+                        {{ __('Estágios/EC') }}
                     </x-nav-link>
                     <x-nav-link :href="route('agendamentos.index')" :active="request()->routeIs('agendamentos.index')">
                         {{ __('Agendamentos') }}

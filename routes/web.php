@@ -22,8 +22,8 @@ use App\Http\Controllers\CalendarController;
 */
 
 Route::get('/', function () {
-    return view('/auth/login');
-});
+    return view('/dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/auth/google/redirect', [GoogleController::class, 'redirect']);
  
