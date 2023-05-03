@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
              'permissions' => 1,
          ]);
          $this->call(InstituicaoAlunoSeeder::class);
+         $this->call(CursoAlunoSeeder::class);
          $this->call(CacifosSeeder::class);
          $this->call(CursoEstagioSeeder::class);
          $this->call(InstituiçãoSeeder::class);

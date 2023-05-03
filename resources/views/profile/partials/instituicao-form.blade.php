@@ -6,7 +6,7 @@
 
     </header>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profile.saveCurso') }}" class="mt-6 space-y-6">
         @csrf
         @method('patch')
 
@@ -22,13 +22,19 @@
             <x-input-error class="mt-2" :messages="$errors->get('numero_aluno')" />
         </div>
         <div>
+        @if (optional($user->instituicao_aluno->curso_aluno)->curso)
             <x-input-label for="curso" :value="__('Curso')" />  <!-- can only add Curso -->
             <x-text-input id="curso" name="curso" type="text" class="mt-1 block w-full" :value="old('curso', $user->instituicao_aluno->curso_aluno->curso)" required autofocus autocomplete="curso" />
             <x-input-error class="mt-2" :messages="$errors->get('curso')" />
-        </div>
-
         @else
-        <div>               <!-- alunos externos inserem Instituição + numero aluno -->
+            <x-input-label for="curso" :value="__('Curso')" />  <!-- can only add Curso -->
+            <x-text-input id="curso" name="curso" type="text" class="mt-1 block w-full" required autofocus autocomplete="curso" />
+            <x-input-error class="mt-2" :messages="$errors->get('curso')" />
+        @endif
+    </div>
+                
+        @else
+        <div>               <!-- alunos externos já tem info que vem do register-->
                 <x-input-label for="instituicao" :value="__('Instituição de Ensino')" />
                 <x-text-input id="instituicao" name="instituicao" type="text" class="mt-1 block w-full" :value="old('instituicao', $user->instituicao_aluno->nome)" required autofocus autocomplete="instituicao"/>
                 <x-input-error class="mt-2" :messages="$errors->get('instituicao')" />
@@ -48,7 +54,7 @@
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
-            @if (session('status') === 'profile-updated')
+            @if (session('status') === 'curso-updated')
                 <p
                     x-data="{ show: true }"
                     x-show="show"

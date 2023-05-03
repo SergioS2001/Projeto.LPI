@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Curso_Aluno;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -47,6 +48,43 @@ class ProfileController extends Controller
 
     return Redirect::route('profile.edit')->with('status', 'profile-updated');
 }
+
+
+public function saveCurso(Request $request)
+{
+    $user = Auth::user();
+
+    // Get the current user's instituicao_aluno
+    $instituicaoAluno = $user->instituicao_Aluno;
+
+    // Get the existing curso_aluno for this instituicao_aluno
+    $cursoAluno = $instituicaoAluno->curso_aluno;
+
+    if (!$cursoAluno) {
+        // If the instituicao_aluno doesn't have a curso_aluno, create one
+        $cursoAluno = new Curso_Aluno();
+    }
+
+    // Check if a record with the same curso already exists
+    $existingCurso = Curso_Aluno::where('curso', $request->input('curso'))->first();
+    if ($existingCurso) {
+        // If so, update the existing record instead of creating a new one
+        $cursoAluno = $existingCurso;
+    }
+
+    // Set the curso field on the curso_aluno object
+    $cursoAluno->curso = $request->input('curso');
+
+    // Save the curso_aluno object
+    $cursoAluno->save();
+
+    // Associate the curso_aluno with the instituicao_aluno
+    $instituicaoAluno->curso_aluno_id = $cursoAluno->id;
+    $instituicaoAluno->save();
+
+    return redirect()->back()->with('status', 'curso-updated');
+}
+
 
 
     /**
