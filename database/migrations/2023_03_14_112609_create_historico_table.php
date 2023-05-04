@@ -14,9 +14,9 @@ return new class extends Migration
     {
         Schema::create('historico', function (Blueprint $table) {
             $table->id()->bigIncrements();
-            $table->foreignId('agendamentos_id')->references('id')->on('Agendamentos')->onDelete('cascade');
-            $table->foreignId('estágios_id')->references('id')->on('Estágios')->onDelete('cascade');
-            $table->foreignId('presenças_id')->references('id')->on('Presenças')->onDelete('cascade');
+            $table->foreignId('agendamentos_id')->nullable()->references('id')->on('Agendamentos')->onDelete('cascade');
+            $table->foreignId('estágios_id')->nullable()->references('id')->on('Estágios')->onDelete('cascade');
+            $table->foreignId('presenças_id')->nullable()->references('id')->on('Presenças')->onDelete('cascade');
             $table->timestamps();
         });
     }

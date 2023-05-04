@@ -55,6 +55,7 @@ class UsersResource extends Resource
                 //TextColumn::make('id')->sortable()->searchable(),
                 IconColumn::make('isOrientador')->label('Orientador')->boolean()->sortable()->searchable(),
                 IconColumn::make('isExterno')->label('Externo')->boolean()->sortable()->searchable(),
+                IconColumn::make('isAdmin')->label('Admin')->boolean()->sortable()->searchable(),
                 TextColumn::make('name')->sortable()->searchable()->limit(12)->label('Nome'),
                 TextColumn::make('instituicao_aluno.numero_aluno')->sortable()->searchable()->label("Número Aluno"),
                 TextColumn::make('email')->sortable()->searchable()->limit(15)->label("Email"),
@@ -63,7 +64,6 @@ class UsersResource extends Resource
                 TextColumn::make('cartão_cidadão')->sortable()->searchable()->limit(8)->label('CC'),
                 TextColumn::make('morada')->sortable()->searchable()->limit(25)->label("Morada"),
                 TextColumn::make('email_alternativo')->sortable()->searchable()->limit(15)->label("Email alternativo"),
-                TextColumn::make('permissions')->sortable(),
             ])
             ->filters([
                 //

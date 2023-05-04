@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('presenças', function (Blueprint $table) {
             $table->id()->bigIncrements();
-            $table->foreignId('estágios_id')->references('id')->on('Estágios')->onDelete('cascade');
-            $table->date('data')->min(now());
-            $table->float('h_entrada')->min(0.0)->max(24.00);
-            $table->float('h_saida')->min(0.0)->max(24.00);
-            $table->float('h_pausa')->min(0.0)->max(24.00);
-            $table->float('horas_dia')->min(0.0)->max(24.00);
-            $table->float('horas_mes')->min(0.0);
-            $table->float('total_horas')->min(0.0);
-            $table->integer('count_presenças')->default(0);
-            $table->boolean('isValidated')->default(false);
+            $table->foreignId('estágios_id')->nullable()->references('id')->on('Estágios')->onDelete('cascade');
+            $table->date('data')->nullable()->min(now());
+            $table->float('h_entrada')->nullable()->min(0.0)->max(24.00);
+            $table->float('h_saida')->nullable()->min(0.0)->max(24.00);
+            $table->float('h_pausa')->nullable()->min(0.0)->max(24.00);
+            $table->float('horas_dia')->nullable()->min(0.0)->max(24.00);
+            $table->float('horas_mes')->nullable()->min(0.0);
+            $table->float('total_horas')->nullable()->min(0.0);
+            $table->integer('count_presenças')->nullable()->default(0);
+            $table->boolean('isValidated')->nullable()->default(false);
             $table->timestamps();
         });
     }

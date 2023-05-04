@@ -31,11 +31,6 @@ class PresençasResource extends Resource
         return $form
         ->schema([
             Card::make()->schema([
-                Select::make('estágios.nome')
-                ->label('Estágio')
-                ->options(Estágios::all()->pluck('presenças_id', 'id'))
-                ->required()
-                ->searchable(),
                 DatePicker::make('data')
                 ->label("Data")
                 ->minDate(now())
@@ -67,7 +62,7 @@ class PresençasResource extends Resource
         return $table
             ->columns([
                 //TextColumn::make('user.name')->sortable()->searchable()->limit(12)->label('Aluno'),
-                TextColumn::make('estagio.nome')->sortable()->searchable()->limit(12)->label('Estágio'),
+                //TextColumn::make('estagio.nome')->sortable()->searchable()->limit(12)->label('Estágio'),
                 //TextColumn::make('')->sortable()->searchable()->limit(12)->label('Orientador'),
                 TextColumn::make('data')->date()->sortable()->searchable(),
                 TextColumn::make('h_entrada')->sortable()->label('Entrada(h)'),

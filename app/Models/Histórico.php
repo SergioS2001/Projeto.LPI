@@ -30,4 +30,10 @@ class Histórico extends Model
     {
         return $this->belongsTo(Presenças::class, 'presenças_id');
     }
+
+    public function user()
+{
+    return $this->belongsTo(User::class, 'historico_id');
+}
+
 }

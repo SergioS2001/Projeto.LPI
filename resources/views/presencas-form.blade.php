@@ -7,7 +7,7 @@
     @csrf
     <label for="estagio">Estágio:</label>
 <select name="estagio" id="estagio">
-    @foreach(Estágios::all()->pluck('presenças_id', 'id') as $id => $nome)
+    @foreach(Estágios::all()->pluck('nome', 'id') as $id => $nome)
         <option value="{{ $id }}">{{ $nome }}</option>
     @endforeach
 </select>

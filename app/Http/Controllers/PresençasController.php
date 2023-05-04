@@ -6,7 +6,9 @@ use App\Models\Histórico;
 use App\Http\Controllers\Controller;
 use App\Models\Presenças;
 use App\Models\Estágios;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PresençasController extends Controller
 {
@@ -33,30 +35,46 @@ class PresençasController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'estagio_id' => 'required',
+            'estagio' => 'required',
             'data' => 'required|date',
             'h_entrada' => 'required|numeric|min:1|max:24',
             'h_saida' => 'required|numeric|min:1|max:24',
             'h_pausa' => 'required|numeric|min:1|max:5',
         ]);
     
-        $estagio = Estágios::findOrFail($validatedData['estagio_id']);
+        $user = Auth::user();
     
-        $presenca = $estagio->presenças()->where('data', $validatedData['data'])->first();
+        // Find the selected estágio
+        $estagio = Estágios::findOrFail($validatedData['estagio']);
     
-        if (!$presenca) {
-            $presenca = new Presenças();
-            $presenca->data = $validatedData['data'];
+        // Find or create the user's historico record for this estágio
+        $historico = $user->historico_id;
+        if (!$historico) {
+            $historico = new Histórico();
+            $historico->estágios_id = $estagio->id;
+            $historico->agendamentos_id = null; // set the default value to null
+            $historico->save();
         }
     
+        // Find or create the presença record for this date and estágio
+        $presenca = Presenças::firstOrCreate([
+            'data' => $validatedData['data'],
+            'estágios_id' => $estagio->id,
+        ]);
+    
+        // Update the presença record
         $presenca->h_entrada = $validatedData['h_entrada'];
         $presenca->h_saida = $validatedData['h_saida'];
         $presenca->h_pausa = $validatedData['h_pausa'];
+        $presenca->save();
     
-        $estagio->presenças()->save($presenca);
+        // Update the historico record
+        $historico->presenças_id = $presenca->id;
+        $historico->save();
     
         return redirect()->back()->with('success', 'Presença salva com sucesso!');
     }
+    
     
 
 

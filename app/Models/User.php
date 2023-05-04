@@ -67,9 +67,10 @@ class User extends Authenticatable
 
     // Define the relationship with the Historico model
     public function historico()
-    {
-        return $this->belongsTo(Histórico::class, 'historico_id');
-    }
+{
+    return $this->hasOne(Histórico::class, 'historico_id');
+}
+
     public function estagio()
     {
         return $this->hasOneThrough(
