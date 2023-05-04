@@ -10,6 +10,7 @@ class Presenças extends Model
     use HasFactory;
 
     protected $fillable = [
+        'estágios_id',
         'data',
         'h_entrada',
         'h_saida',
@@ -21,7 +22,7 @@ class Presenças extends Model
 
     public function estagio()
     {
-        return $this->belongsTo(Estágios::class, 'presenças_id');
+        return $this->hasMany(Estágios::class, 'presenças_id');
     }
 
 

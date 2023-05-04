@@ -14,6 +14,7 @@ class PresençasSeeder extends Seeder
     public function run()
     {
         Presenças::create([
+            'estágios_id' => 1,
             'data' => now()->subDays(3),
             'h_entrada' => 8.5,
             'h_saida' => 17.0,
@@ -28,6 +29,7 @@ class PresençasSeeder extends Seeder
         ]);
 
         Presenças::create([
+            'estágios_id' => 1,
             'data' => now()->subDays(2),
             'h_entrada' => 9.0,
             'h_saida' => 17.5,
@@ -42,6 +44,7 @@ class PresençasSeeder extends Seeder
         ]);
 
         Presenças::create([
+            'estágios_id' => 2,
             'data' => now()->subDays(1),
             'h_entrada' => 8.0,
             'h_saida' => 16.0,
