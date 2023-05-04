@@ -4,12 +4,15 @@ use App\Http\Controllers\AgendamentosController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\EstágiosController;
+use App\Http\Controllers\PresençasController;
 use App\Http\Controllers\HistóricoController;
 use App\Http\Controllers\OrientacaoEstagiosController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CalendarController;
+use App\Models\Histórico;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +50,7 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('estágios', EstágiosController::class);
 Route::resource('agendamentos', AgendamentosController::class);
+Route::resource('presenças', PresençasController::class);
 Route::resource('orientação', OrientacaoEstagiosController::class);
 Route::resource('histórico', HistóricoController::class);
 Route::resource('contactos', Controller::class);

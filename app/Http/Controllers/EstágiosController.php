@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Estágios;
-use App\Models\Instituicao_Estagio;
+use App\Models\Instituição_Estágio;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -59,7 +59,7 @@ class EstágiosController extends Controller
     $estagio->data_inicial = $request->data_inicial;
     $estagio->data_final = $request->data_final;
 
-    $instituicao_estagio = Instituicao_Estagio::all();
+    $instituicao_estagio = Instituição_Estágio::all();
     return view('estágios-form', compact('instituicao_estagio'));
     
 
