@@ -8,16 +8,28 @@ use App\Models\Agendamentos;
 
 class CalendarController extends Controller
 {
+
+	public function index()
+	{
+		$agendamentos = Agendamentos::all();
+		return view('calendar')->with('agendamentos', $agendamentos);
+	}
+
     public function show(Request $request)
-    {
-    	if($request->ajax())
-    	{
-    		$data = Agendamentos::whereDate('data', '>=', $request->data)
-                       ->get(['id','nome','data','hora']);
-            return response()->json($data);
-    	}
-    	return view('calendar');
+{
+    if ($request->ajax()) {
+        $data = Agendamentos::whereDate('data', '>=', $request->data)
+                   ->get(['id', 'nome as title', 'data as start', 'hora as end'])
+                   ->map(function ($appointment) {
+                       $appointment->start = $appointment->start->format('Y-m-d\TH:i:s');
+                       $appointment->end = $appointment->end->format('Y-m-d\TH:i:s');
+                       return $appointment;
+                   });
+        return response()->json($data);
     }
+    return view('calendar');
+}
+
 
     public function action(Request $request)
     {
