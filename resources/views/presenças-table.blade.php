@@ -1,0 +1,87 @@
+<?php
+use Illuminate\Support\Facades\Auth;
+
+try {
+    $db = new PDO('mysql:host=localhost;dbname=lpi','root','root');
+
+} catch (PDOException $e) {
+    throw new PDOException($e->getMessage(), (int)$e->getCode());
+}
+
+// Get authenticated user's ID
+$user_id = Auth::id();
+
+// SQL query to fetch data
+$query = "SELECT estágios.nome AS estágios_nome, 
+                presenças.data, presenças.isValidated,
+                MIN(presenças.h_entrada) AS h_entrada, 
+                MAX(presenças.h_saida) AS h_saida, 
+                SUM(presenças.h_pausa) AS h_pausa
+          FROM historico
+          JOIN estágios ON historico.estágios_id = estágios.id
+          JOIN presenças ON presenças.estágios_id = estágios.id
+          WHERE historico.users_id = $user_id
+          GROUP BY estágios_nome, presenças.data";
+
+// Fetch data and store in $result variable
+$result = $db->query($query);
+
+?>
+
+
+<!-- Table for Agendamentos -->
+<table class="table caption-top">
+<caption>Presenças</caption>
+  <thead>
+    <tr>
+      <th>Estágio</th>
+      <th>Data</th>
+      <th>Hora de entrada</th>
+      <th>Hora de saída</th>
+      <th>Tempo de pausa(Minutos)</th>
+      <th>Validada por Orientador</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php while ($row = $result->fetch()): ?>
+      <tr>
+      <td><?= $row['estágios_nome'] ?></td>
+      <td><?= $row['data'] ?></td>
+      <td><?= $row['h_entrada'] ?></td>
+      <td><?= $row['h_saida'] ?></td>
+      <td><?= $row['h_pausa'] ?></td>
+      <td><?= $row['isValidated'] ? 'Sim' : 'Não' ?></td>
+      </tr>
+    <?php endwhile; ?>
+  </tbody>
+</table>
+
+<!-- Add this CSS to your stylesheet or HTML -->
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    width: 220px; /* or any other desired width */
+  }
+  
+  th {
+    background-color: DeepSkyBlue;
+    color: white;
+  }
+  
+  tr:hover {
+    background-color: #ADD8E6;
+  }
+  
+  caption {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 1em;
+  }
+</style>

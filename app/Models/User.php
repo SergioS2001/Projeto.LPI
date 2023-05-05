@@ -36,7 +36,6 @@ class User extends Authenticatable
         'isExterno',
         'isOrientador',
         'cacifo_estagio_id',
-        'historico_id',
         'permissions',     //protected
     ];
 
@@ -68,7 +67,12 @@ class User extends Authenticatable
     // Define the relationship with the Historico model
     public function historico()
 {
-    return $this->hasOne(Histórico::class, 'historico_id');
+    return $this->hasMany(Histórico::class);
+}
+
+public function agendamentos()
+{
+    return $this->hasMany(Agendamentos::class);
 }
 
     public function estagio()

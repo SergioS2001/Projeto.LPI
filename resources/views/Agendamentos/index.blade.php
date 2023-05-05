@@ -30,6 +30,9 @@
   }
 
 </style>
+        //criar agendamentos
+        <br><br><br>
+
         <table>
           <thead>
             <tr>
@@ -54,8 +57,6 @@
             @endforeach
           </tbody>
         </table>
-        <br>
-        //criar agendamentos
       </div>
     </div>
   </div>

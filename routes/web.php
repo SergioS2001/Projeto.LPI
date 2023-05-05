@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AgendamentosController;
 use App\Http\Controllers\Auth\GoogleController;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ContactosController;
 use App\Http\Controllers\EstágiosController;
 use App\Http\Controllers\PresençasController;
 use App\Http\Controllers\HistóricoController;
@@ -53,7 +53,7 @@ Route::resource('agendamentos', AgendamentosController::class);
 Route::resource('presenças', PresençasController::class);
 Route::resource('orientação', OrientacaoEstagiosController::class);
 Route::resource('histórico', HistóricoController::class);
-Route::resource('contactos', Controller::class);
+Route::resource('contactos', ContactosController::class);
 
 Route::post('/estagios', [EstágiosController::class, 'store'])->name('estagios.store');
 
@@ -61,4 +61,3 @@ require __DIR__.'/auth.php';
 
 Route::get('calendar', [CalendarController::class, 'show']);
 Route::post('calendar/action', [CalendarController::class, 'action']);
-
