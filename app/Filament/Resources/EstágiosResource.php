@@ -15,6 +15,7 @@ use App\Models\Tipologia_Estágio;
 use App\Models\Unidade_Curricular;
 use App\Models\User;
 use Filament\Forms\Components\Card;
+use Filament\Forms\Components\Checkbox;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -39,37 +40,37 @@ class EstágiosResource extends Resource
                 Card::make()->schema([TextInput::make('nome')->label('Nome')->required(),
                 Select::make('orientadores_id.users.name')
                 ->label('Orientadores')
-                ->options(Orientação_Estagios::all()->pluck('name', 'id'))
+                ->options(Orientação_Estagios::all()->pluck('nome', 'id'))
                 ->searchable(),
-                Select::make('instituicao_estagio_id')->required()
+                Select::make('instituicao_estagio_id')
                 ->label('Instituição')
                 ->options(Instituição_Estágio::all()->pluck('nome', 'id'))
                 ->searchable(),
-                Select::make('curso_estagio_id')->required()
+                Select::make('curso_estagio_id')
                 ->label('Curso')
                 ->options(Curso_Estagio::all()->pluck('curso', 'id'))
                 ->searchable(),
-                Select::make('unidade_curricular_id')->required()
+                Select::make('unidade_curricular_id')
                 ->label('Unidade Curricular')
                 ->options(Unidade_Curricular::all()->pluck('nome', 'id'))
                 ->searchable(),
-                TextInput::make('Ano curricular')->required()
+                TextInput::make('Ano curricular')
                 ->numeric()
                 ->minValue(1)
                 ->maxValue(5),
-                Select::make('serviços_id')->required()
+                Select::make('serviços_id')
                 ->label('Serviços')
                 ->options(Serviços::all()->pluck('titulo', 'id'))
                 ->searchable(),
-                Select::make('tipologia_estagio_id')->required()
+                Select::make('tipologia_estagio_id')
                 ->label('Tipologia')
                 ->options(Tipologia_Estágio::all()->pluck('titulo', 'id'))
                 ->searchable(),
                 DatePicker::make('Data Inicial')
-                ->minDate(now())
-                ->required(),
+                ->minDate(now()),
                 DatePicker::make('Data Final')
                 ->minDate(now()),
+                Checkbox::make('estado_estagio.admitido')->label('Aprovado?'),
                 ])
             ]);
     }

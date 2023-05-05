@@ -22,7 +22,7 @@ class Presenças extends Model
 
     public function estagio()
     {
-        return $this->hasMany(Estágios::class, 'presenças_id');
+        return $this->belongsTo(Estágios::class, 'estágios_id');
     }
 
 

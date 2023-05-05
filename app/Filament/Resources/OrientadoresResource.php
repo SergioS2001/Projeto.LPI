@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\OrientadoresResource\Pages;
 use App\Filament\Resources\OrientadoresResource\RelationManagers;
 use App\Models\Orientadores;
+use App\Models\Orientação_Estagios;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Components\Select;

@@ -61,8 +61,8 @@ class PresençasResource extends Resource
     {
         return $table
             ->columns([
-                //TextColumn::make('user.name')->sortable()->searchable()->limit(12)->label('Aluno'),
-                //TextColumn::make('estagio.nome')->sortable()->searchable()->limit(12)->label('Estágio'),
+                TextColumn::make('estagio.nome')->sortable()->searchable()->limit(12)->label('Estágio'),
+                TextColumn::make('historico.users.name')->sortable()->searchable()->limit(12)->label('Aluno'),
                 //TextColumn::make('')->sortable()->searchable()->limit(12)->label('Orientador'),
                 TextColumn::make('data')->date()->sortable()->searchable(),
                 TextColumn::make('h_entrada')->sortable()->label('Entrada(h)'),

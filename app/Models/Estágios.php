@@ -86,6 +86,6 @@ class Estágios extends Model
 
     public function presenças()
     {
-       return $this->belongsTo(Presenças::class);
+       return $this->hasMany(Presenças::class);
     }
 }

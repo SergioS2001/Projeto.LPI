@@ -29,7 +29,7 @@ public function historico()
     return $this->hasMany(Histórico::class, 'agendamentos_id');
 }
 
-public function user()
+public function users()
 {
     return $this->belongsTo(User::class, 'users_id');
 }

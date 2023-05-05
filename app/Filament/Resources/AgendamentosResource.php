@@ -58,8 +58,8 @@ class AgendamentosResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('id')->sortable()->searchable()->label('id'),
+                TextColumn::make('users.name')->sortable()->searchable()->label('Users'),
                 TextColumn::make('nome')->sortable()->searchable()->label('Nome'),
-                TextColumn::make('historico.users.name')->sortable()->searchable()->label('Aluno'),
                 TextColumn::make('tipo_agendamento.nome_evento')->sortable()->searchable()->label('Tipo'),
                 TextColumn::make('data')->date()->sortable()->searchable(),
                 TextColumn::make('descrição')->sortable()->searchable()->label('Descrição'),
