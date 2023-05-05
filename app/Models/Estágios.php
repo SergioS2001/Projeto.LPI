@@ -14,7 +14,7 @@ class Estágios extends Model
         'nome',
         'data_inicial',
         'data_final',
-        'instituicao_estagio_id',
+        'instituição_estagio_id',
         'curso_estagio_id',
         'unidade_curricular_id',
         'serviços_id',

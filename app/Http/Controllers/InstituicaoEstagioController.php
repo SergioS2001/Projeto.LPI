@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Instituicao_Estagio;
+use App\Models\Instituição_Estágio;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -21,7 +21,7 @@ class InstituicaoEstagioController extends Controller
      */
     public function create()
     {
-        $instituicao_estagio = Instituicao_Estagio::all();
+        $instituicao_estagio = Instituição_Estágio::all();
         return view('estágios.create', compact('instituicao_estagio'));
     }
 
@@ -36,7 +36,7 @@ class InstituicaoEstagioController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Instituicao_Estagio $instituicao_Estagio)
+    public function show(Instituição_Estágio $instituicao_Estagio)
     {
         //
     }
@@ -44,7 +44,7 @@ class InstituicaoEstagioController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Instituicao_Estagio $instituicao_Estagio)
+    public function edit(Instituição_Estágio $instituicao_Estagio)
     {
         //
     }
@@ -52,7 +52,7 @@ class InstituicaoEstagioController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Instituicao_Estagio $instituicao_Estagio)
+    public function update(Request $request, Instituição_Estágio $instituicao_Estagio)
     {
         //
     }
@@ -60,7 +60,7 @@ class InstituicaoEstagioController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Instituicao_Estagio $instituicao_Estagio)
+    public function destroy(Instituição_Estágio $instituicao_Estagio)
     {
         //
     }

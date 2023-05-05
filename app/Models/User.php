@@ -35,6 +35,7 @@ class User extends Authenticatable
         'instituicao_aluno_id',
         'isExterno',
         'isOrientador',
+        'isAdmin',
         'cacifo_estagio_id',
         'permissions',     //protected
     ];

@@ -15,9 +15,11 @@ $options = [
 
 
 try {
-    $db = new PDO($dsn, $user, $password, $options);
+  //$db = new PDO($dsn, $user, $password, $options);
+  $db = new PDO('mysql:host=localhost;dbname=lpi','root','root');
+
 } catch (PDOException $e) {
-    throw new PDOException($e->getMessage(), (int)$e->getCode());
+  throw new PDOException($e->getMessage(), (int)$e->getCode());
 }
 
 

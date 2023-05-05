@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TipologiaEstagio;
+use App\Models\Tipologia_Estágio;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -35,7 +35,7 @@ class TipologiaEstagioController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TipologiaEstagio $tipologia)
+    public function show(Tipologia_Estágio $tipologia)
     {
         //
     }
@@ -43,7 +43,7 @@ class TipologiaEstagioController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TipologiaEstagio $tipologia)
+    public function edit(Tipologia_Estágio $tipologia)
     {
         //
     }
@@ -51,7 +51,7 @@ class TipologiaEstagioController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TipologiaEstagio $tipologia)
+    public function update(Request $request, Tipologia_Estágio $tipologia)
     {
         //
     }
@@ -59,7 +59,7 @@ class TipologiaEstagioController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TipologiaEstagio $tipologia)
+    public function destroy(Tipologia_Estágio $tipologia)
     {
         //
     }

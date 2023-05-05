@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Solicitacao_Vagas;
+use App\Models\Solicitação_Vagas;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -35,7 +35,7 @@ class SolicitacaoVagasController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Solicitacao_Vagas $solicitacao_Vagas)
+    public function show(Solicitação_Vagas $solicitacao_Vagas)
     {
         //
     }
@@ -43,7 +43,7 @@ class SolicitacaoVagasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Solicitacao_Vagas $solicitacao_Vagas)
+    public function edit(Solicitação_Vagas $solicitacao_Vagas)
     {
         //
     }
@@ -51,7 +51,7 @@ class SolicitacaoVagasController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Solicitacao_Vagas $solicitacao_Vagas)
+    public function update(Request $request, Solicitação_Vagas $solicitacao_Vagas)
     {
         //
     }
@@ -59,7 +59,7 @@ class SolicitacaoVagasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Solicitacao_Vagas $solicitacao_Vagas)
+    public function destroy(Solicitação_Vagas $solicitacao_Vagas)
     {
         //
     }

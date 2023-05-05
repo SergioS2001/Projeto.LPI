@@ -5,16 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Routing\Controller;
 
-class ContactosController extends BaseController
+class ContactosController extends Controller
 {
     use AuthorizesRequests, ValidatesRequests;
 
     public function index()
 {
-    $users = User::with(['historico.estagio.instituicaoEstagio'])->get();
-    return view('Contactos.index', compact('users'));
+    $contactos = User::paginate();
+    return view('contactos.index', compact('contactos'));
 }
 
 

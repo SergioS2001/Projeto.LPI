@@ -42,7 +42,7 @@ class EstágiosSeeder extends Seeder
             'data_final' => '2022-06-30',
             'avaliacao_id' => $avaliação->id,
             'solicitacao_vagas_id' => $solicitacao_vagas->id,
-            'estado_estagio_id' => $estado_estagio->id,
+            'estado_estagio_id' => 4,
             'created_at' => now(),
             'updated_at' => now(),
         ]);

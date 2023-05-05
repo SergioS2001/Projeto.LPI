@@ -10,7 +10,6 @@ use App\Http\Controllers\OrientacaoEstagiosController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CalendarController;
-use App\Models\Histórico;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 

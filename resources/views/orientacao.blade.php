@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 // Set up database connection
 $host = env('DB_HOST');
@@ -23,49 +24,60 @@ try {
   throw new PDOException($e->getMessage(), (int)$e->getCode());
 }
 
-// Get authenticated user's ID
 $user_id = Auth::id();
+$user_is_orientador = DB::table('users')->where('id', $user_id)->value('isOrientador');
 
-// SQL query to fetch data
-$query = "SELECT estágios.nome AS estágios_nome, 
+$query = "SELECT estágios.nome AS estágios_nome,
                 presenças.data, presenças.isValidated,
-                MIN(presenças.h_entrada) AS h_entrada, 
-                MAX(presenças.h_saida) AS h_saida, 
+                MIN(presenças.h_entrada) AS h_entrada,
+                MAX(presenças.h_saida) AS h_saida,
                 SUM(presenças.h_pausa) AS h_pausa
           FROM historico
           JOIN estágios ON historico.estágios_id = estágios.id
           JOIN presenças ON presenças.estágios_id = estágios.id
+          JOIN orientação_estagios ON orientação_estagios.estágios_id = estágios.id
+          JOIN orientadores ON orientadores.users_id = orientação_estagios.orientadores_id
           WHERE historico.users_id = $user_id
+          AND (orientadores.users_id = $user_id OR ($user_is_orientador = 1 AND orientação_estagios.orientadores_id = $user_id))
           GROUP BY estágios_nome, presenças.data";
 
 // Fetch data and store in $result variable
 $result = $db->query($query);
-
 ?>
 
-
-<!-- Table for Agendamentos -->
+<!-- Table for Orientacao -->
 <table class="table caption-top">
-<caption>Presenças</caption>
+  <caption>Validar Presenças</caption>
   <thead>
     <tr>
       <th>Estágio</th>
+      <th>Aluno</th>
       <th>Data</th>
       <th>Hora de entrada</th>
       <th>Hora de saída</th>
-      <th>Tempo de pausa(Minutos)</th>
-      <th>Validada por Orientador</th>
+      <th>Tempo de pausa (Minutos)</th>
+      <th>Validada</th>
+      <th>Validar</th>
     </tr>
   </thead>
   <tbody>
     <?php while ($row = $result->fetch()): ?>
       <tr>
-      <td><?= $row['estágios_nome'] ?></td>
-      <td><?= $row['data'] ?></td>
-      <td><?= $row['h_entrada'] ?></td>
-      <td><?= $row['h_saida'] ?></td>
-      <td><?= $row['h_pausa'] ?></td>
-      <td><?= $row['isValidated'] ? 'Sim' : 'Não' ?></td>
+        <td><?= $row['estágios_nome'] ?></td>
+        <td><?= $row['users_id.name'] ?></td>
+        <td><?= $row['data'] ?></td>
+        <td><?= $row['h_entrada'] ?></td>
+        <td><?= $row['h_saida'] ?></td>
+        <td><?= $row['h_pausa'] ?></td>
+        <td><?= $row['isValidated'] ? 'Sim' : 'Não' ?></td>
+        <td>
+          <?php if (!$row['isValidated']): ?>
+            <form action="<?= route('orientacaoestagios.update', ['id' => $row['id']]) ?>" method="POST">
+              <input type="hidden" name="_token" value="<?= csrf_token() ?>">
+              <button type="submit" class="btn btn-primary">Validar</button>
+            </form>
+          <?php endif; ?>
+        </td>
       </tr>
     <?php endwhile; ?>
   </tbody>

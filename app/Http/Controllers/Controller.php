@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
@@ -13,8 +12,7 @@ class Controller extends BaseController
 
     public function index()
 {
-    $users = User::with(['historico.estagio.instituicaoEstagio'])->get();
-    return view('Contactos.index', compact('users'));
+    
 }
 
 
