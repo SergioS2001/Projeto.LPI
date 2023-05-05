@@ -11,6 +11,7 @@ class AgendamentosSeeder extends Seeder
     {
         DB::table('agendamentos')->insert([
             [
+                'users_id' => 1,
                 'nome' =>  'agendamento1',
                 'tipo_agendamento_id' => 1,
                 'data' => '2023-04-01',
@@ -21,6 +22,7 @@ class AgendamentosSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'users_id' => 1,
                 'nome' =>  'agendamento2',
                 'tipo_agendamento_id' => 2,
                 'data' => '2023-04-05',
@@ -31,6 +33,7 @@ class AgendamentosSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'users_id' => 1,
                 'nome' =>  'agendamento3',
                 'tipo_agendamento_id' => 3,
                 'data' => '2023-04-10',

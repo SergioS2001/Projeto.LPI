@@ -16,16 +16,16 @@ class HistóricoSeeder extends Seeder
     public function run()
     {
         Histórico::create([
+            'users_id' => 1,
             'presenças_id' => 1,
-            'agendamentos_id' => 1,
             'estágios_id' => 1,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
 
         Histórico::create([
+            'users_id' => 1,
             'presenças_id' => 2,
-            'agendamentos_id' => 2,
             'estágios_id' => 2,
             'created_at' => now(),
             'updated_at' => now(),

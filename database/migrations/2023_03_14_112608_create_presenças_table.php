@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date('data')->nullable()->min(now());
             $table->float('h_entrada')->nullable()->min(0.0)->max(24.00);
             $table->float('h_saida')->nullable()->min(0.0)->max(24.00);
-            $table->float('h_pausa')->nullable()->min(0.0)->max(24.00);
+            $table->float('h_pausa')->nullable()->max(24.00);
             $table->float('horas_dia')->nullable()->min(0.0)->max(24.00);
             $table->float('horas_mes')->nullable()->min(0.0);
             $table->float('total_horas')->nullable()->min(0.0);

@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('agendamentos', function (Blueprint $table) {
             $table->id()->bigIncrements();
+            $table->foreignId('users_id')->nullable()->references('id')->on('users');
             $table->string('nome')->max(255);
             $table->foreignId('tipo_agendamento_id')->references('id')->on('Tipo_Agendamento')->onDelete('cascade');
             $table->date('data');
