@@ -26,5 +26,11 @@ class EstadoEstágioSeeder extends Seeder
             'waiting' => true,
             'admitido' => false,
         ]);
+        
+        Estado_Estagio::create([
+            'solicitado' => false,
+            'waiting' => false,
+            'admitido' => true,
+        ]);
     }
 }

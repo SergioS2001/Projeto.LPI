@@ -11,15 +11,11 @@ class Histórico extends Model
     protected $table = 'historico';
 
     protected $fillable = [
-        'agendamentos_id',
+        'users_id',
         'estágios_id',
         'presenças_id',
     ];
 
-    public function agendamentos()
-    {
-        return $this->belongsTo(Agendamentos::class, 'agendamentos_id');
-    }
 
     public function estagio()
     {
@@ -30,4 +26,10 @@ class Histórico extends Model
     {
         return $this->belongsTo(Presenças::class, 'presenças_id');
     }
+
+    public function user()
+{
+    return $this->belongsTo(User::class, 'users_id');
+}
+
 }

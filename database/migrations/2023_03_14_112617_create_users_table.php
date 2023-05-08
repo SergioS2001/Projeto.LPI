@@ -31,7 +31,6 @@ return new class extends Migration
             $table->boolean('isOrientador')->default(false);
             $table->boolean('isAdmin')->default(false);
             $table->foreignId('cacifo_estagio_id')->nullable()->references('id')->on('Cacifo_Estagio')->onDelete('cascade');
-            $table->foreignId('historico_id')->nullable()->references('id')->on('historico');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -6,7 +6,9 @@ use App\Models\Histórico;
 use App\Http\Controllers\Controller;
 use App\Models\Presenças;
 use App\Models\Estágios;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PresençasController extends Controller
 {
@@ -33,32 +35,41 @@ class PresençasController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'estagio_id' => 'required',
+            'estagio' => 'required',
             'data' => 'required|date',
-            'h_entrada' => 'required|numeric|min:1|max:24',
-            'h_saida' => 'required|numeric|min:1|max:24',
-            'h_pausa' => 'required|numeric|min:1|max:5',
+            'h_entrada' => 'required|date_format:H:i',
+            'h_saida' => 'required|date_format:H:i',
+            'tempo_pausa' => 'required|integer|min:0',            
         ]);
     
-        $estagio = Estágios::findOrFail($validatedData['estagio_id']);
+        $user = Auth::user();
     
-        $presenca = $estagio->presenças()->where('data', $validatedData['data'])->first();
+        // Find the selected estágio
+        $estagio = Estágios::findOrFail($validatedData['estagio']);
     
-        if (!$presenca) {
-            $presenca = new Presenças();
-            $presenca->data = $validatedData['data'];
-        }
+        // Check if the presença already exists for the given date and estágio
+    $existingPresenca = Presenças::where([
+        'data' => $validatedData['data'],
+        'estágios_id' => $estagio->id,
+    ])->first();
+
+    if ($existingPresenca) {
+        return redirect()->back()->with('error', 'Presença já existe para esta data e estágio!')->withInput();
+    }
     
+        // Create a new presença record for this date and estágio
+        $presenca = new Presenças();
+        $presenca->users_id = $user->id;
+        $presenca->data = $validatedData['data'];
         $presenca->h_entrada = $validatedData['h_entrada'];
         $presenca->h_saida = $validatedData['h_saida'];
-        $presenca->h_pausa = $validatedData['h_pausa'];
-    
-        $estagio->presenças()->save($presenca);
+        $presenca->tempo_pausa = $validatedData['tempo_pausa'];
+        $presenca->estágios_id = $estagio->id;
+        $presenca->save();
     
         return redirect()->back()->with('success', 'Presença salva com sucesso!');
     }
     
-
 
     /**
      * Display the specified resource.

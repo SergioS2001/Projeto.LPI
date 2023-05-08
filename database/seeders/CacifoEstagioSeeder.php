@@ -1,30 +1,26 @@
 <?php
 
 namespace Database\Seeders;
-
-use App\Models\Histórico;
 use Illuminate\Database\Seeder;
+use App\Models\Cacifo_Estagio;
 use Illuminate\Support\Facades\DB;
 
-class HistóricoSeeder extends Seeder
+class CacifoEstagioSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
-        Histórico::create([
-            'users_id' => 1,
+        Cacifo_Estagio::create([
             'estágios_id' => 1,
+            'cacifos_id' => 1,
+            'fardamento' => false,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
 
-        Histórico::create([
-            'users_id' => 1,
+        Cacifo_Estagio::create([
             'estágios_id' => 2,
+            'cacifos_id' => 2,
+            'fardamento' => false,
             'created_at' => now(),
             'updated_at' => now(),
         ]);

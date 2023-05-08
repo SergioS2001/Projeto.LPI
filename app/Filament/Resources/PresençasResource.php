@@ -31,11 +31,6 @@ class PresençasResource extends Resource
         return $form
         ->schema([
             Card::make()->schema([
-                Select::make('estágios.nome')
-                ->label('Estágio')
-                ->options(Estágios::all()->pluck('presenças_id', 'id'))
-                ->required()
-                ->searchable(),
                 DatePicker::make('data')
                 ->label("Data")
                 ->minDate(now())
@@ -52,7 +47,7 @@ class PresençasResource extends Resource
                 ->numeric()
                 ->minValue(1)
                 ->maxValue(24),
-                TextInput::make('h_pausa')
+                TextInput::make('tempo_pausa')
                 ->required()
                 ->label('Tempo de pausa')
                 ->numeric()
@@ -66,17 +61,13 @@ class PresençasResource extends Resource
     {
         return $table
             ->columns([
-                //TextColumn::make('user.name')->sortable()->searchable()->limit(12)->label('Aluno'),
                 TextColumn::make('estagio.nome')->sortable()->searchable()->limit(12)->label('Estágio'),
-                //TextColumn::make('')->sortable()->searchable()->limit(12)->label('Orientador'),
+                TextColumn::make('users.name')->sortable()->searchable()->limit(12)->label('Aluno'),
                 TextColumn::make('data')->date()->sortable()->searchable(),
                 TextColumn::make('h_entrada')->sortable()->label('Entrada(h)'),
-                TextColumn::make('h_pausa')->sortable()->label('Tempo Pausa'),
+                TextColumn::make('tempo_pausa')->sortable()->label('Pausa(min)'),
                 TextColumn::make('h_saida')->sortable()->label('Saída(h)'),
                 IconColumn::make('isValidated')->sortable()->searchable()->label('Presença Validada')->boolean(),
-                //TextColumn::make('horas_mes')->sortable()->label('Horas Mês'),
-                //TextColumn::make('total_horas')->sortable()->label('Total Horas'),
-                TextColumn::make('count_presenças')->sortable()->label('Número Presenças'),
             ])
             ->filters([
                 //

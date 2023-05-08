@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AgendamentosController;
 use App\Http\Controllers\Auth\GoogleController;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ContactosController;
 use App\Http\Controllers\EstágiosController;
 use App\Http\Controllers\PresençasController;
 use App\Http\Controllers\HistóricoController;
@@ -10,8 +10,11 @@ use App\Http\Controllers\OrientacaoEstagiosController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CalendarController;
+<<<<<<< HEAD
 use App\Http\Controllers\PDFController;
 use App\Models\Histórico;
+=======
+>>>>>>> 79e1857973404d8805b2c72957e5618b290be98d
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -54,14 +57,17 @@ Route::resource('agendamentos', AgendamentosController::class);
 Route::resource('presenças', PresençasController::class);
 Route::resource('orientação', OrientacaoEstagiosController::class);
 Route::resource('histórico', HistóricoController::class);
-Route::resource('contactos', Controller::class);
+Route::resource('contactos', ContactosController::class);
 
-Route::post('/estagios', [EstágiosController::class, 'store'])->name('estagios.store');
+//Route::post('/estagios', [EstágiosController::class, 'store'])->name('estagios.store');
 
 require __DIR__.'/auth.php';
 
 Route::get('calendar', [CalendarController::class, 'show']);
 Route::post('calendar/action', [CalendarController::class, 'action']);
+<<<<<<< HEAD
 
 Route::get('generate-pdf/{name}', [PDFController::class, 'generatePDF']);
 
+=======
+>>>>>>> 79e1857973404d8805b2c72957e5618b290be98d

@@ -10,6 +10,7 @@ class Agendamentos extends Model
     use HasFactory;
 
     protected $fillable = [
+        'users_id',
         'nome',
         'tipo_agendamento_id',
         'data',
@@ -26,6 +27,11 @@ class Agendamentos extends Model
 public function historico()
 {
     return $this->hasMany(Histórico::class, 'agendamentos_id');
+}
+
+public function users()
+{
+    return $this->belongsTo(User::class, 'users_id');
 }
 
 }

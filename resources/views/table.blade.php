@@ -16,34 +16,166 @@ $options = [
 
 
 try {
-    $db = new PDO($dsn, $user, $password, $options);
+  //$db = new PDO($dsn, $user, $password, $options);
+  $db = new PDO('mysql:host=localhost;dbname=lpi','root','root');
+
 } catch (PDOException $e) {
-    throw new PDOException($e->getMessage(), (int)$e->getCode());
+  throw new PDOException($e->getMessage(), (int)$e->getCode());
 }
 
 // Get authenticated user's ID
 $user_id = Auth::id();
 
 // SQL query to fetch data
-$query = "SELECT historico.id, agendamentos.data AS agendamentos_data,agendamentos.nome AS agendamentos_nome,agendamentos.hora AS agendamentos_hora, agendamentos.descrição AS agendamentos_descrição,agendamentos.duração AS agendamentos_duração, estágios.nome AS estágios_nome, tipo_agendamento.nome_evento AS tipo_agendamento_nome_evento, instituicao_estagio.nome AS instituicao_estagio_nome, curso_estagio.curso AS curso_estagio_curso, unidade_curricular.nome AS unidade_curricular_nome, estágios.data_inicial AS estágios_data_inicial, estágios.data_final AS estágios_data_final, serviços.titulo AS serviços_titulo, tipologia_estagio.titulo AS tipologia_estagio_titulo, estágios.ano_curricular AS estágios_ano_curricular
+$query1 ="SELECT DISTINCT
+estágios.id,
+estágios.nome AS estágios_nome,
+instituicao_estagio.nome AS instituicao_estagio_nome,
+curso_estagio.curso AS curso_estagio_curso,
+unidade_curricular.nome AS unidade_curricular_nome,
+estágios.data_inicial AS estágios_data_inicial,
+estágios.data_final AS estágios_data_final,
+serviços.titulo AS serviços_titulo,
+tipologia_estagio.titulo AS tipologia_estagio_titulo,
+estágios.ano_curricular AS estágios_ano_curricular,
+users.name AS orientador_nome
 FROM historico
-JOIN agendamentos ON historico.agendamentos_id = agendamentos.id
 JOIN estágios ON historico.estágios_id = estágios.id
-JOIN tipo_agendamento ON agendamentos.tipo_agendamento_id = tipo_agendamento.id
 JOIN instituicao_estagio ON estágios.instituição_estagio_id = instituicao_estagio.id
 JOIN curso_estagio ON estágios.curso_estagio_id = curso_estagio.id
 JOIN unidade_curricular ON estágios.unidade_curricular_id = unidade_curricular.id
 JOIN serviços ON estágios.serviços_id = serviços.id
 JOIN tipologia_estagio ON estágios.tipologia_estagio_id = tipologia_estagio.id
-WHERE users_id = $user_id";
+JOIN orientação_estagios ON historico.estágios_id = orientação_estagios.estágios_id
+JOIN orientadores ON orientação_estagios.orientadores_id = orientadores.id
+JOIN users ON orientadores.users_id = users.id
+WHERE historico.users_id = $user_id";
 
+$query2 = "SELECT agendamentos.data AS agendamentos_data,agendamentos.nome AS agendamentos_nome,tipo_agendamento.nome_evento AS tipo_agendamento_nome_evento,agendamentos.hora AS agendamentos_hora, agendamentos.descrição AS agendamentos_descrição,agendamentos.duração AS agendamentos_duração
+FROM agendamentos
+JOIN tipo_agendamento ON agendamentos.tipo_agendamento_id = tipo_agendamento.id
+WHERE agendamentos.users_id=$user_id";
+
+$query3 = "SELECT 
+users.name AS orientador_nome,
+estágios.nome AS estágios_nome,
+avaliações.nota AS avaliações_nota,
+avaliações.isDone AS avaliações_isDone
+FROM avaliações
+JOIN estágios ON avaliações.estágios_id = estágios.id
+JOIN orientação_estagios ON avaliações.estágios_id = orientação_estagios.estágios_id
+JOIN orientadores ON orientação_estagios.orientadores_id = orientadores.id
+JOIN users ON orientadores.users_id = users.id
+WHERE avaliações.users_id = $user_id";
+
+$query4 = "SELECT estágios.nome as estágios_nome, cacifos.numero as cacifo_nome, cauções.isPago as cauções_isPago, cauções.isDevolvido as cauções_isDevolvido
+FROM estágios
+JOIN cacifo_estagio ON cacifo_estagio.estágios_id = estágios.id
+JOIN cacifos ON cacifo_estagio.cacifos_id = cacifos.id
+JOIN cauções ON cacifos.cauções_id = cauções.id
+JOIN users on users.cacifo_estagio_id = cacifo_estagio.id";
 
 // Fetch data and store in $result variable
-$result = $db->query($query);
-
+$result1 = $db->query($query1);
+$result2 = $db->query($query2);
+$result3 = $db->query($query3);
+$result4 = $db->query($query4);
 ?>
 
+<?php if ($result1->rowCount() > 0): ?>
+<!-- Table for Estagios -->
+<table class="table caption-top">
+  <caption>Estágios</caption>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Orientador</th>
+      <th>Instituição</th>
+      <th>Curso</th>
+      <th>Unidade Curricular</th>
+      <th>Ano Curricular</th>
+      <th>Serviços</th>
+      <th>Tipologia</th>
+      <th>Data inicial</th>
+      <th>Data final</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php while ($row = $result1->fetch()): ?>
+      <tr>
+        <td><?= $row['estágios_nome'] ?></td>
+        <td><?= $row['orientador_nome'] ?></td>
+        <td><?= $row['instituicao_estagio_nome'] ?></td>
+        <td><?= $row['curso_estagio_curso'] ?></td>
+        <td><?= $row['unidade_curricular_nome'] ?></td>
+        <td><?= $row['estágios_ano_curricular'] ?></td>
+        <td><?= $row['serviços_titulo'] ?></td>
+        <td><?= $row['tipologia_estagio_titulo'] ?></td>
+        <td><?= $row['estágios_data_inicial'] ?></td>
+        <td><?= $row['estágios_data_final'] ?></td>
+      </tr>
+    <?php endwhile ?>
+  </tbody>
+</table>
+<?php else: ?>
+<?php endif; ?>
 
+<br><br>
+<!-- Table for Avaliações -->
+<?php if ($result3->rowCount() > 0): ?>
+<table class="table caption-top">
+  <caption>Avaliações</caption>
+  <thead>
+    <tr>
+      <th>Estágio</th>
+      <th>Orientador</th>
+      <th>Nota</th>
+      <th>Concluído</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php while ($row = $result3->fetch()): ?>
+      <tr>
+        <td><?= $row['estágios_nome'] ?></td>
+        <td><?= $row['orientador_nome'] ?></td>
+        <td><?= $row['avaliações_nota'] ?></td>
+        <td><?= $row['avaliações_isDone'] ? 'Sim' : 'Não' ?></td>
+      </tr>
+    <?php endwhile; ?>
+  </tbody>
+</table>
+<?php else: ?>
+<?php endif; ?>
+
+<br><br><br>
+<!-- Table for Cacifos -->
+<?php if ($result4->rowCount() > 0): ?>
+<table class="table caption-top">
+  <caption>Cacifos</caption>
+  <thead>
+    <tr>
+      <th>Estágio</th>
+      <th>Cacifo</th>
+      <th>Pagamento Caução</th>
+      <th>Reembolso Caução</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php while ($row = $result4->fetch()): ?>
+      <tr>
+      <td><?= $row['estágios_nome'] ?></td>
+      <td><?= $row['cacifo_nome'] ?></td>
+      <td><?= $row['cauções_isPago'] ? 'Sim' : 'Não' ?></td>
+      <td><?= $row['cauções_isDevolvido'] ? 'Sim' : 'Não' ?></td>
+      </tr>
+    <?php endwhile; ?>
+  </tbody>
+</table>
+<?php else: ?>
+<?php endif; ?>
+
+<br><br><br>
+<?php if ($result2->rowCount() > 0): ?>
 <!-- Table for Agendamentos -->
 <table class="table caption-top">
 <caption>Agendamentos</caption>
@@ -58,7 +190,7 @@ $result = $db->query($query);
     </tr>
   </thead>
   <tbody>
-    <?php while ($row = $result->fetch()): ?>
+    <?php while ($row = $result2->fetch()): ?>
       <tr>
       <td><?= $row['agendamentos_nome'] ?></td>
       <td><?= $row['agendamentos_data'] ?></td>
@@ -70,42 +202,9 @@ $result = $db->query($query);
     <?php endwhile; ?>
   </tbody>
 </table>
+<?php else: ?>
+<?php endif; ?>
 
-<br><br>
-<!-- Table for Estagios -->
-<table class="table caption-top">
-<caption>Estágios</caption>
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Instituição</th>
-      <th>Curso</th>
-      <th>Unidade Curricular</th>
-      <th>Ano Curricular</th>
-      <th>Serviços</th>
-      <th>Tipologia</th>
-      <th>Data inicial</th>
-      <th>Data final</th>
-
-    </tr>
-  </thead>
-  <tbody>
-    <?php $result->execute(); // reset the result pointer ?>
-    <?php while ($row = $result->fetch()): ?>
-      <tr>
-        <td><?= $row['estágios_nome'] ?></td>
-        <td><?= $row['instituicao_estagio_nome'] ?></td>
-        <td><?= $row['curso_estagio_curso'] ?></td>
-        <td><?= $row['unidade_curricular_nome'] ?></td>
-        <td><?= $row['estágios_ano_curricular'] ?></td>
-        <td><?= $row['serviços_titulo'] ?></td>
-        <td><?= $row['tipologia_estagio_titulo'] ?></td>
-        <td><?= $row['estágios_data_inicial'] ?></td>
-        <td><?= $row['estágios_data_final'] ?></td>
-      </tr>
-    <?php endwhile; ?>
-  </tbody>
-</table>
 
 <!-- Add this CSS to your stylesheet or HTML -->
 <style>

@@ -14,7 +14,7 @@ class Estágios extends Model
         'nome',
         'data_inicial',
         'data_final',
-        'instituicao_estagio_id',
+        'instituição_estagio_id',
         'curso_estagio_id',
         'unidade_curricular_id',
         'serviços_id',
@@ -29,14 +29,14 @@ class Estágios extends Model
         return $this->belongsTo(Serviços::class, 'serviços_id');
     }
 
-    public function tipologia()
+    public function tipologia_estagio()
     {
         return $this->belongsTo(Tipologia_Estágio::class, 'tipologia_estagio_id');
     }
 
     public function avaliacao()
     {
-        return $this->belongsTo(Avaliações::class, 'avaliacao_id');
+        return $this->hasMany(Avaliações::class);
     }
 
     public function cacifos()
@@ -86,6 +86,6 @@ class Estágios extends Model
 
     public function presenças()
     {
-       return $this->belongsTo(Presenças::class);
+       return $this->hasMany(Presenças::class);
     }
 }
