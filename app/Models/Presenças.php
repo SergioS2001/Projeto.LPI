@@ -10,10 +10,12 @@ class Presenças extends Model
     use HasFactory;
 
     protected $fillable = [
+        'users_id',
         'estágios_id',
         'data',
         'h_entrada',
         'h_saida',
+        'tempo_pausa',
         'horas_dia',
         'horas_mes',
         'count_presenças',

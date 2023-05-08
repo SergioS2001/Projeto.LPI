@@ -1,6 +1,10 @@
 @php
     use App\Models\Estágios;
+    use App\Models\Histórico;
+    $user = Auth::user();
 @endphp
+<!-- Include the form-validation.js file -->
+<script src="{{ asset('resources/js/form-validation.js') }}"></script>
 
 <form class="my-form" action="{{ route('presenças.store') }}" method="POST">
     @csrf
@@ -13,32 +17,33 @@
             </ul>
         </div>
     @endif
-
     <label for="estagio">Estágio:</label>
     <select name="estagio" id="estagio">
-        @foreach(Estágios::all()->pluck('nome', 'id') as $id => $nome)
-            <option value="{{ $id }}">{{ $nome }}</option>
-        @endforeach
-    </select>
+    @foreach(Estágios::whereIn('id', function($query) {
+        $query->select('estágios_id')->from('historico')->where('users_id', Auth::id());
+    })->get() as $estagio)
+        <option value="{{ $estagio->id }}">{{ $estagio->nome }}</option>
+    @endforeach
+</select>
     <br>
-
+    <div class="form-group">
     <label for="data">Data:</label>
-    <input class="form-control" type="date" name="data" id="data" min="{{ now()->format('Y-m-d') }}" required>
+    <input class="form-control" type="date" name="data" id="data" min="{{ now()->format('Y-m-d') }}" required value="{{ old('data') }}">
+    @if ($errors->has('data'))
+        <div class="alert alert-danger">{{ $errors->first('data') }}</div>
+    @endif
+    </div>
     <br>
-
     <label for="h_entrada">Hora entrada:</label>
-    <input class="form-control" type="text" name="h_entrada" id="h_entrada" required>
+    <input class="form-control" type="time" name="h_entrada" id="h_entrada" required>
     <br>
-
     <label for="h_saida">Hora saída:</label>
-    <input class="form-control" type="text" name="h_saida" id="h_saida" required>
+    <input class="form-control" type="time" name="h_saida" id="h_saida" required>
     <br>
-
-    <label for="h_pausa">Tempo de pausa:</label>
-    <input class="form-control" type="text" name="h_pausa" id="h_pausa" required>
+    <label for="h_pausa">Tempo de pausa (minutos):</label>
+    <input class="form-control" type="number" name="tempo_pausa" id="tempo_pausa" required min="0" step="1">
     <br>
-
-    <button class="btn btn-primary" type="submit">Salvar</button>
+    <button class="btn btn-primary" type="submit">Add</button>
 </form>
 
 <style>

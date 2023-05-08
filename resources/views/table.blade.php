@@ -106,6 +106,7 @@ $result3 = $db->query($query3);
 <?php endif; ?>
 
 <br><br><br><br>
+<?php if ($result1->rowCount() > 0): ?>
 <!-- Table for Estagios -->
 <table class="table caption-top">
   <caption>Estágios</caption>
@@ -140,9 +141,12 @@ $result3 = $db->query($query3);
     <?php endwhile ?>
   </tbody>
 </table>
+<?php else: ?>
+<?php endif; ?>
 
 <br><br>
 <!-- Table for Avaliações -->
+<?php if ($result3->rowCount() > 0): ?>
 <table class="table caption-top">
   <caption>Avaliações</caption>
   <thead>
@@ -164,7 +168,8 @@ $result3 = $db->query($query3);
     <?php endwhile; ?>
   </tbody>
 </table>
-
+<?php else: ?>
+<?php endif; ?>
 
 <!-- Add this CSS to your stylesheet or HTML -->
 <style>

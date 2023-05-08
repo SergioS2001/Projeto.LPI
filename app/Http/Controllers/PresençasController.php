@@ -37,9 +37,9 @@ class PresençasController extends Controller
         $validatedData = $request->validate([
             'estagio' => 'required',
             'data' => 'required|date',
-            'h_entrada' => 'required|numeric|min:1|max:24',
-            'h_saida' => 'required|numeric|min:1|max:24',
-            'h_pausa' => 'required|numeric|min:1|max:5',
+            'h_entrada' => 'required|date_format:H:i',
+            'h_saida' => 'required|date_format:H:i',
+            'tempo_pausa' => 'required|integer|min:0',            
         ]);
     
         $user = Auth::user();
@@ -54,24 +54,18 @@ class PresençasController extends Controller
     ])->first();
 
     if ($existingPresenca) {
-        return redirect()->back()->with('error', 'Presença já existe para esta data e estágio!');
+        return redirect()->back()->with('error', 'Presença já existe para esta data e estágio!')->withInput();
     }
     
         // Create a new presença record for this date and estágio
         $presenca = new Presenças();
+        $presenca->users_id = $user->id;
         $presenca->data = $validatedData['data'];
         $presenca->h_entrada = $validatedData['h_entrada'];
         $presenca->h_saida = $validatedData['h_saida'];
-        $presenca->h_pausa = $validatedData['h_pausa'];
+        $presenca->tempo_pausa = $validatedData['tempo_pausa'];
         $presenca->estágios_id = $estagio->id;
         $presenca->save();
-    
-        // Create a new historico record for this presença and user
-        $historico = new Histórico();
-        $historico->presenças_id = $presenca->id;
-        $historico->estágios_id = $estagio->id;
-        $historico->users_id = $user->id;
-        $historico->save();
     
         return redirect()->back()->with('success', 'Presença salva com sucesso!');
     }

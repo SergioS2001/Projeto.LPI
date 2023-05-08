@@ -16,12 +16,12 @@ return new class extends Migration
             $table->foreignId('users_id')->nullable()->references('id')->on('users');
             $table->foreignId('estágios_id')->nullable()->references('id')->on('Estágios')->onDelete('cascade');
             $table->date('data')->nullable()->min(now());
-            $table->float('h_entrada')->nullable()->min(0.0)->max(24.00);
-            $table->float('h_saida')->nullable()->min(0.0)->max(24.00);
-            $table->float('h_pausa')->nullable()->max(24.00);
-            $table->float('horas_dia')->nullable()->min(0.0)->max(24.00);
-            $table->float('horas_mes')->nullable()->min(0.0);
-            $table->float('total_horas')->nullable()->min(0.0);
+            $table->time('h_entrada')->nullable();
+            $table->time('h_saida')->nullable();
+            $table->integer('tempo_pausa')->nullable();
+            $table->time('horas_dia')->nullable();
+            $table->time('horas_mes')->nullable();
+            $table->time('total_horas')->nullable();
             $table->integer('count_presenças')->nullable()->default(0);
             $table->boolean('isValidated')->nullable()->default(false);
             $table->timestamps();

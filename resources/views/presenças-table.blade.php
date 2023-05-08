@@ -31,7 +31,7 @@ $query = "SELECT estágios.nome AS estágios_nome,
                 presenças.data, presenças.isValidated,
                 MIN(presenças.h_entrada) AS h_entrada, 
                 MAX(presenças.h_saida) AS h_saida, 
-                SUM(presenças.h_pausa) AS h_pausa
+                SUM(presenças.tempo_pausa) AS tempo_pausa
           FROM historico
           JOIN estágios ON historico.estágios_id = estágios.id
           JOIN presenças ON presenças.estágios_id = estágios.id
@@ -53,7 +53,7 @@ $result = $db->query($query);
       <th>Data</th>
       <th>Hora de entrada</th>
       <th>Hora de saída</th>
-      <th>Tempo de pausa(Minutos)</th>
+      <th>Pausa(Minutos)</th>
       <th>Validada por Orientador</th>
     </tr>
   </thead>
@@ -64,7 +64,7 @@ $result = $db->query($query);
       <td><?= $row['data'] ?></td>
       <td><?= $row['h_entrada'] ?></td>
       <td><?= $row['h_saida'] ?></td>
-      <td><?= $row['h_pausa'] ?></td>
+      <td><?= $row['tempo_pausa'] ?></td>
       <td><?= $row['isValidated'] ? 'Sim' : 'Não' ?></td>
       </tr>
     <?php endwhile; ?>
