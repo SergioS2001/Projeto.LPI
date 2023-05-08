@@ -68,44 +68,19 @@ JOIN orientadores ON orientação_estagios.orientadores_id = orientadores.id
 JOIN users ON orientadores.users_id = users.id
 WHERE avaliações.users_id = $user_id";
 
+$query4 = "SELECT estágios.nome as estágios_nome, cacifos.numero as cacifo_nome, cauções.isPago as cauções_isPago, cauções.isDevolvido as cauções_isDevolvido
+FROM estágios
+JOIN cacifo_estagio ON cacifo_estagio.estágios_id = estágios.id
+JOIN cacifos ON cacifo_estagio.cacifos_id = cacifos.id
+JOIN cauções ON cacifos.cauções_id = cauções.id";
+
 // Fetch data and store in $result variable
 $result1 = $db->query($query1);
 $result2 = $db->query($query2);
 $result3 = $db->query($query3);
+$result4 = $db->query($query4);
 ?>
 
-<?php if ($result2->rowCount() > 0): ?>
-<!-- Table for Agendamentos -->
-<table class="table caption-top">
-<caption>Agendamentos</caption>
-  <thead>
-    <tr>
-    <th>Nome</th>
-    <th>Data</th>
-    <th>Hora</th>
-    <th>Tipo</th>
-    <th>Descrição</th>
-    <th>Duração(minutos)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php while ($row = $result2->fetch()): ?>
-      <tr>
-      <td><?= $row['agendamentos_nome'] ?></td>
-      <td><?= $row['agendamentos_data'] ?></td>
-      <td><?= number_format($row['agendamentos_hora'], 2) ?></td>
-      <td><?= $row['tipo_agendamento_nome_evento'] ?></td>
-      <td><?= $row['agendamentos_descrição'] ?></td>
-      <td><?= $row['agendamentos_duração'] ?></td>
-      </tr>
-    <?php endwhile; ?>
-  </tbody>
-</table>
-<?php else: ?>
-  <p>No data to display.</p>
-<?php endif; ?>
-
-<br><br><br><br>
 <?php if ($result1->rowCount() > 0): ?>
 <!-- Table for Estagios -->
 <table class="table caption-top">
@@ -170,6 +145,65 @@ $result3 = $db->query($query3);
 </table>
 <?php else: ?>
 <?php endif; ?>
+
+<br><br><br>
+<!-- Table for Cacifos -->
+<?php if ($result4->rowCount() > 0): ?>
+<table class="table caption-top">
+  <caption>Cacifos</caption>
+  <thead>
+    <tr>
+      <th>Estágio</th>
+      <th>Cacifo</th>
+      <th>Pagamento Caução</th>
+      <th>Reembolso Caução</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php while ($row = $result4->fetch()): ?>
+      <tr>
+      <td><?= $row['estágios_nome'] ?></td>
+      <td><?= $row['cacifo_nome'] ?></td>
+      <td><?= $row['cauções_isPago'] ? 'Sim' : 'Não' ?></td>
+      <td><?= $row['cauções_isDevolvido'] ? 'Sim' : 'Não' ?></td>
+      </tr>
+    <?php endwhile; ?>
+  </tbody>
+</table>
+<?php else: ?>
+<?php endif; ?>
+
+<br><br><br>
+<?php if ($result2->rowCount() > 0): ?>
+<!-- Table for Agendamentos -->
+<table class="table caption-top">
+<caption>Agendamentos</caption>
+  <thead>
+    <tr>
+    <th>Nome</th>
+    <th>Data</th>
+    <th>Hora</th>
+    <th>Tipo</th>
+    <th>Descrição</th>
+    <th>Duração(minutos)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php while ($row = $result2->fetch()): ?>
+      <tr>
+      <td><?= $row['agendamentos_nome'] ?></td>
+      <td><?= $row['agendamentos_data'] ?></td>
+      <td><?= number_format($row['agendamentos_hora'], 2) ?></td>
+      <td><?= $row['tipo_agendamento_nome_evento'] ?></td>
+      <td><?= $row['agendamentos_descrição'] ?></td>
+      <td><?= $row['agendamentos_duração'] ?></td>
+      </tr>
+    <?php endwhile; ?>
+  </tbody>
+</table>
+<?php else: ?>
+<?php endif; ?>
+
 
 <!-- Add this CSS to your stylesheet or HTML -->
 <style>

@@ -36,5 +36,6 @@ class DatabaseSeeder extends Seeder
          $this->call(HistóricoSeeder::class);
          $this->call(OrientadoresSeeder::class);
          $this->call(Orientacao_Estagios::class);
+         $this->call(CacifoEstagioSeeder::class);
     }
 }

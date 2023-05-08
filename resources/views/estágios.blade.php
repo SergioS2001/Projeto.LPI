@@ -68,6 +68,7 @@ $result1 = $db->query($query);
       <th>Tipologia</th>
       <th>Data inicial</th>
       <th>Data final</th>
+      <th>Inscrever</th>
     </tr>
   </thead>
   <tbody>
@@ -84,6 +85,7 @@ $result1 = $db->query($query);
         <td><?= $row['tipologia_estagio_titulo'] ?></td>
         <td><?= $row['estágios_data_inicial'] ?></td>
         <td><?= $row['estágios_data_final'] ?></td>
+        <td><button>click</button></td>
       </tr>
     <?php endwhile; ?>
   </tbody>
@@ -117,4 +119,19 @@ $result1 = $db->query($query);
     font-weight: bold;
     margin-bottom: 1em;
   }
+
+  button {
+  background-color: grey;
+  border: black;
+  color: white;
+  padding: 12px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
 </style>

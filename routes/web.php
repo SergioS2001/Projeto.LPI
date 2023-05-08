@@ -54,7 +54,7 @@ Route::resource('orientação', OrientacaoEstagiosController::class);
 Route::resource('histórico', HistóricoController::class);
 Route::resource('contactos', ContactosController::class);
 
-Route::post('/estagios', [EstágiosController::class, 'store'])->name('estagios.store');
+//Route::post('/estagios', [EstágiosController::class, 'store'])->name('estagios.store');
 
 require __DIR__.'/auth.php';
 
