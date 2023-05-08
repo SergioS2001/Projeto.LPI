@@ -72,7 +72,8 @@ $query4 = "SELECT estágios.nome as estágios_nome, cacifos.numero as cacifo_nom
 FROM estágios
 JOIN cacifo_estagio ON cacifo_estagio.estágios_id = estágios.id
 JOIN cacifos ON cacifo_estagio.cacifos_id = cacifos.id
-JOIN cauções ON cacifos.cauções_id = cauções.id";
+JOIN cauções ON cacifos.cauções_id = cauções.id
+JOIN users on users.cacifo_estagio_id = cacifo_estagio.id";
 
 // Fetch data and store in $result variable
 $result1 = $db->query($query1);

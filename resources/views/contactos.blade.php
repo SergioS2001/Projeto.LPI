@@ -47,32 +47,9 @@ $result1 = $db->query($query1);
 $result2 = $db->query($query2);
 ?>
 
-<!-- Table for Responsáveis -->
+<br>
+<!-- Table for Orientadores -->
 <table class="table caption-top">
-<caption>Responsáveis</caption>
-          <thead>
-            <tr>
-              <th>Nome</th>
-              <th>Instituição</th>
-              <th>Email</th>
-              <th>Contacto</th>
-            </tr>
-          </thead>
-          <tbody>
-    <?php while ($row = $result1->fetch()): ?>
-      <tr>
-        <td><?= $row['name'] ?></td>
-        <td><?= $row['nome_instituicao'] ?></td>
-        <td><?= $row['email'] ?></td>
-        <td><?= $row['telemóvel'] ?></td>
-      </tr>
-    <?php endwhile ?>
-  </tbody>
-        </table>
-
-        <br><br><br>
-        <!-- Table for Orientadores -->
-        <table class="table caption-top">
 <caption>Orientadores</caption>
           <thead>
             <tr>

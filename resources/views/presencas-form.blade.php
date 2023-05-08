@@ -43,7 +43,7 @@
     <label for="h_pausa">Tempo de pausa (minutos):</label>
     <input class="form-control" type="number" name="tempo_pausa" id="tempo_pausa" required min="0" step="1">
     <br>
-    <button class="btn btn-primary" type="submit">Add</button>
+    <button class="btn btn-primary" type="submit">Create</button>
 </form>
 
 <style>
