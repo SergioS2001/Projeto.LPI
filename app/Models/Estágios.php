@@ -29,7 +29,7 @@ class Estágios extends Model
         return $this->belongsTo(Serviços::class, 'serviços_id');
     }
 
-    public function tipologia()
+    public function tipologia_estagio()
     {
         return $this->belongsTo(Tipologia_Estágio::class, 'tipologia_estagio_id');
     }

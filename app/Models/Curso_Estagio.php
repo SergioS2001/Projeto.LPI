@@ -16,7 +16,7 @@ class Curso_Estagio extends Model
         'ects',
     ];
 
-    public function estagio()
+    public function estágios()
     {
         return $this->hasMany(Estágios::class);
     }

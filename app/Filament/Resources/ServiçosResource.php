@@ -43,7 +43,7 @@ class ServiçosResource extends Resource
                 TextColumn::make('id')->sortable()->searchable()->label('id'),
                 TextColumn::make('titulo')->sortable()->searchable()->limit(25)->label('Serviço'),
                 TextColumn::make('nome_responsavel')->sortable()->searchable()->label('Responsável'),
-                TextColumn::make('estágios.nome')->sortable()->searchable()->limit(12)->label('Estágio'),
+                //TextColumn::make('estágios.nome')->sortable()->searchable()->limit(12)->label('Estágio'),
                 ])
             ->filters([
                 //

@@ -27,5 +27,8 @@ class Presenças extends Model
         return $this->belongsTo(Estágios::class, 'estágios_id');
     }
 
-
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'users_id');
+    }
 }

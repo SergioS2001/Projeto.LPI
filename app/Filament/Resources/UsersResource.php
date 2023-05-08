@@ -65,7 +65,7 @@ class UsersResource extends Resource
                 TextColumn::make('cartão_cidadão')->sortable()->searchable()->limit(8)->label('CC'),
                 TextColumn::make('morada')->sortable()->searchable()->limit(25)->label("Morada"),
                 TextColumn::make('email_alternativo')->sortable()->searchable()->limit(15)->label("Email alternativo"),
-                TextColumn::make('cacifo.estagio')->sortable()->searchable()->limit(15)->label("Cacifo Atribuido"),
+                TextColumn::make('cacifo_estagio.cacifos.numero')->sortable()->searchable()->limit(15)->label("Cacifo Atribuido"),
             ])
             ->filters([
                 //

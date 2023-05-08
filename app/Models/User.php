@@ -76,6 +76,10 @@ public function agendamentos()
     return $this->hasMany(Agendamentos::class);
 }
 
+public function presenças()
+{
+    return $this->hasMany(Presenças::class);
+}
 public function avaliações()
 {
     return $this->hasMany(Avaliações::class);

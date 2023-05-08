@@ -18,4 +18,9 @@ class Orientadores extends Model
     return $this->belongsTo(User::class, 'users_id');
 }
 
+public function orientacao_estagios()
+{
+    return $this->hasMany(Orientação_Estagios::class);
+}
+
 }
