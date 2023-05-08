@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('presenças', function (Blueprint $table) {
             $table->id()->bigIncrements();
+            $table->foreignId('users_id')->nullable()->references('id')->on('users');
             $table->foreignId('estágios_id')->nullable()->references('id')->on('Estágios')->onDelete('cascade');
             $table->date('data')->nullable()->min(now());
             $table->float('h_entrada')->nullable()->min(0.0)->max(24.00);

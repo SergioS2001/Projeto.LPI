@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id()->bigIncrements();
             $table->foreignId('users_id')->nullable()->references('id')->on('users');
             $table->foreignId('estágios_id')->nullable()->references('id')->on('Estágios')->onDelete('cascade');
-            $table->foreignId('presenças_id')->nullable()->references('id')->on('Presenças')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -17,7 +17,6 @@ class HistóricoSeeder extends Seeder
     {
         Histórico::create([
             'users_id' => 1,
-            'presenças_id' => 1,
             'estágios_id' => 1,
             'created_at' => now(),
             'updated_at' => now(),
@@ -25,7 +24,6 @@ class HistóricoSeeder extends Seeder
 
         Histórico::create([
             'users_id' => 1,
-            'presenças_id' => 2,
             'estágios_id' => 2,
             'created_at' => now(),
             'updated_at' => now(),
