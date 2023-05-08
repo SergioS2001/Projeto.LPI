@@ -36,7 +36,7 @@ class Estágios extends Model
 
     public function avaliacao()
     {
-        return $this->belongsTo(Avaliações::class, 'avaliacao_id');
+        return $this->hasMany(Avaliações::class);
     }
 
     public function cacifos()

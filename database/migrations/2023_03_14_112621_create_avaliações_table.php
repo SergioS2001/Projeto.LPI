@@ -12,7 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('avaliações', function (Blueprint $table) {
-            $table->id();
+            $table->id()->bigIncrements();
+            $table->foreignId('users_id')->nullable()->references('id')->on('users');
+            $table->foreignId('estágios_id')->nullable()->references('id')->on('Estágios')->onDelete('cascade');
             $table->float('nota')->minValue(0.0)->maxValue(20.0);
             $table->boolean('fileSubmitted')->default(false);
             $table->boolean('isDone')->default(false);

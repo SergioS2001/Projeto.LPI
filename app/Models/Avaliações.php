@@ -10,18 +10,16 @@ class Avaliações extends Model
     use HasFactory;
 
     protected $fillable = [
+        'users_id',
+        'estágios_id',
         'nota',
         'isDone',
     ];
 
     public function estagio()
     {
-        return $this->hasMany(Estágios::class, 'avaliacao_id');
+        return $this->belongsTo(Estágios::class, 'estágios_id');
     }
 
-    public function orientador()
-    {
-        return $this->belongsTo(Orientadores::class, 'id');
-    }
 
 }

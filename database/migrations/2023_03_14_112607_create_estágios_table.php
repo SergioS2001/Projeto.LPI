@@ -24,7 +24,6 @@ return new class extends Migration
             $table->foreignId('tipologia_estagio_id')->references('id')->on('Tipologia_Estagio')->onDelete('cascade');
             $table->date('data_inicial')->min(now());
             $table->date('data_final')->nullable()->min(now());
-            $table->foreignId('avaliacao_id')->references('id')->on('Avaliações')->onDelete('cascade');
             $table->foreignId('solicitacao_vagas_id')->references('id')->on('solicitacao_vagas')->onDelete('cascade');
             $table->foreignId('estado_estagio_id')->nullable()->references('id')->on('estado_estagio')->onDelete('cascade');
             $table->timestamps();
