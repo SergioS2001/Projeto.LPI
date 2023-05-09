@@ -22,8 +22,6 @@ use Filament\Forms\Components\Card;
 class UsersResource extends Resource
 {
     protected static ?string $model = User::class;
-    protected static ?string $recordTitleAttribute = 'name';
-
     protected static ?string $navigationIcon = 'heroicon-o-collection';
     protected static ?string $navigationGroup = 'Utilizadores';
 
@@ -98,5 +96,10 @@ class UsersResource extends Resource
             'create' => Pages\CreateUsers::route('/create'),
             'edit' => Pages\EditUsers::route('/{record}/edit'),
         ];
-    }    
+    }
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['name', 'email','data_nascimento','cartão_cidadão','telemóvel','morada','email_alternativo'];
+    }
+
 }

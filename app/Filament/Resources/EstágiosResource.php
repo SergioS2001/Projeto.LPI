@@ -30,7 +30,6 @@ use Filament\Tables\Columns\TextColumn;
 class EstágiosResource extends Resource
 {
     protected static ?string $model = Estágios::class;
-
     protected static ?string $navigationIcon = 'heroicon-o-collection';
     protected static ?string $navigationGroup = 'Estágios/Ensinos Clínicos';
 
@@ -127,7 +126,7 @@ class EstágiosResource extends Resource
 
     public static function getGloballySearchableAttributes(): array
     {
-        return ['nome', 'isExterno', 'ano_curricular', 'data_inicial','data_final'];
+        return ['nome', 'isExterno', 'ano_curricular', 'data_inicial','data_final','serviços.titulo','tipologia_estagio.titulo','avaliacao.nota','instituicao_estagio.nome'];
     }
 
 }

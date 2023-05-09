@@ -21,8 +21,6 @@ use Filament\Forms\Components\TextInput;
 class AgendamentosResource extends Resource
 {
     protected static ?string $model = Agendamentos::class;
-    protected static ?string $recordTitleAttribute = 'data';
-
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
     public static function form(Form $form): Form
@@ -91,5 +89,11 @@ class AgendamentosResource extends Resource
             'create' => Pages\CreateAgendamentos::route('/create'),
             'edit' => Pages\EditAgendamentos::route('/{record}/edit'),
         ];
-    }    
+    }
+
+    public static function getGloballySearchableAttributes(): array
+{
+    return ['nome', 'tipo_agendamento.nome_evento', 'users.name','data','hora','descrição'];
+}
+
 }

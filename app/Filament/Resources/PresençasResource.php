@@ -22,8 +22,6 @@ use Filament\Forms\Components\TextInput;
 class PresençasResource extends Resource
 {
     protected static ?string $model = Presenças::class;
-    protected static ?string $recordTitleAttribute = 'data';
-
     protected static ?string $navigationIcon = 'heroicon-o-collection';
     protected static ?string $navigationGroup = 'Orientação';
 
@@ -95,5 +93,10 @@ class PresençasResource extends Resource
             'create' => Pages\CreatePresenças::route('/create'),
             'edit' => Pages\EditPresenças::route('/{record}/edit'),
         ];
-    }    
+    }
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['estagio.nome', 'users.name','data','h_entrada','h_saida'];
+    }
+
 }

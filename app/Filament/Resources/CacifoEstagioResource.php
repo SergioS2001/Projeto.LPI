@@ -95,5 +95,10 @@ class CacifoEstagioResource extends Resource
             'create' => Pages\CreateCacifoEstagio::route('/create'),
             'edit' => Pages\EditCacifoEstagio::route('/{record}/edit'),
         ];
-    }    
+    }
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['estágios.nome', 'cacifos.numero', 'users.name','cauções.valor'];
+    }
+
 }

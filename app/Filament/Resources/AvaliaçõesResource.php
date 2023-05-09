@@ -100,5 +100,10 @@ class AvaliaçõesResource extends Resource
             'create' => Pages\CreateAvaliações::route('/create'),
             'edit' => Pages\EditAvaliações::route('/{record}/edit'),
         ];
-    }    
+    }
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['estagio.nome', 'nota', 'users.name'];
+    }
+
 }
