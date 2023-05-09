@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ServiçosResource\Pages;
 use App\Filament\Resources\ServiçosResource\RelationManagers;
+use App\Filament\Resources\ServiçosResource\Widgets\ServiçosStatsOverview;
 use App\Models\Estágios;
 use App\Models\Serviços;
 use Filament\Forms;
@@ -63,6 +64,12 @@ class ServiçosResource extends Resource
         ];
     }
     
+    public static function  getWidgets(): array
+    {
+        return [
+            ServiçosStatsOverview::class,
+        ];
+    }
     public static function getPages(): array
     {
         return [

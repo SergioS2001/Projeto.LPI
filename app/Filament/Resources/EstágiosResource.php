@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\EstágiosResource\Pages;
 use App\Filament\Resources\EstágiosResource\RelationManagers;
+use App\Filament\Resources\EstágiosResource\Widgets\EstágiosStatsOverview;
 use App\Models\Estágios;
 use App\Models\Instituição_Estágio;
 use App\Models\Curso_Estagio;
@@ -108,6 +109,13 @@ class EstágiosResource extends Resource
         ];
     }
     
+    public static function  getWidgets(): array
+    {
+        return [
+            EstágiosStatsOverview::class,
+        ];
+    }
+   
     public static function getPages(): array
     {
         return [

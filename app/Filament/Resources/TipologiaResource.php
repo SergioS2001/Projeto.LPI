@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\TipologiaResource\Pages;
 use App\Filament\Resources\TipologiaResource\RelationManagers;
+use App\Filament\Resources\TipologiaResource\Widgets\TipologiasStatsOverview;
 use App\Models\Tipologia_Estágio;
 use Filament\Forms;
 use Filament\Forms\Components\TextInput;
@@ -58,6 +59,12 @@ class TipologiaResource extends Resource
         ];
     }
     
+    public static function  getWidgets(): array
+    {
+        return [
+            TipologiasStatsOverview::class,
+        ];
+    }
     public static function getPages(): array
     {
         return [

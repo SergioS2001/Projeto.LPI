@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\CursoEstagioResource\Pages;
 use App\Filament\Resources\CursoEstagioResource\RelationManagers;
+use App\Filament\Resources\CursoEstagioResource\Widgets\CursoEstagioStatsOverview;
 use App\Models\Curso_Estagio;
 use Filament\Forms;
 use Filament\Forms\Components\TextInput;
@@ -62,6 +63,12 @@ class CursoEstagioResource extends Resource
         ];
     }
     
+    public static function  getWidgets(): array
+    {
+        return [
+            CursoEstagioStatsOverview::class,
+        ];
+    }
     public static function getPages(): array
     {
         return [

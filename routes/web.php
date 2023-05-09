@@ -10,11 +10,8 @@ use App\Http\Controllers\OrientacaoEstagiosController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CalendarController;
-<<<<<<< HEAD
 use App\Http\Controllers\PDFController;
 use App\Models\Histórico;
-=======
->>>>>>> 79e1857973404d8805b2c72957e5618b290be98d
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -65,9 +62,6 @@ require __DIR__.'/auth.php';
 
 Route::get('calendar', [CalendarController::class, 'show']);
 Route::post('calendar/action', [CalendarController::class, 'action']);
-<<<<<<< HEAD
 
 Route::get('generate-pdf/{name}', [PDFController::class, 'generatePDF']);
 
-=======
->>>>>>> 79e1857973404d8805b2c72957e5618b290be98d

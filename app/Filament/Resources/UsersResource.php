@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\UsersResource\Pages;
 use App\Filament\Resources\UsersResource\RelationManagers;
+use App\Filament\Resources\UsersResource\Widgets\UserStatsOverview;
 use App\Models\Instituicao_Aluno;
 use App\Models\User;
 use Filament\Forms;
@@ -42,8 +43,9 @@ class UsersResource extends Resource
                     TextInput::make('telemóvel')->label('Número Telemóvel'),
                     TextInput::make('morada')->label('Morada'),
                     TextInput::make('Email alternativo')->label('Email alternativo'),
-                    Checkbox::make('isExterno')->label('Externo?'),
-                    Checkbox::make('isOrientador')->label('Orientador?'),
+                    Checkbox::make('isExterno')->label('Externo'),
+                    Checkbox::make('isOrientador')->label('Orientador'),
+                    Checkbox::make('isAdmin')->label('Admin'),
                     ])
             ]);
     }
@@ -65,6 +67,7 @@ class UsersResource extends Resource
                 TextColumn::make('cartão_cidadão')->sortable()->searchable()->limit(8)->label('CC'),
                 TextColumn::make('morada')->sortable()->searchable()->limit(25)->label("Morada"),
                 TextColumn::make('email_alternativo')->sortable()->searchable()->limit(15)->label("Email alternativo"),
+                TextColumn::make('cacifo_estagio.estágios.nome')->sortable()->searchable()->limit(15)->label("Estágio"),
                 TextColumn::make('cacifo_estagio.cacifos.numero')->sortable()->searchable()->limit(15)->label("Cacifo Atribuido"),
             ])
             ->filters([
@@ -84,6 +87,13 @@ class UsersResource extends Resource
             //
         ];
     }
+    public static function  getWidgets(): array
+    {
+        return [
+            UserStatsOverview::class,
+        ];
+    }
+   
     
     public static function getPages(): array
     {

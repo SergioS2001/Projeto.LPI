@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\CursoEstagioResource\Pages;
 
 use App\Filament\Resources\CursoEstagioResource;
+use App\Filament\Resources\CursoEstagioResource\Widgets\CursoEstagioStatsOverview;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\ListRecords;
 
@@ -14,6 +15,12 @@ class ListCursoEstagios extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
+        ];
+    }
+    protected function getHeaderWidgets() : array
+    {
+        return[
+        CursoEstagioStatsOverview::class,
         ];
     }
 }

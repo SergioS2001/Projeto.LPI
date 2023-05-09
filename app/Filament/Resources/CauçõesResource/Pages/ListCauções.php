@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\CauçõesResource\Pages;
 
 use App\Filament\Resources\CauçõesResource;
+use App\Filament\Resources\CauçõesResource\Widgets\CauçõesStatsOverview;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\ListRecords;
 
@@ -14,6 +15,13 @@ class ListCauções extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
+        ];
+    }
+
+    protected function getHeaderWidgets() : array
+    {
+        return[
+        CauçõesStatsOverview::class,
         ];
     }
 }

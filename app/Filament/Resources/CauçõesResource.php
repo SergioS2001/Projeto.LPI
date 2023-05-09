@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\CauçõesResource\Pages;
 use App\Filament\Resources\CauçõesResource\RelationManagers;
+use App\Filament\Resources\CauçõesResource\Widgets\CauçõesStatsOverview;
 use App\Models\Cacifos;
 use App\Models\Cauções;
 use Filament\Forms;
@@ -68,6 +69,12 @@ class CauçõesResource extends Resource
         ];
     }
     
+    public static function  getWidgets(): array
+    {
+        return [
+            CauçõesStatsOverview::class,
+        ];
+    }
     public static function getPages(): array
     {
         return [

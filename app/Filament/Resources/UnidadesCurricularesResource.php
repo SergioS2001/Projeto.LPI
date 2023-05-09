@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\UnidadesCurricularesResource\Pages;
 use App\Filament\Resources\UnidadesCurricularesResource\RelationManagers;
+use App\Filament\Resources\UnidadesCurricularesResource\Widgets\UCStatsOverview;
 use App\Models\Unidade_Curricular;
 use Filament\Forms;
 use Filament\Forms\Components\TextInput;
@@ -56,6 +57,12 @@ class UnidadesCurricularesResource extends Resource
         ];
     }
     
+    public static function  getWidgets(): array
+    {
+        return [
+            UCStatsOverview::class,
+        ];
+    }
     public static function getPages(): array
     {
         return [
