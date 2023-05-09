@@ -30,7 +30,6 @@ return new class extends Migration
             $table->boolean('isExterno')->default(false);
             $table->boolean('isOrientador')->default(false);
             $table->boolean('isAdmin')->default(false);
-            $table->foreignId('cacifo_estagio_id')->nullable()->references('id')->on('Cacifo_Estagio')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });

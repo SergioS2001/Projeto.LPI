@@ -15,9 +15,9 @@ class Cauções extends Model
         'IsDevolvido'
     ];
 
-    public function cacifos()
+    public function cacifo_estagio()
     {
-        return $this->hasMany(Cacifos::class);
+        return $this->hasMany(Cacifo_Estagio::class);
     }
 
 }

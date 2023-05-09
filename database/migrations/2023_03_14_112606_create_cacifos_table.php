@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id()->bigIncrements();
             $table->bigInteger('numero')->unique();
             $table->boolean('chave_partilhada')->default(false);
-            $table->foreignId('cauções_id')->constrained('Cauções')->onDelete('cascade');
             $table->timestamps();
         });
     }

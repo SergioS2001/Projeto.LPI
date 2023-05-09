@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('cacifo_estagio', function (Blueprint $table) {
             $table->id()->bigIncrements();
+            $table->foreignId('users_id')->nullable()->references('id')->on('users');
             $table->foreignId('estágios_id')->references('id')->on('Estágios')->onDelete('cascade');
             $table->foreignId('cacifos_id')->constrained('Cacifos')->onDelete('cascade');
+            $table->foreignId('cauções_id')->constrained('Cauções')->onDelete('cascade');
             $table->boolean('fardamento')->default(false);
             $table->timestamps();
         });

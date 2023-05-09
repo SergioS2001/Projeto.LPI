@@ -10,17 +10,21 @@ class CacifoEstagioSeeder extends Seeder
     public function run()
     {
         Cacifo_Estagio::create([
+            'users_id' => 1,
             'estágios_id' => 1,
             'cacifos_id' => 1,
-            'fardamento' => false,
+            'cauções_id' => 1,
+            'fardamento' => true,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
 
         Cacifo_Estagio::create([
+            'users_id' => 1,
             'estágios_id' => 2,
             'cacifos_id' => 2,
-            'fardamento' => false,
+            'cauções_id' => 2,
+            'fardamento' => true,
             'created_at' => now(),
             'updated_at' => now(),
         ]);

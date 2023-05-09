@@ -11,6 +11,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\PDFController;
+use App\Http\Controllers\UserController;
 use App\Models\Histórico;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;

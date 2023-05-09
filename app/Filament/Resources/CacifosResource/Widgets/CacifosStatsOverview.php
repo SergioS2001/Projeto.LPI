@@ -18,7 +18,8 @@ class CacifosStatsOverview extends BaseWidget
             ->color('primary'),
             Card::make('Cacifos Chave Partilhada', $countChavePartilhada)
             ->description('Número de cacifos com chave partihada')
-            ->descriptionIcon('heroicon-o-key'),
+            ->descriptionIcon('heroicon-o-key')
+            ->color('primary'),
         ];
     }
 }

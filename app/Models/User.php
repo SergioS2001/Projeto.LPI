@@ -36,7 +36,6 @@ class User extends Authenticatable
         'isExterno',
         'isOrientador',
         'isAdmin',
-        'cacifo_estagio_id',
         'permissions',     //protected
     ];
 
@@ -76,6 +75,10 @@ public function agendamentos()
     return $this->hasMany(Agendamentos::class);
 }
 
+public function orientadores()
+{
+    return $this->hasMany(Orientadores::class);
+}
 public function presenças()
 {
     return $this->hasMany(Presenças::class);
@@ -83,6 +86,11 @@ public function presenças()
 public function avaliações()
 {
     return $this->hasMany(Avaliações::class);
+}
+
+public function cacifo_estagio()
+{
+    return $this->hasMany(Cacifo_Estagio::class);
 }
     public function estagio()
     {
@@ -107,11 +115,6 @@ public function avaliações()
             'instituição_estagio_id', // foreign key on the Estagio table
             'id' // local key on the User table
         );
-    }
-
-    public function cacifo_estagio()
-    {
-        return $this->hasOne(Cacifo_Estagio::class, 'id', 'cacifo_estagio_id');
     }
 
     public function estagio_cacifo()

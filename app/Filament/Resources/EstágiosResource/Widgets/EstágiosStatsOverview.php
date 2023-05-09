@@ -17,15 +17,22 @@ class EstágiosStatsOverview extends BaseWidget
 
         return [
             Card::make('Total Estágios', Estágios::all()->count())
-            ->description('Número de Estágios criados'),
+            ->description('Número de Estágios criados')
+            ->descriptionIcon('heroicon-o-briefcase')
+            ->color('primary'),
             Card::make('Estágios Solicitados', $countSolicitados)
-            ->description('Número de Estágios Solicitados'),
+            ->description('Número de Estágios Solicitados')
+            ->descriptionIcon('heroicon-o-briefcase')
+            ->color('primary'),
             Card::make('Estágios Waiting-reply', $countWaiting)
-            ->description('Número de Estágios já solicitados, aguardando resposta da direção'),
+            ->description('Número de Estágios já solicitados, aguardando resposta da direção')
+            ->color('primary'),
             Card::make('Estágios Aprovados', $countAprovados)
-            ->description('Número de Estágios aprovados pela direção'),
+            ->description('Número de Estágios aprovados pela direção')
+            ->color('primary'),
             Card::make('Total Instituições', $countInstituicao)
-            ->description('Número de diferentes Instituições representadas'),
+            ->description('Número de diferentes Instituições representadas')
+            ->color('primary'),
         ];
     }
 }

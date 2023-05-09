@@ -11,13 +11,9 @@ class Cacifos extends Model
 
     protected $fillable = [
         'numero',
-        'cauções_id',
+        'chave_partilhada',
     ];
 
-    public function cauções()
-    {
-        return $this->belongsTo(Cauções::class, 'cauções_id');
-    }
     public function cacifo_estagio()
     {
         return $this->hasMany(Cacifo_Estagio::class);

@@ -12,8 +12,10 @@ class Cacifo_Estagio extends Model
     protected $table = 'cacifo_estagio';
 
     protected $fillable = [
+        'users_id',
         'estágios_id',
         'cacifos_id',
+        'cauções_id',
         'fardamento',
     ];
 
@@ -27,8 +29,14 @@ class Cacifo_Estagio extends Model
         return $this->belongsTo(Cacifos::class, 'cacifos_id');
     }
 
-    public function user()
+    public function users()
 {
-    return $this->belongsTo(User::class, 'user_id');
+    return $this->belongsTo(User::class, 'users_id');
 }
+
+public function cauções()
+    {
+        return $this->belongsTo(Cauções::class, 'cauções_id');
+    }
+
 }

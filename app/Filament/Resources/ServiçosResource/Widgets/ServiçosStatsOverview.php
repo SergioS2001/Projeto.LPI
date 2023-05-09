@@ -13,6 +13,7 @@ class ServiçosStatsOverview extends BaseWidget
         return [
             Card::make('Total Serviços', Serviços::all()->count())
             ->description('Número de Serviços registados')
+            ->descriptionIcon('heroicon-o-academic-cap')
             ->color('primary'),
         ];
     }

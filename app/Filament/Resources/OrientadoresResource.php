@@ -8,6 +8,7 @@ use App\Models\Orientadores;
 use App\Models\Orientação_Estagios;
 use App\Models\User;
 use Filament\Forms;
+use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
@@ -29,10 +30,11 @@ class OrientadoresResource extends Resource
         return $form
             ->schema([
                 Card::make()->schema([
-                    Select::make('users.name')
-                    ->label('Utilizadores')
-                    ->options(Orientadores::all()->pluck('name', 'id'))
-                    ->searchable(),
+                    Select::make('users_id')
+                        ->label('Utilizadores')
+                        ->options(User::all()->pluck('name', 'id'))
+                        ->searchable(),
+                    Checkbox::make('users.isOrientador')->label('Orientador'),
                     ])
             ]);
     }

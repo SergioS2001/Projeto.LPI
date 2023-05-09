@@ -43,12 +43,10 @@ class CauçõesResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('cacifos.numero')->sortable()->searchable()->limit(12)->label('Numero Cacifo'),
+                TextColumn::make('id')->sortable()->searchable()->limit(12)->label('Caução'),
                 TextColumn::make('valor')->sortable()->searchable()->label('Montante'),
                 IconColumn::make('isPago')->label('Pagamento')->boolean(),
                 IconColumn::make('isDevolvido')->label('Reembolso')->boolean(),
-                TextColumn::make('users.name')->sortable()->searchable()->limit(12)->label('Aluno'),
-                TextColumn::make('estágios.nome')->sortable()->searchable()->limit(12)->label('Estágio'),
                 IconColumn::make('isAssinadoAluno')->label('Papel assinado')->boolean(),
             ])
             ->filters([

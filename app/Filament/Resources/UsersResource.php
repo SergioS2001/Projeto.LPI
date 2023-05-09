@@ -43,8 +43,6 @@ class UsersResource extends Resource
                     TextInput::make('telemóvel')->label('Número Telemóvel'),
                     TextInput::make('morada')->label('Morada'),
                     TextInput::make('Email alternativo')->label('Email alternativo'),
-                    Checkbox::make('isExterno')->label('Externo'),
-                    Checkbox::make('isOrientador')->label('Orientador'),
                     Checkbox::make('isAdmin')->label('Admin'),
                     ])
             ]);
@@ -54,8 +52,7 @@ class UsersResource extends Resource
     {
         return $table
             ->columns([
-                //TextColumn::make('id')->sortable()->searchable(),
-                IconColumn::make('isOrientador')->label('Orientador')->boolean()->sortable()->searchable(),
+                //IconColumn::make('isOrientador')->label('Orientador')->boolean()->sortable()->searchable(),
                 IconColumn::make('isExterno')->label('Externo')->boolean()->sortable()->searchable(),
                 IconColumn::make('isAdmin')->label('Admin')->boolean()->sortable()->searchable(),
                 TextColumn::make('name')->sortable()->searchable()->limit(12)->label('Nome'),
@@ -67,8 +64,6 @@ class UsersResource extends Resource
                 TextColumn::make('cartão_cidadão')->sortable()->searchable()->limit(8)->label('CC'),
                 TextColumn::make('morada')->sortable()->searchable()->limit(25)->label("Morada"),
                 TextColumn::make('email_alternativo')->sortable()->searchable()->limit(15)->label("Email alternativo"),
-                TextColumn::make('cacifo_estagio.estágios.nome')->sortable()->searchable()->limit(15)->label("Estágio"),
-                TextColumn::make('cacifo_estagio.cacifos.numero')->sortable()->searchable()->limit(15)->label("Cacifo Atribuido"),
             ])
             ->filters([
                 //

@@ -41,9 +41,6 @@ class CacifosResource extends Resource
                 Checkbox::make('chave_partilhada')
                 //->required()
                 ->label('Chave cacifo partilhada?'),
-                Checkbox::make('cacifo_estagio.fardamento')
-                //->required()
-                ->label('Fardamento?'),
                 ])
         ]);
     }
@@ -53,10 +50,7 @@ class CacifosResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('numero')->sortable()->label('Cacifo'),
-                TextColumn::make('cauções.valor')->sortable()->label('Valor Caução'),
                 IconColumn::make('chave_partilhada')->label('Chave partilhada')->boolean(),
-                TextColumn::make('users.name')->sortable()->searchable()->limit(12)->label('Aluno'),
-                TextColumn::make('estágios.nome')->sortable()->searchable()->label('Estágio'),
             ])
             ->filters([
                 //
@@ -72,7 +66,7 @@ class CacifosResource extends Resource
     public static function getRelations(): array
     {
         return [
-            CauçõesRelationManager::class
+            //
         ];
     }
     

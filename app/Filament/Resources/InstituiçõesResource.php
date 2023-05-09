@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\InstituiçõesResource\Pages;
 use App\Filament\Resources\InstituiçõesResource\RelationManagers;
+use App\Filament\Resources\InstituiçõesResource\Widgets\InstituicaoEstagioStatsOverview;
 use App\Models\Estágios;
 use App\Models\Instituição_Estágio;
 use Filament\Forms;
@@ -63,6 +64,12 @@ class InstituiçõesResource extends Resource
         ];
     }
     
+    public static function  getWidgets(): array
+    {
+        return [
+            InstituicaoEstagioStatsOverview::class,
+        ];
+    }
     public static function getPages(): array
     {
         return [
