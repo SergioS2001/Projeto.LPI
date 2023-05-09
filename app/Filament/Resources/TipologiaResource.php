@@ -18,6 +18,7 @@ use Filament\Forms\Components\Card;
 class TipologiaResource extends Resource
 {
     protected static ?string $model = Tipologia_Estágio::class;
+    protected static ?string $recordTitleAttribute = 'titulo';
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
     protected static ?string $navigationGroup = 'Estágios/Ensinos Clínicos';

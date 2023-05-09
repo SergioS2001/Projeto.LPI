@@ -24,6 +24,7 @@ use Filament\Tables\Actions\Action as ActionsAction;
 class AvaliaçõesResource extends Resource
 {
     protected static ?string $model = Avaliações::class;
+    protected static ?string $recordTitleAttribute = 'nota';
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
     protected static ?string $navigationGroup = 'Orientação';

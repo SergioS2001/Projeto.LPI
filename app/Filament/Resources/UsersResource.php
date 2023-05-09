@@ -22,6 +22,7 @@ use Filament\Forms\Components\Card;
 class UsersResource extends Resource
 {
     protected static ?string $model = User::class;
+    protected static ?string $recordTitleAttribute = 'name';
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
     protected static ?string $navigationGroup = 'Utilizadores';

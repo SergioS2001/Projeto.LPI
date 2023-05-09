@@ -4,7 +4,7 @@ namespace App\Filament\Widgets;
 
 use Filament\Widgets\LineChartWidget;
 
-class CustomersChart extends LineChartWidget
+class TotalUsersChart extends LineChartWidget
 {
     protected static ?string $heading = 'Total users';
 

@@ -101,4 +101,10 @@ class SolicitaçãoVagasResource extends Resource
             'edit' => Pages\EditSolicitaçãoVagas::route('/{record}/edit'),
         ];
     }    
+
+    public static function getGloballySearchableAttributes(): array
+{
+    return ['designação', 'objetivos', 'ano_letivo', 'vagas','carga_horaria_total'];
+}
+
 }

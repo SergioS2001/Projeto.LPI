@@ -21,6 +21,7 @@ use Filament\Forms\Components\TextInput;
 class AgendamentosResource extends Resource
 {
     protected static ?string $model = Agendamentos::class;
+    protected static ?string $recordTitleAttribute = 'data';
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 

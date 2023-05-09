@@ -20,6 +20,7 @@ use Filament\Forms\Components\TextInput;
 class ServiçosResource extends Resource
 {
     protected static ?string $model = Serviços::class;
+    protected static ?string $recordTitleAttribute = 'titulo';
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
     protected static ?string $navigationGroup = 'Estágios/Ensinos Clínicos';

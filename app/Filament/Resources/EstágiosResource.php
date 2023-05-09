@@ -124,4 +124,10 @@ class EstágiosResource extends Resource
             'edit' => Pages\EditEstágios::route('/{record}/edit'),
         ];
     }    
+
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['nome', 'isExterno', 'ano_curricular', 'data_inicial','data_final'];
+    }
+
 }

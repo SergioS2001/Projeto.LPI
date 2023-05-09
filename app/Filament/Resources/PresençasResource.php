@@ -22,6 +22,7 @@ use Filament\Forms\Components\TextInput;
 class PresençasResource extends Resource
 {
     protected static ?string $model = Presenças::class;
+    protected static ?string $recordTitleAttribute = 'data';
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
     protected static ?string $navigationGroup = 'Orientação';

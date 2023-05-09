@@ -19,6 +19,7 @@ use Filament\Forms\Components\Card;
 class CursoEstagioResource extends Resource
 {
     protected static ?string $model = Curso_Estagio::class;
+    protected static ?string $recordTitleAttribute = 'curso';
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
     protected static ?string $navigationGroup = 'Estágios/Ensinos Clínicos';

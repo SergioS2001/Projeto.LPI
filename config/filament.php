@@ -13,7 +13,6 @@ use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
-
 return [
 
     /*
@@ -62,7 +61,7 @@ return [
     |
     */
 
-    'home_url' => '/dashboard',
+    'home_url' => '/',
 
     /*
     |--------------------------------------------------------------------------
@@ -238,7 +237,7 @@ return [
             'have_inline_labels' => false,
         ],
         'footer' => [
-            'should_show_logo' => true,
+            'should_show_logo' => false,
         ],
         'max_content_width' => null,
         'notifications' => [
