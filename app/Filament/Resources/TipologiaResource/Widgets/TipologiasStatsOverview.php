@@ -13,6 +13,7 @@ class TipologiasStatsOverview extends BaseWidget
         return [
             Card::make('Total Tipologias', Tipologia_Estágio::all()->count())
             ->description('Número de Tipologias registadas')
+            ->descriptionIcon('heroicon-o-academic-cap')
             ->color('primary'),
         ];
     }

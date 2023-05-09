@@ -17,12 +17,15 @@ class CauçõesStatsOverview extends BaseWidget
         return [
             Card::make('Total Pagamentos', $countPagamentos)
             ->description('Número de pagamentos de caução efetuados')
+            ->descriptionIcon('heroicon-o-currency-euro')
             ->color('success'),
             Card::make('Total Reembolsos', $countReembolso)
             ->description('Número de reembolsos de caução efetuados')
+            ->descriptionIcon('heroicon-o-currency-euro')
             ->color('success'),
             Card::make('Total Assinaturas', $countReembolso)
             ->description('Número de papeis assinados pelos alunos')
+            ->descriptionIcon('heroicon-o-pencil')
             ->color('primary'),
         ];
     }

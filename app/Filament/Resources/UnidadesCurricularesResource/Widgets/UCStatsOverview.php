@@ -13,6 +13,7 @@ class UCStatsOverview extends BaseWidget
         return [
             Card::make('Total UC', Unidade_Curricular::all()->count())
             ->description('Número de UC registadas')
+            ->descriptionIcon('heroicon-o-academic-cap')
             ->color('primary'),
         ];
     }

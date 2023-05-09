@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\CacifosResource\Pages;
 
 use App\Filament\Resources\CacifosResource;
+use App\Filament\Resources\CacifosResource\Widgets\CacifosStatsOverview;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\ListRecords;
 
@@ -14,6 +15,12 @@ class ListCacifos extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
+        ];
+    }
+    protected function getHeaderWidgets() : array
+    {
+        return[
+        CacifosStatsOverview::class,
         ];
     }
 }

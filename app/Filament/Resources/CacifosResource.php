@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\CacifosResource\Pages;
 use App\Filament\Resources\CacifosResource\RelationManagers;
 use App\Filament\Resources\CacifosResource\RelationManagers\CauçõesRelationManager;
+use App\Filament\Resources\CacifosResource\Widgets\CacifosStatsOverview;
 use App\Models\Cacifo_Estagio;
 use App\Models\Cacifos;
 use App\Models\Cauções;
@@ -75,6 +76,12 @@ class CacifosResource extends Resource
         ];
     }
     
+    public static function  getWidgets(): array
+    {
+        return [
+            CacifosStatsOverview::class,
+        ];
+    }
     public static function getPages(): array
     {
         return [

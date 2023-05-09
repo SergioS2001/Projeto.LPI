@@ -13,12 +13,12 @@ class UserStatsOverview extends BaseWidget
         $countExternos = User::where('isExterno', true)->count();
         return [
             Card::make('Total users', User::all()->count())
-            ->description('Number of registered users')
-            ->descriptionIcon('heroicon-s-users')
+            ->description('Número de utilizadores registados')
+            ->descriptionIcon('heroicon-s-user-group')
             ->color('primary'),
             Card::make('Total Externos', $countExternos)
-            ->description('Number of external users')
-            ->descriptionIcon('heroicon-s-user-group')
+            ->description('Número de alunos externos')
+            ->descriptionIcon('heroicon-s-user-circle')
             ->color('success'),
         ];
     }

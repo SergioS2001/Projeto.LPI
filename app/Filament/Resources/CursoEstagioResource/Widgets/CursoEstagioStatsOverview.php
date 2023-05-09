@@ -14,6 +14,7 @@ class CursoEstagioStatsOverview extends BaseWidget
         return [
             Card::make('Total Cursos', Curso_Estagio::all()->count())
             ->description('Número de Cursos registados')
+            ->descriptionIcon('heroicon-o-academic-cap')
             ->color('primary'),
         ];
     }
