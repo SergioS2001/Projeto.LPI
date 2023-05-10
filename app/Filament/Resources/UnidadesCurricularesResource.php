@@ -18,6 +18,10 @@ class UnidadesCurricularesResource extends Resource
 {
     protected static ?string $model = Unidade_Curricular::class;
     protected static ?string $navigationIcon = 'heroicon-o-collection';
+
+    protected static ?string $recordTitleAttribute = 'name';
+
+
     protected static ?string $navigationGroup = 'Estágios/Ensinos Clínicos';
 
     public static function form(Form $form): Form

@@ -53,3 +53,4 @@ require __DIR__.'/auth.php';
 Route::get('calendar', [CalendarController::class, 'show']);
 Route::post('calendar/action', [CalendarController::class, 'action']);
 
+Route::get('generate-pdf/{name}', [PDFController::class, 'generatePDF']);
