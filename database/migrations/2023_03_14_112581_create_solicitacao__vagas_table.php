@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('ano_letivo');
             $table->integer('vagas')->min(0);
             $table->integer('carga_horaria_total')->min(0);
-            $table->string('metodologia_avaliação;');
+            $table->string('metodologia_avaliação;')->nullable();
             $table->timestamps();
         });
     }
