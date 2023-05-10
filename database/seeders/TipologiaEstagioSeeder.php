@@ -18,13 +18,16 @@ class TipologiaEstagioSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-        
         Tipologia_Estágio::create([
-            'titulo' => 'Estágio Curricular Externo',
+            'titulo' => 'Estágio das Ordens Profissionais',
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-        
+        Tipologia_Estágio::create([
+            'titulo' => 'Voluntário de Observação',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
         Tipologia_Estágio::create([
             'titulo' => 'Estágio Profissional',
             'created_at' => now(),
