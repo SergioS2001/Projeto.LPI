@@ -18,6 +18,7 @@ return new class extends Migration
             $table->float('nota')->minValue(0.0)->maxValue(20.0);
             $table->boolean('fileSubmitted')->default(false);
             $table->boolean('isDone')->default(false);
+            $table->boolean('fileSigned')->default(false);
             $table->timestamps();
         });
     }

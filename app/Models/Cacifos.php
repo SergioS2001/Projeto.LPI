@@ -11,6 +11,7 @@ class Cacifos extends Model
 
     protected $fillable = [
         'numero',
+        'data_inicio',
         'chave_partilhada',
     ];
 

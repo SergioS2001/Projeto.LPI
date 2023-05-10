@@ -17,6 +17,9 @@ return new class extends Migration
             $table->id()->bigIncrements();
             $table->foreignId('users_id')->nullable()->references('id')->on('users');
             $table->foreignId('estágios_id')->nullable()->references('id')->on('Estágios')->onDelete('cascade');
+            $table->string('rating_aluno_estagio')->nullable();
+            $table->string('sugestões_aluno')->nullable();
+            $table->boolean('questionario_done')->default(false);
             $table->timestamps();
         });
     }

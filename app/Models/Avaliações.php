@@ -14,6 +14,7 @@ class Avaliações extends Model
         'estágios_id',
         'nota',
         'isDone',
+        'fileSigned',
     ];
 
     public function estagio()

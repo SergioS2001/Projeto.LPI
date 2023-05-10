@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('cacifos', function (Blueprint $table) {
             $table->id()->bigIncrements();
             $table->bigInteger('numero')->unique();
+            $table->date('data_inicio')->min(now());
             $table->boolean('chave_partilhada')->default(false);
             $table->timestamps();
         });

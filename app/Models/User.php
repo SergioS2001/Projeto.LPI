@@ -32,11 +32,12 @@ class User extends Authenticatable
         'telemóvel',
         'morada',
         'email_alternativo',
+        'contacto_emergência',
         'instituicao_aluno_id',
         'isExterno',
         'isOrientador',
         'isAdmin',
-        'permissions',     //protected
+        'politica_dados_accepted',
     ];
 
     /**

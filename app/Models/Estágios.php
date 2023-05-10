@@ -20,6 +20,7 @@ class Estágios extends Model
         'serviços_id',
         'tipologia_estagio_id',
         'avaliacao_id',
+        'isExterno',
         'solicitacao_vagas_id',
         'estado_estagio_id',
     ];

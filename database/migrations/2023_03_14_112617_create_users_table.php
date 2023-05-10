@@ -26,10 +26,12 @@ return new class extends Migration
             $table->string('telemóvel')->unique()->nullable();
             $table->string('morada')->nullable()->max(255);
             $table->string('email_alternativo')->nullable();
+            $table->string('contacto_emergência')->unique()->nullable();
             $table->foreignId('instituicao_aluno_id')->nullable()->references('id')->on('Instituicao_Aluno')->onDelete('cascade');
             $table->boolean('isExterno')->default(false);
             $table->boolean('isOrientador')->default(false);
             $table->boolean('isAdmin')->default(false);
+            $table->boolean('politica_dados_accepted')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

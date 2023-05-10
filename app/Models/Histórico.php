@@ -13,7 +13,9 @@ class Histórico extends Model
     protected $fillable = [
         'users_id',
         'estágios_id',
-        'presenças_id',
+        'rating_aluno_estagio',
+        'sugestões_aluno',
+        'questionario_done',
     ];
 
 

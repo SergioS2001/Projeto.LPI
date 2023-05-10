@@ -17,7 +17,7 @@ class Solicitação_Vagas extends Model
         'vagas',
         'carga_horaria_total',
         'objetivos',
-        'isExterno',
+        'metodologia_avaliação',
     ];
 
     public function estagio()

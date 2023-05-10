@@ -11,6 +11,7 @@ class Orientadores extends Model
 
     protected $fillable = [
         'user_id',
+        'horario_apresentacao',
     ];
 
     public function users()

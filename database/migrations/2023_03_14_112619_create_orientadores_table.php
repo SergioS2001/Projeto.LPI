@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('orientadores', function (Blueprint $table) {
             $table->id()->bigIncrements();
             $table->foreignId('users_id')->references('id')->on('Users')->onDelete('cascade');
+            $table->string('horario_apresentacao')->nullable();
             $table->timestamps();
         });
     }
