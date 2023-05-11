@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
          $this->call(InstituiçãoSeeder::class);
          $this->call(ServiçosSeeder::class);
          $this->call(TipologiaEstagioSeeder::class);
-         $this->call(AgendamentosSeeder::class);
+         $this->call(EventosSeeder::class);
          $this->call(UnidadeCurricularSeeder::class);
          $this->call(SolicitaçãoVagasSeeder::class);
          $this->call(EstadoEstágioSeeder::class);
@@ -35,6 +35,6 @@ class DatabaseSeeder extends Seeder
          $this->call(Orientacao_Estagios::class);
          //$this->call(PresençasSeeder::class);
          $this->call(CacifoEstagioSeeder::class);
-         $this->call(UserAgendamentosSeeder::class);
+         $this->call(AgendamentosSeeder::class);
     }
 }

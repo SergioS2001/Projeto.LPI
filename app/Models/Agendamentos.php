@@ -8,20 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Agendamentos extends Model
 {
     use HasFactory;
+    protected $table = 'agendamentos';
 
     protected $fillable = [
+        'evento_id',
         'users_id',
-        'nome',
-        'data',
-        'descrição',
-        'duração',
-        'hora',
-        'isAccepted',
     ];
 
-    public function user_agendamentos()
+    public function users()
 {
-    return $this->hasMany(User_Agendamentos::class);
+    return $this->belongsTo(User::class, 'users_id');
+}
+public function evento()
+{
+    return $this->belongsTo(Evento::class, 'evento_id');
 }
 
 }

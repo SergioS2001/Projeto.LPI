@@ -74,9 +74,9 @@ class User extends Authenticatable
     return $this->hasMany(Orientação_Estagios::class);
 }
 
-public function user_agendamentos()
+public function eventos()
 {
-    return $this->hasMany(User_Agendamentos::class);
+    return $this->hasMany(Evento::class);
 }
 
 public function orientadores()

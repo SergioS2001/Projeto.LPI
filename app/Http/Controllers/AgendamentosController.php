@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Agendamentos;
+use App\Models\Evento;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -13,7 +13,7 @@ class AgendamentosController extends Controller
      */
     public function index()
     {
-        $agendamentos = Agendamentos::all();
+        $agendamentos = Evento::all();
         return view('agendamentos.index', compact('agendamentos'));
     }
 
@@ -36,7 +36,7 @@ class AgendamentosController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Agendamentos $agendamento)
+    public function show(Evento $Evento)
     {
         //
     }
@@ -44,7 +44,7 @@ class AgendamentosController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Agendamentos $agendamento)
+    public function edit(Evento $Evento)
     {
         //
     }
@@ -52,7 +52,7 @@ class AgendamentosController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Agendamentos $agendamento)
+    public function update(Request $request, Evento $Evento)
     {
         //
     }
@@ -60,7 +60,7 @@ class AgendamentosController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Agendamentos $agendamento)
+    public function destroy(Evento $Evento)
     {
         //
     }

@@ -14,7 +14,7 @@ class Orientacao_Estagios extends Seeder
                 'users_id' => 1,
                 'orientadores_id' =>  '1',
                 'estágios_id' => 1,
-                'horario_apresentacao' => '2023-01-01',
+                'horario_apresentacao' => '2023-01-01 8h',
             ],
         ]);
         DB::table('orientação_estagios')->insert([
@@ -22,7 +22,7 @@ class Orientacao_Estagios extends Seeder
                 'users_id' => 1,
                 'orientadores_id' =>  '1',
                 'estágios_id' => 2,
-                'horario_apresentacao' => '2023-01-02',
+                'horario_apresentacao' => '2023-01-02 9h',
             ],
         ]);
     }
