@@ -24,7 +24,7 @@ class CacifosResource extends Resource
 {
     protected static ?string $model = Cacifos::class;
     protected static ?string $recordTitleAttribute = 'numero';
-
+    protected static ?string $navigationGroup = 'Cacifos';
     protected static ?string $navigationIcon = 'heroicon-o-collection';
     public static function form(Form $form): Form
     {
@@ -51,6 +51,7 @@ class CacifosResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('numero')->sortable()->label('Cacifo'),
+                TextColumn::make('data_inicio')->sortable()->label('Data de inicio'),
                 IconColumn::make('chave_partilhada')->label('Chave partilhada')->boolean(),
             ])
             ->filters([

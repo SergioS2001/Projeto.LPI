@@ -25,7 +25,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class CacifoEstagioResource extends Resource
 {
     protected static ?string $model = Cacifo_Estagio::class;
-
+    protected static ?string $navigationGroup = 'Cacifos';
     protected static ?string $navigationIcon = 'heroicon-o-collection';
     protected static $routeName = 'cacifo-estagios';
 

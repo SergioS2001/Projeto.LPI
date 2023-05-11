@@ -27,7 +27,7 @@ class AvaliaçõesResource extends Resource
     protected static ?string $recordTitleAttribute = 'nota';
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
-    protected static ?string $navigationGroup = 'Orientação';
+    protected static ?string $navigationGroup = 'Acompanhamento Estágio/EC';
 
     public static function form(Form $form): Form
     {

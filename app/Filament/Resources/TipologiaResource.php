@@ -40,7 +40,6 @@ class TipologiaResource extends Resource
             ->columns([
                 TextColumn::make('id')->sortable()->searchable()->limit(12)->label('id'),
                 TextColumn::make('titulo')->sortable()->searchable()->limit(25)->label('Tipologia'),
-                //TextColumn::make('estagio.nome')->sortable()->searchable()->limit(12)->label('Estágio'),
                 ])
             ->filters([
                 //

@@ -23,7 +23,7 @@ class CauçõesResource extends Resource
 {
     protected static ?string $model = Cauções::class;
     protected static ?string $recordTitleAttribute = 'valor';
-
+    protected static ?string $navigationGroup = 'Cacifos';
     protected static ?string $navigationIcon = 'heroicon-o-collection';
     public static function form(Form $form): Form
     {

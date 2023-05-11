@@ -9,9 +9,4 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateAgendamentos extends CreateRecord
 {
     protected static string $resource = AgendamentosResource::class;
-
-    protected function getRedirectUrl(): string
-{
-    return $this->getResource()::getUrl('index');
-}
 }

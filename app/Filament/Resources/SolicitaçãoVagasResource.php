@@ -70,10 +70,13 @@ class SolicitaçãoVagasResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('id')->label('id'),
-                TextColumn::make('estagios.nome')->sortable()->searchable()->label('Estágio'),
-                IconColumn::make('estagios.estado_estagio.solicitado')->label('Solicitado')->boolean(),
-                IconColumn::make('estagios.estado_estagio.aprovado')->label('Aprovado')->boolean(),
-                IconColumn::make('isExterno')->label('Externo')->boolean(),
+                TextColumn::make('estagio_nome')->sortable()->searchable()->label('Estágio'),
+                TextColumn::make('designação')->sortable()->searchable()->label('Designação'),
+                TextColumn::make('ano_letivo')->sortable()->searchable()->label('Ano letivo'),
+                TextColumn::make('vagas')->sortable()->searchable()->label('Vagas'),
+                TextColumn::make('carga_horaria_total')->sortable()->searchable()->label('Carga Horaria'),
+                TextColumn::make('objetivos')->sortable()->searchable()->label('Objetivos'),
+
             ])
             ->filters([
                 //

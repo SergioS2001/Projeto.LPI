@@ -41,10 +41,8 @@ class CursoEstagioResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id')->sortable()->searchable()->label('id'),
                 TextColumn::make('curso')->sortable()->searchable()->limit(25)->label('Curso'),
                 TextColumn::make('ects')->sortable()->searchable()->label('ECTS'),
-                //TextColumn::make('estágio.nome')->sortable()->searchable()->limit(12)->label('Estágio'),
             ])
             ->filters([
                 //

@@ -21,7 +21,6 @@ class ServiçosResource extends Resource
 {
     protected static ?string $model = Serviços::class;
     protected static ?string $recordTitleAttribute = 'titulo';
-
     protected static ?string $navigationIcon = 'heroicon-o-collection';
     protected static ?string $navigationGroup = 'Estágios/Ensinos Clínicos';
 
@@ -42,10 +41,8 @@ class ServiçosResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id')->sortable()->searchable()->label('id'),
                 TextColumn::make('titulo')->sortable()->searchable()->limit(25)->label('Serviço'),
                 TextColumn::make('nome_responsavel')->sortable()->searchable()->label('Responsável'),
-                //TextColumn::make('estágios.nome')->sortable()->searchable()->limit(12)->label('Estágio'),
                 ])
             ->filters([
                 //

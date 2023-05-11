@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PresençasResource\Pages;
 use App\Filament\Resources\PresençasResource\RelationManagers;
+use App\Filament\Resources\PresençasResource\Widgets\PresençasStatsOverview;
 use App\Models\Estágios;
 use App\Models\Presenças;
 use Filament\Forms;
@@ -23,8 +24,7 @@ class PresençasResource extends Resource
 {
     protected static ?string $model = Presenças::class;
     protected static ?string $navigationIcon = 'heroicon-o-collection';
-    protected static ?string $navigationGroup = 'Orientação';
-
+    protected static ?string $navigationGroup = 'Acompanhamento Estágio/EC';
     public static function form(Form $form): Form
     {
         return $form
@@ -60,8 +60,8 @@ class PresençasResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('estagio.nome')->sortable()->searchable()->limit(12)->label('Estágio'),
-                TextColumn::make('users.name')->sortable()->searchable()->limit(12)->label('Aluno'),
+                TextColumn::make('orientação_estagios.estágios.nome')->sortable()->searchable()->limit(12)->label('Estágio'),
+                TextColumn::make('orientação_estagios.user.name')->sortable()->searchable()->limit(12)->label('Aluno'),
                 TextColumn::make('data')->date()->sortable()->searchable(),
                 TextColumn::make('h_entrada')->sortable()->label('Entrada(h)'),
                 TextColumn::make('tempo_pausa')->sortable()->label('Pausa(min)'),
@@ -85,7 +85,12 @@ class PresençasResource extends Resource
             //
         ];
     }
-    
+    public static function  getWidgets(): array
+    {
+        return [
+            PresençasStatsOverview::class,
+        ];
+    }
     public static function getPages(): array
     {
         return [
@@ -96,7 +101,7 @@ class PresençasResource extends Resource
     }
     public static function getGloballySearchableAttributes(): array
     {
-        return ['estagio.nome', 'users.name','data','h_entrada','h_saida'];
+        return ['orientação_estagios.estágios.nome', 'orientação_estagios.user.name','orientação_estagios.orientador.users.name','data','h_entrada','h_saida'];
     }
 
 }

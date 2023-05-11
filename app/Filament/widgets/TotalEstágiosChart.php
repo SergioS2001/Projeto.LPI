@@ -21,12 +21,6 @@ class TotalEstágiosChart extends LineChartWidget
             ->pluck('count')
             ->toArray();
 
-        $labels = Estágios::query()
-            ->selectRaw('DATE_FORMAT(created_at, "%b %Y") as month_year')
-            ->groupBy('month_year')
-            ->orderBy('month_year')
-            ->pluck('month_year')
-            ->toArray();
 
         return [
             'datasets' => [
@@ -35,7 +29,7 @@ class TotalEstágiosChart extends LineChartWidget
                     'data' => $userCounts,
                 ],
             ],
-            'labels' => $labels,
+            'labels' => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         ];
     }
 }

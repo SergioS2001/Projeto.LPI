@@ -4,7 +4,6 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\AgendamentosResource\Pages;
 use App\Filament\Resources\AgendamentosResource\RelationManagers;
-use App\Filament\Resources\AgendamentosResource\RelationManagers\TipoAgendamentoRelationManager;
 use App\Models\Agendamentos;
 use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
@@ -27,14 +26,15 @@ class AgendamentosResource extends Resource
         return $form
         ->schema([
             Card::make()->schema([
-                TextInput::make('nome')->required()
+                TextInput::make('evento.nome')->required()
                 ->label('Nome'),
-                TextInput::make('descrição')->required()
+                TextInput::make('evento.descrição')->required()
                 ->label('Descrição'),
-                DatePicker::make('Data')
+                DatePicker::make('evento.data')
                 ->minDate(now())
+                ->label('Data')
                 ->required(),
-                TextInput::make('duração')->required()
+                TextInput::make('evento.duração')->required()
                 ->label('Duração')
                 ->numeric()
                 ->minValue(1)
@@ -47,12 +47,9 @@ class AgendamentosResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id')->sortable()->searchable()->label('id'),
-                TextColumn::make('users.name')->sortable()->searchable()->label('Users'),
-                TextColumn::make('nome')->sortable()->searchable()->label('Nome'),
-                TextColumn::make('descrição')->sortable()->searchable()->label('Descrição'),
-                TextColumn::make('data')->date()->sortable()->searchable(),
-                TextColumn::make('duração')->sortable()->searchable()->label('Duração'),
+                //TextColumn::make('id')->sortable()->searchable()->label('id'),
+                TextColumn::make('evento.nome')->sortable()->searchable()->label('Evento'),
+                TextColumn::make('users.name')->sortable()->searchable()->label('Utilizador'),
             ])
             ->filters([
                 //
@@ -83,7 +80,7 @@ class AgendamentosResource extends Resource
 
     public static function getGloballySearchableAttributes(): array
 {
-    return ['nome','descrição','users.name','data','hora'];
+    return ['evento.nome','evento.descrição','users.name','evento.data','evento.hora'];
 }
 
 }

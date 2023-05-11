@@ -45,7 +45,11 @@ class OrientadoresResource extends Resource
             ->columns([
                 TextColumn::make('id')->sortable()->label('id Orientador'),
                 TextColumn::make('users.name')->sortable()->searchable()->label('Nome'),
-                TextColumn::make('orientacao_estagios.estágios.nome')->sortable()->searchable()->label('Estágio'),
+                TextColumn::make('celula_profissional')->sortable()->searchable()->label('Célula Profissional'),
+                TextColumn::make('data_admissao')->sortable()->searchable()->label('Data de Admissão'),
+                TextColumn::make('validade')->sortable()->searchable()->label('Validade'),
+
+                //TextColumn::make('orientação_estagios.estágios.nome')->sortable()->searchable()->label('Estágio'),
             ])
             ->filters([
                 //
