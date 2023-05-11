@@ -44,7 +44,7 @@ $result = $db->query($query);
 ?>
 
 
-<!-- Table for Agendamentos -->
+<!-- Table for Presenças -->
 <table class="table caption-top">
 <caption>Presenças</caption>
   <thead>

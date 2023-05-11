@@ -30,9 +30,7 @@
   }
 
 </style>
-        //criar agendamentos
         <br><br><br>
-
         <table>
           <thead>
             <tr>

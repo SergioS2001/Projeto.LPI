@@ -50,10 +50,10 @@ JOIN orientadores ON orientação_estagios.orientadores_id = orientadores.id
 JOIN users ON orientadores.users_id = users.id
 WHERE orientação_estagios.users_id = $user_id";
 
-$query2 = "SELECT agendamentos.data AS agendamentos_data,agendamentos.nome AS agendamentos_nome,agendamentos.hora AS agendamentos_hora, agendamentos.descrição AS agendamentos_descrição,agendamentos.duração AS agendamentos_duração
-FROM user_agendamentos
-JOIN agendamentos ON user_agendamentos.agendamentos_id = agendamentos.id
-WHERE user_agendamentos.users_id=$user_id";
+$query2 = "SELECT evento.data AS evento_data,evento.nome AS evento_nome,evento.hora AS evento_hora, evento.descrição AS evento_descrição,evento.duração AS evento_duração
+FROM agendamentos
+JOIN evento ON agendamentos.evento_id = evento.id
+WHERE agendamentos.users_id=$user_id";
 
 $query3 = "SELECT 
 users.name AS orientador_nome,
@@ -76,9 +76,9 @@ JOIN users on cacifo_estagio.users_id = users.id";
 
 // Fetch data and store in $result variable
 $result1 = $db->query($query1); //Estágios
-$result2 = $db->query($query2); //Avaliações
-$result3 = $db->query($query3); //Cacifos
-$result4 = $db->query($query4); //Agendamentos
+$result2 = $db->query($query2); //Eventos
+$result3 = $db->query($query3); //avaliações
+$result4 = $db->query($query4); //Cacifos
 ?>
 
 <?php if ($result1->rowCount() > 0): ?>
@@ -190,11 +190,11 @@ $result4 = $db->query($query4); //Agendamentos
   <tbody>
     <?php while ($row = $result2->fetch()): ?>
       <tr>
-      <td><?= $row['agendamentos_nome'] ?></td>
-      <td><?= $row['agendamentos_descrição'] ?></td>
-      <td><?= $row['agendamentos_data'] ?></td>
-      <td><?= number_format($row['agendamentos_hora'], 2) ?></td>
-      <td><?= $row['agendamentos_duração'] ?></td>
+      <td><?= $row['evento_nome'] ?></td>
+      <td><?= $row['evento_descrição'] ?></td>
+      <td><?= $row['evento_data'] ?></td>
+      <td><?= number_format($row['evento_hora'], 2) ?></td>
+      <td><?= $row['evento_duração'] ?></td>
       </tr>
     <?php endwhile; ?>
   </tbody>
