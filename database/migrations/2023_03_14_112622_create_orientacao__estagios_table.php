@@ -13,8 +13,13 @@ return new class extends Migration
     {
         Schema::create('orientação_estagios', function (Blueprint $table) {
             $table->id()->bigIncrements();
-            $table->foreignId('orientadores_id')->references('id')->on('Orientadores')->onDelete('cascade');
+            $table->foreignId('users_id')->nullable()->references('id')->on('users');
             $table->foreignId('estágios_id')->references('id')->on('Estágios')->onDelete('cascade');
+            $table->foreignId('orientadores_id')->references('id')->on('Orientadores')->onDelete('cascade');
+            $table->string('horario_apresentacao')->nullable();
+            $table->string('rating_aluno_estagio')->nullable();
+            $table->string('sugestões_aluno')->nullable();
+            $table->boolean('questionario_done')->default(false);
             $table->timestamps();
         });
     }

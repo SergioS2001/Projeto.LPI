@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tipo_agendamento', function (Blueprint $table) {
+        Schema::create('info_emergência', function (Blueprint $table) {
             $table->id()->bigIncrements();
-            $table->string('nome_evento');
+            $table->string('nome')->unique();
+            $table->string('telemóvel')->unique()->nullable();
+            $table->string('grau_parentesco')->nullable();
             $table->timestamps();
         });
     }
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tipo_agendamento');
+        Schema::dropIfExists('info_emergência');
     }
 };

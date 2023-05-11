@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Histórico;
 use App\Http\Controllers\Controller;
+use App\Models\Orientação_Estagios;
 use Illuminate\Http\Request;
 
 class HistóricoController extends Controller
@@ -13,7 +13,7 @@ class HistóricoController extends Controller
      */
     public function index()
     {
-        $histórico = Histórico::paginate();
+        $histórico = Orientação_Estagios::paginate();
         return view('histórico.index', compact('histórico'));
     }
 
@@ -29,38 +29,6 @@ class HistóricoController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Histórico $historico)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Histórico $historico)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Histórico $historico)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Histórico $historico)
     {
         //
     }

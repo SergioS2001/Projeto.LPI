@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Agendamentos;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,9 +12,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('orientadores', function (Blueprint $table) {
-            $table->id()->bigIncrements();
-            $table->foreignId('users_id')->references('id')->on('Users')->onDelete('cascade');
+        Schema::create('user_agendamentos', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('agendamentos_id')->nullable()->references('id')->on('agendamentos');
+            $table->foreignId('users_id')->nullable()->references('id')->on('users');
             $table->timestamps();
         });
     }
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('orientadores');
+        Schema::dropIfExists('user_agendamentos');
     }
 };

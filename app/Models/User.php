@@ -32,7 +32,7 @@ class User extends Authenticatable
         'telemóvel',
         'morada',
         'email_alternativo',
-        'contacto_emergência',
+        'info_emergência_id',
         'instituicao_aluno_id',
         'isExterno',
         'isOrientador',
@@ -65,15 +65,14 @@ class User extends Authenticatable
         return $this->belongsTo(Instituicao_Aluno::class, 'instituicao_aluno_id');
     }
 
-    // Define the relationship with the Historico model
-    public function historico()
+    public function orientação_estagios()
 {
-    return $this->hasMany(Histórico::class);
+    return $this->hasMany(Orientação_Estagios::class);
 }
 
-public function agendamentos()
+public function user_agendamentos()
 {
-    return $this->hasMany(Agendamentos::class);
+    return $this->hasMany(User_Agendamentos::class);
 }
 
 public function orientadores()
@@ -93,43 +92,7 @@ public function cacifo_estagio()
 {
     return $this->hasMany(Cacifo_Estagio::class);
 }
-    public function estagio()
-    {
-        return $this->hasOneThrough(
-            Estágios::class,
-            Histórico::class,
-            'user_id', // foreign key on the Estágios table
-            'id', // local key on the Historico table
-            'id', // local key on the User table
-            'estágios_id' // foreign key on the Historico table
-        );
-    }
     
-    
-    public function instituicaoEstagio()
-    {
-        return $this->hasOneThrough(
-            Instituicao_Estagio::class,
-            Estágios::class,
-            'id', // foreign key on the Instituicao_Estagio table
-            'id', // local key on the Estagio table
-            'instituição_estagio_id', // foreign key on the Estagio table
-            'id' // local key on the User table
-        );
-    }
-
-    public function estagio_cacifo()
-    {
-        return $this->hasOneThrough(
-            Estágios::class,
-            Cacifo_Estagio::class,
-            'id',
-            'id',
-            'cacifo_estagio_id',
-            'estágios_id'
-        );
-    }
-
     //public function canAccessFilament(): bool
     //{
         //return str_ends_with($this->email, '@yourdomain.com') && $this->hasVerifiedEmail();

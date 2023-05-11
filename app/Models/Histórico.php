@@ -10,28 +10,4 @@ class Histórico extends Model
     use HasFactory;
     protected $table = 'historico';
 
-    protected $fillable = [
-        'users_id',
-        'estágios_id',
-        'rating_aluno_estagio',
-        'sugestões_aluno',
-        'questionario_done',
-    ];
-
-
-    public function estagio()
-    {
-        return $this->belongsTo(Estágios::class, 'estágios_id');
-    }
-
-    public function presenças()
-    {
-        return $this->belongsTo(Presenças::class, 'presenças_id');
-    }
-
-    public function user()
-{
-    return $this->belongsTo(User::class, 'users_id');
-}
-
 }

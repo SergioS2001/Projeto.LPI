@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Histórico;
 use App\Models\Orientação_Estagios;
 use App\Http\Controllers\Controller;
 use App\Models\Presenças;
@@ -26,25 +25,23 @@ class OrientacaoEstagiosController extends Controller
     return view('orientação.index', compact('orientação'));
 }
 
-public function update(Request $request, Presenças $presenca)
+public function update($orientação_estagios_id)
 {
-    $presenca->isValidated = true;
-    $presenca->save();
+    $orientacao = Orientação_Estagios::findOrFail($orientação_estagios_id);
 
-    $historico = Histórico::where('estágios_id', $request->estágios_id)
-        ->where(function($query) use ($request) {
-            $query->where('users_id', Auth::id())
-                ->orWhere(function($query) use ($request) {
-                    $query->where('isOrientador', true)
-                        ->where('users_id', $request->orientador_id);
-                });
-        })
-        ->first();
-
-    if ($historico) {
-        $historico->presenças += 1;
-        $historico->save();
+    // Check if the authenticated user is the orientador of the Orientacao_Estagios
+    if ($orientacao->orientadores_id !== auth()->user()->id) {
+        return redirect()->back()->with('error', 'Você não tem permissão para validar presenças nessa orientação.');
     }
+
+    $presença = Presenças::where('orientação_estagios_id', $orientação_estagios_id)->first();
+
+    if (!$presença) {
+        return redirect()->back()->with('error', 'Presença não encontrada.');
+    }
+
+    $presença->isValidated = true;
+    $presença->save();
 
     return redirect()->back()->with('success', 'Presença validada com sucesso.');
 }

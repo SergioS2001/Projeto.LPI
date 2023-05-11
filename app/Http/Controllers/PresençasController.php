@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Histórico;
 use App\Http\Controllers\Controller;
+use App\Models\Orientação_Estagios;
 use App\Models\Presenças;
 use App\Models\Estágios;
 use App\Models\User;
@@ -17,7 +17,7 @@ class PresençasController extends Controller
      */
     public function index()
     {
-        $presenças = Histórico::paginate();
+        $presenças = Orientação_Estagios::paginate();
         return view('presenças.index', compact('presenças'));
     }
 
@@ -48,10 +48,10 @@ class PresençasController extends Controller
         $estagio = Estágios::findOrFail($validatedData['estagio']);
     
         // Check if the presença already exists for the given date and estágio
-    $existingPresenca = Presenças::where([
-        'data' => $validatedData['data'],
-        'estágios_id' => $estagio->id,
-    ])->first();
+        $existingPresenca = Presenças::where([
+            'data' => $validatedData['data'],
+            'orientação_estagios_id' => Orientação_Estagios::where('users_id', $user->id)->where('estágios_id', $estagio->id)->first()->id,
+        ])->first();
 
     if ($existingPresenca) {
         return redirect()->back()->with('error', 'Presença já existe para esta data e estágio!')->withInput();
@@ -59,47 +59,14 @@ class PresençasController extends Controller
     
         // Create a new presença record for this date and estágio
         $presenca = new Presenças();
-        $presenca->users_id = $user->id;
         $presenca->data = $validatedData['data'];
         $presenca->h_entrada = $validatedData['h_entrada'];
         $presenca->h_saida = $validatedData['h_saida'];
         $presenca->tempo_pausa = $validatedData['tempo_pausa'];
-        $presenca->estágios_id = $estagio->id;
+        $presenca->orientação_estagios_id = Orientação_Estagios::where('users_id', $user->id)->where('estágios_id', $estagio->id)->first()->id;
         $presenca->save();
     
         return redirect()->back()->with('success', 'Presença salva com sucesso!');
     }
     
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Histórico $historico)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Histórico $historico)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Histórico $historico)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Histórico $historico)
-    {
-        //
-    }
 }

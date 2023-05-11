@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('presenças', function (Blueprint $table) {
             $table->id()->bigIncrements();
-            $table->foreignId('users_id')->nullable()->references('id')->on('users');
-            $table->foreignId('estágios_id')->nullable()->references('id')->on('Estágios')->onDelete('cascade');
+            $table->foreignId('orientação_estagios_id')->nullable()->references('id')->on('orientação_estagios');
             $table->date('data')->nullable()->min(now());
             $table->time('h_entrada')->nullable();
             $table->time('h_saida')->nullable();

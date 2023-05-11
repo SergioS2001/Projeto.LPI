@@ -12,26 +12,16 @@ class Agendamentos extends Model
     protected $fillable = [
         'users_id',
         'nome',
-        'tipo_agendamento_id',
         'data',
         'descrição',
         'duração',
-        'hora'
+        'hora',
+        'isAccepted',
     ];
 
-    public function tipo_agendamento()
+    public function user_agendamentos()
 {
-    return $this->belongsTo(Tipo_Agendamento::class, 'tipo_agendamento_id');
-}
-
-public function historico()
-{
-    return $this->hasMany(Histórico::class, 'agendamentos_id');
-}
-
-public function users()
-{
-    return $this->belongsTo(User::class, 'users_id');
+    return $this->hasMany(User_Agendamentos::class);
 }
 
 }

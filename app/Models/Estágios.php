@@ -70,9 +70,9 @@ class Estágios extends Model
         return $this->belongsTo(Solicitação_Vagas::class, 'solicitacao_vagas_id');
     }
 
-    public function historico()
+    public function orientação_estagios()
     {
-        return $this->hasMany(Histórico::class);
+        return $this->hasMany(Orientação_Estagios::class);
     }
 
     public function cacifo_estagio()

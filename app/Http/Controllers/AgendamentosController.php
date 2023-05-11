@@ -13,7 +13,7 @@ class AgendamentosController extends Controller
      */
     public function index()
     {
-        $agendamentos = Agendamentos::with('tipo_agendamento')->get();
+        $agendamentos = Agendamentos::all();
         return view('agendamentos.index', compact('agendamentos'));
     }
 

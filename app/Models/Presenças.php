@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Presenças extends Model
 {
     use HasFactory;
+    protected $table = 'presenças';
 
     protected $fillable = [
-        'users_id',
-        'estágios_id',
+        'orientação_estagios_id',
         'data',
         'h_entrada',
         'h_saida',
@@ -22,13 +22,8 @@ class Presenças extends Model
         'isValidated',
     ];
 
-    public function estagio()
+    public function orientação_estagios()
     {
-        return $this->belongsTo(Estágios::class, 'estágios_id');
-    }
-
-    public function users()
-    {
-        return $this->belongsTo(User::class, 'users_id');
+        return $this->belongsTo(Orientação_Estagios::class, 'orientação_estagios_id');
     }
 }
