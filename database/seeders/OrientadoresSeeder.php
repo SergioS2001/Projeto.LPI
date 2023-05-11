@@ -16,7 +16,6 @@ class OrientadoresSeeder extends Seeder
         $orientadores = [
             [
                 'users_id' => 1,
-                'horario_apresentacao' => '2023-01-01',
                 'created_at' => now(),
             'updated_at' => now(),
             ],
