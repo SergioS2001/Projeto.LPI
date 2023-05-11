@@ -22,7 +22,7 @@ class ServiçosResource extends Resource
     protected static ?string $model = Serviços::class;
     protected static ?string $recordTitleAttribute = 'titulo';
     protected static ?string $navigationIcon = 'heroicon-o-collection';
-    protected static ?string $navigationGroup = 'Estágios/Ensinos Clínicos';
+    protected static ?string $navigationGroup = 'Recursos Estágios/EC';
 
     public static function form(Form $form): Form
     {

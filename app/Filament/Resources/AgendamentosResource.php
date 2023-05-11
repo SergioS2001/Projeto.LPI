@@ -20,7 +20,7 @@ class AgendamentosResource extends Resource
 {
     protected static ?string $model = Agendamentos::class;
     protected static ?string $navigationIcon = 'heroicon-o-collection';
-
+    protected static ?string $navigationGroup = 'Calendário';
     public static function form(Form $form): Form
     {
         return $form

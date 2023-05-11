@@ -22,7 +22,7 @@ class CursoEstagioResource extends Resource
     protected static ?string $recordTitleAttribute = 'curso';
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
-    protected static ?string $navigationGroup = 'Estágios/Ensinos Clínicos';
+    protected static ?string $navigationGroup = 'Recursos Estágios/EC';
 
     public static function form(Form $form): Form
     {
