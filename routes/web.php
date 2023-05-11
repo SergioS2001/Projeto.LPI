@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\UserController;
-use App\Models\Histórico;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -54,6 +53,8 @@ Route::resource('estágios', EstágiosController::class);
 Route::resource('agendamentos', AgendamentosController::class);
 Route::resource('presenças', PresençasController::class);
 Route::resource('orientação', OrientacaoEstagiosController::class);
+Route::put('orientação/{presença}', [OrientacaoEstagiosController::class, 'update'])->name('orientação.update');
+Route::get('orientação/search', [OrientacaoEstagiosController::class, 'search'])->name('orientação.search');
 Route::resource('histórico', HistóricoController::class);
 Route::resource('contactos', ContactosController::class);
 
@@ -65,4 +66,3 @@ Route::get('calendar', [CalendarController::class, 'show']);
 Route::post('calendar/action', [CalendarController::class, 'action']);
 
 Route::get('generate-pdf/{name}', [PDFController::class, 'generatePDF']);
-

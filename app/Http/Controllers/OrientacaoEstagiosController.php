@@ -25,16 +25,9 @@ class OrientacaoEstagiosController extends Controller
     return view('orientação.index', compact('orientação'));
 }
 
-public function update($orientação_estagios_id)
+public function update(Request $request, $presença)
 {
-    $orientacao = Orientação_Estagios::findOrFail($orientação_estagios_id);
-
-    // Check if the authenticated user is the orientador of the Orientacao_Estagios
-    if ($orientacao->orientadores_id !== auth()->user()->id) {
-        return redirect()->back()->with('error', 'Você não tem permissão para validar presenças nessa orientação.');
-    }
-
-    $presença = Presenças::where('orientação_estagios_id', $orientação_estagios_id)->first();
+    $presença = Presenças::find($presença);
 
     if (!$presença) {
         return redirect()->back()->with('error', 'Presença não encontrada.');
@@ -47,13 +40,35 @@ public function update($orientação_estagios_id)
 }
 
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+public function search(Request $request)
+{
+    $orientador_id = auth()->user()->id;
+
+    $query = Orientação_Estagios::whereHas('estágios', function($query) use ($orientador_id) {
+        $query->where('orientadores_id', $orientador_id);
+    })->with('estágios', 'users');
+
+    // Apply search filter
+    if ($request->has('search')) {
+        $search = $request->input('search');
+        $query->where(function($q) use ($search) {
+            $q->where('data', 'like', '%' . $search . '%')
+              ->orWhere('h_entrada', 'like', '%' . $search . '%')
+              ->orWhere('h_saida', 'like', '%' . $search . '%')
+              ->orWhereHas('estágios', function($q) use ($search) {
+                  $q->where('nome', 'like', '%' . $search . '%');
+              })
+              ->orWhereHas('users', function($q) use ($search) {
+                  $q->where('name', 'like', '%' . $search . '%');
+              });
+        });
     }
+
+    $orientação = $query->get();
+
+    return view('orientação.search_rows', compact('orientação'))->render();
+}
+
 
     /**
      * Store a newly created resource in storage.
