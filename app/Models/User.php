@@ -64,6 +64,10 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Instituicao_Aluno::class, 'instituicao_aluno_id');
     }
+    public function info_emergência()
+{
+    return $this->belongsTo(Info_Emergência::class);
+}
 
     public function orientação_estagios()
 {

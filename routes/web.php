@@ -45,6 +45,7 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::patch('/profile/save-emergência', [ProfileController::class, 'saveEmergência'])->name('profile.saveEmergência');
     Route::patch('/profile/save-curso', [ProfileController::class, 'saveCurso'])->name('profile.saveCurso');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });

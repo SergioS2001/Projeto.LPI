@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\Curso_Aluno;
+use App\Models\Info_Emergência;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -49,7 +50,28 @@ class ProfileController extends Controller
     return Redirect::route('profile.edit')->with('status', 'profile-updated');
 }
 
+public function saveEmergência(Request $request)
+    {
+        $user = Auth::user();
+        $infoEmergencia = $user->info_emergência;
 
+    if (!$infoEmergencia) {
+        // Create a new InfoEmergencia instance if it doesn't exist for the user
+        $infoEmergencia = new Info_Emergência();
+    }
+
+    // Update the fields with the submitted values
+    $infoEmergencia->nome = $request->input('nome');
+    $infoEmergencia->grau_parentesco = $request->input('grau_parentesco');
+    $infoEmergencia->telemóvel = $request->input('telemóvel');
+
+    // Save the changes
+    $infoEmergencia->save();
+
+    return redirect()->back()->with('status', 'emergência-updated');
+    }
+
+    
 public function saveCurso(Request $request)
 {
     $user = Auth::user();
@@ -84,7 +106,6 @@ public function saveCurso(Request $request)
 
     return redirect()->back()->with('status', 'curso-updated');
 }
-
 
 
     /**
