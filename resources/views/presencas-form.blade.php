@@ -1,8 +1,9 @@
 @php
     use App\Models\Estágios;
-    use App\Models\Histórico;
+    use App\Models\Orientação_Estagios;
     $user = Auth::user();
 @endphp
+
 <!-- Include the form-validation.js file -->
 <script src="{{ asset('resources/js/form-validation.js') }}"></script>
 
@@ -20,18 +21,18 @@
     <label for="estagio">Estágio:</label>
     <select name="estagio" id="estagio">
     @foreach(Estágios::whereIn('id', function($query) {
-        $query->select('estágios_id')->from('historico')->where('users_id', Auth::id());
+        $query->select('estágios_id')->from('orientação_estagios')->where('users_id', Auth::id());
     })->get() as $estagio)
         <option value="{{ $estagio->id }}">{{ $estagio->nome }}</option>
     @endforeach
-</select>
+    </select>
     <br>
     <div class="form-group">
-    <label for="data">Data:</label>
-    <input class="form-control" type="date" name="data" id="data" min="{{ now()->format('Y-m-d') }}" required value="{{ old('data') }}">
-    @if ($errors->has('data'))
-        <div class="alert alert-danger">{{ $errors->first('data') }}</div>
-    @endif
+        <label for="data">Data:</label>
+        <input class="form-control" type="date" name="data" id="data" min="{{ now()->format('Y-m-d') }}" required value="{{ old('data') }}">
+        @if ($errors->has('data'))
+            <div class="alert alert-danger">{{ $errors->first('data') }}</div>
+        @endif
     </div>
     <br>
     <label for="h_entrada">Hora entrada:</label>

@@ -37,10 +37,9 @@
           <thead>
             <tr>
               <th>Nome</th>
+              <th>Descrição</th>
               <th>Data</th>
               <th>Hora</th>
-              <th>Tipo</th>
-              <th>Descrição</th>
               <th>Duração(minutos)</th>
             </tr>
           </thead>
@@ -48,10 +47,9 @@
             @foreach($agendamentos as $agendamento)
             <tr>
               <td>{{ $agendamento->nome }}</td>
+              <td>{{ $agendamento->descrição }}</td>
               <td>{{ $agendamento->data }}</td>
               <td>{{ number_format($agendamento->hora, 2, '.', '') }}</td>
-              <td>{{ $agendamento->tipo_agendamento->nome_evento }}</td>
-              <td>{{ $agendamento->descrição }}</td>
               <td>{{ $agendamento->duração }}</td>
             </tr>
             @endforeach

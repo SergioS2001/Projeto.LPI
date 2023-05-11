@@ -24,7 +24,6 @@ class DatabaseSeeder extends Seeder
          $this->call(CursoEstagioSeeder::class);
          $this->call(InstituiçãoSeeder::class);
          $this->call(ServiçosSeeder::class);
-         $this->call(TipoAgendamentoSeeder::class);
          $this->call(TipologiaEstagioSeeder::class);
          $this->call(AgendamentosSeeder::class);
          $this->call(UnidadeCurricularSeeder::class);
@@ -32,10 +31,10 @@ class DatabaseSeeder extends Seeder
          $this->call(EstadoEstágioSeeder::class);
          $this->call(EstágiosSeeder::class);
          //$this->call(AvaliaçõesSeeder::class);
-         //$this->call(PresençasSeeder::class);
-         //$this->call(HistóricoSeeder::class);
          $this->call(OrientadoresSeeder::class);
-         //$this->call(Orientacao_Estagios::class);
+         $this->call(Orientacao_Estagios::class);
+         //$this->call(PresençasSeeder::class);
          $this->call(CacifoEstagioSeeder::class);
+         $this->call(UserAgendamentosSeeder::class);
     }
 }

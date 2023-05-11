@@ -39,22 +39,21 @@ serviços.titulo AS serviços_titulo,
 tipologia_estagio.titulo AS tipologia_estagio_titulo,
 estágios.ano_curricular AS estágios_ano_curricular,
 users.name AS orientador_nome
-FROM historico
-JOIN estágios ON historico.estágios_id = estágios.id
+FROM orientação_estagios
+JOIN estágios ON orientação_estagios.estágios_id = estágios.id
 JOIN instituicao_estagio ON estágios.instituição_estagio_id = instituicao_estagio.id
 JOIN curso_estagio ON estágios.curso_estagio_id = curso_estagio.id
 JOIN unidade_curricular ON estágios.unidade_curricular_id = unidade_curricular.id
 JOIN serviços ON estágios.serviços_id = serviços.id
 JOIN tipologia_estagio ON estágios.tipologia_estagio_id = tipologia_estagio.id
-JOIN orientação_estagios ON historico.estágios_id = orientação_estagios.estágios_id
 JOIN orientadores ON orientação_estagios.orientadores_id = orientadores.id
 JOIN users ON orientadores.users_id = users.id
-WHERE historico.users_id = $user_id";
+WHERE orientação_estagios.users_id = $user_id";
 
-$query2 = "SELECT agendamentos.data AS agendamentos_data,agendamentos.nome AS agendamentos_nome,tipo_agendamento.nome_evento AS tipo_agendamento_nome_evento,agendamentos.hora AS agendamentos_hora, agendamentos.descrição AS agendamentos_descrição,agendamentos.duração AS agendamentos_duração
-FROM agendamentos
-JOIN tipo_agendamento ON agendamentos.tipo_agendamento_id = tipo_agendamento.id
-WHERE agendamentos.users_id=$user_id";
+$query2 = "SELECT agendamentos.data AS agendamentos_data,agendamentos.nome AS agendamentos_nome,agendamentos.hora AS agendamentos_hora, agendamentos.descrição AS agendamentos_descrição,agendamentos.duração AS agendamentos_duração
+FROM user_agendamentos
+JOIN agendamentos ON user_agendamentos.agendamentos_id = agendamentos.id
+WHERE user_agendamentos.users_id=$user_id";
 
 $query3 = "SELECT 
 users.name AS orientador_nome,
@@ -72,14 +71,14 @@ $query4 = "SELECT estágios.nome as estágios_nome, cacifos.numero as cacifo_nom
 FROM estágios
 JOIN cacifo_estagio ON cacifo_estagio.estágios_id = estágios.id
 JOIN cacifos ON cacifo_estagio.cacifos_id = cacifos.id
-JOIN cauções ON cacifos.cauções_id = cauções.id
-JOIN users on users.cacifo_estagio_id = cacifo_estagio.id";
+JOIN cauções ON cacifo_estagio.cauções_id = cauções.id
+JOIN users on cacifo_estagio.users_id = users.id";
 
 // Fetch data and store in $result variable
-$result1 = $db->query($query1);
-$result2 = $db->query($query2);
-$result3 = $db->query($query3);
-$result4 = $db->query($query4);
+$result1 = $db->query($query1); //Estágios
+$result2 = $db->query($query2); //Avaliações
+$result3 = $db->query($query3); //Cacifos
+$result4 = $db->query($query4); //Agendamentos
 ?>
 
 <?php if ($result1->rowCount() > 0): ?>
@@ -182,10 +181,9 @@ $result4 = $db->query($query4);
   <thead>
     <tr>
     <th>Nome</th>
+    <th>Descrição</th>
     <th>Data</th>
     <th>Hora</th>
-    <th>Tipo</th>
-    <th>Descrição</th>
     <th>Duração(minutos)</th>
     </tr>
   </thead>
@@ -193,10 +191,9 @@ $result4 = $db->query($query4);
     <?php while ($row = $result2->fetch()): ?>
       <tr>
       <td><?= $row['agendamentos_nome'] ?></td>
+      <td><?= $row['agendamentos_descrição'] ?></td>
       <td><?= $row['agendamentos_data'] ?></td>
       <td><?= number_format($row['agendamentos_hora'], 2) ?></td>
-      <td><?= $row['tipo_agendamento_nome_evento'] ?></td>
-      <td><?= $row['agendamentos_descrição'] ?></td>
       <td><?= $row['agendamentos_duração'] ?></td>
       </tr>
     <?php endwhile; ?>

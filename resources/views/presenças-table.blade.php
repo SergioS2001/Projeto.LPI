@@ -32,10 +32,10 @@ $query = "SELECT estágios.nome AS estágios_nome,
                 MIN(presenças.h_entrada) AS h_entrada, 
                 MAX(presenças.h_saida) AS h_saida, 
                 SUM(presenças.tempo_pausa) AS tempo_pausa
-          FROM historico
-          JOIN estágios ON historico.estágios_id = estágios.id
-          JOIN presenças ON presenças.estágios_id = estágios.id
-          WHERE historico.users_id = $user_id
+          FROM orientação_estagios
+          JOIN estágios ON orientação_estagios.estágios_id = estágios.id
+          JOIN presenças ON presenças.orientação_estagios_id = orientação_estagios.id
+          WHERE orientação_estagios.users_id = $user_id
           GROUP BY estágios_nome, presenças.data";
 
 // Fetch data and store in $result variable
