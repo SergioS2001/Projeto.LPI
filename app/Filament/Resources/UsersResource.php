@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\UsersResource\Pages;
 use App\Filament\Resources\UsersResource\RelationManagers;
 use App\Filament\Resources\UsersResource\Widgets\UserStatsOverview;
+use App\Filament\widgets\DailyUsersChart;
 use App\Models\Instituicao_Aluno;
 use App\Models\User;
 use Filament\Forms;
@@ -88,6 +89,7 @@ class UsersResource extends Resource
     {
         return [
             UserStatsOverview::class,
+            DailyUsersChart::class,
         ];
     }
    

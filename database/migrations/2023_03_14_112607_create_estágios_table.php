@@ -18,7 +18,7 @@ return new class extends Migration
             $table->boolean('isExterno')->default(false);
             $table->foreignId('instituição_estagio_id')->references('id')->on('Instituicao_Estagio')->onDelete('cascade');
             $table->foreignId('curso_estagio_id')->references('id')->on('Curso_Estagio')->onDelete('cascade');
-            $table->foreignId('unidade_curricular_id')->references('id')->on('Unidades_Curriculares')->onDelete('cascade');
+            $table->foreignId('unidade_curricular_id')->references('id')->on('unidade_curricular')->onDelete('cascade');
             $table->integer('ano_curricular')->min(2)->max(6);
             $table->foreignId('serviços_id')->references('id')->on('Serviços')->onDelete('cascade');
             $table->foreignId('tipologia_estagio_id')->references('id')->on('Tipologia_Estagio')->onDelete('cascade');

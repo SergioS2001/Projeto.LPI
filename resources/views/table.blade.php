@@ -56,25 +56,24 @@ JOIN agendamentos ON historico_agendamentos.agendamentos_id = agendamentos.id
 WHERE historico_agendamentos.users_id=$user_id";
 
 $query3 = "SELECT 
-users.name AS orientador_nome,
-estágios.nome AS estágios_nome,
-avaliações.nota AS avaliações_nota,
-avaliações.isDone AS avaliações_isDone
+    users.name AS orientador_nome,
+    estágios.nome AS estágios_nome,
+    avaliações.nota AS avaliações_nota,
+    avaliações.isDone AS avaliações_isDone
 FROM avaliações
-JOIN estágios ON avaliações.estágios_id = estágios.id
-JOIN orientação_estagios ON avaliações.estágios_id = orientação_estagios.estágios_id
+JOIN orientação_estagios ON avaliações.orientação_estagios_id = orientação_estagios.id
 JOIN orientadores ON orientação_estagios.orientadores_id = orientadores.id
 JOIN users ON orientadores.users_id = users.id
-WHERE avaliações.users_id = $user_id";
+JOIN estágios ON orientação_estagios.estágios_id = estágios.id
+WHERE orientação_estagios.users_id = $user_id";
 
-$query4 = "SELECT estágios.nome AS estágios_nome, cacifos.numero AS cacifo_nome, cauções.isPago AS cauções_isPago, cauções.isDevolvido AS cauções_isDevolvido
-FROM cacifo_estagio
-JOIN estágios ON cacifo_estagio.estágios_id = estágios.id
+
+$query4 = "SELECT estágios.nome as estágios_nome, cacifos.numero as cacifo_nome, cauções.isPago as cauções_isPago, cauções.isDevolvido as cauções_isDevolvido
+FROM estágios
+JOIN cacifo_estagio ON cacifo_estagio.estágios_id = estágios.id
 JOIN cacifos ON cacifo_estagio.cacifos_id = cacifos.id
 JOIN cauções ON cacifo_estagio.cauções_id = cauções.id
-JOIN users ON cacifo_estagio.users_id = users.id
-WHERE cacifo_estagio.users_id = " . $user_id;
-
+JOIN users on cacifo_estagio.users_id = users.id";
 
 // Fetch data and store in $result variable
 $result1 = $db->query($query1); //Estágios
@@ -148,7 +147,7 @@ $result4 = $db->query($query4); //Cacifos
 <?php else: ?>
 <?php endif; ?>
 
-<br><br><br>
+<br><br>
 <!-- Table for Cacifos -->
 <?php if ($result4->rowCount() > 0): ?>
 <table class="table caption-left">

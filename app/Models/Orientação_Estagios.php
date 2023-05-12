@@ -43,5 +43,9 @@ public function presenças()
 {
     return $this->hasMany(Presenças::class);
 }
+public function avaliação()
+{
+    return $this->hasMany(Avaliações::class);
+}
 
 }

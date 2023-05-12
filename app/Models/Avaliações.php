@@ -17,14 +17,9 @@ class Avaliações extends Model
         'fileSigned',
     ];
 
-    public function estagio()
+    public function orientação_estagios()
     {
-        return $this->belongsTo(Estágios::class, 'estágios_id');
+        return $this->belongsTo(Orientação_Estagios::class, 'orientação_estagios_id');
     }
-
-    public function users()
-{
-    return $this->belongsTo(User::class, 'users_id');
-}
 
 }

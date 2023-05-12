@@ -10,8 +10,7 @@ class AvaliaçõesSeeder extends Seeder
     public function run()
     {
         Avaliações::create([
-            'users_id' => 1,
-            'estágios_id' => 1,
+            'orientação_estagios_id' => 1,
             'nota' => 16.5,
             'isDone' => false,
             'fileSubmitted' => false,
@@ -20,8 +19,7 @@ class AvaliaçõesSeeder extends Seeder
         ]);
 
         Avaliações::create([
-            'users_id' => 1,
-            'estágios_id' => 2,
+            'orientação_estagios_id' => 1,
             'nota' => 12.0,
             'isDone' => false,
             'fileSubmitted' => false,
@@ -30,8 +28,7 @@ class AvaliaçõesSeeder extends Seeder
         ]);
 
         Avaliações::create([
-            'users_id' => 1,
-            'estágios_id' => 1,
+            'orientação_estagios_id' => 2,
             'nota' => 18.5,
             'isDone' => false,
             'fileSubmitted' => false,
