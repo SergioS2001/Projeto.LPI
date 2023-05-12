@@ -26,14 +26,5 @@ class AvaliaçõesSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-
-        Avaliações::create([
-            'orientação_estagios_id' => 2,
-            'nota' => 18.5,
-            'isDone' => false,
-            'fileSubmitted' => false,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
     }
 }

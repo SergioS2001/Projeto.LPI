@@ -35,10 +35,6 @@ class Estágios extends Model
         return $this->belongsTo(Tipologia_Estágio::class, 'tipologia_estagio_id');
     }
 
-    public function avaliacao()
-    {
-        return $this->hasMany(Avaliações::class);
-    }
 
     public function cacifos()
     {

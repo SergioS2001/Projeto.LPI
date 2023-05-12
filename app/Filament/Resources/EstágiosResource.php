@@ -126,7 +126,7 @@ class EstágiosResource extends Resource
 
     public static function getGloballySearchableAttributes(): array
     {
-        return ['nome', 'isExterno', 'ano_curricular', 'data_inicial','data_final','serviços.titulo','tipologia_estagio.titulo','avaliacao.nota','instituicao_estagio.nome'];
+        return ['nome', 'isExterno', 'ano_curricular', 'data_inicial','data_final','serviços.titulo','tipologia_estagio.titulo','instituicao_estagio.nome'];
     }
 
 }

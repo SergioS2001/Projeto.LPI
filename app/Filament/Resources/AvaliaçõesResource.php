@@ -34,12 +34,12 @@ class AvaliaçõesResource extends Resource
         return $form
         ->schema([
             Card::make()->schema([
-                Select::make('estagio.nome')
+                Select::make('orientação_estagios.estágios.nome')
                 ->label('Estágio')
                 ->options(Estágios::all()->pluck('nome', 'id'))
                 ->required()
                 ->searchable(),
-                Select::make('orientador.users.name')
+                Select::make('orientação_estagios.orientador.users.name')
                 ->label('Orientador')
                 ->options(Orientadores::all()->pluck('users_id', 'name'))
                 ->required()
@@ -63,9 +63,9 @@ class AvaliaçõesResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('users.name')->sortable()->searchable()->limit(12)->label('Aluno'),
-                TextColumn::make('estagio.nome')->sortable()->searchable()->label('Estágio'),
-                TextColumn::make('orientador.users.name')->sortable()->searchable()->label('Orientadores'),
+                TextColumn::make('orientação_estagios.users.name')->sortable()->searchable()->limit(12)->label('Aluno'),
+                TextColumn::make('orientação_estagios.estágios.nome')->sortable()->searchable()->label('Estágio'),
+                TextColumn::make('orientação_estagios.orientador.users.name')->sortable()->searchable()->label('Orientadores'),
                 TextColumn::make('nota')->sortable()->label('Nota Final'),
                 IconColumn::make('isDone')->label('Concluído')->boolean(),
             ])
@@ -74,12 +74,6 @@ class AvaliaçõesResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-
-                ActionsAction::make('Downdload Pdf')
-                ->icon('heroicon-o-document-download')
-                ->url(fn(Avaliações $record) => route('admin.pdf.download', $record))
-                ->openUrlInNewTab(),
-                
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
@@ -103,7 +97,7 @@ class AvaliaçõesResource extends Resource
     }
     public static function getGloballySearchableAttributes(): array
     {
-        return ['estagio.nome', 'nota', 'users.name'];
+        return ['orientação_estagios.estágios.nome', 'nota', 'orientação_estagios.users.name','orientação_estagios.orientador.users.name'];
     }
 
 }

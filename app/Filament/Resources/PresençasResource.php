@@ -61,7 +61,7 @@ class PresençasResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('orientação_estagios.estágios.nome')->sortable()->searchable()->limit(12)->label('Estágio'),
-                TextColumn::make('orientação_estagios.user.name')->sortable()->searchable()->limit(12)->label('Aluno'),
+                TextColumn::make('orientação_estagios.users.name')->sortable()->searchable()->limit(12)->label('Aluno'),
                 TextColumn::make('data')->date()->sortable()->searchable(),
                 TextColumn::make('h_entrada')->sortable()->label('Entrada(h)'),
                 TextColumn::make('tempo_pausa')->sortable()->label('Pausa(min)'),
@@ -101,7 +101,7 @@ class PresençasResource extends Resource
     }
     public static function getGloballySearchableAttributes(): array
     {
-        return ['orientação_estagios.estágios.nome', 'orientação_estagios.user.name','orientação_estagios.orientador.users.name','data','h_entrada','h_saida'];
+        return ['orientação_estagios.estágios.nome', 'orientação_estagios.users.name','orientação_estagios.orientador.users.name','data','h_entrada','h_saida'];
     }
 
 }
