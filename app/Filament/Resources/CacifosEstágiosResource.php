@@ -2,11 +2,11 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CacifoEstagioResource\Pages;
-use App\Filament\Resources\CacifoEstagioResource\RelationManagers;
-use App\Filament\Resources\CacifoEstagioResource\Widgets\CacifoEstagioStatsOverview;
-use App\Models\Cacifo_Estagio;
+use App\Filament\Resources\CacifosEstágiosResource\Pages;
+use App\Filament\Resources\CacifosEstágiosResource\RelationManagers;
+use App\Filament\Resources\CacifosEstágiosResource\Widgets\CacifosEstágiosStatsOverview;
 use App\Models\Cacifos;
+use App\Models\Cacifos_Estágios;
 use App\Models\Estágios;
 use App\Models\User;
 use Filament\Forms;
@@ -22,36 +22,35 @@ use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class CacifoEstagioResource extends Resource
+class CacifosEstágiosResource extends Resource
 {
-    protected static ?string $model = Cacifo_Estagio::class;
+    protected static ?string $model = Cacifos_Estágios::class;
     protected static ?string $navigationGroup = 'Cacifos';
     protected static ?string $navigationIcon = 'heroicon-o-collection';
-    protected static $routeName = 'cacifo-estagios';
 
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                Card::make()->schema([
-                    Select::make('users_id')
-                    ->label('Aluno')
-                    ->options(User::all()->pluck('name', 'id'))
-                    ->required()
-                    ->searchable(),
-                    Select::make('estágios_id')
-                    ->label('Estágio')
-                    ->options(Estágios::all()->pluck('nome', 'id'))
-                    ->required()
-                    ->searchable(),
-                    Select::make('cacifos_id')
-                    ->label('Cacifo')
-                    ->options(Cacifos::all()->pluck('numero', 'id'))
-                    ->searchable(),
-                    Checkbox::make('fardamento')
-                    ->label('Fardamento?'),
-                    ])
-            ]);
+        ->schema([
+            Card::make()->schema([
+                Select::make('users_id')
+                ->label('Aluno')
+                ->options(User::all()->pluck('name', 'id'))
+                ->required()
+                ->searchable(),
+                Select::make('estágios_id')
+                ->label('Estágio')
+                ->options(Estágios::all()->pluck('nome', 'id'))
+                ->required()
+                ->searchable(),
+                Select::make('cacifos_id')
+                ->label('Cacifo')
+                ->options(Cacifos::all()->pluck('numero', 'id'))
+                ->searchable(),
+                Checkbox::make('fardamento')
+                ->label('Fardamento?'),
+                ])
+        ]);;
     }
 
     public static function table(Table $table): Table
@@ -81,24 +80,18 @@ class CacifoEstagioResource extends Resource
             //
         ];
     }
-    
     public static function  getWidgets(): array
     {
         return [
-            CacifoEstagioStatsOverview::class,
+            CacifosEstágiosStatsOverview::class,
         ];
     }
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCacifoEstagios::route('/'),
-            'create' => Pages\CreateCacifoEstagio::route('/create'),
-            'edit' => Pages\EditCacifoEstagio::route('/{record}/edit'),
+            'index' => Pages\ListCacifosEstágios::route('/'),
+            'create' => Pages\CreateCacifosEstágios::route('/create'),
+            'edit' => Pages\EditCacifosEstágios::route('/{record}/edit'),
         ];
-    }
-    public static function getGloballySearchableAttributes(): array
-    {
-        return ['estágios.nome', 'cacifos.numero', 'users.name','cauções.valor'];
-    }
-
+    }    
 }

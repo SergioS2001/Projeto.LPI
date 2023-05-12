@@ -7,13 +7,13 @@ use App\Filament\Resources\EstágiosResource\RelationManagers;
 use App\Filament\Resources\EstágiosResource\Widgets\EstágiosStatsOverview;
 use App\Models\Estágios;
 use App\Models\Instituição_Estágio;
-use App\Models\Curso_Estagio;
+use App\Models\Cursos_Estágios;
 use App\Models\Orientadores;
 use App\Models\Cacifos;
 use App\Models\Orientação_Estagios;
 use App\Models\Serviços;
 use App\Models\Tipologia_Estágio;
-use App\Models\Unidade_Curricular;
+use App\Models\Unidades_Curriculares;
 use App\Models\User;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Checkbox;
@@ -48,11 +48,11 @@ class EstágiosResource extends Resource
                 ->searchable(),
                 Select::make('curso_estagio_id')
                 ->label('Curso')
-                ->options(Curso_Estagio::all()->pluck('curso', 'id'))
+                ->options(Cursos_Estágios::all()->pluck('curso', 'id'))
                 ->searchable(),
                 Select::make('unidade_curricular_id')
                 ->label('Unidade Curricular')
-                ->options(Unidade_Curricular::all()->pluck('nome', 'id'))
+                ->options(Unidades_Curriculares::all()->pluck('nome', 'id'))
                 ->searchable(),
                 TextInput::make('Ano curricular')
                 ->numeric()

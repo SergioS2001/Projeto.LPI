@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Curso_Estagio;
+use App\Models\Cursos_Estágios;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -35,7 +35,7 @@ class CursoEstagioController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Curso_Estagio $curso_Estagio)
+    public function show(Cursos_Estágios $curso_Estagio)
     {
         //
     }
@@ -43,7 +43,7 @@ class CursoEstagioController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Curso_Estagio $curso_Estagio)
+    public function edit(Cursos_Estágios $curso_Estagio)
     {
         //
     }
@@ -51,7 +51,7 @@ class CursoEstagioController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Curso_Estagio $curso_Estagio)
+    public function update(Request $request, Cursos_Estágios $curso_Estagio)
     {
         //
     }
@@ -59,7 +59,7 @@ class CursoEstagioController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Curso_Estagio $curso_Estagio)
+    public function destroy(Cursos_Estágios $curso_Estagio)
     {
         //
     }

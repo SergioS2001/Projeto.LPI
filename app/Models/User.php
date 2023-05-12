@@ -74,9 +74,9 @@ class User extends Authenticatable
     return $this->hasMany(Orientação_Estagios::class);
 }
 
-public function eventos()
+public function agendamentos()
 {
-    return $this->hasMany(Evento::class);
+    return $this->hasMany(Agendamentos::class);
 }
 
 public function orientadores()
@@ -94,7 +94,7 @@ public function avaliações()
 
 public function cacifo_estagio()
 {
-    return $this->hasMany(Cacifo_Estagio::class);
+    return $this->hasMany(Cacifos_Estágios::class);
 }
     
     //public function canAccessFilament(): bool

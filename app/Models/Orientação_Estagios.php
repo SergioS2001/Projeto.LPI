@@ -34,7 +34,7 @@ public function estágios()
     return $this->belongsTo(Estágios::class, 'estágios_id');
 }
 
-    public function user()
+    public function users()
 {
     return $this->belongsTo(User::class, 'users_id');
 }

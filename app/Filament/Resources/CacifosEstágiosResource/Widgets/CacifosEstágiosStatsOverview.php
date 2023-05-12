@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Filament\Resources\CacifoEstagioResource\Widgets;
+namespace App\Filament\Resources\CacifosEstágiosResource\Widgets;
 
-use App\Models\Cacifo_Estagio;
+use App\Models\Cacifos_Estágios;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Card;
 
-class CacifoEstagioStatsOverview extends BaseWidget
+class CacifosEstágiosStatsOverview extends BaseWidget
 {
     protected function getCards(): array
     {
-        $countCacifoFardamento = Cacifo_Estagio::where('fardamento', 1)->count();
+        $countCacifoFardamento = Cacifos_Estágios::where('fardamento', 1)->count();
 
         return [
-            Card::make('Total Cacifos Usados', Cacifo_Estagio::all()->count())
+            Card::make('Total Cacifos Usados', Cacifos_Estágios::all()->count())
             ->description('Número de cacifos usados por alunos em estágio')
             ->descriptionIcon('heroicon-o-lock-closed')
             ->color('primary'),
@@ -23,5 +23,4 @@ class CacifoEstagioStatsOverview extends BaseWidget
             ->color('primary'),
         ];
     }
-
 }

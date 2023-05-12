@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Unidade_Curricular;
+use App\Models\Unidades_Curriculares;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -35,7 +35,7 @@ class UnidadeCurricularController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Unidade_Curricular $unidade_Curricular)
+    public function show(Unidades_Curriculares $unidade_Curricular)
     {
         //
     }
@@ -43,7 +43,7 @@ class UnidadeCurricularController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Unidade_Curricular $unidade_Curricular)
+    public function edit(Unidades_Curriculares $unidade_Curricular)
     {
         //
     }
@@ -51,7 +51,7 @@ class UnidadeCurricularController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Unidade_Curricular $unidade_Curricular)
+    public function update(Request $request, Unidades_Curriculares $unidade_Curricular)
     {
         //
     }
@@ -59,7 +59,7 @@ class UnidadeCurricularController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Unidade_Curricular $unidade_Curricular)
+    public function destroy(Unidades_Curriculares $unidade_Curricular)
     {
         //
     }

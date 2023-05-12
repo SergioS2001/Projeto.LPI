@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use \App\Models\User;
-use \App\Models\Instituicao_Aluno;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,6 +15,7 @@ class DatabaseSeeder extends Seeder
          User::factory()->create([
              'name' => 'testUser',
              'email' => 'test@example.com',
+             'isExterno' => true,
              'isOrientador' => true,
          ]);
          $this->call(InstituicaoAlunoSeeder::class);
@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
          $this->call(InstituiçãoSeeder::class);
          $this->call(ServiçosSeeder::class);
          $this->call(TipologiaEstagioSeeder::class);
-         $this->call(EventosSeeder::class);
+         $this->call(AgendamentosSeeder::class);
          $this->call(UnidadeCurricularSeeder::class);
          $this->call(SolicitaçãoVagasSeeder::class);
          $this->call(EstadoEstágioSeeder::class);
@@ -35,6 +35,6 @@ class DatabaseSeeder extends Seeder
          $this->call(Orientacao_Estagios::class);
          //$this->call(PresençasSeeder::class);
          $this->call(CacifoEstagioSeeder::class);
-         $this->call(AgendamentosSeeder::class);
+         $this->call(HistoricoAgendamentosSeeder::class);
     }
 }

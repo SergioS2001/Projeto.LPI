@@ -6,7 +6,7 @@ use App\Filament\Resources\CacifosResource\Pages;
 use App\Filament\Resources\CacifosResource\RelationManagers;
 use App\Filament\Resources\CacifosResource\RelationManagers\CauçõesRelationManager;
 use App\Filament\Resources\CacifosResource\Widgets\CacifosStatsOverview;
-use App\Models\Cacifo_Estagio;
+use App\Models\Cacifos_Estágios;
 use App\Models\Cacifos;
 use App\Models\Cauções;
 use Filament\Forms;

@@ -11,17 +11,17 @@ class Agendamentos extends Model
     protected $table = 'agendamentos';
 
     protected $fillable = [
-        'evento_id',
-        'users_id',
+        'nome',
+        'data',
+        'descrição',
+        'duração',
+        'hora',
+        'isAccepted',
     ];
 
-    public function users()
+    public function histórico_agendamentos()
 {
-    return $this->belongsTo(User::class, 'users_id');
-}
-public function evento()
-{
-    return $this->belongsTo(Evento::class, 'evento_id');
+    return $this->hasMany(Histórico_Agendamentos::class);
 }
 
 }

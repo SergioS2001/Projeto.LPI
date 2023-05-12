@@ -2,11 +2,10 @@
 
 namespace App\Models;
 
-use Database\Seeders\EstágiosSeeder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cacifo_Estagio extends Model
+class Cacifos_Estágios extends Model
 {
     use HasFactory;
     protected $table = 'cacifo_estagio';

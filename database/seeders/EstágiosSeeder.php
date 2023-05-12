@@ -4,8 +4,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Estágios;
 use App\Models\Instituição_Estágio;
-use App\Models\Curso_Estagio;
-use App\Models\Unidade_Curricular;
+use App\Models\Cursos_Estágios;
+use App\Models\Unidades_Curriculares;
 use App\Models\Serviços;
 use App\Models\Tipologia_Estágio;
 use App\Models\Presenças;
@@ -20,8 +20,8 @@ class EstágiosSeeder extends Seeder
     {
         // Get some related data
         $instituicao_estagio = Instituição_Estágio::first();
-        $curso_estagio = Curso_Estagio::first();
-        $unidade_curricular = Unidade_Curricular::first();
+        $curso_estagio = Cursos_Estágios::first();
+        $unidade_curricular = Unidades_Curriculares::first();
         $serviço = Serviços::first();
         $tipologia_estagio = Tipologia_Estágio::first();
         $solicitacao_vagas = Solicitação_Vagas::first();

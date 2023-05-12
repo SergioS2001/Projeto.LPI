@@ -52,12 +52,12 @@ class Estágios extends Model
 
     public function unidade_curricular()
     {
-        return $this->belongsTo(Unidade_Curricular::class, 'unidade_curricular_id');
+        return $this->belongsTo(Unidades_Curriculares::class, 'unidade_curricular_id');
     }
 
     public function curso_estagio()
     {
-        return $this->belongsTo(Curso_Estagio::class, 'curso_estagio_id');
+        return $this->belongsTo(Cursos_Estágios::class, 'curso_estagio_id');
     }
 
     public function estado_estagio()
@@ -77,7 +77,7 @@ class Estágios extends Model
 
     public function cacifo_estagio()
     {
-        return $this->hasMany(Cacifo_Estagio::class);
+        return $this->hasMany(Cacifos_Estágios::class);
     }
 
     public function instituicaoEstagio()

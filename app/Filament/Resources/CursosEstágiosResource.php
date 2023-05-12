@@ -2,28 +2,27 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CursoEstagioResource\Pages;
-use App\Filament\Resources\CursoEstagioResource\RelationManagers;
-use App\Filament\Resources\CursoEstagioResource\Widgets\CursoEstagioStatsOverview;
-use App\Models\Curso_Estagio;
+use App\Filament\Resources\CursosEstágiosResource\Pages;
+use App\Filament\Resources\CursosEstágiosResource\RelationManagers;
+use App\Filament\Resources\CursosEstágiosResource\Widgets\CursosEstágiosStatsOverview ;
+use App\Models\Cursos_Estágios;
 use Filament\Forms;
+use Filament\Forms\Components\Card;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Forms\Components\Card;
-class CursoEstagioResource extends Resource
-{
-    protected static ?string $model = Curso_Estagio::class;
-    protected static ?string $recordTitleAttribute = 'curso';
 
+class CursosEstágiosResource extends Resource
+{
+    protected static ?string $model = Cursos_Estágios::class;
+    protected static ?string $recordTitleAttribute = 'curso';
     protected static ?string $navigationIcon = 'heroicon-o-collection';
     protected static ?string $navigationGroup = 'Recursos Estágios/EC';
-
     public static function form(Form $form): Form
     {
         return $form
@@ -61,19 +60,18 @@ class CursoEstagioResource extends Resource
             //
         ];
     }
-    
     public static function  getWidgets(): array
     {
         return [
-            CursoEstagioStatsOverview::class,
+            CursosEstágiosStatsOverview ::class,
         ];
     }
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCursoEstagios::route('/'),
-            'create' => Pages\CreateCursoEstagio::route('/create'),
-            'edit' => Pages\EditCursoEstagio::route('/{record}/edit'),
+            'index' => Pages\ListCursosEstágios::route('/'),
+            'create' => Pages\CreateCursosEstágios::route('/create'),
+            'edit' => Pages\EditCursosEstágios::route('/{record}/edit'),
         ];
-    }    
+    }
 }

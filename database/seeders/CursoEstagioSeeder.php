@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 use Illuminate\Database\Seeder;
-use App\Models\Curso_Estagio;
+use App\Models\Cursos_Estágios;
 
 class CursoEstagioSeeder extends Seeder
 {
@@ -35,7 +35,7 @@ class CursoEstagioSeeder extends Seeder
         ];
 
         foreach ($cursoestagio as $cursoestagio) {
-            Curso_Estagio::create($cursoestagio);
+            Cursos_Estágios::create($cursoestagio);
         }
     }
 }

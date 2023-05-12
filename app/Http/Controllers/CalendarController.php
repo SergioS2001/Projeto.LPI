@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Evento;
+use App\Models\Agendamentos;
 
 class CalendarController extends Controller
 {
@@ -12,7 +12,7 @@ class CalendarController extends Controller
     {
     	if($request->ajax())
     	{
-    		$data = Evento::whereDate('data', '>=', $request->data)
+    		$data = Agendamentos::whereDate('data', '>=', $request->data)
                        ->get(['id','nome','data','hora']);
             return response()->json($data);
     	}
@@ -25,31 +25,31 @@ class CalendarController extends Controller
     	{
     		if($request->type == 'add')
     		{
-    			$Evento = Evento::create([
+    			$Agendamentos = Agendamentos::create([
     				'nome'		=>	$request->nome,
     				'data'		=>	$request->data,
     				'hora'		=>	$request->hora
     			]);
 
-    			return response()->json($Evento);
+    			return response()->json($Agendamentos);
     		}
 
     		if($request->type == 'update')
     		{
-    			$Evento = Evento::find($request->id)->update([
+    			$Agendamentos = Agendamentos::find($request->id)->update([
     				'nome'		=>	$request->nome,
     				'data'		=>	$request->data,
     				'hora'		=>	$request->hora
     			]);
 
-    			return response()->json($Evento);
+    			return response()->json($Agendamentos);
     		}
 
     		if($request->type == 'delete')
     		{
-    			$Evento = Evento::find($request->id)->delete();
+    			$Agendamentos = Agendamentos::find($request->id)->delete();
 
-    			return response()->json($Evento);
+    			return response()->json($Agendamentos);
     		}
     	}
     }

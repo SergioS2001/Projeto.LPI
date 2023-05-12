@@ -32,7 +32,7 @@ class NewAccStatsOverview extends BaseWidget
                 ->descriptionIcon($descriptionIcon)
                 ->chart([7, 2, 10, 3, 15, 4, 17]) // Replace with your actual chart data
                 ->color('success'),
-                Card::make('Average time on page', '3:12')
+                Card::make('Average time on page', '23:12')
                 ->description('3% increase')
                 ->descriptionIcon('heroicon-s-trending-up'),
         ];

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 use Illuminate\Database\Seeder;
-use App\Models\Unidade_Curricular;
+use App\Models\Unidades_Curriculares;
 
 class UnidadeCurricularSeeder extends Seeder
 {
@@ -37,7 +37,7 @@ class UnidadeCurricularSeeder extends Seeder
         ];
 
         foreach ($unidadesCurriculares as $unidadeCurricular) {
-            Unidade_Curricular::create($unidadeCurricular);
+            Unidades_Curriculares::create($unidadeCurricular);
         }
     }
 }

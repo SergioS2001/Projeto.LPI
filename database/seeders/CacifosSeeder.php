@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Cacifo_Estagio;
+use App\Models\Cacifos_Estágios;
 use Illuminate\Database\Seeder;
 use App\Models\Cacifos;
 use App\Models\Cauções;

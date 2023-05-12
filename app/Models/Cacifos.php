@@ -17,7 +17,7 @@ class Cacifos extends Model
 
     public function cacifo_estagio()
     {
-        return $this->hasMany(Cacifo_Estagio::class);
+        return $this->hasMany(Cacifos_Estágios::class);
     }
 
 }
