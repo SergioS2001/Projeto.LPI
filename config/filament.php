@@ -139,9 +139,10 @@ return [
         'path' => app_path('Filament/Widgets'),
         'register' => [
             Widgets\AccountWidget::class,
+           
+            App\Filament\Widgets\CalendarWidget::class,
             App\Filament\Widgets\NewAccStatsOverview::class,
             App\Filament\Widgets\DailyUsersChart::class,
-            //App\Filament\Widgets\TotalEstágiosChart::class,
         ],
     ],
 
