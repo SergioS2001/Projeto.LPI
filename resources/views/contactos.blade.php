@@ -49,7 +49,7 @@ $result2 = $db->query($query2);
 
 <br>
 <!-- Table for Orientadores -->
-<table class="table caption-top">
+<table class="table caption-left">
 <caption>Orientadores</caption>
           <thead>
             <tr>
@@ -99,5 +99,6 @@ $result2 = $db->query($query2);
     font-size: 1.2em;
     font-weight: bold;
     margin-bottom: 1em;
+    
   }
 </style>

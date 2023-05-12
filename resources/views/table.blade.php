@@ -82,9 +82,9 @@ $result4 = $db->query($query4); //Cacifos
 ?>
 
 <?php if ($result1->rowCount() > 0): ?>
-<!-- Table for Estagios -->
-<table class="table caption-top">
-  <caption>Estágios</caption>
+  <!-- Table for Estagios -->
+<table class="table caption-left">
+  <caption>Estágios/EC</caption>
   <thead>
     <tr>
       <th>Nome</th>
@@ -122,7 +122,7 @@ $result4 = $db->query($query4); //Cacifos
 <br><br>
 <!-- Table for Avaliações -->
 <?php if ($result3->rowCount() > 0): ?>
-<table class="table caption-top">
+<table class="table caption-left">
   <caption>Avaliações</caption>
   <thead>
     <tr>
@@ -149,7 +149,7 @@ $result4 = $db->query($query4); //Cacifos
 <br><br><br>
 <!-- Table for Cacifos -->
 <?php if ($result4->rowCount() > 0): ?>
-<table class="table caption-top">
+<table class="table caption-left">
   <caption>Cacifos</caption>
   <thead>
     <tr>
@@ -176,7 +176,7 @@ $result4 = $db->query($query4); //Cacifos
 <br><br><br>
 <?php if ($result2->rowCount() > 0): ?>
 <!-- Table for Agendamentos -->
-<table class="table caption-top">
+<table class="table caption-left">
 <caption>Agendamentos</caption>
   <thead>
     <tr>
@@ -205,6 +205,7 @@ $result4 = $db->query($query4); //Cacifos
 
 <!-- Add this CSS to your stylesheet or HTML -->
 <style>
+  
   table {
     border-collapse: collapse;
     width: 100%;
@@ -230,5 +231,8 @@ $result4 = $db->query($query4); //Cacifos
     font-size: 1.2em;
     font-weight: bold;
     margin-bottom: 1em;
+    caption-side: left;
+    text-align: left;
   }
+
 </style>

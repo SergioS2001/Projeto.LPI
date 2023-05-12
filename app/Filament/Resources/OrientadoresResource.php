@@ -34,6 +34,9 @@ class OrientadoresResource extends Resource
                         ->label('Utilizadores')
                         ->options(User::all()->pluck('name', 'id'))
                         ->searchable(),
+                    TextInput::make('celula_profissional')->label('Célula Profissional'),
+                    TextInput::make('data_admissao')->label('Data de admissão'),
+                    TextInput::make('validade')->label('Validade'),
                     Checkbox::make('users.isOrientador')->label('Orientador'),
                     ])
             ]);
@@ -48,7 +51,6 @@ class OrientadoresResource extends Resource
                 TextColumn::make('celula_profissional')->sortable()->searchable()->label('Célula Profissional'),
                 TextColumn::make('data_admissao')->sortable()->searchable()->label('Data de Admissão'),
                 TextColumn::make('validade')->sortable()->searchable()->label('Validade'),
-
                 //TextColumn::make('orientação_estagios.estágios.nome')->sortable()->searchable()->label('Estágio'),
             ])
             ->filters([

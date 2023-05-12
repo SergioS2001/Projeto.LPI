@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('info_emergência', function (Blueprint $table) {
             $table->id()->bigIncrements();
-            $table->string('nome')->unique();
-            $table->string('telemóvel')->unique()->nullable();
+            $table->string('nome')->nullable();
+            $table->string('telemóvel')->nullable();
             $table->string('grau_parentesco')->nullable();
             $table->timestamps();
         });

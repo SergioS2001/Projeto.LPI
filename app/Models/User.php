@@ -66,7 +66,7 @@ class User extends Authenticatable
     }
     public function info_emergência()
 {
-    return $this->belongsTo(Info_Emergência::class);
+    return $this->belongsTo(Info_Emergência::class, 'info_emergência_id');
 }
 
     public function orientação_estagios()

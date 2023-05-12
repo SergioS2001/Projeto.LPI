@@ -45,7 +45,7 @@ $result = $db->query($query);
 
 
 <!-- Table for Presenças -->
-<table class="table caption-top">
+<table class="table caption-left">
 <caption>Presenças</caption>
   <thead>
     <tr>
@@ -98,5 +98,7 @@ $result = $db->query($query);
     font-size: 1.2em;
     font-weight: bold;
     margin-bottom: 1em;
+    caption-side: left;
+    text-align: left;
   }
 </style>

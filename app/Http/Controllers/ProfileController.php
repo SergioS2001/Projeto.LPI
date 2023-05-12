@@ -67,7 +67,7 @@ public function saveEmergência(Request $request)
 
     // Save the changes
     $infoEmergencia->save();
-
+    
     return redirect()->back()->with('status', 'emergência-updated');
     }
 
@@ -107,6 +107,13 @@ public function saveCurso(Request $request)
     return redirect()->back()->with('status', 'curso-updated');
 }
 
+public function updatePoliticaDados(Request $request)
+{
+    $user = Auth::user();
+
+
+    return redirect()->back()->with('status', 'curso-updated');
+}
 
     /**
      * Delete the user's account.

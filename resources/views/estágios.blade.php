@@ -36,7 +36,8 @@ estágios.data_final AS estágios_data_final,
 serviços.titulo AS serviços_titulo,
 tipologia_estagio.titulo AS tipologia_estagio_titulo,
 estágios.ano_curricular AS estágios_ano_curricular,
-users.name AS orientador_nome
+users.name AS orientador_nome,
+orientação_estagios.horario_apresentacao AS horario_apresentacao
 FROM estágios
 JOIN instituicao_estagio ON estágios.instituição_estagio_id = instituicao_estagio.id
 JOIN curso_estagio ON estágios.curso_estagio_id = curso_estagio.id
@@ -55,20 +56,20 @@ $result1 = $db->query($query);
 
 <!-- Table for Orientacao -->
 <table class="table caption-top">
-  <caption>Estágios Admitidos</caption>
+  <caption>Estágio/EC Admitido</caption>
   <thead>
     <tr>
       <th>Nome</th>
       <th>Orientador</th>
+      <th>Apresentação</th>
       <th>Instituição</th>
       <th>Curso</th>
-      <th>unidade Curricular</th>
+      <th>Unidade Curricular</th>
       <th>Ano Curricular</th>
       <th>Serviços</th>
       <th>Tipologia</th>
       <th>Data inicial</th>
       <th>Data final</th>
-      <th>Inscrever</th>
     </tr>
   </thead>
   <tbody>
@@ -77,6 +78,7 @@ $result1 = $db->query($query);
       <tr>
         <td><?= $row['estágios_nome'] ?></td>
         <td><?= $row['orientador_nome'] ?></td>
+        <td><?= $row['horario_apresentacao'] ?></td>
         <td><?= $row['instituicao_estagio_nome'] ?></td>
         <td><?= $row['curso_estagio_curso'] ?></td>
         <td><?= $row['unidade_curricular_nome'] ?></td>
@@ -85,7 +87,6 @@ $result1 = $db->query($query);
         <td><?= $row['tipologia_estagio_titulo'] ?></td>
         <td><?= $row['estágios_data_inicial'] ?></td>
         <td><?= $row['estágios_data_final'] ?></td>
-        <td><button>click</button></td>
       </tr>
     <?php endwhile; ?>
   </tbody>
