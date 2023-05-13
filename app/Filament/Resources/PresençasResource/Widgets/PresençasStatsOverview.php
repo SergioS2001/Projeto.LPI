@@ -11,7 +11,6 @@ class PresençasStatsOverview extends BaseWidget
 {
     protected function getCards(): array
     {
-        $countEstagios = Estágios::all()->count();
         $countvalidadas = Presenças::where('isValidated', 1)->count();
 
         return [
@@ -21,10 +20,6 @@ class PresençasStatsOverview extends BaseWidget
             ->color('primary'),
             Card::make('Presenças Validadas', $countvalidadas)
             ->description('Número de presenças validadas pelos orientadores')
-            ->color('primary'),
-            Card::make('Número de Estágios', $countEstagios)
-            ->description('Número de diferentes Estágios representados')
-            ->descriptionIcon('heroicon-o-briefcase')
             ->color('primary'),
         ];
     }

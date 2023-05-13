@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Estado_Estagio;
+use App\Models\Avaliações;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class EstadoEstagioController extends Controller
+class AvaliaçõesController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $avaliações = Avaliações::all();
+        return view('avaliações.index', compact('avaliações'));
     }
 
     /**
@@ -35,7 +36,7 @@ class EstadoEstagioController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Estado_Estagio $estado_Estagio)
+    public function show(Avaliações $Avaliações)
     {
         //
     }
@@ -43,7 +44,7 @@ class EstadoEstagioController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Estado_Estagio $estado_Estagio)
+    public function edit(Avaliações $Avaliações)
     {
         //
     }
@@ -51,7 +52,7 @@ class EstadoEstagioController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Estado_Estagio $estado_Estagio)
+    public function update(Request $request, Avaliações $Avaliações)
     {
         //
     }
@@ -59,7 +60,7 @@ class EstadoEstagioController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Estado_Estagio $estado_Estagio)
+    public function destroy(Avaliações $Avaliações)
     {
         //
     }

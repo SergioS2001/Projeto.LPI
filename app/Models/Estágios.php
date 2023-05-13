@@ -22,7 +22,8 @@ class Estágios extends Model
         'avaliacao_id',
         'isExterno',
         'solicitacao_vagas_id',
-        'estado_estagio_id',
+        'isSolicitado',
+        'isAdmitido',
     ];
 
     public function serviços()
@@ -56,10 +57,6 @@ class Estágios extends Model
         return $this->belongsTo(Cursos_Estágios::class, 'curso_estagio_id');
     }
 
-    public function estado_estagio()
-    {
-        return $this->belongsTo(Estado_Estagio::class, 'estado_estagio_id');
-    }
 
     public function solicitacao_vagas()
     {

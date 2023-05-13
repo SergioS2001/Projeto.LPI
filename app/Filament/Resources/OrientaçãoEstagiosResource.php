@@ -4,8 +4,13 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\OrientaçãoEstagiosResource\Pages;
 use App\Filament\Resources\OrientaçãoEstagiosResource\RelationManagers;
+use App\Models\Estágios;
+use App\Models\Orientadores;
 use App\Models\Orientação_Estagios;
+use App\Models\User;
+use Database\Seeders\EstágiosSeeder;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -25,7 +30,18 @@ class OrientaçãoEstagiosResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Select::make('users_id')
+            ->label('Utilizadores')
+            ->options(User::all()->pluck('name', 'id'))
+            ->searchable(),
+                Select::make('estágios_id')
+                ->label('Estágios')
+                ->options(Estágios::all()->pluck('nome', 'id'))
+                ->searchable(),
+                Select::make('orientadores_id')
+                ->label('Orientadores')
+                ->options(Orientadores::all()->pluck('users.name', 'id'))
+                ->searchable(),
             ]);
     }
 
@@ -33,11 +49,10 @@ class OrientaçãoEstagiosResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('user.name')->sortable()->searchable()->label('Aluno'),
+                TextColumn::make('users.name')->sortable()->searchable()->label('Aluno'),
                 TextColumn::make('estágios.nome')->sortable()->searchable()->label('Estágio'),
                 TextColumn::make('orientador.users.name')->sortable()->searchable()->label('Orientador'),
                 TextColumn::make('horario_apresentacao')->sortable()->searchable()->label('Apresentação 1º dia'),
-
             ])
             ->filters([
                 //

@@ -12,7 +12,6 @@ use App\Models\Presenças;
 use App\Models\Cacifos;
 use App\Models\Avaliações;
 use App\Models\Solicitação_Vagas;
-use App\Models\Estado_Estagio;
 
 class EstágiosSeeder extends Seeder
 {
@@ -25,7 +24,6 @@ class EstágiosSeeder extends Seeder
         $serviço = Serviços::first();
         $tipologia_estagio = Tipologia_Estágio::first();
         $solicitacao_vagas = Solicitação_Vagas::first();
-        $estado_estagio = Estado_Estagio::first();
 
         // Create some estagios
         Estágios::create([
@@ -40,7 +38,6 @@ class EstágiosSeeder extends Seeder
             'data_inicial' => '2022-01-01',
             'data_final' => '2022-06-30',
             'solicitacao_vagas_id' => $solicitacao_vagas->id,
-            'estado_estagio_id' => 4,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -56,7 +53,6 @@ class EstágiosSeeder extends Seeder
             'data_inicial' => '2022-07-01',
             'data_final' => '2022-12-31',
             'solicitacao_vagas_id' => 2,
-            'estado_estagio_id' => $estado_estagio->id,
             'created_at' => now(),
             'updated_at' => now(),
         ]);

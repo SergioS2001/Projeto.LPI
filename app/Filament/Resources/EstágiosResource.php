@@ -70,7 +70,7 @@ class EstágiosResource extends Resource
                 ->minDate(now()),
                 DatePicker::make('Data Final')
                 ->minDate(now()),
-                Checkbox::make('estado_estagio.admitido')->label('Aprovado?'),
+                Checkbox::make('isAdmitido')->label('Admitido?'),
                 ])
             ]);
     }
@@ -79,7 +79,7 @@ class EstágiosResource extends Resource
     {
         return $table
             ->columns([
-                IconColumn::make('estado_estagio.admitido')->label('Aprovado')->boolean(),
+                IconColumn::make('isAdmitido')->label('Aprovado')->boolean(),
                 TextColumn::make('nome')->sortable()->searchable(),
                 TextColumn::make('instituicao_estagio.nome')->label('Instituição')->limit(12),
                 TextColumn::make('curso_estagio.curso')->label('Curso')->limit(12),
