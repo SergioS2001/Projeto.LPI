@@ -70,35 +70,4 @@ class EstágiosController extends Controller
     return redirect()->route('estágios.index')->with('success', 'Estágio criado com sucesso!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(EstágiosController $estágiosController)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(EstágiosController $estágiosController)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, EstágiosController $estágiosController)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(EstágiosController $estágiosController)
-    {
-        //
-    }
 }

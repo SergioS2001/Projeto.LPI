@@ -25,43 +25,4 @@ class InstituicaoEstagioController extends Controller
         return view('estágios.create', compact('instituicao_estagio'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Instituição_Estágio $instituicao_Estagio)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Instituição_Estágio $instituicao_Estagio)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Instituição_Estágio $instituicao_Estagio)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Instituição_Estágio $instituicao_Estagio)
-    {
-        //
-    }
 }
