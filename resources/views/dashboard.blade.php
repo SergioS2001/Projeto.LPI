@@ -14,9 +14,9 @@
                 @elseif  (!Auth::user()->profile_updated)
                 @include('profile-update-alert')
                 @else
+                @include('homepage')
                 //Info Plataforma + estágios HE-UFP
                 @endif
-
                 </div>
             </div>
         </div>
