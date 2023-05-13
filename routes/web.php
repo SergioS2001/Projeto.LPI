@@ -11,7 +11,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\PDFController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\AvaliaçõesController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -50,6 +51,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::post('dashboard/update', [DashboardController::class, 'update'])->name('dashboard.update');
+Route::post('dashboard/updateProfile', [DashboardController::class, 'updateprofile'])->name('dashboard.updateProfile');
 Route::resource('estágios', EstágiosController::class);
 Route::resource('agendamentos', AgendamentosController::class);
 Route::resource('presenças', PresençasController::class);
@@ -58,6 +61,7 @@ Route::put('orientação/{presença}', [OrientacaoEstagiosController::class, 'up
 Route::get('orientação/search', [OrientacaoEstagiosController::class, 'search'])->name('orientação.search');
 Route::resource('histórico', HistóricoController::class);
 Route::resource('contactos', ContactosController::class);
+Route::resource('avaliações', AvaliaçõesController::class);
 
 //Route::post('/estagios', [EstágiosController::class, 'store'])->name('estagios.store');
 

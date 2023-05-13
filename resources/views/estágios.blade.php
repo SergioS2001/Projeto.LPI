@@ -47,7 +47,7 @@ JOIN tipologia_estagio ON estágios.tipologia_estagio_id = tipologia_estagio.id
 JOIN orientação_estagios ON estágios.id = orientação_estagios.estágios_id
 JOIN orientadores ON orientação_estagios.orientadores_id = orientadores.id
 JOIN users ON orientadores.users_id = users.id
-WHERE estágios.estado_estagio_id = 4";
+WHERE estágios.isAdmitido = 1";
 
 // Fetch data and store in $result variable
 $result1 = $db->query($query);
