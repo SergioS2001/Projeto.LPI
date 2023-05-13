@@ -13,6 +13,7 @@ use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\AvaliaçõesController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\QuestionarioController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -60,7 +61,7 @@ Route::resource('orientação', OrientacaoEstagiosController::class);
 Route::put('orientação/{presença}', [OrientacaoEstagiosController::class, 'update'])->name('orientação.update');
 Route::get('orientação/search', [OrientacaoEstagiosController::class, 'search'])->name('orientação.search');
 Route::resource('histórico', HistóricoController::class);
-Route::resource('contactos', ContactosController::class);
+Route::resource('questionário', QuestionarioController::class);
 Route::resource('avaliações', AvaliaçõesController::class);
 
 //Route::post('/estagios', [EstágiosController::class, 'store'])->name('estagios.store');

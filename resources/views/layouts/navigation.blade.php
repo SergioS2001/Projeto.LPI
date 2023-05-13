@@ -22,12 +22,6 @@
                     <x-nav-link :href="route('agendamentos.index')" :active="request()->routeIs('agendamentos.index')">
                         {{ __('Agendamentos') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('histórico.index')" :active="request()->routeIs('histórico.index')">
-                        {{ __('Histórico') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('contactos.index')" :active="request()->routeIs('contactos.index')">
-                        {{ __('Contactos') }}
-                    </x-nav-link>
                     <x-nav-link :href="route('presenças.index')" :active="request()->routeIs('presenças.index')">
                         {{ __('Presenças') }}
                     </x-nav-link>
@@ -37,6 +31,12 @@
                     <x-nav-link :href="route('avaliações.index')" :active="request()->routeIs('avaliações.index')">
                         {{ __('Avaliações') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('questionário.index')" :active="request()->routeIs('questionário.index')">
+                        {{ __('Questionário') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('histórico.index')" :active="request()->routeIs('histórico.index')">
+                        {{ __('Histórico') }}
+                    </x-nav-link> 
                 </div>
             </div>
 

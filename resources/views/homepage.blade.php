@@ -44,6 +44,15 @@
   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-light dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 dark:text-black">
+                    //Pequena apresentação programa Estágios/EC
+                    <br>
+                    //EX
                     <br>
                     Bem vindo a plataforma de gestão de informação estratégica relativa aos estágios e ensinos clínicos realizados no
                     HE-UFP.
@@ -51,3 +60,18 @@
                     Esta plataforma foi desenvolvida no ambito de prestar auxilio aos docentes do HE-UFP para a organização, onde numa só plataforma seja possivel gerir os
                     diversos alunos que estejam a participar num estágio da área de saúde, as suas presenças, a capacidade de agendar reuniões com os docentes, tudo de forma
                     a facilitar os processos envolvidos.
+
+
+                    <br>CONTACTOS DO SERVIÇO<br>
+Centro de Ensino graduado, de Formação contínua e de Educação para a Saúde<br>
+Avenida Fernando Pessoa, 150 4420-096 Gondomar, Portugal (GPS: 41.14313,-8.544427)<br>
+Telefone: +351 222 455 455<br>
+E-mail: cefes.he@ufp.edu.pt<br>
+Presidente: Prof. Doutor José Calheiros<br>
+Coordenação Administrativa-Funcional: Dr.ª Carla Sousa<br><br>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+  </a>
