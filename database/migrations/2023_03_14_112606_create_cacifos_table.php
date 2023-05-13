@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('cacifos', function (Blueprint $table) {
             $table->id()->bigIncrements();
-            $table->bigInteger('numero')->unique();
+            $table->bigInteger('numero')->nullable()->unique();
             $table->date('data_inicio')->nullable()->min(now());
             $table->boolean('chave_partilhada')->default(false);
             $table->timestamps();

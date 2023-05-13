@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tipologia_Estagio', function (Blueprint $table) {
             $table->id()->bigIncrements();
-            $table->string('titulo');
+            $table->string('titulo')->nullable();
             $table->timestamps();
         });
     }

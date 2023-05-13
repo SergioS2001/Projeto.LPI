@@ -14,8 +14,8 @@ return new class extends Migration
     {
         Schema::create('serviços', function (Blueprint $table) {
             $table->id()->bigIncrements();
-            $table->string('titulo');
-            $table->string('nome_responsavel')->required();
+            $table->string('titulo')->nullable();
+            $table->string('nome_responsavel')->nullable();
             $table->timestamps();
         });
     }

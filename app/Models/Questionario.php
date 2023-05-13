@@ -9,10 +9,12 @@ class Avaliações extends Model
 {
     use HasFactory;
 
-    protected $table = 'avaliações';
     protected $fillable = [
-        'orientação_estagios_id',
-        'module_count'
+        'users_id',
+        'estágios_id',
+        'nota',
+        'isDone',
+        'fileSigned',
     ];
 
     public function orientação_estagios()

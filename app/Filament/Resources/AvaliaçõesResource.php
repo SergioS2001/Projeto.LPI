@@ -25,7 +25,6 @@ class AvaliaçõesResource extends Resource
 {
     protected static ?string $model = Avaliações::class;
     protected static ?string $recordTitleAttribute = 'nota';
-
     protected static ?string $navigationIcon = 'heroicon-o-collection';
     protected static ?string $navigationGroup = 'Acompanhamento Estágio/EC';
 

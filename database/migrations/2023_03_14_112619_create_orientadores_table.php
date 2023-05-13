@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('orientadores', function (Blueprint $table) {
             $table->id()->bigIncrements();
-            $table->foreignId('users_id')->references('id')->on('Users')->onDelete('cascade');
+            $table->foreignId('users_id')->nullable()->references('id')->on('Users')->onDelete('cascade');
+            $table->string('celula_profissional')->nullable()->unique();
+            $table->date('admissao')->nullable();
+            $table->date('validade')->nullable();
+            $table->string('responsavel_assinatura')->nullable();
             $table->timestamps();
         });
     }

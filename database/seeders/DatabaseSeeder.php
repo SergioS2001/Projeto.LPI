@@ -32,6 +32,8 @@ class DatabaseSeeder extends Seeder
          $this->call(OrientadoresSeeder::class);
          $this->call(Orientacao_Estagios::class);
          $this->call(AvaliaçõesSeeder::class);
+         $this->call(ModulosSeeder::class);
+         $this->call(AvaliacaoModulosSeeder::class);
          //$this->call(PresençasSeeder::class);
          $this->call(CacifoEstagioSeeder::class);
          $this->call(HistoricoAgendamentosSeeder::class);

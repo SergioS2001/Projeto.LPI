@@ -14,10 +14,7 @@ return new class extends Migration
         Schema::create('avaliações', function (Blueprint $table) {
             $table->id()->bigIncrements();
             $table->foreignId('orientação_estagios_id')->nullable()->references('id')->on('orientação_estagios');
-            $table->float('nota')->minValue(0.0)->maxValue(20.0);
-            $table->boolean('fileSubmitted')->default(false);
-            $table->boolean('isDone')->default(false);
-            $table->boolean('fileSigned')->default(false);
+            $table->integer('module_count')->nullable()->default(1)->maxValue(6);
             $table->timestamps();
         });
     }

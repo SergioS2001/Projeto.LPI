@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cauções', function (Blueprint $table) {
+        Schema::create('modulos', function (Blueprint $table) {
             $table->id()->bigIncrements();
-            $table->float('valor')->nullable()->min(0.0);
-            $table->boolean('isPago')->default(false);
-            $table->boolean('isDevolvido')->default(false);
-            $table->boolean('isAssinadoAluno')->default(false);
+            $table->string('nome')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cauções');
+        Schema::dropIfExists('modulos');
     }
 };

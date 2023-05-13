@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('solicitacao_vagas', function (Blueprint $table) {
             $table->id();
-            $table->string('designação');
-            $table->string('objetivos');
-            $table->string('ano_letivo');
-            $table->integer('vagas')->min(0);
-            $table->integer('carga_horaria_total')->min(0);
+            $table->string('designação')->nullable();
+            $table->string('objetivos')->nullable();
+            $table->string('ano_letivo')->nullable();
+            $table->integer('vagas')->nullable()->min(0);
+            $table->integer('carga_horaria_total')->nullable()->min(0);
             $table->string('metodologia_avaliação;')->nullable();
             $table->timestamps();
         });

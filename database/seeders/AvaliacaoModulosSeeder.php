@@ -1,24 +1,26 @@
 <?php
 
 namespace Database\Seeders;
+
+use App\Models\AvaliacaoModulos;
 use Illuminate\Database\Seeder;
 use App\Models\Avaliações;
 use Illuminate\Support\Facades\DB;
 
-class AvaliaçõesSeeder extends Seeder
+class AvaliacaoModulosSeeder extends Seeder
 {
     public function run()
     {
-        Avaliações::create([
-            'orientação_estagios_id' => 1,
-            'module_count' => 2,
+        AvaliacaoModulos::create([
+            'avaliações_id' => 1,
+            'modulos_id' => 2,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
 
-        Avaliações::create([
-            'orientação_estagios_id' => 1,
-            'module_count' => 2,
+        AvaliacaoModulos::create([
+            'avaliações_id' => 1,
+            'modulos_id' => 2,
             'created_at' => now(),
             'updated_at' => now(),
         ]);

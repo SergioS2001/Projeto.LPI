@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('orientação_estagios', function (Blueprint $table) {
             $table->id()->bigIncrements();
             $table->foreignId('users_id')->nullable()->references('id')->on('users');
-            $table->foreignId('estágios_id')->references('id')->on('Estágios')->onDelete('cascade');
-            $table->foreignId('orientadores_id')->references('id')->on('Orientadores')->onDelete('cascade');
+            $table->foreignId('estágios_id')->nullable()->references('id')->on('Estágios')->onDelete('cascade');
+            $table->foreignId('orientadores_id')->nullable()->references('id')->on('Orientadores')->onDelete('cascade');
             $table->string('horario_apresentacao')->nullable();
             $table->boolean('questionario_done')->default(false);
             $table->timestamps();

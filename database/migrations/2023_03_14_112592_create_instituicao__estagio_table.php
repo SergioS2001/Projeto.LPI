@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('instituicao_estagio', function (Blueprint $table) {
             $table->id()->bigIncrements();
-            $table->string('nome')->unique();
-            $table->string('sigla')->unique();
+            $table->string('nome')->nullable()->unique();
+            $table->string('sigla')->nullable()->unique();
             $table->timestamps();
         });
     }

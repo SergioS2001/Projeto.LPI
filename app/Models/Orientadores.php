@@ -11,6 +11,10 @@ class Orientadores extends Model
 
     protected $fillable = [
         'user_id',
+        'celula_profissional',
+        'admissao',
+        'validade',
+        'responsavel_assinatura'
     ];
 
     public function users()
