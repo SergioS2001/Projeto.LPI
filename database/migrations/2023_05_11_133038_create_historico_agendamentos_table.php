@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('historico_agendamentos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('agendamentos_id')->nullable()->references('id')->on('agendamentos');
-            $table->foreignId('users_id')->nullable()->references('id')->on('users');
+            $table->foreignId('orientação_estagios_id')->nullable()->references('id')->on('orientação_estagios');
             $table->timestamps();
         });
     }

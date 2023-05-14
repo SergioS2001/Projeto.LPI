@@ -12,6 +12,8 @@ class Modulos extends Model
 
     protected $fillable = [
         'nome',
+        'nota',
+        'descrição',
     ];
 
 }

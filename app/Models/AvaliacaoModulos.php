@@ -13,7 +13,7 @@ class AvaliacaoModulos extends Model
     protected $fillable = [
         'avaliações_id',
         'modulos_id',
-        'nota',
+        'nota_final',
         'isDone',
         'fileSigned',
         'fileSubmitted',

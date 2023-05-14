@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
          $this->call(AvaliaçõesSeeder::class);
          $this->call(ModulosSeeder::class);
          $this->call(AvaliacaoModulosSeeder::class);
-         //$this->call(PresençasSeeder::class);
+         $this->call(PresençasSeeder::class);
          $this->call(CacifoEstagioSeeder::class);
          $this->call(HistoricoAgendamentosSeeder::class);
     }

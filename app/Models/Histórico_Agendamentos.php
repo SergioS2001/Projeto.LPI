@@ -12,16 +12,16 @@ class Histórico_Agendamentos extends Model
 
     protected $fillable = [
         'agendamentos_id',
-        'users_id',
+        'orientação_estagios_id',
     ];
 
-    public function users()
-{
-    return $this->belongsTo(User::class, 'users_id');
-}
-public function agendamentos()
+    public function agendamentos()
 {
     return $this->belongsTo(Agendamentos::class, 'agendamentos_id');
+}
+public function orientação_estagios()
+{
+    return $this->belongsTo(Orientação_Estagios::class, 'orientação_estagios_id');
 }
 
 }

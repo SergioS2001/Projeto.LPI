@@ -47,5 +47,9 @@ public function avaliação()
 {
     return $this->hasMany(Avaliações::class);
 }
+public function histórico_agendamentos()
+{
+    return $this->hasMany(Histórico_Agendamentos::class);
+}
 
 }

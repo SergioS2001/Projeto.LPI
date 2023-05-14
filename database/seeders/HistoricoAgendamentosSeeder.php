@@ -12,13 +12,13 @@ class HistoricoAgendamentosSeeder extends Seeder
         DB::table('historico_agendamentos')->insert([
             [
                 'users_id' =>  1,
-                'agendamentos_id' => 1,
+                'orientação_estagios_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'users_id' =>  1,
-                'agendamentos_id' => 2,
+                'orientação_estagios_id' => 2,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
