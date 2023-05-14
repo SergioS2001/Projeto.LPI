@@ -1,5 +1,7 @@
 @php
     use App\Models\Estágios;
+    use App\Models\User;
+    use App\Models\Orientadores;
     use App\Models\Orientação_Estagios;
     $user = Auth::user();
 @endphp
@@ -19,31 +21,45 @@
         </div>
     @endif
     <label for="estagio">Estágio/EC:</label>
-    <select name="estagio" id="estagio">
+<select name="estagio" id="estagio"">
     @foreach(Estágios::whereIn('id', function($query) {
-        $query->select('estágios_id')->from('orientação_estagios')->where('users_id', Auth::id());
+        $query->select('estágios_id')->from('orientação_estagios')
+              ->whereIn('orientadores_id', function($subQuery) {
+                  $subQuery->select('id')->from('orientadores')->where('users_id', Auth::id());
+              });
     })->get() as $estagio)
         <option value="{{ $estagio->id }}">{{ $estagio->nome }}</option>
     @endforeach
-    </select>
+</select>
+
+<br>
+
+<label for="aluno">Aluno:</label>
+<select name="aluno" id="aluno">
+    @foreach(User::whereIn('id', function($query) {
+        $query->select('users_id')->from('orientação_estagios')
+              ->whereIn('estágios_id', function($subQuery) {
+                  $subQuery->select('id')->from('estágios')
+                          ->whereIn('id', function($innerQuery) {
+                              $innerQuery->select('estágios_id')->from('orientação_estagios')
+                                         ->whereIn('orientadores_id', function($subInnerQuery) {
+                                             $subInnerQuery->select('id')->from('orientadores')->where('users_id', Auth::id());
+                                         });
+                          });
+              });
+    })->get() as $aluno)
+        <option value="{{ $aluno->id }}">{{ $aluno->name }}</option>
+    @endforeach
+</select>
+
     <br>
-    <div class="form-group">
-        <label for="data">Data:</label>
-        <input class="form-control" type="date" name="data" id="data" min="{{ now()->format('Y-m-d') }}" required value="{{ old('data') }}">
-        @if ($errors->has('data'))
-            <div class="alert alert-danger">{{ $errors->first('data') }}</div>
-        @endif
-    </div>
-    <br>
-    <label for="h_entrada">Hora entrada:</label>
-    <input class="form-control" type="time" name="h_entrada" id="h_entrada" required>
-    <br>
-    <label for="h_saida">Hora saída:</label>
-    <input class="form-control" type="time" name="h_saida" id="h_saida" required>
-    <br>
-    <label for="h_pausa">Tempo de pausa (minutos):</label>
-    <input class="form-control" type="number" name="tempo_pausa" id="tempo_pausa" required min="0" step="1">
-    <br>
+    <label for="module_count">Número de Módulos:</label>
+    <input class="form-control" type="number" name="module_count" id="module_count" required>
+    <label for="nome">Nome do Módulo:</label>
+    <input class="form-control" type="text" name="nome" id="nome" required>
+    <label for="nota">Nota</label>
+    <input class="form-control" type="number" name="nota" id="nota" required><br>
+    
     <button class="btn btn-primary" type="submit">Create</button>
 </form>
 

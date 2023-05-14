@@ -49,7 +49,7 @@ $result = $db->query($query);
 <caption>Presenças</caption>
   <thead>
     <tr>
-      <th>Estágio</th>
+      <th>Estágio/EC</th>
       <th>Data</th>
       <th>Hora de entrada</th>
       <th>Hora de saída</th>

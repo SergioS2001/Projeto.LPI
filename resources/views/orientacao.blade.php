@@ -62,7 +62,7 @@ $result = $db->query($query);
   <caption>Validar Presenças</caption>
   <thead>
     <tr>
-      <th>Estágio</th>
+      <th>Estágio/EC</th>
       <th>Aluno</th>
       <th>Data</th>
       <th>Hora de entrada</th>

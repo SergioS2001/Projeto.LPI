@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Orientadores;
+use App\Models\Orientação_Estagios;
 use App\Models\User;
 use Illuminate\Http\Request;
 
