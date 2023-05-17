@@ -64,6 +64,7 @@ Route::get('orientação/search', [OrientacaoEstagiosController::class, 'search'
 Route::resource('histórico', HistóricoController::class);
 Route::resource('questionário', QuestionarioController::class);
 Route::resource('avaliações', AvaliaçõesController::class);
+Route::post('/avaliações/modulos', [AvaliaçõesController::class, 'storeModulos'])->name('avaliações.storeModulos');
 
 
 //Route::post('/estagios', [EstágiosController::class, 'store'])->name('estagios.store');

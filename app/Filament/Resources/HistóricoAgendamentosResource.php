@@ -58,7 +58,7 @@ class HistóricoAgendamentosResource extends Resource
                  TextColumn::make('agendamentos.nome')->sortable()->searchable()->label('Agendamentos'),
                  TextColumn::make('agendamentos.data')->sortable()->searchable()->label('Data'),
                  TextColumn::make('agendamentos.hora')->sortable()->searchable()->label('Hora'),
-                 TextColumn::make('users.name')->sortable()->searchable()->label('Utilizador'),
+                 //TextColumn::make('users.name')->sortable()->searchable()->label('Utilizador'),
             ])
             ->filters([
                 //

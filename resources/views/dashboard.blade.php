@@ -15,7 +15,6 @@
                 @include('profile-update-alert')
                 @else
                 @include('homepage')
-                //Info Plataforma + estágios HE-UFP
                 @endif
                 </div>
             </div>
