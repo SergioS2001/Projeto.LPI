@@ -9,9 +9,20 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
+                <h4 class="text-xl font-semibold mb-4">Adicionar presenças:</h4>
                 @include('presencas-form')
                 <br><br>
                 @include('presenças-table')
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                <h4 class="text-xl font-semibold mb-4">Editar presenças:</h4>
+                @include('presenças-edit')
                 </div>
             </div>
         </div>

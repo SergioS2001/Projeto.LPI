@@ -52,8 +52,10 @@
 <label for="module_count">Número de Módulos:</label>
 <input class="form-control" type="number" name="module_count" min=0 max=10 id="module_count" required>
 <div id="module_fields"></div>
-
-    <button type="submit">Salvar</button>
+<br>
+<label for="file">Ficheiro de Avaliação:</label>
+    <input type="file" name="file" id="file">
+    <button type="submit">Create</button>
 </form>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

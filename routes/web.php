@@ -58,6 +58,7 @@ Route::post('dashboard/updateProfile', [DashboardController::class, 'updateprofi
 Route::resource('estágios', EstágiosController::class);
 Route::resource('agendamentos', AgendamentosController::class);
 Route::resource('presenças', PresençasController::class);
+Route::get('presenças/edit', [PresençasController::class, 'edit'])->name('presenças.edit');
 Route::resource('orientação', OrientacaoEstagiosController::class);
 Route::put('orientação/{presença}', [OrientacaoEstagiosController::class, 'update'])->name('orientação.update');
 Route::get('orientação/search', [OrientacaoEstagiosController::class, 'search'])->name('orientação.search');

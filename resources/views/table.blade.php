@@ -58,9 +58,10 @@ WHERE historico_agendamentos.users_id=$user_id";
 $query3 = "SELECT 
     users.name AS orientador_nome,
     estágios.nome AS estágios_nome,
-    avaliações.nota AS avaliações_nota,
-    avaliações.isDone AS avaliações_isDone
-FROM avaliações
+    avaliacao_modulos.nota_final AS avaliações_nota,
+    isDone AS avaliações_isDone
+FROM avaliacao_modulos
+JOIN avaliações ON avaliacao_modulos.avaliações_id = avaliações.id
 JOIN orientação_estagios ON avaliações.orientação_estagios_id = orientação_estagios.id
 JOIN orientadores ON orientação_estagios.orientadores_id = orientadores.id
 JOIN users ON orientadores.users_id = users.id
@@ -69,11 +70,11 @@ WHERE orientação_estagios.users_id = $user_id";
 
 
 $query4 = "SELECT estágios.nome as estágios_nome, cacifos.numero as cacifo_nome, cauções.isPago as cauções_isPago, cauções.isDevolvido as cauções_isDevolvido
-FROM estágios
-JOIN cacifo_estagio ON cacifo_estagio.estágios_id = estágios.id
+FROM cacifo_estagio
+JOIN estágios ON cacifo_estagio.estágios_id = estágios.id
 JOIN cacifos ON cacifo_estagio.cacifos_id = cacifos.id
 JOIN cauções ON cacifo_estagio.cauções_id = cauções.id
-JOIN users on cacifo_estagio.users_id = users.id";
+WHERE cacifo_estagio.users_id = $user_id";
 
 // Fetch data and store in $result variable
 $result1 = $db->query($query1); //Estágios

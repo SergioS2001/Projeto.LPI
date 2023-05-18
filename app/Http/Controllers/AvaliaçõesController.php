@@ -43,22 +43,26 @@ class AvaliaçõesController extends Controller
     // Save other fields from the form to the Avaliacao model
     $avaliacao->save();
 
-    $modulos = [];
+    $avaliacaoModulos = [];
     for ($i = 1; $i <= $request->module_count; $i++) {
         $modulo = new Modulos;
         $modulo->nome = $request->input('module' . $i . '_nome');
         $modulo->nota = $request->input('module' . $i . '_nota');
         $modulo->save();
-        $modulos[] = $modulo->id;
+
+        $avaliacaoModulo = new AvaliacaoModulos;
+        $avaliacaoModulo->avaliacoes_id = $avaliacao->id;
+        $avaliacaoModulo->modulos_id = $modulo->id;
+        $avaliacaoModulo->save();
+
+        $avaliacaoModulos[] = $avaliacaoModulo->id;
     }
+
+    $avaliacao->avaliacaoModulos()->attach($avaliacaoModulos);
 
 
     return redirect()->route('avaliações.index')->with('success', 'Número de módulos salvo com sucesso!');
 }
-
-
-
-
     
     public function store(Request $request)
 {

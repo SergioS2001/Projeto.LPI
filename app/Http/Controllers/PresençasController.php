@@ -24,10 +24,12 @@ class PresençasController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
+    public function edit()
+{
+    
+}
+
+
 
     /**
      * Store a newly created resource in storage.
