@@ -14,7 +14,7 @@ use App\Http\Controllers\PDFController;
 use App\Http\Controllers\AvaliaçõesController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\QuestionarioController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\CertificadosController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -66,7 +66,7 @@ Route::resource('histórico', HistóricoController::class);
 Route::resource('questionário', QuestionarioController::class);
 Route::resource('avaliações', AvaliaçõesController::class);
 Route::post('/avaliações/modulos', [AvaliaçõesController::class, 'storeModulos'])->name('avaliações.storeModulos');
-
+Route::resource('certificados', CertificadosController::class);
 
 //Route::post('/estagios', [EstágiosController::class, 'store'])->name('estagios.store');
 

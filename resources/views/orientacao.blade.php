@@ -17,8 +17,8 @@ $options = [
 
 
 try {
-  //$db = new PDO($dsn, $user, $password, $options);
-  $db = new PDO('mysql:host=localhost;dbname=lpi','root','root');
+  $db = new PDO($dsn, $user, $password, $options);
+  //$db = new PDO('mysql:host=localhost;dbname=lpi','root','root');
 
 } catch (PDOException $e) {
   throw new PDOException($e->getMessage(), (int)$e->getCode());
@@ -77,7 +77,7 @@ $result = $db->query($query);
       <tr>
         <td><?= $row['estágios_nome'] ?></td>
         <td><?= $row['user_name'] ?></td>
-        <td><?= $row['data'] ?></td>
+        <td><?= date('d/m/Y', strtotime($row['data'])) ?></td>
         <td><?= $row['h_entrada'] ?></td>
         <td><?= $row['h_saida'] ?></td>
         <td><?= $row['tempo_pausa'] ?></td>

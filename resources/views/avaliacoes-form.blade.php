@@ -6,8 +6,6 @@
     $user = Auth::user();
 @endphp
 
-<!-- Include the form-validation.js file -->
-<script src="{{ asset('resources/js/form-validation.js') }}"></script>
 
 <form class="my-form" action="{{ route('avaliações.store') }}" method="POST">>
     @csrf

@@ -17,8 +17,8 @@ $options = [
 
 
 try {
-  //$db = new PDO($dsn, $user, $password, $options);
-  $db = new PDO('mysql:host=localhost;dbname=lpi','root','root');
+  $db = new PDO($dsn, $user, $password, $options);
+  //$db = new PDO('mysql:host=localhost;dbname=lpi','root','root');
 
 } catch (PDOException $e) {
   throw new PDOException($e->getMessage(), (int)$e->getCode());
@@ -47,14 +47,13 @@ JOIN tipologia_estagio ON estágios.tipologia_estagio_id = tipologia_estagio.id
 JOIN orientação_estagios ON estágios.id = orientação_estagios.estágios_id
 JOIN orientadores ON orientação_estagios.orientadores_id = orientadores.id
 JOIN users ON orientadores.users_id = users.id
-WHERE estágios.isAdmitido = 1";
+WHERE orientação_estagios.users_id = $user_id AND estágios.isAdmitido = 1";
 
 // Fetch data and store in $result variable
 $result1 = $db->query($query);
 
 ?>
 
-<!-- Table for Orientacao -->
 <table class="table caption-top">
   <caption>Estágio/EC Admitido</caption>
   <thead>

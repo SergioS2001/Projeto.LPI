@@ -34,9 +34,12 @@
                     <x-nav-link :href="route('questionário.index')" :active="request()->routeIs('questionário.index')">
                         {{ __('Questionário') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('certificados.index')" :active="request()->routeIs('certificados.index')">
+                        {{ __('Certificados') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('histórico.index')" :active="request()->routeIs('histórico.index')">
                         {{ __('Histórico') }}
-                    </x-nav-link> 
+                    </x-nav-link>
                 </div>
             </div>
 
