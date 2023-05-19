@@ -25,7 +25,7 @@ class AvaliaçõesController extends Controller
     $request->validate([
         'orientacao_estagios_id' => 'required',
         'aluno' => 'required',
-        'module_count' => 'required|integer|min:1',
+        'module_count' => 'required|integer|min:0',
         // Add validation rules for module names and notas
         'module.*.nome' => 'required',
         'module.*.nota' => 'required|numeric|min:0|max:10',

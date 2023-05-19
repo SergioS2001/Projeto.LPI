@@ -70,7 +70,7 @@ class SolicitaçãoVagasResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('id')->label('id'),
-                TextColumn::make('estagio_nome')->sortable()->searchable()->label('Estágio'),
+                TextColumn::make('estagios_nome')->sortable()->searchable()->label('Estágio'),
                 TextColumn::make('designação')->sortable()->searchable()->label('Designação'),
                 TextColumn::make('ano_letivo')->sortable()->searchable()->label('Ano letivo'),
                 TextColumn::make('vagas')->sortable()->searchable()->label('Vagas'),

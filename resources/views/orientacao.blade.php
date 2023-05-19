@@ -93,6 +93,7 @@ $result = $db->query($query);
 </td>
       </tr>
     <?php endwhile; ?>
+    <br>//+ notificação email para cada aluno quando presença for validada
   </tbody>
 </table>
 
