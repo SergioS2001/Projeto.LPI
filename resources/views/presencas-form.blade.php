@@ -2,8 +2,14 @@
     use App\Models\Estágios;
     use App\Models\Orientação_Estagios;
     $user = Auth::user();
+    $estagios = Estágios::whereIn('id', function($query) {
+        $query->select('estágios_id')->from('orientação_estagios')->where('users_id', Auth::id());
+    })->where('isAdmitido', true)->get();
 @endphp
 
+@if ($estagios->isEmpty())
+    <p>Não está registado em nenhum Estágio/Ensino Clinico!</p>
+@else
 <!-- Include the form-validation.js file -->
 <script src="{{ asset('resources/js/form-validation.js') }}"></script>
 
@@ -21,10 +27,11 @@
     <label for="estagio">Estágio/EC:</label>
     <select name="estagio" id="estagio">
     @foreach(Estágios::whereIn('id', function($query) {
-        $query->select('estágios_id')->from('orientação_estagios')->where('users_id', Auth::id());
-    })->get() as $estagio)
-        <option value="{{ $estagio->id }}">{{ $estagio->nome }}</option>
-    @endforeach
+    $query->select('estágios_id')->from('orientação_estagios')->where('users_id', Auth::id());
+})->where('isAdmitido', true)->get() as $estagio)
+    <option value="{{ $estagio->id }}">{{ $estagio->nome }}</option>
+@endforeach
+
     </select>
     <br>
     <div class="form-group">
@@ -46,6 +53,8 @@
     <br>
     <button class="btn btn-primary" type="submit">Create</button>
 </form>
+@endif
+
 
 <style>
     .my-form label {

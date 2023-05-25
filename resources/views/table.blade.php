@@ -53,7 +53,8 @@ WHERE orientação_estagios.users_id = $user_id";
 $query2 = "SELECT agendamentos.data AS agendamentos_data,agendamentos.nome AS agendamentos_nome,agendamentos.hora AS agendamentos_hora, agendamentos.descrição AS agendamentos_descrição,agendamentos.duração AS agendamentos_duração
 FROM historico_agendamentos
 JOIN agendamentos ON historico_agendamentos.agendamentos_id = agendamentos.id
-WHERE historico_agendamentos.users_id=$user_id";
+JOIN orientação_estagios ON historico_agendamentos.orientação_estagios_id = orientação_estagios.id
+WHERE orientação_estagios.users_id=$user_id";
 
 $query3 = "SELECT 
     users.name AS orientador_nome,

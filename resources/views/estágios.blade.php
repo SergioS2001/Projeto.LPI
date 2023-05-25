@@ -49,11 +49,17 @@ JOIN orientadores ON orientação_estagios.orientadores_id = orientadores.id
 JOIN users ON orientadores.users_id = users.id
 WHERE orientação_estagios.users_id = $user_id AND estágios.isAdmitido = 1";
 
+// Fetch user name
+$user_query = "SELECT name FROM users WHERE id = $user_id";
+$user_result = $db->query($user_query);
+$user_name = $user_result->fetchColumn();
+
 // Fetch data and store in $result variable
 $result1 = $db->query($query);
 
 ?>
 
+<?php if ($result1->rowCount() > 0): ?>
 <table class="table caption-top">
   <caption>Estágio/EC Admitido</caption>
   <thead>
@@ -90,6 +96,10 @@ $result1 = $db->query($query);
     <?php endwhile; ?>
   </tbody>
 </table>
+<?php else: ?>
+  <p><?= $user_name ?> não está registado em nenhum Estágio/Ensino Clínico!</p>
+<?php endif; ?>
+
 
 <!-- Add this CSS to your stylesheet or HTML -->
 <style>

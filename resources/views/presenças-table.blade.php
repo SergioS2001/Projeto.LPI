@@ -43,7 +43,7 @@ $result = $db->query($query);
 
 ?>
 
-
+<?php if ($result->rowCount() > 0): ?>
 <!-- Table for Presenças -->
 <table class="table caption-left">
 <caption>Presenças registadas:</caption>
@@ -70,6 +70,8 @@ $result = $db->query($query);
     <?php endwhile; ?>
   </tbody>
 </table>
+<?php else: ?>
+<?php endif; ?>
 
 <!-- Add this CSS to your stylesheet or HTML -->
 <style>

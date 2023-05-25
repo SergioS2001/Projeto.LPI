@@ -8,6 +8,8 @@
     })->get();
 @endphp
 
+@if ($presenças->isEmpty())
+@else
 <!-- Include the form-validation.js file -->
 <script src="{{ asset('resources/js/presenças-edit.js') }}"></script>
 
@@ -49,6 +51,7 @@
         <button class="btn btn-primary" type="submit">Update</button>
     </div>
 </form>
+@endif
 
 <style>
     .my-form2 label {
