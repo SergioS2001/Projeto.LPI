@@ -14,7 +14,7 @@ class PresençasSeeder extends Seeder
     public function run()
     {
         Presenças::create([
-            'orientação_estagios_id' =>1,
+            'orientação_estagios_id' =>2,
             'data' => now()->subDays(3),
             'h_entrada' => 8.5,
             'h_saida' => 17.0,

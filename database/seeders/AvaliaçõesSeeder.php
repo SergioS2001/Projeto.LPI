@@ -17,7 +17,7 @@ class AvaliaçõesSeeder extends Seeder
         ]);
 
         Avaliações::create([
-            'orientação_estagios_id' => 1,
+            'orientação_estagios_id' => 2,
             'module_count' => 2,
             'created_at' => now(),
             'updated_at' => now(),

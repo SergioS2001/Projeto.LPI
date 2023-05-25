@@ -59,7 +59,8 @@ WHERE orientação_estagios.users_id=$user_id";
 $query3 = "SELECT 
     users.name AS orientador_nome,
     estágios.nome AS estágios_nome,
-    avaliacao_modulos.nota_final AS avaliações_nota,
+    avaliações.module_count AS avaliações_module_count,
+    avaliações.nota_final AS avaliações_nota,
     isDone AS avaliações_isDone
 FROM avaliacao_modulos
 JOIN avaliações ON avaliacao_modulos.avaliações_id = avaliações.id

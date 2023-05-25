@@ -16,4 +16,8 @@ class OrientadoresController extends Controller
         //
     }
 
+    public function update()
+    {
+        //
+    }
 }

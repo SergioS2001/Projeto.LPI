@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id()->bigIncrements();
             $table->foreignId('orientação_estagios_id')->nullable()->references('id')->on('orientação_estagios');
             $table->integer('module_count')->nullable()->default(1)->maxValue(6);
+            $table->float('nota_final')->nullable()->minValue(1.0)->maxValue(20.0);
+            $table->boolean('isDone')->nullable()->default(false);
             $table->timestamps();
         });
     }

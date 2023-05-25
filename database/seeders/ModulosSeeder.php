@@ -14,9 +14,13 @@ class ModulosSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-
         Modulos::create([
             'nome' => 'Modulo2',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        Modulos::create([
+            'nome' => 'Modulo3',
             'created_at' => now(),
             'updated_at' => now(),
         ]);

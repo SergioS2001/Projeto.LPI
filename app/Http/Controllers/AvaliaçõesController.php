@@ -29,6 +29,7 @@ class AvaliaçõesController extends Controller
         // Add validation rules for module names and notas
         'module.*.nome' => 'required',
         'module.*.nota' => 'required|numeric|min:0|max:10',
+        'nota_final' => 'required|integer|min:1|max:20',
     ]);
 
     // Check for duplicate entries

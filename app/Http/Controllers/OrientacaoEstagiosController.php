@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Orientadores;
 use App\Models\Orientação_Estagios;
 use App\Http\Controllers\Controller;
 use App\Models\Presenças;
@@ -70,41 +71,34 @@ public function search(Request $request)
 }
 
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+    public function updateDados(Request $request)
+{
+    $user_id = Auth::id();
+
+    $validatedData = $request->validate([
+        'celula_profissional' => 'required|string',
+        'admissao' => 'required|date',
+        'validade' => 'required|date',
+    ]);
+    dd($validatedData);
+
+    $orientador = Orientadores::where('users_id', $user_id)->first();
+
+    if (!$orientador) {
+        // If the orientador record doesn't exist, create a new one
+        $orientador = new Orientadores();
+        $orientador->users_id = $user_id;
     }
 
-    
-    /**
-     * Display the specified resource.
-     */
-    public function show(Orientação_Estagios $orientacao_Estagios)
-    {
-        //
-    }
+    // Update the orientador attributes with the validated data
+    $orientador->celula_profissional = $validatedData['celula_profissional'];
+    $orientador->admissao = $validatedData['admissao'];
+    $orientador->validade = $validatedData['validade'];
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Orientação_Estagios $orientacao_Estagios)
-    {
-        //
-    }
+    $orientador->save();
 
-    /**
-     * Update the specified resource in storage.
-     */
+    return redirect()->back()->with('status', 'orientação-updateDados');
+}
 
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Orientação_Estagios $orientacao_Estagios)
-    {
-        //
-    }
 }

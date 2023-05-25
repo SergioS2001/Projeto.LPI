@@ -15,10 +15,6 @@ return new class extends Migration
             $table->id()->bigIncrements();
             $table->foreignId('avaliações_id')->nullable()->references('id')->on('avaliações');
             $table->foreignId('modulos_id')->nullable()->references('id')->on('modulos');
-            $table->float('nota_final')->nullable()->minValue(1.0)->maxValue(20.0);
-            $table->boolean('fileSubmitted')->nullable()->default(false);
-            $table->boolean('isDone')->nullable()->default(false);
-            $table->boolean('fileSigned')->nullable()->default(false);
             $table->timestamps();
         });
     }

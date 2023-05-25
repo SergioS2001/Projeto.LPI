@@ -32,7 +32,7 @@ class User extends Authenticatable
         'telemóvel',
         'morada',
         'email_alternativo',
-        'info_emergência_id',
+        'contactos_emergência_id',
         'instituicao_aluno_id',
         'isExterno',
         'isOrientador',
@@ -66,11 +66,12 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Instituicao_Aluno::class, 'instituicao_aluno_id');
     }
-    public function info_emergência()
-{
-    return $this->belongsTo(Info_Emergência::class, 'info_emergência_id');
-}
-
+    public function contactos_emergência()
+    {
+        return $this->belongsTo(Contactos_Emergência::class, 'contactos_emergência_id');
+    }
+    
+    
     public function orientação_estagios()
 {
     return $this->hasMany(Orientação_Estagios::class);

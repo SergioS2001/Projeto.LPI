@@ -3,12 +3,12 @@
     use App\Models\Orientação_Estagios;
     use App\Models\Presenças;
     $user = Auth::user();
-    $presenças = Presenças::whereHas('orientação_estagios', function ($query) use ($user) {
+    $has_presenças = Presenças::whereHas('orientação_estagios', function ($query) use ($user) {
         $query->where('users_id', $user->id);
     })->get();
 @endphp
 
-@if ($presenças->isEmpty())
+@if ($has_presenças->isEmpty())
 @else
 <!-- Include the form-validation.js file -->
 <script src="{{ asset('resources/js/presenças-edit.js') }}"></script>
@@ -19,7 +19,7 @@
 
     <label for="presença">Escolha uma Presença:</label>
     <select name="presença" id="presença">
-        @foreach($presenças as $presença)
+        @foreach($has_presenças as $presença)
         <option value="{{ $presença->id }}">{{ date('d-m-Y', strtotime($presença->data)) }}</option>
         @endforeach
     </select>

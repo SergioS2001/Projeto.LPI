@@ -13,10 +13,6 @@ class AvaliacaoModulos extends Model
     protected $fillable = [
         'avaliações_id',
         'modulos_id',
-        'nota_final',
-        'isDone',
-        'fileSigned',
-        'fileSubmitted',
     ];
 
     public function avaliacao()

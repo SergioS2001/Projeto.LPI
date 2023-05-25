@@ -63,6 +63,7 @@ Route::get('presenças/edit', [PresençasController::class, 'edit'])->name('pres
 Route::resource('orientação', OrientacaoEstagiosController::class);
 Route::put('orientação/{presença}', [OrientacaoEstagiosController::class, 'update'])->name('orientação.update');
 Route::get('orientação/search', [OrientacaoEstagiosController::class, 'search'])->name('orientação.search');
+Route::post('orientação/updateDados', [OrientacaoEstagiosController::class, 'updateDados'])->name('orientação.updateDados');
 Route::resource('histórico', HistóricoController::class);
 Route::resource('questionário', QuestionarioController::class);
 Route::resource('avaliações', AvaliaçõesController::class);

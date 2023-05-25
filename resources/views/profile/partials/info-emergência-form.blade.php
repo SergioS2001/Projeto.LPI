@@ -11,19 +11,19 @@
 
         <div>
             <x-input-label for="nome" :value="__('Nome')" />
-            <x-text-input id="nome" name="nome" type="text" class="mt-1 block w-full" :value="old('nome', optional($user->info_emergência)->nome)" required autofocus autocomplete="nome" />
+            <x-text-input id="nome" name="nome" type="text" class="mt-1 block w-full" :value="old('nome', optional($user->contactos_emergência)->nome)" required autofocus autocomplete="nome" />
             <x-input-error class="mt-2" :messages="$errors->get('nome')" />
         </div>
 
         <div>
             <x-input-label for="grau_parentesco" :value="__('Grau de Parentesco')" />
-            <x-text-input id="grau_parentesco" name="grau_parentesco" type="text" class="mt-1 block w-full" :value="old('grau_parentesco', optional($user->info_emergência)->grau_parentesco)" required autofocus autocomplete="grau_parentesco" />
+            <x-text-input id="grau_parentesco" name="grau_parentesco" type="text" class="mt-1 block w-full" :value="old('grau_parentesco', optional($user->contactos_emergência)->grau_parentesco)" required autofocus autocomplete="grau_parentesco" />
             <x-input-error class="mt-2" :messages="$errors->get('grau_parentesco')" />
         </div>
 
         <div>
             <x-input-label for="telemóvel" :value="__('Telemóvel')" />
-            <x-text-input id="telemóvel" name="telemóvel" type="text" class="mt-1 block w-full" :value="old('telemóvel', optional($user->info_emergência)->telemóvel)" required autofocus autocomplete="telemóvel" />
+            <x-text-input id="telemóvel" name="telemóvel" type="text" class="mt-1 block w-full" :value="old('telemóvel', optional($user->contactos_emergência)->telemóvel)" required autofocus autocomplete="telemóvel" />
             <x-input-error class="mt-2" :messages="$errors->get('telemóvel')" />
         </div>
 

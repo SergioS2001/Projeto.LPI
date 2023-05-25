@@ -50,6 +50,7 @@ $result = $db->query($query);
 
 ?>
 
+<?php if ($result->rowCount() > 0): ?>
 <!-- Search form -->
 <form id="searchForm" action="{{ route('orientação.search') }}" method="GET">
     <input type="text" id="searchInput" name="search" placeholder="Search...">
@@ -96,7 +97,9 @@ $result = $db->query($query);
     <br>//+ notificação email para cada aluno quando presença for validada
   </tbody>
 </table>
-
+<?php else: ?>
+  <p>Não existem presenças registadas por alunos!</p>
+<?php endif; ?>
 
 <!-- Add this CSS to your stylesheet or HTML -->
 <style>

@@ -99,18 +99,8 @@ Por favor, marque a opção que melhor expressar a sua opinião relativamente ao
     <label for="sugestões">Sugestões/ comentários:<br>
 Por favor, utilize o espaço seguinte para registar sugestões/ comentários sobre o Estágio/Ensino Clínico.</label>
 <input class="form-control large-input" type="text" name="sugestões" id="sugestões">
-    <br>
-    <!--
-    <label for="protecao_dados">Garantia de proteção de dados pessoais:<br>
-A recolha dos dados pessoais integrados na presente ficha e o tratamento dos mesmos são da exclusiva responsabilidade do CEFES e tem como finalidade a avaliação dos estágios/ensinos clínicos realizados no HE-UFP.<br>
-O titular dos dados pessoais tem o direito a aceder, atualizar, modificar ou apagar os seus elementos, bastando para tal comunicar à instituição o seu interesse através do correio eletrónico <a href="mailto:cefes.he@ufp.edu.pt" style="color: blue; text-decoration: underline;">cefes.he@ufp.edu.pt</a>.<br>
-Para mais detalhes, por favor, ler a Política de Privacidade do HE-UFP, disponível em <a href="https://he.ufp.pt/rgpd" style="color: blue; text-decoration: underline;">https://he.ufp.pt/rgpd</a>.</label>
-<button class="btn btn-primary" type="submit">Tomei conhecimento</button>
-    <br><br>
-    -->
-    <label for="autorização_guardar_contacto">Autoriza que o seu contacto faça parte da nossa rede para a divulgação relativa a possíveis ofertas de estágio/emprego, outras atividades relacionadas com empregabilidade e eventos de índole técnico‐científico?</label>
-<button class="btn btn-primary" type="submit">Sim</button>
-<button class="btn btn-primary" type="submit">Não</button>
+
+<button class="btn btn-primary" type="submit">Enviar</button>
     <br>
 </form>
 

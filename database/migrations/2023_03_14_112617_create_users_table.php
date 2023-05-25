@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\Histórico;
-use App\Models\Info_Emergência;
+use App\Models\Contactos_Emergência;
 use App\Models\Instituicao_Aluno;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('morada')->nullable()->max(255);
             $table->string('email_alternativo')->nullable();
             $table->foreignId('instituicao_aluno_id')->nullable()->references('id')->on('Instituicao_Aluno')->onDelete('cascade');
-            $table->foreignId('info_emergência_id')->nullable()->references('id')->on('info_emergência')->onDelete('cascade');
+            $table->foreignId('contactos_emergência_id')->nullable()->references('id')->on('contactos_emergência')->onDelete('cascade');
             $table->boolean('isExterno')->default(false);
             $table->boolean('isOrientador')->default(false);
             $table->boolean('isAdmin')->default(false);

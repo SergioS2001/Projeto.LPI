@@ -12,7 +12,9 @@ class Avaliações extends Model
     protected $table = 'avaliações';
     protected $fillable = [
         'orientação_estagios_id',
-        'module_count'
+        'module_count',
+        'nota_final',
+        'isDone',
     ];
 
     public function orientação_estagios()

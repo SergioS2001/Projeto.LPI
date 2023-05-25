@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Info_Emergência extends Model
+class Contactos_Emergência extends Model
 {
     use HasFactory;
-    protected $table = 'info_emergência';
+    protected $table = 'contactos_emergência';
 
     protected $fillable = [
         'nome',
@@ -16,4 +16,11 @@ class Info_Emergência extends Model
         'grau_parentesco',
     ];
 
+    public function user()
+{
+    return $this->belongsTo(User::class, 'users_id');
+}
+
+
+    
 }

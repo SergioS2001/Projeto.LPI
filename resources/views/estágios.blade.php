@@ -37,6 +37,7 @@ serviços.titulo AS serviços_titulo,
 tipologia_estagio.titulo AS tipologia_estagio_titulo,
 estágios.ano_curricular AS estágios_ano_curricular,
 users.name AS orientador_nome,
+users.email AS orientador_email,
 orientação_estagios.horario_apresentacao AS horario_apresentacao
 FROM estágios
 JOIN instituicao_estagio ON estágios.instituição_estagio_id = instituicao_estagio.id
@@ -66,7 +67,6 @@ $result1 = $db->query($query);
     <tr>
       <th>Nome</th>
       <th>Orientador</th>
-      <th>Apresentação</th>
       <th>Instituição</th>
       <th>Curso</th>
       <th>Unidade Curricular</th>
@@ -83,7 +83,6 @@ $result1 = $db->query($query);
       <tr>
         <td><?= $row['estágios_nome'] ?></td>
         <td><?= $row['orientador_nome'] ?></td>
-        <td><?= $row['horario_apresentacao'] ?></td>
         <td><?= $row['instituicao_estagio_nome'] ?></td>
         <td><?= $row['curso_estagio_curso'] ?></td>
         <td><?= $row['unidade_curricular_nome'] ?></td>
@@ -92,6 +91,29 @@ $result1 = $db->query($query);
         <td><?= $row['tipologia_estagio_titulo'] ?></td>
         <td><?= $row['estágios_data_inicial'] ?></td>
         <td><?= $row['estágios_data_final'] ?></td>
+      </tr>
+    <?php endwhile; ?>
+  </tbody>
+</table>
+
+<br>
+<table class="table caption-top">
+  <thead>
+    <tr>
+      <th>Estágio/EC</th>
+      <th>Orientador</th>
+      <th>Apresentação</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php $result1->execute(); // reset the result pointer ?>
+    <?php while ($row = $result1->fetch()): ?>
+      <tr>
+        <td><?= $row['estágios_nome'] ?></td>
+        <td><?= $row['orientador_nome'] ?></td>
+        <td><?= $row['horario_apresentacao'] ?></td>
+        <td><?= $row['orientador_email'] ?></td>
       </tr>
     <?php endwhile; ?>
   </tbody>
