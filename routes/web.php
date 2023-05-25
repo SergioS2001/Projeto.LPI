@@ -54,6 +54,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::post('dashboard/update', [DashboardController::class, 'update'])->name('dashboard.update');
+Route::post('dashboard/updateconf', [DashboardController::class, 'updateconf'])->name('dashboard.updateconf');
 Route::post('dashboard/updateProfile', [DashboardController::class, 'updateprofile'])->name('dashboard.updateProfile');
 Route::resource('estágios', EstágiosController::class);
 Route::resource('agendamentos', AgendamentosController::class);

@@ -33,6 +33,7 @@ return new class extends Migration
             $table->boolean('isOrientador')->default(false);
             $table->boolean('isAdmin')->default(false);
             $table->boolean('politica_dados_accepted')->default(false);
+            $table->boolean('decl_conf_accepted')->default(false);
             $table->boolean('profile_updated')->default(false);
             $table->rememberToken();
             $table->timestamps();

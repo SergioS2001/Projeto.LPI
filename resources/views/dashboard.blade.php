@@ -11,10 +11,12 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">  
                 @if (!Auth::user()->politica_dados_accepted)
                         @include('politica-dados')
+                @elseif (!Auth::user()->decl_conf_accepted)
+                        @include('decl-conf')
                 @elseif  (!Auth::user()->profile_updated)
-                @include('profile-update-alert')
+                        @include('profile-update-alert')
                 @else
-                @include('homepage')
+                        @include('homepage')
                 @endif
                 </div>
             </div>

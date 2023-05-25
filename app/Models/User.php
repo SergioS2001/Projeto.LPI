@@ -38,6 +38,8 @@ class User extends Authenticatable
         'isOrientador',
         'isAdmin',
         'politica_dados_accepted',
+        'decl_conf_accepted',
+        'profile_updated',
     ];
 
     /**
