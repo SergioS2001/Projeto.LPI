@@ -82,4 +82,9 @@ class Estágios extends Model
     {
        return $this->hasMany(Presenças::class);
     }
+
+    public function agendamentos()
+{
+    return $this->hasMany(Agendamentos::class);
+}
 }

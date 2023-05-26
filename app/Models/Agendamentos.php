@@ -11,6 +11,7 @@ class Agendamentos extends Model
     protected $table = 'agendamentos';
 
     protected $fillable = [
+        'estágios_id',
         'nome',
         'data',
         'descrição',
@@ -22,6 +23,11 @@ class Agendamentos extends Model
     public function histórico_agendamentos()
 {
     return $this->hasMany(Histórico_Agendamentos::class);
+}
+
+public function estágios()
+{
+    return $this->belongsTo(Estágios::class, 'estágios_id');
 }
 
 }

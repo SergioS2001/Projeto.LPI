@@ -20,16 +20,37 @@ class PresençasController extends Controller
         $presenças = Orientação_Estagios::paginate();
         return view('presenças.index', compact('presenças'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function edit()
-{
+    public function update(Request $request)
+    {
+        $validatedData = $request->validate([
+            'presença' => 'required',
+            'data' => 'required|date',
+            'h_entrada' => 'sometimes|date_format:H:i',
+            'h_saida' => 'sometimes|date_format:H:i',
+            'tempo_pausa' => 'sometimes|integer|min:0',
+        ]);
     
-}
-
-
+        $presença = Presenças::findOrFail($validatedData['presença']);
+    
+        $presença->data = $validatedData['data'];
+    
+        if (isset($validatedData['h_entrada'])) {
+            $presença->h_entrada = $validatedData['h_entrada'];
+        }
+    
+        if (isset($validatedData['h_saida'])) {
+            $presença->h_saida = $validatedData['h_saida'];
+        }
+    
+        if (isset($validatedData['tempo_pausa'])) {
+            $presença->tempo_pausa = $validatedData['tempo_pausa'];
+        }
+    
+        $presença->save();
+    
+        return redirect()->back()->with('success', 'Presença atualizada com sucesso!');
+    }
+    
 
     /**
      * Store a newly created resource in storage.

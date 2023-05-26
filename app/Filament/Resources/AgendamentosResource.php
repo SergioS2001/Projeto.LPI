@@ -28,24 +28,21 @@ class AgendamentosResource extends Resource
         return $form
         ->schema([
             Card::make()->schema([
-                TextInput::make('agendamentos.nome')->required()
+                TextInput::make('nome')
                 ->label('Nome'),
-                TextInput::make('agendamentos.descrição')->required()
+                TextInput::make('descrição')
                 ->label('Descrição'),
-                DatePicker::make('agendamentos.data')
+                DatePicker::make('data')
                 ->minDate(now())
                 ->label('Data')
                 ->required(),
-                TextInput::make('agendamentos.hora')->required()
-                ->label('Hora')
-                ->numeric()
-                ->minValue(1)
-                ->maxValue(24),
-                TextInput::make('agendamentos.duração')->required()
+                TextInput::make('hora')
+                ->label('Hora'),
+                TextInput::make('duração')
                 ->label('Duração')
                 ->numeric()
                 ->minValue(1)
-                ->maxValue(5),
+                ->maxValue(500),
                 ])
         ]);
     }

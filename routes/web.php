@@ -60,7 +60,7 @@ Route::post('dashboard/updateProfile', [DashboardController::class, 'updateprofi
 Route::resource('estágios', EstágiosController::class);
 Route::resource('agendamentos', AgendamentosController::class);
 Route::resource('presenças', PresençasController::class);
-Route::get('presenças/edit', [PresençasController::class, 'edit'])->name('presenças.edit');
+Route::put('/presenças/{id}', [PresençasController::class, 'update'])->name('presenças.update');
 Route::resource('orientação', OrientacaoEstagiosController::class);
 Route::put('orientação/{presença}', [OrientacaoEstagiosController::class, 'update'])->name('orientação.update');
 Route::get('orientação/search', [OrientacaoEstagiosController::class, 'search'])->name('orientação.search');
@@ -71,12 +71,7 @@ Route::resource('avaliações', AvaliaçõesController::class);
 Route::post('/avaliações/modulos', [AvaliaçõesController::class, 'storeModulos'])->name('avaliações.storeModulos');
 Route::resource('certificados', CertificadosController::class);
 
-//Route::post('/estagios', [EstágiosController::class, 'store'])->name('estagios.store');
-
 require __DIR__.'/auth.php';
-
-Route::get('calendar', [CalendarController::class, 'show']);
-Route::post('calendar/action', [CalendarController::class, 'action']);
 
 Route::get('generate-pdf/{name}', [PDFController::class, 'generatePDF']);
 Route::get('/{record}/pdf/avaliações', [DownloadPdfController::class, 'avaliações'])->name('pdfavaliações');

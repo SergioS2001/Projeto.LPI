@@ -5,53 +5,37 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Agendamentos;
+use Illuminate\Support\Carbon;
 
 class CalendarController extends Controller
 {
-    public function show(Request $request)
-    {
-    	if($request->ajax())
-    	{
-    		$data = Agendamentos::whereDate('data', '>=', $request->data)
-                       ->get(['id','nome','data','hora']);
-            return response()->json($data);
-    	}
-    	return view('calendar');
+    public function getEvents()
+{
+    $agendamentos = Agendamentos::all();
+
+    $events = [];
+
+    foreach ($agendamentos as $agendamento) {
+        $event = [
+            'id' => $agendamento->id,
+            'title' => $agendamento->nome,
+            'start' => $agendamento->data . 'T' . $agendamento->hora,
+            'end' => $this->calculateEndTime($agendamento->data, $agendamento->hora, $agendamento->duracao),
+            'description' => $agendamento->descricao,
+        ];
+
+        $events[] = $event;
     }
 
-    public function action(Request $request)
-    {
-    	if($request->ajax())
-    	{
-    		if($request->type == 'add')
-    		{
-    			$Agendamentos = Agendamentos::create([
-    				'nome'		=>	$request->nome,
-    				'data'		=>	$request->data,
-    				'hora'		=>	$request->hora
-    			]);
+    return response()->json($events);
+}
 
-    			return response()->json($Agendamentos);
-    		}
+private function calculateEndTime($date, $startTime, $duration)
+{
+    $start = Carbon::parse($date . ' ' . $startTime);
+    $end = $start->copy()->addHours($duration);
 
-    		if($request->type == 'update')
-    		{
-    			$Agendamentos = Agendamentos::find($request->id)->update([
-    				'nome'		=>	$request->nome,
-    				'data'		=>	$request->data,
-    				'hora'		=>	$request->hora
-    			]);
-
-    			return response()->json($Agendamentos);
-    		}
-
-    		if($request->type == 'delete')
-    		{
-    			$Agendamentos = Agendamentos::find($request->id)->delete();
-
-    			return response()->json($Agendamentos);
-    		}
-    	}
-    }
+    return $end->format('Y-m-d\TH:i:s');
+}
 }
 ?>
