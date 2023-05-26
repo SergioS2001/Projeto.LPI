@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('descrição')->nullable()->max(255);
             $table->date('data')->nullable();
             $table->float('hora')->nullable()->min(0.0)->max(24.0);
-            $table->integer('duração')->nullable()->min(0);
+            $table->float('hora_fim')->nullable()->min(0.0)->max(24.0);
             $table->boolean('isAccepted')->default(false);
             $table->timestamps();
         });

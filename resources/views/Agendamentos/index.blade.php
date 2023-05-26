@@ -37,8 +37,8 @@
               <th>Nome</th>
               <th>Descrição</th>
               <th>Data</th>
-              <th>Hora</th>
-              <th>Duração(minutos)</th>
+              <th>Hora Inicio</th>
+              <th>Hora Fim</th>
             </tr>
           </thead>
           <tbody>
@@ -48,7 +48,7 @@
               <td>{{ $agendamento->descrição }}</td>
               <td>{{ $agendamento->data }}</td>
               <td>{{ number_format($agendamento->hora, 2, '.', '') }}</td>
-              <td>{{ $agendamento->duração }}</td>
+              <td>{{ number_format($agendamento->hora_fim, 2, '.', '') }}</td>
             </tr>
             @endforeach
           </tbody>
