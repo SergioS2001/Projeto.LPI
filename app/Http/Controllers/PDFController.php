@@ -16,7 +16,6 @@ class PDFController extends Controller
     public function generatePDF($name)
     {
 
-
         $user = DB::table('users')->where('name', $name)->get();
         $order = DB::table('orders')->where('fname', $name)->get();
 

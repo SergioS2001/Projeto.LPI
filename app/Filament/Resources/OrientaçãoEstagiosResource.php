@@ -9,6 +9,7 @@ use App\Models\Orientadores;
 use App\Models\Orientação_Estagios;
 use App\Models\User;
 use Database\Seeders\EstágiosSeeder;
+use Database\Seeders\Orientacao_Estagios;
 use Filament\Forms;
 use Filament\Forms\Components\Select;
 use Filament\Resources\Form;
@@ -18,6 +19,7 @@ use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class OrientaçãoEstagiosResource extends Resource
 {
@@ -60,6 +62,11 @@ class OrientaçãoEstagiosResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 \Filament\Tables\Actions\DeleteAction::make(),
+                \Filament\Tables\Actions\Action::make('PDF')
+                ->icon('heroicon-o-document-download')
+                ->url(fn (Orientação_Estagios $record) => route('pdfoe', $record))
+                ->openUrlInNewTab()
+                ->label(fn ($record) => Str::upper('PDF')),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

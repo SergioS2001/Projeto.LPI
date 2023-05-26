@@ -19,6 +19,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Illuminate\Support\Str;
 
 class PresençasResource extends Resource
 {
@@ -74,6 +75,11 @@ class PresençasResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 \Filament\Tables\Actions\DeleteAction::make(),
+                \Filament\Tables\Actions\Action::make('PDF')
+                ->icon('heroicon-o-document-download')
+                ->url(fn (Presenças $record) => route('pdfpresenças', $record))
+                ->openUrlInNewTab()
+                ->label(fn ($record) => Str::upper('PDF')),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

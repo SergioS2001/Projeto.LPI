@@ -19,6 +19,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Illuminate\Support\Str;
 
 class CauçõesResource extends Resource
 {
@@ -57,6 +58,11 @@ class CauçõesResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 DeleteAction::make(),
+                \Filament\Tables\Actions\Action::make('PDF')
+                ->icon('heroicon-o-document-download')
+                ->url(fn (Cauções $record) => route('pdfcauções', $record))
+                ->openUrlInNewTab()
+                ->label(fn ($record) => Str::upper('PDF')),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

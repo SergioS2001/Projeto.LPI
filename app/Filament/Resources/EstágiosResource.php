@@ -26,6 +26,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\DatePicker;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
+use Illuminate\Support\Str;
 
 class EstágiosResource extends Resource
 {
@@ -95,6 +96,12 @@ class EstágiosResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                \Filament\Tables\Actions\DeleteAction::make(),
+                \Filament\Tables\Actions\Action::make('PDF')
+                ->icon('heroicon-o-document-download')
+                ->url(fn (Estágios $record) => route('pdfestágios', $record))
+                ->openUrlInNewTab()
+                ->label(fn ($record) => Str::upper('PDF')),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

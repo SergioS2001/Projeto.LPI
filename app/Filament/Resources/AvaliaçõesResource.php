@@ -8,7 +8,6 @@ use App\Models\Avaliações;
 use App\Models\Estágios;
 use App\Models\Orientadores;
 use Filament\Forms;
-use Filament\Forms\Components\Actions\Modal\Actions\Action;
 use Filament\Forms\Components\Checkbox;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -19,7 +18,8 @@ use Filament\Tables\Columns\IconColumn;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Tables\Actions\Action as ActionsAction;
+use Filament\Tables\Action as ActionsAction;
+use Illuminate\Support\Str;
 
 class AvaliaçõesResource extends Resource
 {
@@ -74,7 +74,12 @@ class AvaliaçõesResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 \Filament\Tables\Actions\DeleteAction::make(),
-            ])
+                \Filament\Tables\Actions\Action::make('PDF')
+                ->icon('heroicon-o-document-download')
+                ->url(fn (Avaliações $record) => route('pdfavaliações', $record))
+                ->openUrlInNewTab()
+                ->label(fn ($record) => Str::upper('PDF')),
+                ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
             ]);

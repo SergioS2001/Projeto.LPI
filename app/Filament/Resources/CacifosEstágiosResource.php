@@ -21,6 +21,7 @@ use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class CacifosEstágiosResource extends Resource
 {
@@ -69,6 +70,11 @@ class CacifosEstágiosResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 \Filament\Tables\Actions\DeleteAction::make(),
+                \Filament\Tables\Actions\Action::make('PDF')
+                ->icon('heroicon-o-document-download')
+                ->url(fn (Cacifos_Estágios $record) => route('pdfcacifoestagio', $record))
+                ->openUrlInNewTab()
+                ->label(fn ($record) => Str::upper('PDF')),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

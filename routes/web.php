@@ -15,6 +15,7 @@ use App\Http\Controllers\AvaliaçõesController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\QuestionarioController;
 use App\Http\Controllers\CertificadosController;
+use App\Http\Controllers\DownloadPdfController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -78,3 +79,9 @@ Route::get('calendar', [CalendarController::class, 'show']);
 Route::post('calendar/action', [CalendarController::class, 'action']);
 
 Route::get('generate-pdf/{name}', [PDFController::class, 'generatePDF']);
+Route::get('/{record}/pdf/avaliações', [DownloadPdfController::class, 'avaliações'])->name('pdfavaliações');
+Route::get('/{record}/pdf/estágios', [DownloadPdfController::class, 'estágios'])->name('pdfestágios');
+Route::get('/{record}/pdf/presenças', [DownloadPdfController::class, 'presenças'])->name('pdfpresenças');
+Route::get('/{record}/pdf/cauções', [DownloadPdfController::class, 'cauções'])->name('pdfcauções');
+Route::get('/{record}/pdf/cacifoestagio', [DownloadPdfController::class, 'cacifoestagio'])->name('pdfcacifoestagio');
+Route::get('/{record}/pdf/orientacaoestagio', [DownloadPdfController::class, 'orientacaoestagio'])->name('pdfoe');
