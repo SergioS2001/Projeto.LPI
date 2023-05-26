@@ -83,6 +83,7 @@ class SolicitaçãoVagasResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                \Filament\Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

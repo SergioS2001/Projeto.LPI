@@ -13,6 +13,7 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\Card;
@@ -55,6 +56,7 @@ class CauçõesResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
@@ -81,5 +83,5 @@ class CauçõesResource extends Resource
             'create' => Pages\CreateCauções::route('/create'),
             'edit' => Pages\EditCauções::route('/{record}/edit'),
         ];
-    }    
+    }
 }
