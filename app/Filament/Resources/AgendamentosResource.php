@@ -37,12 +37,9 @@ class AgendamentosResource extends Resource
                 ->label('Data')
                 ->required(),
                 TextInput::make('hora')
-                ->label('Hora'),
-                TextInput::make('duração')
-                ->label('Duração')
-                ->numeric()
-                ->minValue(1)
-                ->maxValue(500),
+                ->label('Hora Inicio'),
+                TextInput::make('hora_fim')
+                ->label('Hora Fim'),
                 ])
         ]);
     }
@@ -54,8 +51,8 @@ class AgendamentosResource extends Resource
                 TextColumn::make('nome')->sortable()->searchable()->label('Nome'),
                 TextColumn::make('descrição')->sortable()->searchable()->label('Descrição'),
                 TextColumn::make('data')->date()->sortable()->searchable()->label('Data'),
-                TextColumn::make('hora')->sortable()->searchable()->label('Hora'),
-                TextColumn::make('duração')->sortable()->searchable()->label('Duração(min)'),
+                TextColumn::make('hora')->sortable()->searchable()->label('Hora Inicio'),
+                TextColumn::make('hora_fim')->sortable()->searchable()->label('Hora Fim'),
             ])
             ->filters([
                 //
@@ -86,7 +83,7 @@ class AgendamentosResource extends Resource
     }
     public static function getGloballySearchableAttributes(): array
     {
-        return ['nome', 'descrição','data','hora','duração'];
+        return ['nome', 'descrição','data','hora','hora_fim'];
     }
 
 }

@@ -50,7 +50,7 @@ JOIN orientadores ON orientação_estagios.orientadores_id = orientadores.id
 JOIN users ON orientadores.users_id = users.id
 WHERE orientação_estagios.users_id = $user_id";
 
-$query2 = "SELECT agendamentos.data AS agendamentos_data,agendamentos.nome AS agendamentos_nome,agendamentos.hora AS agendamentos_hora, agendamentos.descrição AS agendamentos_descrição,agendamentos.duração AS agendamentos_duração
+$query2 = "SELECT agendamentos.data AS agendamentos_data,agendamentos.nome AS agendamentos_nome,agendamentos.hora AS agendamentos_hora, agendamentos.descrição AS agendamentos_descrição,agendamentos.hora_fim AS agendamentos_hora_fim
 FROM historico_agendamentos
 JOIN agendamentos ON historico_agendamentos.agendamentos_id = agendamentos.id
 JOIN orientação_estagios ON historico_agendamentos.orientação_estagios_id = orientação_estagios.id
@@ -188,8 +188,8 @@ $result4 = $db->query($query4); //Cacifos
     <th>Nome</th>
     <th>Descrição</th>
     <th>Data</th>
-    <th>Hora</th>
-    <th>Duração(minutos)</th>
+    <th>Hora Inicio</th>
+    <th>Hora Fim</th>
     </tr>
   </thead>
   <tbody>
@@ -199,7 +199,7 @@ $result4 = $db->query($query4); //Cacifos
       <td><?= $row['agendamentos_descrição'] ?></td>
       <td><?= $row['agendamentos_data'] ?></td>
       <td><?= number_format($row['agendamentos_hora'], 2) ?></td>
-      <td><?= $row['agendamentos_duração'] ?></td>
+      <td><?= number_format($row['agendamentos_hora_fim'], 2) ?></td>
       </tr>
     <?php endwhile; ?>
   </tbody>

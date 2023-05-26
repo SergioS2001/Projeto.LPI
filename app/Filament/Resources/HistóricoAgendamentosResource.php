@@ -65,8 +65,8 @@ class HistóricoAgendamentosResource extends Resource
                 TextColumn::make('orientação_estagios.orientador.users.name')->sortable()->searchable()->label('Orientador'),
                  TextColumn::make('agendamentos.nome')->sortable()->searchable()->label('Agendamento'),
                  TextColumn::make('agendamentos.data')->sortable()->searchable()->label('Data'),
-                 TextColumn::make('agendamentos.hora')->sortable()->searchable()->label('Hora'),
-                 TextColumn::make('agendamentos.duração')->sortable()->searchable()->label('Duração(min)'),
+                 TextColumn::make('agendamentos.hora')->sortable()->searchable()->label('Hora Inicio'),
+                 TextColumn::make('agendamentos.hora_fim')->sortable()->searchable()->label('Hora Fim'),
             ])
             ->filters([
                 //

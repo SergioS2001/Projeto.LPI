@@ -15,7 +15,7 @@ class Agendamentos extends Model
         'nome',
         'data',
         'descrição',
-        'duração',
+        'hora_fim',
         'hora',
         'isAccepted',
     ];
