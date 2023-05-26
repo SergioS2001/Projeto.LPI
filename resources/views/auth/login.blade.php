@@ -1,8 +1,14 @@
+@extends('layouts.inc.loginlogo')
 <x-guest-layout>
     <!-- Session Status -->
+    <x-slot name="logo">
+            <a href="/public/assets/images/login.jpg">
+                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+            </a>
+        </x-slot>
     <x-auth-session-status class="mb-4" :status="session('status')" />
-
-    <form method="POST" action="{{ route('login') }}">
+    <div class="classToDefineBackgroundSetCss" style="background-image: url('public\assets\images\login.jpg')">    
+    <form method="POST" action="{{ route('login') }}" class="login-container">
         @csrf
 
         <!-- Email Address -->
@@ -25,11 +31,9 @@
         </div>
 
         <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-            <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-            <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>            </label>
-        </div>
+        <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
+            <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>            
+        </label>
 
         <div class="2-full flex justify mx-2">
     <a href="/auth/google/redirect" class="text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2">
@@ -55,5 +59,10 @@
             </a>
 
         </div>
+
     </form>
+    </div>
 </x-guest-layout>
+
+</p>
+
