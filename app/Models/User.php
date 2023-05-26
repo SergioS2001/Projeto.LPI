@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasName;
@@ -12,7 +12,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 //implements FilamentUser, HasName
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -100,13 +100,14 @@ public function cacifo_estagio()
     return $this->hasMany(Cacifos_Estágios::class);
 }
     
-    //public function canAccessFilament(): bool
-    //{
-        //return str_ends_with($this->email, '@yourdomain.com') && $this->hasVerifiedEmail();
-        //Only admin users can access, type - admin 
-    //}
-    //public function getFilamentName(): string
-    //{
-    //   return "{$this->firstName} {$this->lastName}";
-    //}
+public function canAccessFilament(): bool
+{
+    return $this->isAdmin;
+}
+
+
+    public function getFilamentName(): string
+    {
+       return "{$this->firstName} {$this->lastName}";
+    }
 }
