@@ -121,6 +121,7 @@ $result4 = $db->query($query4); //Cacifos
   </tbody>
 </table>
 <?php else: ?>
+  <p>Não está registado em nenhum Estágio/Ensino Clinico!</p>
 <?php endif; ?>
 
 <br><br>

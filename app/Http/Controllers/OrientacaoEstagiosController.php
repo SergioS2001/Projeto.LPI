@@ -71,34 +71,22 @@ public function search(Request $request)
 }
 
 
-    public function updateDados(Request $request)
+public function updateDados(Request $request)
 {
     $user_id = Auth::id();
 
-    $validatedData = $request->validate([
-        'celula_profissional' => 'required|string',
-        'admissao' => 'required|date',
-        'validade' => 'required|date',
-    ]);
-    dd($validatedData);
-
     $orientador = Orientadores::where('users_id', $user_id)->first();
 
-    if (!$orientador) {
-        // If the orientador record doesn't exist, create a new one
-        $orientador = new Orientadores();
-        $orientador->users_id = $user_id;
-    }
-
     // Update the orientador attributes with the validated data
-    $orientador->celula_profissional = $validatedData['celula_profissional'];
-    $orientador->admissao = $validatedData['admissao'];
-    $orientador->validade = $validatedData['validade'];
+    $orientador->celula_profissional =  $request->input('celula_profissional');
+    $orientador->admissao = $request->input('admissao');
+    $orientador->validade = $request->input('validade');
 
     $orientador->save();
 
     return redirect()->back()->with('status', 'orientação-updateDados');
 }
+
 
 
 }

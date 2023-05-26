@@ -4,10 +4,13 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\HistóricoAgendamentosResource\Pages;
 use App\Filament\Resources\HistóricoAgendamentosResource\RelationManagers;
+use App\Models\Agendamentos;
 use App\Models\Histórico_Agendamentos;
+use App\Models\Orientação_Estagios;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -29,24 +32,26 @@ class HistóricoAgendamentosResource extends Resource
         return $form
         ->schema([
             Card::make()->schema([
-                TextInput::make('agendamentos.nome')->required()
-                ->label('Nome'),
-                TextInput::make('agendamentos.descrição')->required()
-                ->label('Descrição'),
-                DatePicker::make('agendamentos.data')
-                ->minDate(now())
-                ->label('Data')
-                ->required(),
-                TextInput::make('agendamentos.hora')->required()
-                ->label('Hora')
-                ->numeric()
-                ->minValue(1)
-                ->maxValue(24),
-                TextInput::make('agendamentos.duração')->required()
-                ->label('Duração')
-                ->numeric()
-                ->minValue(1)
-                ->maxValue(5),
+                Select::make('nome')
+                ->label('Estágio')
+                ->searchable()
+                ->options(function () {
+                    return Orientação_Estagios::join('estágios', 'orientação_estagios.estágios_id', '=', 'estágios.id')
+                    ->pluck('estágios.nome', 'orientação_estagios.estágios_id');
+                }),
+                Select::make('name')
+                ->label('Aluno')
+                ->searchable()
+                ->options(function () {
+                    return Orientação_Estagios::join('users', 'orientação_estagios.users_id', '=', 'users.id')
+                    ->pluck('users.name', 'orientação_estagios.users_id');
+                }),
+                Select::make('agendamentos_nome')
+                ->label('Agendamento')
+                ->searchable()
+                ->options(function () {
+                    return Agendamentos::pluck('nome', 'id');
+                }),
                 ])
         ]);
     }
@@ -55,8 +60,10 @@ class HistóricoAgendamentosResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('orientação_estagios.users.name')->sortable()->searchable()->label('Utilizador'),
-                 TextColumn::make('agendamentos.nome')->sortable()->searchable()->label('Agendamentos'),
+                TextColumn::make('orientação_estagios.users.name')->sortable()->searchable()->label('Aluno'),
+                TextColumn::make('orientação_estagios.estágios.nome')->sortable()->searchable()->label('Estágio'),
+                TextColumn::make('orientação_estagios.orientador.users.name')->sortable()->searchable()->label('Orientador'),
+                 TextColumn::make('agendamentos.nome')->sortable()->searchable()->label('Agendamento'),
                  TextColumn::make('agendamentos.data')->sortable()->searchable()->label('Data'),
                  TextColumn::make('agendamentos.hora')->sortable()->searchable()->label('Hora'),
                  TextColumn::make('agendamentos.duração')->sortable()->searchable()->label('Duração(min)'),

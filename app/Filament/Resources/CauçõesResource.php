@@ -44,7 +44,7 @@ class CauçõesResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id')->sortable()->searchable()->limit(12)->label('Caução'),
+                TextColumn::make('id')->sortable()->searchable()->limit(12)->label('Número Caução'),
                 TextColumn::make('valor')->sortable()->searchable()->label('Montante'),
                 IconColumn::make('isPago')->label('Pagamento')->boolean(),
                 IconColumn::make('isDevolvido')->label('Reembolso')->boolean(),

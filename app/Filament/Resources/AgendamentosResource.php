@@ -6,6 +6,9 @@ use App\Filament\Resources\AgendamentosResource\Pages;
 use App\Filament\Resources\AgendamentosResource\RelationManagers;
 use App\Models\Agendamentos;
 use Filament\Forms;
+use Filament\Forms\Components\Card;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -23,9 +26,28 @@ class AgendamentosResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                //
-            ]);
+        ->schema([
+            Card::make()->schema([
+                TextInput::make('agendamentos.nome')->required()
+                ->label('Nome'),
+                TextInput::make('agendamentos.descrição')->required()
+                ->label('Descrição'),
+                DatePicker::make('agendamentos.data')
+                ->minDate(now())
+                ->label('Data')
+                ->required(),
+                TextInput::make('agendamentos.hora')->required()
+                ->label('Hora')
+                ->numeric()
+                ->minValue(1)
+                ->maxValue(24),
+                TextInput::make('agendamentos.duração')->required()
+                ->label('Duração')
+                ->numeric()
+                ->minValue(1)
+                ->maxValue(5),
+                ])
+        ]);
     }
 
     public static function table(Table $table): Table
