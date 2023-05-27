@@ -83,8 +83,9 @@ Route::get('/{record}/pdf/cauções', [DownloadPdfController::class, 'cauções'
 Route::get('/{record}/pdf/cacifoestagio', [DownloadPdfController::class, 'cacifoestagio'])->name('pdfcacifoestagio');
 Route::get('/{record}/pdf/orientacaoestagio', [DownloadPdfController::class, 'orientacaoestagio'])->name('pdfoe');
 
+Route::get('/pdf-aluno', [PDFController::class, 'generateCertificadoAlunoPdf'])->name('certificadoaluno');
 
-Route::get('/email', function () {
+/*Route::get('/email', function () {
     $userEmail = 'rubenguedes34@gmail.com';
     $userName = 'John Doe';
     $estágios = 'Your Estágios';
@@ -95,4 +96,4 @@ Route::get('/email', function () {
     Mail::to($userEmail)->send($notification);
 
     return 'Test email sent successfully!';
-});
+});*/
