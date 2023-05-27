@@ -65,8 +65,7 @@ $result1 = $db->query($query);
   <caption>Estágio/EC Admitido</caption>
   <thead>
     <tr>
-      <th>Nome</th>
-      <th>Orientador</th>
+      <th>Estágio/EC</th>
       <th>Instituição</th>
       <th>Curso</th>
       <th>Unidade Curricular</th>
@@ -82,7 +81,6 @@ $result1 = $db->query($query);
     <?php while ($row = $result1->fetch()): ?>
       <tr>
         <td><?= $row['estágios_nome'] ?></td>
-        <td><?= $row['orientador_nome'] ?></td>
         <td><?= $row['instituicao_estagio_nome'] ?></td>
         <td><?= $row['curso_estagio_curso'] ?></td>
         <td><?= $row['unidade_curricular_nome'] ?></td>
@@ -96,7 +94,7 @@ $result1 = $db->query($query);
   </tbody>
 </table>
 
-<br>
+<br><br>
 <table class="table caption-top">
   <thead>
     <tr>

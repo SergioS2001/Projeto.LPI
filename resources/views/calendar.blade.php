@@ -6,28 +6,26 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <style>
-        .fc-title {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
+    .fc-title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 
-        .fc-event {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    .fc-event-container .fc-event {
+        background-color: lightblue; /* Replace with your desired background color */
+        color: white; /* Replace with your desired text color */
+    }
 
-        .fc-event-time {
-            font-size: 12px;
-            font-weight: bold;
-            color: #fff;
-            background-color: #007bff;
-            padding: 4px;
-            margin-bottom: 4px;
-            border-radius: 4px;
-        }
-    </style>
+    .fc-event-time {
+        font-size: 12px;
+        font-weight: bold;
+        padding: 4px;
+        margin-bottom: 4px;
+        border-radius: 4px;
+    }
+</style>
+
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -55,26 +53,47 @@
                     };
                 }),
                 timeFormat: 'HH:mm', // Set the time format to 24-hour (e.g., 15:00),
+
                 eventRender: function (event, element) {
-    var duration = moment.duration(moment(event.end).diff(moment(event.start)));
-    var minutes = duration.asMinutes();
+    var start = event.start;
+    var end = event.end;
 
-    // Calculate the height based on the duration (assuming 30 minutes per height unit)
-    var height = minutes / 30;
+    // Calculate the duration in hours
+    var duration = moment.duration(end.diff(start));
+    var hours = duration.asHours();
 
-    // Set the height of the event box
-    element.css('height', height + 'em');
+    // Set the height of the event box based on the duration
+    var height = hours * 50; // Adjust the height value as needed
 
-    // Format the event start and end times
-    var startFormatted = event.start.format('HH:mm');
-    var endFormatted = moment(event.end).format('HH:mm');
+    // Set the height and other styles of the event container
+    element.css({
+        height: height + 'px',
+        backgroundColor: '#007bff', // Set your desired background color here
+        color: '#fff', // Set the text color
+        borderRadius: '4px', // Set the border radius
+        padding: '4px', // Set the padding
+        marginBottom: '4px' // Set the margin
+    });
 
-    // Add the event time label with formatted start and end times
-    element.append('<div class="fc-event-time">' + startFormatted + ' - ' + endFormatted + '</div>');
+    // Format the start and end times
+    var startFormatted = start.format('HH:mm');
+    var endFormatted = end.format('HH:mm');
 
-    // Set the full event title as the text content
-    element.find('.fc-title').text(event.title);
+    // Create a new element to display the event time on the event container
+    var eventTimeElement = $('<div class="fc-event-time">' + startFormatted + ' - ' + endFormatted + '</div>');
+
+    // Create a new element to display the event title (agendamento.nome) on the event container
+    var eventTitleElement = $('<div class="fc-title">' + event.title + '</div>');
+
+    // Empty the event element and append the event time and event title elements
+    element.empty().append(eventTimeElement).append(eventTitleElement);
 }
+
+
+
+
+
+
 
             });
         });

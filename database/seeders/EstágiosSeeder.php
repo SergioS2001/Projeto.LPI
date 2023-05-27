@@ -54,6 +54,7 @@ class EstágiosSeeder extends Seeder
             'data_inicial' => '2022-07-01',
             'data_final' => '2022-12-31',
             'solicitacao_vagas_id' => 2,
+            'isAdmitido' => true,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
