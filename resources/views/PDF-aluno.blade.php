@@ -80,10 +80,10 @@ WHERE orientação_estagios.users_id = $user_id";
     ?>
     <?php foreach ($result as $row): ?>
         <p><strong>Aluno:</strong> <?= $row['user_name'] ?></p>
-        <p><strong>Data de Nascimento:</strong> <?= $row['data_nascimento'] ?></p>
+        <p><strong>Data de Nascimento:</strong> <?= date('d-m-Y', strtotime($row['data_nascimento'])) ?></p>
         <p><strong>Cartão de Cidadão:</strong> <?= $row['cartão_cidadao'] ?></p>
-        <p><strong>Estágios/EC:</strong> <?= $row['estágios_nome'] ?></p>
-        <p><strong>Orientador:</strong> <?= $row['orientador_name'] ?></p>
+        <p><strong>Estágio/EC:</strong> <?= $row['estágios_nome'] ?></p>
+        <p><strong>Orientador local:</strong> <?= $row['orientador_name'] ?></p>
         <p><strong>Instituição:</strong> <?= $row['instituicao_estagio_nome'] ?></p>
         <p><strong>Curso:</strong> <?= $row['curso_estagio_curso'] ?></p>
         <p><strong>Unidade Curricular:</strong> <?= $row['unidade_curricular_nome'] ?></p>

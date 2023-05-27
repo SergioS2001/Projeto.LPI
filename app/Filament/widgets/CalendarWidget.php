@@ -2,6 +2,9 @@
 
 namespace App\Filament\Widgets;
 
+use App\Filament\Resources\AgendamentosResource\Pages\CreateAgendamentos;
+use App\Models\Agendamentos;
+use Carbon\Carbon;
 use Saade\FilamentFullCalendar\Widgets\FullCalendarWidget;
 
 class CalendarWidget extends FullCalendarWidget
@@ -11,8 +14,19 @@ class CalendarWidget extends FullCalendarWidget
      */
     public function getViewData(): array
     {
+        $agendamentos = Agendamentos::all();
+
+        $events = $agendamentos->map(function ($agendamento) {
+            return [
+                'id' => $agendamento->id,
+                'title' => $agendamento->nome,
+                'start' => $agendamento->data,
+                'allDay' => true, // Adjust as per your data
+            ];
+        })->toArray();
+
         return [
-            //
+            'events' => $events,
         ];
     }
 
@@ -22,7 +36,20 @@ class CalendarWidget extends FullCalendarWidget
      */
     public function fetchEvents(array $fetchInfo): array
     {
-        // You can use $fetchInfo to filter events by date.
-        return [];
+        $start = $fetchInfo['start'];
+        $end = $fetchInfo['end'];
+
+        $agendamentos = Agendamentos::whereBetween('data', [$start, $end])->get();
+
+        $events = $agendamentos->map(function ($agendamento) {
+            return [
+                'id' => $agendamento->id,
+                'title' => $agendamento->nome,
+                'start' => $agendamento->data,
+                'allDay' => true, // Adjust as per your data
+            ];
+        })->toArray();
+
+        return $events;
     }
 }
