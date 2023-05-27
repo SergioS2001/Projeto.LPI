@@ -1,6 +1,8 @@
 <?php
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MyNotification;
 
 // Set up database connection
 $host = env('DB_HOST');
@@ -17,8 +19,8 @@ $options = [
 
 
 try {
-  $db = new PDO($dsn, $user, $password, $options);
-  //$db = new PDO('mysql:host=localhost;dbname=lpi','root','root');
+  //$db = new PDO($dsn, $user, $password, $options);
+  $db = new PDO('mysql:host=localhost;dbname=lpi','root','root');
 
 } catch (PDOException $e) {
   throw new PDOException($e->getMessage(), (int)$e->getCode());
@@ -30,6 +32,7 @@ $user_is_orientador = DB::table('users')->where('id', $user_id)->value('isOrient
 $query = "SELECT orientação_estagios.id AS orientação_estagios_id,
                 estágios.nome AS estágios_nome,
                 users.name AS user_name,
+                users.email AS user_email,
                 presenças.data,
                 presenças.isValidated,
                 MIN(presenças.h_entrada) AS h_entrada,
@@ -41,8 +44,7 @@ $query = "SELECT orientação_estagios.id AS orientação_estagios_id,
           JOIN users ON orientação_estagios.users_id = users.id
           JOIN presenças ON presenças.orientação_estagios_id = orientação_estagios.id
           JOIN orientadores ON orientação_estagios.orientadores_id = orientadores.id
-          WHERE orientação_estagios.users_id = $user_id
-          AND (orientadores.users_id = $user_id OR ($user_is_orientador = 1 AND orientação_estagios.orientadores_id = $user_id))
+          WHERE orientadores.users_id = $user_id
           GROUP BY orientação_estagios.id, estágios_nome, user_name, presenças.data";
 
 // Fetch data and store in $result variable
@@ -50,55 +52,97 @@ $result = $db->query($query);
 
 ?>
 
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $action = $_POST['action'];
+
+    // Check if the submitted action is "Sim"
+    if ($action === 'Sim') {
+        // Iterate through the table rows and handle the selected action for each row
+        while ($row = $result->fetch()) {
+            if (!$row['isValidated'] && $row['presenças_id'] === $_POST['presenças_id']) {
+                // Get the user's email address from the query result
+                $userEmail = $row['user_email'];
+
+                // Send the email notification
+                Mail::to($userEmail)->send(new MyNotification($row['user_name'], $row['estágios_nome'], $row['data']));
+
+                // Update the database or perform any other necessary actions based on the selected action
+                // ...
+
+                // Redirect or display a success message to the user
+                return redirect()->back()->with('success', 'Email notification sent successfully.');
+            }
+        }
+    } elseif ($action === 'Não') {
+        // Get the user's email address from the query result
+        $userEmail = $row['user_email'];
+
+        // Send the email notification
+        Mail::to($userEmail)->send(new MyNotification($row['user_name'], $row['estágios_nome'], $row['data']));
+
+        // Redirect or display a success message to the user
+        return redirect()->back()->with('success', 'Email notification sent successfully.');
+    }
+}
+?>
+
+
 <?php if ($result->rowCount() > 0): ?>
 <!-- Search form -->
 <form id="searchForm" action="{{ route('orientação.search') }}" method="GET">
     <input type="text" id="searchInput" name="search" placeholder="Search...">
-<!-- HTML !-->
-<button class="button-14" role="button">Search</button>
+    <!-- HTML !-->
+    <button class="button-14" role="button">Search</button>
 </form>
 
 <!-- Table for Orientacao -->
 <table class="table caption-top">
-  <caption>Validar Presenças</caption>
-  <thead>
+    <caption>Validar Presenças</caption>
+    <thead>
     <tr>
-      <th>Estágio/EC</th>
-      <th>Aluno</th>
-      <th>Data</th>
-      <th>Hora de entrada</th>
-      <th>Hora de saída</th>
-      <th>Tempo de pausa (Minutos)</th>
-      <th>Validada</th>
-      <th>Validar</th>
+        <th>Estágio/EC</th>
+        <th>Aluno</th>
+        <th>Data</th>
+        <th>Hora de entrada</th>
+        <th>Hora de saída</th>
+        <th>Minutos de pausa</th>
+        <th>Estado</th>
+        <th colspan="2" style="text-align: center;">Validação</th>
     </tr>
-  </thead>
-  <tbody id="tableBody">
+    </thead>
+    <tbody id="tableBody">
     <?php while ($row = $result->fetch()): ?>
-      <tr>
-        <td><?= $row['estágios_nome'] ?></td>
-        <td><?= $row['user_name'] ?></td>
-        <td><?= date('d/m/Y', strtotime($row['data'])) ?></td>
-        <td><?= $row['h_entrada'] ?></td>
-        <td><?= $row['h_saida'] ?></td>
-        <td><?= $row['tempo_pausa'] ?></td>
-        <td><?= $row['isValidated'] ? 'Sim' : 'Não' ?></td>
-        <td>
-    <?php if (!$row['isValidated']): ?>
-      <form action="{{ route('orientação.update', $row['presenças_id']) }}" method="POST">
-            @method('PUT')
-            @csrf
-            <button type="submit" class="button-18 btn-primary">Validar</button>
-        </form>
-    <?php endif; ?>
-</td>
-      </tr>
+        <tr>
+            <td><?= $row['estágios_nome'] ?></td>
+            <td><?= $row['user_name'] ?></td>
+            <td><?= date('d/m/Y', strtotime($row['data'])) ?></td>
+            <td><?= $row['h_entrada'] ?></td>
+            <td><?= $row['h_saida'] ?></td>
+            <td><?= $row['tempo_pausa'] ?></td>
+            <td><?= $row['isValidated'] ? 'Validada' : 'Não Validada' ?></td>
+            <td>
+                <?php if (!$row['isValidated']): ?>
+                <form action="{{ route('orientação.update', $row['presenças_id']) }}" method="POST">
+                    @method('PUT')
+                    @csrf
+                    <button type="submit" class="button-18 btn-primary" name="action" value="Sim">Sim</button>
+                </form>
+                <?php endif; ?>
+            </td>
+            <td>
+                <?php if (!$row['isValidated']): ?>
+                <form>
+                    <button type="submit" class="button-18 btn-primary" name="action" value="Não">Não</button>
+                </form>
+                <?php endif; ?>
+            </td>
+        </tr>
     <?php endwhile; ?>
-    <br>//+ notificação email para cada aluno quando presença for validada
-  </tbody>
+    </tbody>
 </table>
 <?php else: ?>
-  <p>Não existem presenças registadas por alunos!</p>
+<p>Não existem presenças registadas por alunos!</p>
 <?php endif; ?>
 
 <!-- Add this CSS to your stylesheet or HTML -->

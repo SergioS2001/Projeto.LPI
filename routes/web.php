@@ -18,6 +18,8 @@ use App\Http\Controllers\CertificadosController;
 use App\Http\Controllers\DownloadPdfController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MyNotification;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,3 +82,17 @@ Route::get('/{record}/pdf/presenças', [DownloadPdfController::class, 'presença
 Route::get('/{record}/pdf/cauções', [DownloadPdfController::class, 'cauções'])->name('pdfcauções');
 Route::get('/{record}/pdf/cacifoestagio', [DownloadPdfController::class, 'cacifoestagio'])->name('pdfcacifoestagio');
 Route::get('/{record}/pdf/orientacaoestagio', [DownloadPdfController::class, 'orientacaoestagio'])->name('pdfoe');
+
+
+Route::get('/email', function () {
+    $userEmail = 'rubenguedes34@gmail.com';
+    $userName = 'John Doe';
+    $estágios = 'Your Estágios';
+    $presenças = 'Your Presenças';
+    
+    $notification = new MyNotification($userName, $estágios, $presenças);
+
+    Mail::to($userEmail)->send($notification);
+
+    return 'Test email sent successfully!';
+});

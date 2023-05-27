@@ -16,8 +16,8 @@ $options = [
 
 
 try {
-  $db = new PDO($dsn, $user, $password, $options);
-  //$db = new PDO('mysql:host=localhost;dbname=lpi','root','root');
+  //$db = new PDO($dsn, $user, $password, $options);
+  $db = new PDO('mysql:host=localhost;dbname=lpi','root','root');
 
 } catch (PDOException $e) {
   throw new PDOException($e->getMessage(), (int)$e->getCode());
@@ -54,7 +54,7 @@ $result = $db->query($query);
       <th>Hora de entrada</th>
       <th>Hora de saída</th>
       <th>Pausa(Minutos)</th>
-      <th>Validada por Orientador</th>
+      <th>Validação Orientador</th>
     </tr>
   </thead>
   <tbody>
@@ -65,7 +65,7 @@ $result = $db->query($query);
       <td><?= $row['h_entrada'] ?></td>
       <td><?= $row['h_saida'] ?></td>
       <td><?= $row['tempo_pausa'] ?></td>
-      <td><?= $row['isValidated'] ? 'Sim' : 'Não' ?></td>
+      <td><?= $row['isValidated'] ? 'Validada' : 'Não Validada' ?></td>
       </tr>
     <?php endwhile; ?>
   </tbody>
