@@ -25,6 +25,10 @@
         <td>Tempo de Pausa</td>
         <td>{{ $record->tempo_pausa }} minutos</td>
     </tr>
+    <tr>
+        <td>Estado</td>
+        <td>{{ $record->isValidated ? 'Validada por Orientador local' : 'Não Validada por Orientador local'}}</td>
+    </tr>
 </table>
 
 <style>

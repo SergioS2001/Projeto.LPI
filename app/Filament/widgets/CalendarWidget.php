@@ -21,7 +21,6 @@ class CalendarWidget extends FullCalendarWidget
                 'id' => $agendamento->id,
                 'title' => $agendamento->nome,
                 'start' => $agendamento->data,
-                'allDay' => true, // Adjust as per your data
             ];
         })->toArray();
 

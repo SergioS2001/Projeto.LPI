@@ -9,7 +9,7 @@
         <td>{{ $estagio->nome }}</td>
     </tr>
     <tr>
-        <td>Module Count</td>
+        <td>Número de Módulos</td>
         <td>{{ $record->module_count }}</td>
     </tr>
     <tr>
@@ -17,7 +17,7 @@
         <td>{{ $record->nota_final }}</td>
     </tr>
     <tr>
-        <td>Status</td>
+        <td>Estado</td>
         <td>{{ $record->isDone ? 'Concluído com sucesso' : 'Não Concluído' }}</td>
     </tr>
 </table>

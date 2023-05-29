@@ -75,7 +75,7 @@ Route::resource('certificados', CertificadosController::class);
 
 require __DIR__.'/auth.php';
 
-Route::get('generate-pdf/{name}', [PDFController::class, 'generatePDF']);
+Route::get('/{record}/pdf/agendamentos', [DownloadPdfController::class, 'agendamentos'])->name('pdagendamentos');
 Route::get('/{record}/pdf/avaliações', [DownloadPdfController::class, 'avaliações'])->name('pdfavaliações');
 Route::get('/{record}/pdf/estágios', [DownloadPdfController::class, 'estágios'])->name('pdfestágios');
 Route::get('/{record}/pdf/presenças', [DownloadPdfController::class, 'presenças'])->name('pdfpresenças');
@@ -83,6 +83,7 @@ Route::get('/{record}/pdf/cauções', [DownloadPdfController::class, 'cauções'
 Route::get('/{record}/pdf/cacifoestagio', [DownloadPdfController::class, 'cacifoestagio'])->name('pdfcacifoestagio');
 Route::get('/{record}/pdf/orientacaoestagio', [DownloadPdfController::class, 'orientacaoestagio'])->name('pdfoe');
 Route::get('/{record}/pdf/solicitacaovagas', [DownloadPdfController::class, 'solicitacaovagas'])->name('pdfsolicitacaovagas');
+Route::get('/{record}/pdf/users', [DownloadPdfController::class, 'users'])->name('pdfusers');
 
 Route::get('/pdf-aluno', [PDFController::class, 'generateCertificadoAlunoPdf'])->name('certificadoaluno');
 

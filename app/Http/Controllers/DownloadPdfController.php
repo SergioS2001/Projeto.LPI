@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agendamentos;
 use App\Models\Avaliações;
+use App\Models\Cacifos;
 use App\Models\Cacifos_Estágios;
 use App\Models\Cauções;
 use App\Models\Estágios;
@@ -21,6 +23,10 @@ use LaravelDaily\Invoices\Classes\InvoiceItem;
 
 class DownloadPdfController extends Controller
 {
+
+    public function agendamentos(Agendamentos $record)
+{
+}
     public function avaliações(Avaliações $record)
     {
         // Retrieve the additional data needed for the PDF
@@ -77,9 +83,35 @@ public function cauções(Cauções $record)
 }
 public function cacifoestagio(Cacifos_Estágios $record)
 {
+    // Retrieve the additional data needed for the PDF
+    $user = User::findOrFail($record->users_id);
+    $estagio = Estágios::findOrFail($record->estágios_id);
+    $cacifo = Cacifos::findOrFail($record->cacifos_id);
+    $caucao = Cauções::findOrFail($record->cauções_id);
+
+    // Define the data to be passed to the PDF view
+    $data = [
+        'record' => $record,
+        'user' => $user,
+        'estagio' => $estagio,
+        'cacifo' => $cacifo,
+        'caucao' => $caucao,
+    ];
+
+    // Generate the PDF using the cacifoestagio.blade.php view
+    $pdf = PDF::loadView('cacifoestagio', $data);
+    $filename = 'cacifoestagio_' . $record->id . '.pdf';
+
+    // Download the PDF file
+    return $pdf->download($filename);
 }
 
 public function solicitacaovagas(Solicitação_Vagas $record)
 {
 }
+
+public function users(User $record)
+{
+}
+
 }
