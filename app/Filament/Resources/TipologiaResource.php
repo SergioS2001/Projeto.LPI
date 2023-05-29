@@ -39,7 +39,7 @@ class TipologiaResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('id')->sortable()->searchable()->limit(12)->label('id'),
-                TextColumn::make('titulo')->sortable()->searchable()->limit(25)->label('Tipologia'),
+                TextColumn::make('titulo')->sortable()->searchable()->label('Tipologia'),
                 ])
             ->filters([
                 //

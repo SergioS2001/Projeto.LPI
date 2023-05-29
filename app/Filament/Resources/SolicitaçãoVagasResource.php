@@ -17,6 +17,7 @@ use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -27,6 +28,8 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
+use Illuminate\Support\Str;
+
 class SolicitaçãoVagasResource extends Resource
 {
     protected static ?string $model = Solicitação_Vagas::class;
@@ -56,9 +59,17 @@ class SolicitaçãoVagasResource extends Resource
                     ->numeric()
                     ->minValue(1),
                     Textarea::make('objetivos')
+                    ->required()
                     ->label('Objetivos')
                     ->rows(5)
                     ->cols(50),
+                    FileUpload::make('file')
+                    ->preserveFilenames()
+                    ->label('Upload File')
+                    ->acceptedFileTypes(['application/pdf'])
+                    ->multiple()
+                    ->enableDownload()
+                    ->enableReordering(),
                     Checkbox::make('isExterno')
                     ->label('Estágio Externo?'),
                     ])
@@ -70,11 +81,11 @@ class SolicitaçãoVagasResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('id')->label('id'),
-                TextColumn::make('estagios_nome')->sortable()->searchable()->label('Estágio'),
+                TextColumn::make('estagio.nome')->sortable()->searchable()->label('Estágio'),
                 TextColumn::make('designação')->sortable()->searchable()->label('Designação'),
                 TextColumn::make('ano_letivo')->sortable()->searchable()->label('Ano letivo'),
                 TextColumn::make('vagas')->sortable()->searchable()->label('Vagas'),
-                TextColumn::make('carga_horaria_total')->sortable()->searchable()->label('Carga Horaria'),
+                TextColumn::make('carga_horaria_total')->sortable()->searchable()->label('Carga Horaria Total'),
                 TextColumn::make('objetivos')->sortable()->searchable()->label('Objetivos'),
 
             ])
@@ -83,7 +94,12 @@ class SolicitaçãoVagasResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                \Filament\Tables\Actions\DeleteAction::make(),
+                //\Filament\Tables\Actions\DeleteAction::make(),
+                \Filament\Tables\Actions\Action::make('PDF')
+                ->icon('heroicon-o-document-download')
+                ->url(fn (Solicitação_Vagas $record) => route('pdfestágios', $record))
+                ->openUrlInNewTab()
+                ->label(fn ($record) => Str::upper('PDF')),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

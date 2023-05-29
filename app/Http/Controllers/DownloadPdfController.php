@@ -9,6 +9,7 @@ use App\Models\Estágios;
 use App\Models\Orientadores;
 use App\Models\Orientação_Estagios;
 use App\Models\Presenças;
+use App\Models\Solicitação_Vagas;
 use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
@@ -52,4 +53,7 @@ public function cacifoestagio(Cacifos_Estágios $record)
 {
 }
 
+public function solicitacaovagas(Solicitação_Vagas $record)
+{
+}
 }

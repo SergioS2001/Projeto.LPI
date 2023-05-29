@@ -27,7 +27,6 @@ use Filament\Forms\Components\DatePicker;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Support\Str;
-
 class EstágiosResource extends Resource
 {
     protected static ?string $model = Estágios::class;
@@ -39,10 +38,16 @@ class EstágiosResource extends Resource
         return $form
             ->schema([
                 Card::make()->schema([TextInput::make('nome')->label('Nome')->required(),
-                Select::make('orientadores_id.users.name')
-                ->label('Orientadores')
-                ->options(Orientação_Estagios::all()->pluck('nome', 'id'))
-                ->searchable(),
+                Select::make('orientadores_id')
+                    ->label('Orientadores')
+                    ->options(function () {
+                        return Orientadores::with('users')->get()
+                            ->mapWithKeys(function ($orientador) {
+                                return [$orientador->id => $orientador->users->name];
+                            })
+                            ->all();
+                    })
+                    ->searchable(),
                 Select::make('instituicao_estagio_id')
                 ->label('Instituição')
                 ->options(Instituição_Estágio::all()->pluck('nome', 'id'))
@@ -73,6 +78,7 @@ class EstágiosResource extends Resource
                 ->minDate(now()),
                 Checkbox::make('isAdmitido')->label('Admitido?'),
                 ])
+                
             ]);
     }
 

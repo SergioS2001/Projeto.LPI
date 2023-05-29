@@ -33,7 +33,7 @@ class ContactosEmergênciaResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('users.name')->sortable()->searchable()->label("Aluno"),
+                TextColumn::make('user.name')->sortable()->searchable()->label("Aluno"),
                 TextColumn::make('telemóvel')->sortable()->searchable()->label("Contacto Emergência"),
                 TextColumn::make('nome')->sortable()->searchable()->label("Nome contacto"),
                 TextColumn::make('grau_parentesco')->sortable()->searchable()->label("Grau Parentesco"),

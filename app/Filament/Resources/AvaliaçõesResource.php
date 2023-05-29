@@ -64,8 +64,9 @@ class AvaliaçõesResource extends Resource
             ->columns([
                 TextColumn::make('orientação_estagios.users.name')->sortable()->searchable()->limit(12)->label('Aluno'),
                 TextColumn::make('orientação_estagios.estágios.nome')->sortable()->searchable()->label('Estágio'),
-                TextColumn::make('orientação_estagios.orientador.users.name')->sortable()->searchable()->label('Orientadores'),
-                TextColumn::make('nota')->sortable()->label('Nota Final'),
+                //TextColumn::make('orientação_estagios.orientador.users.name')->sortable()->searchable()->label('Orientadores'),
+                TextColumn::make('module_count')->sortable()->label('Número Módulos'),
+                TextColumn::make('nota_final')->sortable()->label('Nota Final'),
                 IconColumn::make('isDone')->label('Concluído')->boolean(),
             ])
             ->filters([

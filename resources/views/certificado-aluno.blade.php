@@ -27,7 +27,6 @@ try {
 $user_id = Auth::id();
 
 // SQL query to fetch data
-
 $query = "SELECT
     estágios.nome AS estágios_nome,
     users.name AS user_name,
@@ -50,11 +49,12 @@ JOIN users AS orientador_user ON orientadores.users_id = orientador_user.id
 LEFT JOIN (
     SELECT orientação_estagios_id, COUNT(*) AS presenças_count, SUM(tempo_pausa) AS presenças_total_horas
     FROM presenças
-    WHERE isValidated = 1 -- Condition added
+    WHERE isValidated = 1
     GROUP BY orientação_estagios_id
 ) AS presenças ON orientação_estagios.id = presenças.orientação_estagios_id
-LEFT JOIN avaliações ON avaliações.orientação_estagios_id = orientação_estagios.id
+JOIN avaliações ON avaliações.orientação_estagios_id = orientação_estagios.id
 WHERE orientação_estagios.users_id = $user_id";
+
 
 // Fetch data and store in $result variable
 $result = $db->query($query); 
@@ -93,12 +93,12 @@ $result = $db->query($query);
     <?php endwhile ?>
   </tbody>
 </table>
-<?php else: ?>
-  <p>Não está registado em nenhum Estágio/Ensino Clinico!</p>
-<?php endif; ?>
+
 <br>
 <a href="{{ route('certificadoaluno') }}" id="downloadBtn">Download as PDF</a>
-
+<?php else: ?>
+  <p>Não é possível emitir certificado</p>
+<?php endif; ?>
 <!-- Add this CSS to your stylesheet or HTML -->
 <style>
   
