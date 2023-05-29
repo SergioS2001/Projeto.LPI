@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('contactos_emergência', function (Blueprint $table) {
             $table->id()->bigIncrements();
+            $table->foreignId('users_id')->nullable()->references('id')->on('users');   
             $table->string('nome')->nullable();
             $table->string('telemóvel')->nullable();
             $table->string('grau_parentesco')->nullable();

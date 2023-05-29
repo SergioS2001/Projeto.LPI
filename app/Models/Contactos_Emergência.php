@@ -11,6 +11,7 @@ class Contactos_Emergência extends Model
     protected $table = 'contactos_emergência';
 
     protected $fillable = [
+        'users_id',
         'nome',
         'telemóvel',
         'grau_parentesco',

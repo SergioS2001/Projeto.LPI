@@ -54,30 +54,24 @@ class ProfileController extends Controller
 public function saveEmergência(Request $request)
 {
     $user = Auth::user();
-    $infoEmergencia = $user->info_emergência;
+    $contactosEmergencia = $user->contactos_emergência;
 
-    if (!$infoEmergencia) {
-        // Create a new InfoEmergencia instance if it doesn't exist for the user
-        $infoEmergencia = new Contactos_Emergência();
+    if (!$contactosEmergencia) {
+        // Create a new Contactos_Emergência instance if it doesn't exist for the user
+        $contactosEmergencia = new Contactos_Emergência();
+        $contactosEmergencia->users_id = $user->id; // Set the users_id foreign key
     }
 
     // Update the fields with the submitted values
-    $infoEmergencia->nome = $request->input('nome');
-    $infoEmergencia->grau_parentesco = $request->input('grau_parentesco');
-    $infoEmergencia->telemóvel = $request->input('telemóvel');
+    $contactosEmergencia->nome = $request->input('nome');
+    $contactosEmergencia->grau_parentesco = $request->input('grau_parentesco');
+    $contactosEmergencia->telemóvel = $request->input('telemóvel');
 
     // Save the changes
-    $infoEmergencia->save();
-
-    // Associate the info_emergência_id with the user
-    $user->info_emergência_id = $infoEmergencia->id;
-
-    // Retrieve the original User model and update the info_emergência_id
-    User::where('id', $user->id)->update(['contactos_emergência_id' => $infoEmergencia->id]);
+    $contactosEmergencia->save();
 
     return redirect()->back()->with('status', 'emergência-updated');
 }
-
 
 
     

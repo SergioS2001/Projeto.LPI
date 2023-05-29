@@ -32,7 +32,6 @@ class User extends Authenticatable implements FilamentUser
         'telemóvel',
         'morada',
         'email_alternativo',
-        'contactos_emergência_id',
         'instituicao_aluno_id',
         'isExterno',
         'isOrientador',
@@ -68,7 +67,7 @@ class User extends Authenticatable implements FilamentUser
     }
     public function contactos_emergência()
     {
-        return $this->belongsTo(Contactos_Emergência::class, 'contactos_emergência_id');
+        return $this->hasOne(Contactos_Emergência::class, 'users_id');
     }
     
     
