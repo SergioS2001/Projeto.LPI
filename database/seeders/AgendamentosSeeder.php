@@ -12,7 +12,7 @@ class AgendamentosSeeder extends Seeder
         DB::table('agendamentos')->insert([
             [
                 'nome' =>  'Sessão de acolhimento',
-                'data' => '2023-05-10',
+                'data' => '2023-05-30',
                 'hora' => '17.0',
                 'descrição' => 'Sessão de acolhimento Estágios/EC',
                 'hora_fim' => '18.0',
@@ -21,18 +21,18 @@ class AgendamentosSeeder extends Seeder
             ],
             [
                 'nome' =>  'Reuniões de Avaliação',
-                'data' => '2023-05-25',
-                'hora' => '15.0',
-                'descrição' => 'Reuniões de Avaliação com Orientadores',
+                'data' => '2023-05-29',
+                'hora' => '16.30',
+                'descrição' => 'Reunião LPI',
                 'hora_fim' => '18.0',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'nome' =>  'agendamento3',
-                'data' => '2023-05-05',
+                'data' => '2023-05-25',
                 'hora' => '16.0',
-                'descrição' => 'Apresentação de projeto',
+                'descrição' => 'Apresentação',
                 'hora_fim' => '17.0',
                 'created_at' => now(),
                 'updated_at' => now(),

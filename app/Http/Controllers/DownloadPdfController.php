@@ -12,6 +12,8 @@ use App\Models\Presenças;
 use App\Models\Solicitação_Vagas;
 use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Dompdf\Dompdf;
+use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 use LaravelDaily\Invoices\Invoice;
 use LaravelDaily\Invoices\Classes\Buyer;
@@ -20,23 +22,25 @@ use LaravelDaily\Invoices\Classes\InvoiceItem;
 class DownloadPdfController extends Controller
 {
     public function avaliações(Avaliações $record)
-{
-    // Retrieve related data
-    $orientacao = Orientação_Estagios::findOrFail($record->orientacoes_estagios_id);
-    $estagio = Estágios::findOrFail($orientacao->estágios_id);
-    $aluno = User::findOrFail($orientacao->users_id);
-    $orientador = Orientadores::findOrFail($orientacao->orientador_id);
+    {
+        // Retrieve the additional data needed for the PDF
+        $aluno = User::findOrFail(Orientação_Estagios::findOrFail($record->orientação_estagios_id)->users_id);
+        $estagio = Estágios::findOrFail(Orientação_Estagios::findOrFail($record->orientação_estagios_id)->estágios_id);
 
-    // Generate PDF
-    $pdf = Pdf::loadView('pdf.avaliacoes', compact('record', 'aluno', 'estagio', 'orientador'));
+        // Define the data to be passed to the PDF view
+        $data = [
+            'record' => $record,
+            'aluno' => $aluno,
+            'estagio' => $estagio,
+        ];
 
-    // Optionally, you can customize the PDF configuration
-    // For example, to set the paper size and orientation:
-    // $pdf->setPaper('A4', 'portrait');
+        // Generate the PDF using the avaliacoes.blade.php view
+        $pdf = PDF::loadView('avaliações', $data);
+        $filename = 'avaliacoes_' . $record->id . '.pdf';
 
-    // Stream or download the PDF
-    return $pdf->stream();
-}
+        // Download the PDF file
+        return $pdf->download($filename);
+    }
 
 public function estágios(Estágios $record)
 {
@@ -44,7 +48,29 @@ public function estágios(Estágios $record)
 
 public function presenças(Presenças $record)
 {
+    // Retrieve the data needed for the PDF
+    $orientacao = Orientação_Estagios::findOrFail($record->orientação_estagios_id);
+    $aluno = User::findOrFail($orientacao->users_id)->name;
+    $estagio = Estágios::findOrFail($orientacao->estágios_id)->nome;
+    
+    $data = [
+        'record' => $record,
+        'aluno' => $aluno,
+        'estagio' => $estagio,
+        // Include any additional data you need for the PDF view
+    ];
+
+    // Generate the PDF using the presenças.blade.php view
+    $pdf = PDF::loadView('presenças', $data);
+    $pdf->setPaper('A4', 'portrait');
+
+    // Set the file name for the downloaded PDF
+    $filename = 'presenças_' . $record->id . '.pdf';
+
+    // Download the PDF file
+    return $pdf->download($filename);
 }
+
 
 public function cauções(Cauções $record)
 {

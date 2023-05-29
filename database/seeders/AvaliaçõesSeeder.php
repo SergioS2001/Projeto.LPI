@@ -12,6 +12,7 @@ class AvaliaçõesSeeder extends Seeder
         Avaliações::create([
             'orientação_estagios_id' => 1,
             'module_count' => 2,
+            'nota_final' => 16,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -19,6 +20,7 @@ class AvaliaçõesSeeder extends Seeder
         Avaliações::create([
             'orientação_estagios_id' => 2,
             'module_count' => 2,
+            'nota_final' => 18,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
