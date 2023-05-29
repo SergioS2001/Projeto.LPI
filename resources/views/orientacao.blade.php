@@ -89,13 +89,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 <?php if ($result->rowCount() > 0): ?>
-<!-- Search form -->
-<form id="searchForm" action="{{ route('orientação.search') }}" method="GET">
-    <input type="text" id="searchInput" name="search" placeholder="Search...">
-    <!-- HTML !-->
-    <button class="button-14" role="button">Search</button>
-</form>
-
 <!-- Table for Orientacao -->
 <table class="table caption-top">
     <caption>Validar Presenças</caption>

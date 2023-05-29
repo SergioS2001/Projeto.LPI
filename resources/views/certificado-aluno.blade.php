@@ -97,7 +97,7 @@ $result = $db->query($query);
 <br>
 <a href="{{ route('certificadoaluno') }}" id="downloadBtn">Download as PDF</a>
 <?php else: ?>
-  <p>Não é possível emitir certificado</p>
+  <p>Não existem certificados!</p>
 <?php endif; ?>
 <!-- Add this CSS to your stylesheet or HTML -->
 <style>

@@ -77,8 +77,12 @@ public function updateDados(Request $request)
 
     $orientador = Orientadores::where('users_id', $user_id)->first();
 
-    // Update the orientador attributes with the validated data
-    $orientador->celula_profissional =  $request->input('celula_profissional');
+    if (!$orientador) {
+        $orientador = new Orientadores();
+        $orientador->users_id = $user_id;
+    }
+
+    $orientador->celula_profissional = $request->input('celula_profissional');
     $orientador->admissao = $request->input('admissao');
     $orientador->validade = $request->input('validade');
 
