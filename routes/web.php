@@ -84,6 +84,7 @@ Route::get('/{record}/pdf/cacifoestagio', [DownloadPdfController::class, 'cacifo
 Route::get('/{record}/pdf/orientacaoestagio', [DownloadPdfController::class, 'orientacaoestagio'])->name('pdfoe');
 Route::get('/{record}/pdf/solicitacaovagas', [DownloadPdfController::class, 'solicitacaovagas'])->name('pdfsolicitacaovagas');
 Route::get('/{record}/pdf/users', [DownloadPdfController::class, 'users'])->name('pdfusers');
+Route::get('/{record}/excel/questionarioaluno', [QuestionarioController::class, 'csvquestionarioaluno'])->name('csvquestionarioaluno');
 
 Route::get('/pdf-aluno', [PDFController::class, 'generateCertificadoAlunoPdf'])->name('certificadoaluno');
 

@@ -35,7 +35,7 @@
     </style>
 </head>
 <body>
-    <h1>Certificado</h1>
+<h2 style="text-align: center;">Certificado Frequência</h2><br>
     <?php
     use Illuminate\Support\Facades\Auth;
     $user_id = Auth::id();

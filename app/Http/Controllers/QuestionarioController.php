@@ -7,6 +7,8 @@ use App\Models\Orientação_Estagios;
 use App\Models\Questionário_Aluno;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use League\Csv\Writer;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class QuestionarioController extends Controller
 {
@@ -58,4 +60,45 @@ class QuestionarioController extends Controller
         return redirect()->route('questionário.index')->with('success', 'Questionário enviado com sucesso!');
     }
 
+    public function csvquestionarioaluno(Questionário_Aluno $record)
+{
+    // Retrieve the data needed for the CSV
+    $data = [
+        $record->orientação_estagios->users->name,
+        $record->orientação_estagios->estágios->nome,
+        $record->integração,
+        $record->acompanhamento,
+        $record->aquisição_conhecimentos,
+        $record->disponibilidade,
+        $record->satisfação,
+        $record->apoio_administrativo,
+        $record->apoio_orientador,
+        $record->apreciação_global,
+        $record->sugestões,
+    ];
+
+    // Create a new CSV writer
+    $csv = Writer::createFromString('');
+
+    // Add data row to the CSV
+    $csv->insertOne($data);
+
+    // Set the response headers for CSV download
+    $headers = [
+        'Content-Type' => 'text/csv',
+        'Content-Disposition' => 'attachment; filename="csvquestionarioaluno.csv"',
+    ];
+
+    // Generate the CSV content
+    $csvContent = $csv->getContent();
+
+    // Replace commas with semicolons
+    $csvContent = str_replace(',', ';', $csvContent);
+
+    // Return the CSV file as a response
+    return new StreamedResponse(function () use ($csvContent) {
+        echo $csvContent;
+    }, 200, $headers);
+}
+    
 }

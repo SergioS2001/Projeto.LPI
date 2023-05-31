@@ -43,6 +43,10 @@ public function presenças()
 {
     return $this->hasMany(Presenças::class);
 }
+public function questionário_aluno()
+{
+    return $this->hasMany(Questionário_Aluno::class);
+}
 public function avaliação()
 {
     return $this->hasMany(Avaliações::class);
