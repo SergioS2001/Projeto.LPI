@@ -38,7 +38,11 @@
                     <x-nav-link :href="route('histórico.index')" :active="request()->routeIs('histórico.index')">
                         {{ __('Histórico') }}
                     </x-nav-link>
-                    
+                    @if(auth()->user()->canAccessFilament())
+    <x-nav-link href="/admin" :active="request()->is('admin')">
+        {{ __('Admin') }}
+    </x-nav-link>
+@endif
                 </div>
             </div>
 

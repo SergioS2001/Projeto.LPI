@@ -8,8 +8,9 @@ use App\Http\Controllers\PresençasController;
 use App\Http\Controllers\HistóricoController;
 use App\Http\Controllers\OrientacaoEstagiosController;
 use App\Http\Controllers\ProfileController;
+use Filament\Facades\Filament;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\AvaliaçõesController;
 use App\Http\Controllers\DashboardController;
@@ -100,3 +101,4 @@ Route::get('/pdf-aluno', [PDFController::class, 'generateCertificadoAlunoPdf'])-
 
     return 'Test email sent successfully!';
 });*/
+
