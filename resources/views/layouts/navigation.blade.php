@@ -23,12 +23,14 @@
                     <x-nav-link :href="route('presenças.index')" :active="request()->routeIs('presenças.index')">
                         {{ __('Presenças') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('orientação.index')" :active="request()->routeIs('orientação.index')">
-                        {{ __('Orientação') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('avaliações.index')" :active="request()->routeIs('avaliações.index')">
+                    @if(auth()->user()->canAccessOrientacao())
+    <x-nav-link :href="route('orientação.index')" :active="request()->routeIs('orientação.index')">
+        {{ __('Orientação') }}
+    </x-nav-link>
+    <x-nav-link :href="route('avaliações.index')" :active="request()->routeIs('avaliações.index')">
                         {{ __('Avaliações') }}
                     </x-nav-link>
+@endif
                     <x-nav-link :href="route('questionário.index')" :active="request()->routeIs('questionário.index')">
                         {{ __('Questionário') }}
                     </x-nav-link>

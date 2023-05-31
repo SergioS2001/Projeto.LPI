@@ -104,6 +104,10 @@ public function canAccessFilament(): bool
     return $this->isAdmin;
 }
 
+public function canAccessOrientacao(): bool
+{
+    return $this->isOrientador;
+}
 
     public function getFilamentName(): string
     {
