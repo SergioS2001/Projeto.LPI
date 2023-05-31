@@ -23,8 +23,6 @@ return new class extends Migration
             $table->integer('apoio_orientador')->nullable()->default(0);
             $table->integer('apreciação_global')->nullable()->default(0);
             $table->string('sugestões')->nullable();
-            $table->boolean('protecao_dados_accepted')->default(false);
-            $table->boolean('autorização_guardar_contacto')->default(false);
             $table->timestamps();
         });
     }

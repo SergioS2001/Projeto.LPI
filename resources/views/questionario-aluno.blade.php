@@ -2,10 +2,29 @@
     use App\Models\Estágios;
     use App\Models\Orientação_Estagios;
     $user = Auth::user();
+    $estagios = Estágios::whereIn('id', function($query) use ($user) {
+        $query->select('estágios_id')->from('orientação_estagios')->where('users_id', $user->id);
+    })->get();
+    
+    $estagioId = null;
+
+    // Check if the user has submitted the form
+    $orientacaoEstagio = Orientação_Estagios::where('users_id', $user->id)->where('questionario_done', true)->first();
+
+    if ($orientacaoEstagio) {
+        $estagioId = $orientacaoEstagio->estágios_id;
+    }
+    
+    $questionarioDone = $orientacaoEstagio ? true : false;
+
 @endphp
 
 <!-- Include the form-validation.js file -->
 <script src="{{ asset('resources/js/form-validation.js') }}"></script>
+
+@if($questionarioDone)
+    <div class="alert alert-success">Questionário preenchido com sucesso!</div>
+@else
 
 <form class="my-form" action="{{ route('questionário.store') }}" method="POST">
     @csrf
@@ -103,6 +122,7 @@ Por favor, utilize o espaço seguinte para registar sugestões/ comentários sob
 <button class="btn btn-primary" type="submit">Enviar</button>
     <br>
 </form>
+@endif
 
 <style>
     .my-form label {

@@ -58,7 +58,6 @@
 <label for="file">Ficheiro de Avaliação:</label>
     <input type="file" name="file" id="file"><br>
     <button type="submit">Create</button>
-    <br>//+ notificação email para cada aluno quando avaliação for criada
 </form>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
