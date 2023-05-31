@@ -25,10 +25,6 @@ class AvaliaçõesController extends Controller
     $request->validate([
         'orientacao_estagios_id' => 'required',
         'aluno' => 'required',
-        'module_count' => 'required|integer|min:0',
-        // Add validation rules for module names and notas
-        'module.*.nome' => 'required',
-        'module.*.nota' => 'required|numeric|min:0|max:10',
         'nota_final' => 'required|integer|min:1|max:20',
     ]);
 
@@ -40,27 +36,9 @@ class AvaliaçõesController extends Controller
 
     $avaliacao = new Avaliações();
     $avaliacao->orientação_estagios_id = $request->input('orientacao_estagios_id');
-    $avaliacao->module_count = $request->input('module_count');
+    $avaliacao->nota_final = $request->input('nota_final');
     // Save other fields from the form to the Avaliacao model
     $avaliacao->save();
-
-    $avaliacaoModulos = [];
-    for ($i = 1; $i <= $request->module_count; $i++) {
-        $modulo = new Modulos;
-        $modulo->nome = $request->input('module' . $i . '_nome');
-        $modulo->nota = $request->input('module' . $i . '_nota');
-        $modulo->save();
-
-        $avaliacaoModulo = new AvaliacaoModulos;
-        $avaliacaoModulo->avaliacoes_id = $avaliacao->id;
-        $avaliacaoModulo->modulos_id = $modulo->id;
-        $avaliacaoModulo->save();
-
-        $avaliacaoModulos[] = $avaliacaoModulo->id;
-    }
-
-    $avaliacao->avaliacaoModulos()->attach($avaliacaoModulos);
-
 
     return redirect()->route('avaliações.index')->with('success', 'Número de módulos salvo com sucesso!');
 }

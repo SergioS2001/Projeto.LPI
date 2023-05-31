@@ -49,10 +49,6 @@
             <option value="{{ $aluno->id }}">{{ $aluno->name }}</option>
         @endforeach
     </select>
-<label for="module_count">Número de Módulos:</label>
-<input class="form-control" type="number" name="module_count" min=0 max=10 id="module_count" required>
-<div id="module_fields"></div>
-<br><br>
 <label for="nota_final">Nota final:</label>
 <input class="form-control" type="number" name="nota_final" min=1 max=20 id="nota_final" required>
 <label for="file">Ficheiro de Avaliação:</label>
@@ -60,37 +56,6 @@
     <button type="submit">Create</button>
 </form>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function () {
-    $('#module_count').change(function () {
-        var moduleCount = parseInt($(this).val());
-        var moduleFields = $('#module_fields');
-
-        // Clear any existing module fields
-        moduleFields.empty();
-
-        // Generate module fields dynamically
-        for (var i = 1; i <= moduleCount; i++) {
-            moduleFields.append('<label for="module' + i + '_nome">Nome do Módulo ' + i + ':</label>');
-            moduleFields.append('<input class="form-control" type="text" name="module' + i + '_nome" id="module' + i + '_nome" required>');
-
-            moduleFields.append('<label for="module' + i + '_nota">Nota do Módulo ' + i + ':</label>');
-            moduleFields.append('<input class="form-control" type="number" name="module' + i + '_nota" id="module' + i + '_nota" required>');
-        }
-    }).trigger('change');
-
-    // Modify form submission to validate module count
-    $('.my-form').submit(function (event) {
-        var moduleCount = parseInt($('#module_count').val());
-
-        if (moduleCount < 0) {
-            event.preventDefault();
-            alert('The module count field must be at least 0.');
-        }
-    });
-});
-</script>
 
 
 <style>

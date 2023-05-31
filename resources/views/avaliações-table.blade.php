@@ -27,17 +27,15 @@ try {
 $user_id = Auth::id();
 
 // SQL query to fetch data
-$query = "SELECT avaliações.module_count AS module_count,
-                avaliacao_modulos.nota_final AS nota_final,
+$query = "SELECT nota_final AS nota_final,
                 users.name AS user_name,
                 estágios.nome AS estágios_nome
-                FROM avaliacao_modulos
-          JOIN avaliações ON avaliacao_modulos.avaliações_id = avaliações.id
-          JOIN modulos ON avaliacao_modulos.modulos_id = modulos.id
-          JOIN orientação_estagios ON avaliacao_modulos.orientação_estagios_id = orientação_estagios.id
+          FROM avaliações
+          JOIN orientação_estagios ON avaliações.orientação_estagios_id = orientação_estagios.id
+          JOIN orientadores ON orientação_estagios.orientadores_id = orientadores.id
           JOIN users ON orientação_estagios.users_id = users.id
           JOIN estágios ON orientação_estagios.estágios_id = estágios.id
-          WHERE avaliacao_modulos.orientação_estagios_id = $user_id";
+          WHERE orientadores.users_id = $user_id";
 
 // Fetch data and store in $result variable
 $result = $db->query($query);
