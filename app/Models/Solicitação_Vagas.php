@@ -22,7 +22,7 @@ class Solicitação_Vagas extends Model
 
     public function estagio()
 {
-    return $this->hasMany(Estágios::class, 'solicitacao_vagas_id', 'id');
+    return $this->hasMany(Estágios::class, 'solicitacao_vagas_id');
 }
 
 

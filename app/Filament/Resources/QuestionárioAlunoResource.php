@@ -19,6 +19,7 @@ class QuestionárioAlunoResource extends Resource
 {
     protected static ?string $model = Questionário_Aluno::class;
 
+    protected static ?string $navigationGroup = 'Utilizadores';
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
     public static function form(Form $form): Form

@@ -32,19 +32,19 @@ class HistóricoAgendamentosResource extends Resource
         return $form
         ->schema([
             Card::make()->schema([
-                Select::make('nome')
+                Select::make('orientação_estagios.estágios.nome')
                 ->label('Estágio')
                 ->searchable()
                 ->options(function () {
                     return Orientação_Estagios::join('estágios', 'orientação_estagios.estágios_id', '=', 'estágios.id')
                     ->pluck('estágios.nome', 'orientação_estagios.estágios_id');
                 }),
-                Select::make('name')
+                Select::make('orientação_estagios.users.name')
                 ->label('Aluno')
                 ->searchable()
                 ->options(function () {
-                    return Orientação_Estagios::join('users', 'orientação_estagios.users_id', '=', 'users.id')
-                    ->pluck('users.name', 'orientação_estagios.users_id');
+                    return Orientação_Estagios::pluck('id', 'users_id');
+
                 }),
                 Select::make('agendamentos_nome')
                 ->label('Agendamento')
@@ -61,7 +61,7 @@ class HistóricoAgendamentosResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('orientação_estagios.users.name')->sortable()->searchable()->label('Aluno'),
-                TextColumn::make('orientação_estagios.estágios.nome')->sortable()->searchable()->label('Estágio'),
+                TextColumn::make('')->sortable()->searchable()->label('Estágio'),
                 TextColumn::make('orientação_estagios.orientador.users.name')->sortable()->searchable()->label('Orientador'),
                  TextColumn::make('agendamentos.nome')->sortable()->searchable()->label('Agendamento'),
                  TextColumn::make('agendamentos.data')->sortable()->searchable()->label('Data'),

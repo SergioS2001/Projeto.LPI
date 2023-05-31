@@ -7,6 +7,7 @@ use App\Filament\Resources\CacifosEstágiosResource\RelationManagers;
 use App\Filament\Resources\CacifosEstágiosResource\Widgets\CacifosEstágiosStatsOverview;
 use App\Models\Cacifos;
 use App\Models\Cacifos_Estágios;
+use App\Models\Cauções;
 use App\Models\Estágios;
 use App\Models\User;
 use Filament\Forms;
@@ -47,6 +48,10 @@ class CacifosEstágiosResource extends Resource
                 Select::make('cacifos_id')
                 ->label('Cacifo')
                 ->options(Cacifos::all()->pluck('numero', 'id'))
+                ->searchable(),
+                Select::make('cauções_id')
+                ->label('Caução')
+                ->options(Cauções::all()->pluck('id', 'id'))
                 ->searchable(),
                 Checkbox::make('fardamento')
                 ->label('Fardamento?'),

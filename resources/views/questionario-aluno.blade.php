@@ -22,11 +22,13 @@
 <!-- Include the form-validation.js file -->
 <script src="{{ asset('resources/js/form-validation.js') }}"></script>
 
-@if($questionarioDone)
-    <div class="alert alert-success">Questionário preenchido com sucesso!</div>
+@if ($estagios->isEmpty())
+    <p class="text-red-500">Não está registado em nenhum Estágio/EC</p>
 @else
-
-<form class="my-form" action="{{ route('questionário.store') }}" method="POST">
+    @if ($questionarioDone)
+        <div class="alert alert-success">Questionário preenchido com sucesso!</div>
+    @else
+    <form class="my-form" action="{{ route('questionário.store') }}" method="POST">
     @csrf
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -122,6 +124,7 @@ Por favor, utilize o espaço seguinte para registar sugestões/ comentários sob
 <button class="btn btn-primary" type="submit">Enviar</button>
     <br>
 </form>
+    @endif
 @endif
 
 <style>

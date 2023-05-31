@@ -48,7 +48,7 @@ class EstágiosResource extends Resource
                             ->all();
                     })
                     ->searchable(),
-                Select::make('instituicao_estagio_id')
+                Select::make('instituição_estagio_id')
                 ->label('Instituição')
                 ->options(Instituição_Estágio::all()->pluck('nome', 'id'))
                 ->searchable(),
@@ -72,10 +72,13 @@ class EstágiosResource extends Resource
                 ->label('Tipologia')
                 ->options(Tipologia_Estágio::all()->pluck('titulo', 'id'))
                 ->searchable(),
-                DatePicker::make('Data Inicial')
+                DatePicker::make('data_inicial')
+                ->label("Data Inicial")
                 ->minDate(now()),
-                DatePicker::make('Data Final')
+                DatePicker::make('data_final')
+                ->label("Data Final")
                 ->minDate(now()),
+                Checkbox::make('isSolicitado')->label('Solicitado?'),
                 Checkbox::make('isAdmitido')->label('Admitido?'),
                 ])
                 
@@ -86,6 +89,7 @@ class EstágiosResource extends Resource
     {
         return $table
             ->columns([
+                IconColumn::make('isSolicitado')->label('Solicitado')->boolean(),
                 IconColumn::make('isAdmitido')->label('Aprovado')->boolean(),
                 TextColumn::make('nome')->sortable()->searchable(),
                 TextColumn::make('instituicao_estagio.nome')->label('Instituição')->limit(12),

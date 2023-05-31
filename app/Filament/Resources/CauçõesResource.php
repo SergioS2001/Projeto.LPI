@@ -38,6 +38,8 @@ class CauçõesResource extends Resource
                 ->label('Pagamento'),
                 Checkbox::make('isDevolvido')
                 ->label('Reembolso'),
+                Checkbox::make('isAssinadoAluno')
+                ->label('Papel assinado Aluno'),
                 ])
         ]);
     }

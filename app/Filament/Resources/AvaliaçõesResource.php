@@ -43,7 +43,7 @@ class AvaliaçõesResource extends Resource
                 ->options(Orientadores::all()->pluck('users_id', 'name'))
                 ->required()
                 ->searchable(),
-                TextInput::make('nota')
+                TextInput::make('nota_final')
                 ->required()
                 ->label('Nota final')
                 ->numeric()
@@ -103,7 +103,7 @@ class AvaliaçõesResource extends Resource
     }
     public static function getGloballySearchableAttributes(): array
     {
-        return ['orientação_estagios.estágios.nome', 'nota', 'orientação_estagios.users.name','orientação_estagios.orientador.users.name'];
+        return ['orientação_estagios.estágios.nome', 'nota_final', 'orientação_estagios.users.name','orientação_estagios.orientador.users.name'];
     }
 
 }
