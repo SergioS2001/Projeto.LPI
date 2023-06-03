@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function admin(){
-        return view("admin");
-       }
+    public function index()
+    {
+        // Redirect to the desired Filament page URL
+        return app(FilamentController::class)->index();
+    }
 }
