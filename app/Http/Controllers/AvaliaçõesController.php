@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Modulos;
 use App\Models\Orientação_Estagios;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AvaliaçõesController extends Controller
 {
@@ -21,27 +22,12 @@ class AvaliaçõesController extends Controller
     }
 
     public function storeModulos(Request $request)
-{
-    $request->validate([
-        'orientacao_estagios_id' => 'required',
-        'aluno' => 'required',
-        'nota_final' => 'required|integer|min:1|max:20',
-    ]);
-
-    // Check for duplicate entries
-    $existingAvaliacao = Avaliações::where('orientação_estagios_id', $request->input('orientacao_estagios_id'))->first();
-    if ($existingAvaliacao) {
-        return redirect()->route('avaliações.index')->with('error', 'Já existe uma avaliação para este estágio/EC!');
+    {
+        
+    
+        return redirect()->route('avaliações.index')->with('success', 'Número de módulos salvo com sucesso!');
     }
-
-    $avaliacao = new Avaliações();
-    $avaliacao->orientação_estagios_id = $request->input('orientacao_estagios_id');
-    $avaliacao->nota_final = $request->input('nota_final');
-    // Save other fields from the form to the Avaliacao model
-    $avaliacao->save();
-
-    return redirect()->route('avaliações.index')->with('success', 'Número de módulos salvo com sucesso!');
-}
+    
     
     public function store(Request $request)
 {

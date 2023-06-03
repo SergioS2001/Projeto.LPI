@@ -19,17 +19,19 @@
         </div>
     @endif
 
-    <label for="estagio">Estágio/EC:</label>
     <select name="estagio" id="estagio">
-        @foreach(Estágios::whereIn('id', function($query) {
-            $query->select('estágios_id')->from('orientação_estagios')
-                  ->whereIn('orientadores_id', function($subQuery) {
-                      $subQuery->select('id')->from('orientadores')->where('users_id', Auth::id());
-                  });
-        })->get() as $estagio)
-            <option value="{{ $estagio->id }}">{{ $estagio->nome }}</option>
-        @endforeach
-    </select>
+    @foreach(Estágios::whereIn('id', function($query) use ($estagio) {
+        $query->select('estágios_id')->from('orientação_estagios')
+              ->whereIn('orientadores_id', function($subQuery) use ($estagio) {
+                  $subQuery->select('id')->from('orientadores')
+                           ->where('users_id', Auth::id())
+                           ->where('estágios_id', $estagio->id);
+              });
+    })->get() as $estagio)
+        <option value="{{ $estagio->id }}">{{ $estagio->nome }}</option>
+    @endforeach
+</select>
+
 
     <br>
 

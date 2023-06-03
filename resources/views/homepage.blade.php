@@ -43,7 +43,7 @@
             <div class="p-6 text-gray-900 dark:text-black">
                 <!-- Pequena apresentação programa Estágios/EC -->
                 <p class="text-xl font-semibold mb-6">Plataforma de gestão de informação estratégica relativa aos estágios e ensinos clínicos realizados no HE-UFP</p>
-                <p>Esta plataforma foi desenvolvida no âmbito de prestar auxílio aos docentes do HE-UFP para a organização, onde numa só plataforma seja possível gerir os diversos alunos que estejam a participar num estágio da área de saúde, as suas presenças, a capacidade de agendar reuniões com os docentes, tudo de forma a facilitar os processos envolvidos.</p>
+                <p>Esta plataforma foi desenvolvida no âmbito de prestar auxílio aos docentes do HE-UFP para a organização, onde numa só plataforma será possível gerir os diversos alunos que estejam a participar num estágio/ensino clínico da sua área de, as suas presenças, a capacidade de agendar reuniões com os docentes, tudo de forma a facilitar os processos envolvidos.</p>
                 <br>
                 <br>
                 <p class="text-lg font-semibold mb-4">CONTACTOS DO SERVIÇO</p>
