@@ -14,7 +14,7 @@ class PresençasStatsOverview extends BaseWidget
         $countvalidadas = Presenças::where('isValidated', 1)->count();
 
         return [
-            Card::make('Total Presenças Registadas', Presenças::all()->count())
+            Card::make('Total Presenças', Presenças::all()->count())
             ->description('Número de Presenças Registadas')
             ->descriptionIcon('heroicon-o-briefcase')
             ->color('primary'),

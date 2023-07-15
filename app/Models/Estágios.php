@@ -11,6 +11,7 @@ class Estágios extends Model
     protected $table = 'estágios';
 
     protected $fillable = [
+        'id',
         'nome',
         'data_inicial',
         'data_final',

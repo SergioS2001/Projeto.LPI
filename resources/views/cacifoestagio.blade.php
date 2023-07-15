@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Cacifo Estágios Information</title>
+    <title>Cacifo Estágios</title>
     <style>
         /* Define your custom styles for the PDF */
         body {
@@ -27,7 +27,7 @@
     </style>
 </head>
 <body>
-    <h1>Cacifo Estágio</h1>
+    <h1>Cacifo</h1>
     <table>
         <tr>
             <td>Aluno</td>
