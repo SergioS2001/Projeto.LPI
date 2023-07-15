@@ -74,7 +74,7 @@ class UsersResource extends Resource
                 \Filament\Tables\Actions\DeleteAction::make(),
                 \Filament\Tables\Actions\Action::make('PDF')
                 ->icon('heroicon-o-document-download')
-                ->url(fn (User $record) => route('pdfestágios', $record))
+                ->url(fn (User $record) => route('pdfusers', $record))
                 ->openUrlInNewTab()
                 ->label(fn ($record) => Str::upper('PDF')),
             ])

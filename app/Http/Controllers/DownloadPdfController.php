@@ -7,7 +7,9 @@ use App\Models\Avaliações;
 use App\Models\Cacifos;
 use App\Models\Cacifos_Estágios;
 use App\Models\Cauções;
+use App\Models\Curso_Aluno;
 use App\Models\Estágios;
+use App\Models\Instituicao_Aluno;
 use App\Models\Orientadores;
 use App\Models\Orientação_Estagios;
 use App\Models\Presenças;
@@ -129,6 +131,28 @@ public function solicitacaovagas(Solicitação_Vagas $record)
 
 public function users(User $record)
 {
+
+    //$instituição =User::findOrFail(Instituicao_Aluno::findOrFail($record->instituicao_aluno_id)->users_id);
+    //$curso =User::findOrFail(Curso_Aluno::findOrFail($record->instituicao_aluno_id)->users_id);
+
+    // Define the data to be passed to the PDF view
+    $data = [
+        'record' => $record,
+        //'instituição' => $instituição,
+        //'estagio' => $estagio,
+    ];
+
+    // Generate the PDF using the avaliacoes.blade.php view
+    $pdf = PDF::loadView('userspdf', $data);
+    $filename = 'users' . $record->id . '.pdf';
+
+    // Download the PDF file
+    return $pdf->download($filename);
 }
+
+public function orientacaoestagio(Orientação_Estagios $record)
+{
+}
+
 
 }
