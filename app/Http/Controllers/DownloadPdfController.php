@@ -26,7 +26,24 @@ class DownloadPdfController extends Controller
 
     public function agendamentos(Agendamentos $record)
 {
+    // Retrieve the additional data needed for the PDF
+    //$agendamento = Agendamentos::findOrFail($record->agendamentos_id);
+
+    // Define the data to be passed to the PDF view
+    $data = [
+        'record' => $record,
+        //'agendamento' => $agendamento,
+        //'estagio' => $estagio,
+    ];
+
+    // Generate the PDF using the avaliacoes.blade.php view
+    $pdf = PDF::loadView('agendamentospdf', $data);
+    $filename = 'agendamentos' . $record->id . '.pdf';
+
+    // Download the PDF file
+    return $pdf->download($filename);
 }
+
     public function avaliações(Avaliações $record)
     {
         // Retrieve the additional data needed for the PDF
