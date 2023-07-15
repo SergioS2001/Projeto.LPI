@@ -6,10 +6,12 @@ use App\Filament\Resources\PresençasResource\Pages;
 use App\Filament\Resources\PresençasResource\RelationManagers;
 use App\Filament\Resources\PresençasResource\Widgets\PresençasStatsOverview;
 use App\Models\Estágios;
+use App\Models\Orientação_Estagios;
 use App\Models\Presenças;
 use Filament\Forms;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\TimePicker;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -31,28 +33,34 @@ class PresençasResource extends Resource
         return $form
         ->schema([
             Card::make()->schema([
+                Select::make('orientação_estagios_id')
+                ->required()
+                ->label('Aluno')
+                ->searchable()
+                ->options(function () {
+                    $orientacaoEstagios = Orientação_Estagios::with('users')->get();
+                    return $orientacaoEstagios->pluck('users.name', 'id');
+                }),
+                Select::make('estágios_id')
+                ->required()
+                ->label('Estágio/EC')
+                ->searchable()
+                ->options(function () {
+                    return Estágios::pluck('nome', 'id');
+                }),
                 DatePicker::make('data')
                 ->label("Data")
                 ->minDate(now())
                 ->required(),
-                TextInput::make('h_entrada')
+                TimePicker::make('h_entrada')
+                 ->required()
+                ->label('Hora de Entrada'),
+                TimePicker::make('h_saida')
                 ->required()
-                ->label('Hora entrada')
-                ->numeric()
-                ->minValue(1)
-                ->maxValue(24),
-                TextInput::make('h_saida')
-                ->required()
-                ->label('Hora saida')
-                ->numeric()
-                ->minValue(1)
-                ->maxValue(24),
+                ->label('Hora de Saída'),
                 TextInput::make('tempo_pausa')
                 ->required()
-                ->label('Tempo de pausa')
-                ->numeric()
-                ->minValue(1)
-                ->maxValue(5),
+                ->label('Tempo de pausa (minutos)'),
                 ])
         ]);
     }
