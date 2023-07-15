@@ -77,7 +77,7 @@ Route::resource('certificados', CertificadosController::class);
 
 require __DIR__.'/auth.php';
 
-Route::get('/{record}/pdf/agendamentos', [DownloadPdfController::class, 'agendamentos'])->name('pdagendamentos');
+Route::get('/{record}/pdf/agendamentos', [DownloadPdfController::class, 'agendamentos'])->name('pdfagendamentos');
 Route::get('/{record}/pdf/avaliações', [DownloadPdfController::class, 'avaliações'])->name('pdfavaliações');
 Route::get('/{record}/pdf/estágios', [DownloadPdfController::class, 'estágios'])->name('pdfestágios');
 Route::get('/{record}/pdf/presenças', [DownloadPdfController::class, 'presenças'])->name('pdfpresenças');

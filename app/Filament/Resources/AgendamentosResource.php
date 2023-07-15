@@ -38,8 +38,14 @@ class AgendamentosResource extends Resource
                 ->label('Data')
                 ->required(),
                 TextInput::make('hora')
+                ->numeric()
+                ->minValue(1)
+                ->maxValue(24)
                 ->label('Hora Inicio'),
                 TextInput::make('hora_fim')
+                ->numeric()
+                ->minValue(1)
+                ->maxValue(24)
                 ->label('Hora Fim'),
                 ])
         ]);
@@ -63,7 +69,7 @@ class AgendamentosResource extends Resource
                 \Filament\Tables\Actions\DeleteAction::make(),
                 \Filament\Tables\Actions\Action::make('PDF')
                 ->icon('heroicon-o-document-download')
-                ->url(fn (Agendamentos $record) => route('pdfestágios', $record))
+                ->url(fn (Agendamentos $record) => route('pdfagendamentos', $record))
                 ->openUrlInNewTab()
                 ->label(fn ($record) => Str::upper('PDF')),
             ])

@@ -33,6 +33,7 @@ class CauçõesResource extends Resource
         ->schema([
             Card::make()->schema([
                 TextInput::make('valor')->required()
+                ->numeric()
                 ->label('Valor'),
                 Checkbox::make('isPago')
                 ->label('Pagamento'),
