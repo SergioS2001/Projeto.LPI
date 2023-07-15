@@ -7,6 +7,8 @@ use App\Filament\Resources\AvaliaçõesResource\RelationManagers;
 use App\Models\Avaliações;
 use App\Models\Estágios;
 use App\Models\Orientadores;
+use App\Models\Orientação_Estagios;
+use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Components\Checkbox;
 use Filament\Resources\Form;
@@ -33,16 +35,19 @@ class AvaliaçõesResource extends Resource
         return $form
         ->schema([
             Card::make()->schema([
-                Select::make('orientação_estagios.estágios.nome')
+                Select::make('orientação_estagios_id')
+                ->label('Utilizador')
+                ->searchable()
+                ->options(function () {
+                    $orientacaoEstagios = Orientação_Estagios::with('users')->get();
+                    return $orientacaoEstagios->pluck('users.name', 'id');
+                }),
+                Select::make('estágios_id')
                 ->label('Estágio')
-                ->options(Estágios::all()->pluck('nome', 'id'))
-                ->required()
-                ->searchable(),
-                Select::make('orientação_estagios.orientador.users.name')
-                ->label('Orientador')
-                ->options(Orientadores::all()->pluck('users_id', 'name'))
-                ->required()
-                ->searchable(),
+                ->searchable()
+                ->options(function () {
+                    return Estágios::pluck('nome', 'id');
+                }),
                 TextInput::make('nota_final')
                 ->required()
                 ->label('Nota final')
@@ -52,8 +57,6 @@ class AvaliaçõesResource extends Resource
                 Checkbox::make('isDone')
                 ->required()
                 ->label('Concluído'),
-                Checkbox::make('fileSubmitted')
-                ->label('Relatório final enviado'),
                 ])
         ]);
     }
