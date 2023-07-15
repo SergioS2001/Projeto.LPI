@@ -140,7 +140,7 @@ return [
         'register' => [
             Widgets\AccountWidget::class,
             App\Filament\Widgets\CalendarWidget::class,
-            App\Filament\Widgets\NewAccStatsOverview::class,
+            //App\Filament\Widgets\NewAccStatsOverview::class,
         ],
     ],
 

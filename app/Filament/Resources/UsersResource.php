@@ -93,7 +93,7 @@ class UsersResource extends Resource
     {
         return [
             UserStatsOverview::class,
-            DailyUsersChart::class,
+            //DailyUsersChart::class,
         ];
     }
    

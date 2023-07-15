@@ -23,7 +23,7 @@ class ListUsers extends ListRecords
     {
         return[
         UserStatsOverview::class,
-        DailyUsersChart::class,
+        //DailyUsersChart::class,
         ];
     }
 
