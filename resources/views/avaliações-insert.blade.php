@@ -9,7 +9,7 @@
 <!-- Include the form-validation.js file -->
 <script src="{{ asset('resources/js/form-validation.js') }}"></script>
 
-<form class="my-form" action="{{ route('avaliações.storeModulos') }}" method="POST">
+<form class="my-form" action="{{ route('avaliações.storeAvaliação') }}" method="POST">
     @csrf
     @if ($errors->any())
         <div class="alert alert-danger">

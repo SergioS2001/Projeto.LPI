@@ -21,12 +21,28 @@ class AvaliaçõesController extends Controller
         return view('avaliações.index', compact('avaliações'));
     }
 
-    public function storeModulos(Request $request)
-    {
-        
-    
-        return redirect()->route('avaliações.index')->with('success', 'Número de módulos salvo com sucesso!');
-    }
+    public function storeAvaliação(Request $request)
+{
+    // Retrieve the values from the form input fields
+    $estagio_id = $request->input('orientacao_estagios_id');
+    $aluno_id = $request->input('aluno');
+    $nota_final = $request->input('nota_final');
+
+    // Find the orientação_estagios_id based on the estagio_id and aluno_id
+    $orientacao_estagios_id = Orientação_Estagios::where('estágios_id', $estagio_id)
+        ->where('users_id', $aluno_id)
+        ->value('id');
+
+    // Create a new instance of the Avaliações model
+    $avaliacao = new Avaliações();
+    $avaliacao->orientação_estagios_id = $orientacao_estagios_id;
+    $avaliacao->nota_final = $nota_final;
+
+    // Save the Avaliações model
+    $avaliacao->save();
+
+    return redirect()->route('avaliações.index')->with('success', 'Avaliação criada com sucesso!');
+}
     
     
     public function store(Request $request)
