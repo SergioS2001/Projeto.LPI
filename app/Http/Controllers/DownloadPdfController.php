@@ -69,6 +69,17 @@ class DownloadPdfController extends Controller
 
 public function estágios(Estágios $record)
 {
+
+    $data = [
+        'record' => $record,
+        //'instituição' => $instituição,
+    ];
+
+    $pdf = PDF::loadView('estagiospdf', $data);
+    $filename = 'estagios' . $record->id . '.pdf';
+
+    // Download the PDF file
+    return $pdf->download($filename);
 }
 
 public function presenças(Presenças $record)
@@ -127,6 +138,17 @@ public function cacifoestagio(Cacifos_Estágios $record)
 
 public function solicitacaovagas(Solicitação_Vagas $record)
 {
+
+    $data = [
+        'record' => $record,
+        //'instituição' => $instituição,
+    ];
+
+    $pdf = PDF::loadView('solicitacaovagas-pdf', $data);
+    $filename = 'solicitacaovagas' . $record->id . '.pdf';
+
+    // Download the PDF file
+    return $pdf->download($filename);
 }
 
 public function users(User $record)
@@ -139,10 +161,8 @@ public function users(User $record)
     $data = [
         'record' => $record,
         //'instituição' => $instituição,
-        //'estagio' => $estagio,
     ];
 
-    // Generate the PDF using the avaliacoes.blade.php view
     $pdf = PDF::loadView('userspdf', $data);
     $filename = 'users' . $record->id . '.pdf';
 
@@ -152,6 +172,16 @@ public function users(User $record)
 
 public function orientacaoestagio(Orientação_Estagios $record)
 {
+    $data = [
+        'record' => $record,
+        //'instituição' => $instituição,
+    ];
+
+    $pdf = PDF::loadView('orientacaoestagiopdf', $data);
+    $filename = 'orientacaoestagio' . $record->id . '.pdf';
+
+    // Download the PDF file
+    return $pdf->download($filename);
 }
 
 

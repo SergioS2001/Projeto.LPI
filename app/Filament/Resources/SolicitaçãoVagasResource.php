@@ -97,7 +97,7 @@ class SolicitaçãoVagasResource extends Resource
                 \Filament\Tables\Actions\DeleteAction::make(),
                 \Filament\Tables\Actions\Action::make('PDF')
                 ->icon('heroicon-o-document-download')
-                ->url(fn (Solicitação_Vagas $record) => route('pdfestágios', $record))
+                ->url(fn (Solicitação_Vagas $record) => route('pdfsolicitacaovagas', $record))
                 ->openUrlInNewTab()
                 ->label(fn ($record) => Str::upper('PDF')),
             ])
