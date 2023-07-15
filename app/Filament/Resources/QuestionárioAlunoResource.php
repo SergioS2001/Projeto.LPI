@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\QuestionárioAlunoResource\Pages;
 use App\Filament\Resources\QuestionárioAlunoResource\RelationManagers;
+use App\Models\Orientação_Estagios;
 use App\Models\Questionário_Aluno;
 use Filament\Forms;
 use Filament\Resources\Form;
@@ -14,7 +15,9 @@ use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
-
+use Filament\Forms\Components\Card;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 class QuestionárioAlunoResource extends Resource
 {
     protected static ?string $model = Questionário_Aluno::class;
@@ -25,9 +28,24 @@ class QuestionárioAlunoResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                //
-            ]);
+        ->schema([
+            Card::make()->schema([
+                Select::make('users_id')
+                ->required()
+                ->label('Aluno')
+                ->options(Orientação_Estagios::all()->pluck('name', 'id'))
+                ->searchable(),
+                TextInput::make('nome')
+                ->required()
+                ->label('Nome'),
+                TextInput::make('telemóvel')
+                ->required()
+                ->label('Telemóvel'),
+                TextInput::make('grau_parentesco')
+                ->required()
+                ->label('Grau de Parentesco'),
+                ])
+        ]);
     }
 
     public static function table(Table $table): Table
