@@ -5,7 +5,6 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\OrientadoresResource\Pages;
 use App\Filament\Resources\OrientadoresResource\RelationManagers;
 use App\Models\Orientadores;
-use App\Models\Orientação_Estagios;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Components\Checkbox;
@@ -17,6 +16,7 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\Card;
+use Filament\Forms\Components\DatePicker;
 
 class OrientadoresResource extends Resource
 {
@@ -31,12 +31,14 @@ class OrientadoresResource extends Resource
             ->schema([
                 Card::make()->schema([
                     Select::make('users_id')
-                        ->label('Utilizadores')
-                        ->options(User::all()->pluck('name', 'id'))
-                        ->searchable(),
+                ->required()
+                ->label('Utilizador')
+                ->options(User::all()->pluck('name', 'id'))
+                ->searchable(),
                     TextInput::make('celula_profissional')->label('Célula Profissional'),
-                    TextInput::make('data_admissao')->label('Data de admissão'),
-                    TextInput::make('validade')->label('Validade'),
+                    DatePicker::make('admissao')->label('Data de admissão'),
+                    DatePicker::make('validade')->label('Validade'),
+                    TextInput::make('responsavel_assinatura')->label('Assinatura'),
                     Checkbox::make('users.isOrientador')->label('Orientador'),
                     ])
             ]);
@@ -46,12 +48,12 @@ class OrientadoresResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id')->sortable()->label('id Orientador'),
+                TextColumn::make('id')->sortable()->label('id'),
                 TextColumn::make('users.name')->sortable()->searchable()->label('Nome'),
                 TextColumn::make('celula_profissional')->sortable()->searchable()->label('Célula Profissional'),
-                TextColumn::make('data_admissao')->sortable()->searchable()->label('Data de Admissão'),
+                TextColumn::make('admissao')->sortable()->searchable()->label('Data de Admissão'),
                 TextColumn::make('validade')->sortable()->searchable()->label('Validade'),
-                //TextColumn::make('orientação_estagios.estágios.nome')->sortable()->searchable()->label('Estágio'),
+                TextColumn::make('responsavel_assinatura')->sortable()->searchable()->label('Assinatura'),
             ])
             ->filters([
                 //
@@ -79,5 +81,10 @@ class OrientadoresResource extends Resource
             'create' => Pages\CreateOrientadores::route('/create'),
             'edit' => Pages\EditOrientadores::route('/{record}/edit'),
         ];
-    }    
+    }
+
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['celula_profissional', 'admissao','validade'];
+    }
 }
