@@ -72,6 +72,7 @@ Route::resource('histórico', HistóricoController::class);
 Route::resource('questionário', QuestionarioController::class);
 Route::resource('avaliações', AvaliaçõesController::class);
 Route::post('/avaliações/modulos', [AvaliaçõesController::class, 'storeAvaliação'])->name('avaliações.storeAvaliação');
+Route::get('/getAlunosByEstagio', [AvaliaçõesController::class, 'getAlunosByEstagio'])->name('getAlunosByEstagio');
 Route::resource('certificados', CertificadosController::class);
 
 require __DIR__.'/auth.php';

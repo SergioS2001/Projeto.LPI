@@ -7,6 +7,7 @@ use App\Models\Avaliações;
 use App\Http\Controllers\Controller;
 use App\Models\Modulos;
 use App\Models\Orientação_Estagios;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -44,6 +45,19 @@ class AvaliaçõesController extends Controller
     return redirect()->route('avaliações.index')->with('success', 'Avaliação criada com sucesso!');
 }
     
+public function getAlunosByEstagio(Request $request)
+{
+    $estagioId = $request->input('estagio_id');
+
+    // Fetch the Aluno options based on the selected Estágio
+    $alunos = User::whereIn('id', function($query) use ($estagioId) {
+        $query->select('users_id')->from('orientação_estagios')
+            ->where('estágios_id', $estagioId);
+    })->get();
+
+    return response()->json($alunos);
+}
+
     
     public function store(Request $request)
 {

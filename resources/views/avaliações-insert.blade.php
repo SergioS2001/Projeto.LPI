@@ -56,6 +56,38 @@
     <button type="submit">Create</button>
 </form>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Event listener for Estágio select change
+        $('#estagio').change(function() {
+            var estagioId = $(this).val();
+            var url = "{{ route('getAlunosByEstagio') }}"; // Replace with your route URL
+
+            // AJAX request to fetch Aluno options based on selected Estágio
+            $.ajax({
+                url: url,
+                type: 'GET',
+                data: { estagio_id: estagioId },
+                success: function(response) {
+                    // Update the Aluno select options
+                    var alunoSelect = $('#aluno');
+                    alunoSelect.empty(); // Clear existing options
+
+                    // Append new options based on the response
+                    response.forEach(function(aluno) {
+                        alunoSelect.append('<option value="' + aluno.id + '">' + aluno.name + '</option>');
+                    });
+                },
+                error: function(xhr, status, error) {
+                    // Handle the error if needed
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
+
 
 
 <style>
@@ -108,3 +140,4 @@
         margin-left: 20px;
     }
 </style>
+
