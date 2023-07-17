@@ -41,7 +41,7 @@ class ServiçosResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('titulo')->sortable()->searchable()->limit(25)->label('Serviço'),
+                TextColumn::make('titulo')->sortable()->searchable()->limit(30)->label('Serviço'),
                 TextColumn::make('nome_responsavel')->sortable()->searchable()->label('Responsável'),
                 ])
             ->filters([

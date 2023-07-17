@@ -7,6 +7,7 @@ use App\Filament\Resources\QuestionárioAlunoResource\RelationManagers;
 use App\Models\Orientação_Estagios;
 use App\Models\Questionário_Aluno;
 use Filament\Forms;
+use Filament\Forms\Components\Textarea;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -30,20 +31,65 @@ class QuestionárioAlunoResource extends Resource
         return $form
         ->schema([
             Card::make()->schema([
-                Select::make('users_id')
+                Select::make('orientação_estagios_id')
+                ->label('Utilizador')
+                ->searchable()
+                ->options(function () {
+                    $orientacaoEstagios = Orientação_Estagios::with('users')->get();
+                    return $orientacaoEstagios->pluck('users.name', 'id');
+                }),
+                TextInput::make('integração')
                 ->required()
-                ->label('Aluno')
-                ->options(Orientação_Estagios::all()->pluck('name', 'id'))
-                ->searchable(),
-                TextInput::make('nome')
+                ->numeric()
+                ->minValue(1)
+                ->maxValue(5)
+                ->label('Integração (1-5)'),
+                TextInput::make('acompanhamento')
                 ->required()
-                ->label('Nome'),
-                TextInput::make('telemóvel')
+                ->numeric()
+                ->minValue(1)
+                ->maxValue(5)
+                ->label('Acompanhamento'),
+                TextInput::make('aquisição_conhecimentos')
                 ->required()
-                ->label('Telemóvel'),
-                TextInput::make('grau_parentesco')
+                ->numeric()
+                ->minValue(1)
+                ->maxValue(5)
+                ->label('Aquisição de Conhecimentos'),
+                TextInput::make('disponibilidade')
                 ->required()
-                ->label('Grau de Parentesco'),
+                ->numeric()
+                ->minValue(1)
+                ->maxValue(5)
+                ->label('Disponibilidade'),
+                TextInput::make('satisfação')
+                ->required()
+                ->numeric()
+                ->minValue(1)
+                ->maxValue(5)
+                ->label('Satisfação'),
+                TextInput::make('apoio_administrativo')
+                ->required()
+                ->numeric()
+                ->minValue(1)
+                ->maxValue(5)
+                ->label('Apoio Administrativo'),
+                TextInput::make('apoio_orientador')
+                ->required()
+                ->numeric()
+                ->minValue(1)
+                ->maxValue(5)
+                ->label('Apoio do Orientador'),
+                TextInput::make('apreciação_global')
+                ->required()
+                ->numeric()
+                ->minValue(1)
+                ->maxValue(5)
+                ->label('Apreciação Global do Estágio'),
+                Textarea::make('sugestões')
+                ->rows(5)
+                ->cols(50)
+                ->label('Sugestões'),
                 ])
         ]);
     }
@@ -56,7 +102,7 @@ class QuestionárioAlunoResource extends Resource
                 TextColumn::make('orientação_estagios.estágios.nome')->sortable()->searchable()->limit(12)->label('Estágio'),
                 TextColumn::make('integração')->label('Integração')->sortable()->searchable(),
                 TextColumn::make('acompanhamento')->label('Acompanhamento')->sortable()->searchable(),
-                TextColumn::make('aquisição_conhecimentos')->label('Aquisição COnhecimentos')->sortable()->searchable(),
+                TextColumn::make('aquisição_conhecimentos')->label('Aquisição Conhecimentos')->sortable()->searchable(),
                 TextColumn::make('disponibilidade')->label('Disponibilidade')->sortable()->searchable(),
                 TextColumn::make('satisfação')->label('Satisfação')->sortable()->searchable(),
                 TextColumn::make('apoio_administrativo')->label('Apoio Administrativo')->sortable()->searchable(),

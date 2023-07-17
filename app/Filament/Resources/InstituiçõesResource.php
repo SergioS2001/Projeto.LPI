@@ -43,7 +43,7 @@ class InstituiçõesResource extends Resource
         return $table
             ->columns([
                 //TextColumn::make('id')->sortable()->searchable()->label('id'),
-                TextColumn::make('nome')->sortable()->searchable()->limit(25)->label('Instituição'),
+                TextColumn::make('nome')->sortable()->searchable()->limit(66)->label('Instituição'),
                 TextColumn::make('sigla')->sortable()->searchable()->label('Sigla'),
                 ])
             ->filters([

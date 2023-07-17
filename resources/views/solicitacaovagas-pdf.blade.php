@@ -2,6 +2,7 @@
 <table>
     <tr>
         <td>Estágio</td>
+        <td>{{ $record->estágios_id }}</td>
     </tr>
     <tr>
         <td>Designação</td>
