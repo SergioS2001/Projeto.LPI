@@ -12,6 +12,7 @@ class Solicitação_Vagas extends Model
     use HasFactory;
 
     protected $fillable = [
+        'estágios_id',
         'designação',
         'ano_letivo',
         'vagas',
@@ -22,7 +23,7 @@ class Solicitação_Vagas extends Model
 
     public function estagio()
 {
-    return $this->hasMany(Estágios::class, 'solicitacao_vagas_id');
+    return $this->belongsTo(Estágios::class, 'estágios_id');
 }
 
 

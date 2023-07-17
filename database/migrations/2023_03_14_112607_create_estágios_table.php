@@ -26,7 +26,7 @@ return new class extends Migration
             $table->date('data_final')->nullable()->min(now());
             $table->boolean('isSolicitado')->default(false);
             $table->boolean('isAdmitido')->default(false);
-            $table->foreignId('solicitacao_vagas_id')->nullable()->references('id')->on('solicitacao_vagas')->onDelete('cascade');
+            //$table->foreignId('solicitacao_vagas_id')->nullable()->references('id')->on('solicitacao_vagas')->onDelete('cascade');
             $table->timestamps();
         });
     }

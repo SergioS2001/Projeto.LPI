@@ -41,7 +41,7 @@ class SolicitaçãoVagasResource extends Resource
         return $form
                 ->schema([
                     Card::make()->schema([
-                    Select::make('estagio')
+                    Select::make('estágios_id')
                     ->label('Selecionar Estágio')
                     ->options(Estágios::all()->pluck('nome', 'id'))
                     ->searchable(),

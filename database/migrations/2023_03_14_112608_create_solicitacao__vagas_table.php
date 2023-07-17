@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('solicitacao_vagas', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('estágios_id')->nullable()->references('id')->on('Estágios')->onDelete('cascade');
             $table->string('designação')->nullable();
             $table->string('objetivos')->nullable();
             $table->string('ano_letivo')->nullable();

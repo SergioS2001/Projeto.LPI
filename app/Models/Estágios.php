@@ -22,7 +22,7 @@ class Estágios extends Model
         'tipologia_estagio_id',
         'avaliacao_id',
         'isExterno',
-        'solicitacao_vagas_id',
+        //'solicitacao_vagas_id',
         'isSolicitado',
         'isAdmitido',
     ];
@@ -61,7 +61,7 @@ class Estágios extends Model
 
     public function solicitacao_vagas()
     {
-        return $this->belongsTo(Solicitação_Vagas::class, 'solicitacao_vagas_id');
+        return $this->hasMany(Solicitação_Vagas::class);
     }
 
     public function orientação_estagios()

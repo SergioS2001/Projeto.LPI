@@ -14,6 +14,7 @@ class SolicitaçãoVagasSeeder extends Seeder
     public function run()
     {
         Solicitação_Vagas::create([
+            'estágios_id' => '1',
             'designação' => 'Solicitação 1',
             'objetivos' => 'Objetivos Estágio 1',
             'ano_letivo' => '2023/2024',
@@ -22,6 +23,7 @@ class SolicitaçãoVagasSeeder extends Seeder
         ]);
         
         Solicitação_Vagas::create([
+            'estágios_id' => '2',
             'designação' => 'Solicitação 2',
             'objetivos' => 'Objetivos Estágio 2',
             'ano_letivo' => '2023/2024',

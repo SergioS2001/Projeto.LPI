@@ -23,7 +23,7 @@ class EstágiosSeeder extends Seeder
         $unidade_curricular = Unidades_Curriculares::first();
         $serviço = Serviços::first();
         $tipologia_estagio = Tipologia_Estágio::first();
-        $solicitacao_vagas = Solicitação_Vagas::first();
+        //$solicitacao_vagas = Solicitação_Vagas::first();
 
         // Create some estagios
         Estágios::create([
@@ -37,7 +37,7 @@ class EstágiosSeeder extends Seeder
             'tipologia_estagio_id' => $tipologia_estagio->id,
             'data_inicial' => '2022-01-01',
             'data_final' => '2022-06-30',
-            'solicitacao_vagas_id' => $solicitacao_vagas->id,
+            //'solicitacao_vagas_id' => $solicitacao_vagas->id,
             'isAdmitido' => true,
             'created_at' => now(),
             'updated_at' => now(),
@@ -53,7 +53,7 @@ class EstágiosSeeder extends Seeder
             'tipologia_estagio_id' => 2,
             'data_inicial' => '2022-07-01',
             'data_final' => '2022-12-31',
-            'solicitacao_vagas_id' => 2,
+            //'solicitacao_vagas_id' => 2,
             'isAdmitido' => true,
             'created_at' => now(),
             'updated_at' => now(),
