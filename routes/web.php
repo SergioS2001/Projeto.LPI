@@ -89,17 +89,3 @@ Route::get('/{record}/pdf/users', [DownloadPdfController::class, 'users'])->name
 Route::get('/{record}/excel/questionarioaluno', [QuestionarioController::class, 'csvquestionarioaluno'])->name('csvquestionarioaluno');
 
 Route::get('/pdf-aluno', [PDFController::class, 'generateCertificadoAlunoPdf'])->name('certificadoaluno');
-
-/*Route::get('/email', function () {
-    $userEmail = 'rubenguedes34@gmail.com';
-    $userName = 'John Doe';
-    $estágios = 'Your Estágios';
-    $presenças = 'Your Presenças';
-    
-    $notification = new MyNotification($userName, $estágios, $presenças);
-
-    Mail::to($userEmail)->send($notification);
-
-    return 'Test email sent successfully!';
-});*/
-
