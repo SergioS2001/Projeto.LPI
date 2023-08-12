@@ -5,10 +5,14 @@ Projeto Full Stack, em PHP Laravel, com HTML, CSS e Javascript para a gestão de
 
     •A plataforma recolhe informação sobre os estágios e ensinos clínicos já decorridos, a decorrer, e futuros
         procedimentos do Hospital UFP
+        
     •Inclui registo individual, recolha de dados, horários, serviço colocado, presenças, avaliações, certificados,
      inquéritos, etc…
+     
     •Criação de certificados e conclusão de estágio em PDF
+    
     •Dashboard para administração com dados analíticos e manipulação da base de dados
+    
 
 
 
