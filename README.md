@@ -1,3 +1,30 @@
+
+PLATAFORMA PARA GESTÃO DOS PROCESSOS DE ESTÁGIOS CLÍNICOS NO HE-UFP
+Projeto Full Stack, em PHP Laravel, com HTML, CSS e Javascript para a gestão de estágios em HE-UFP.
+    •A plataforma recolhe informação sobre os estágios e ensinos clínicos já decorridos, a decorrer, e futuros
+        procedimentos do Hospital UFP
+    •Inclui registo individual, recolha de dados, horários, serviço colocado, presenças, avaliações, certificados,
+     inquéritos, etc…
+    •Criação de certificados e conclusão de estágio em PDF
+    •Dashboard para administração com dados analíticos e manipulação da base de dados
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
