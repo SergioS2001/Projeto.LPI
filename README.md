@@ -1,6 +1,8 @@
 
 PLATAFORMA PARA GESTÃO DOS PROCESSOS DE ESTÁGIOS CLÍNICOS NO HE-UFP
+
 Projeto Full Stack, em PHP Laravel, com HTML, CSS e Javascript para a gestão de estágios em HE-UFP.
+
     •A plataforma recolhe informação sobre os estágios e ensinos clínicos já decorridos, a decorrer, e futuros
         procedimentos do Hospital UFP
     •Inclui registo individual, recolha de dados, horários, serviço colocado, presenças, avaliações, certificados,
