@@ -22,14 +22,5 @@ class SolicitaçãoVagasSeeder extends Seeder
             'carga_horaria_total' => 200,
         ]);
         
-        Solicitação_Vagas::create([
-            'estágios_id' => '2',
-            'designação' => 'Solicitação 2',
-            'objetivos' => 'Objetivos Estágio 2',
-            'ano_letivo' => '2023/2024',
-            'vagas' => 30,
-            'carga_horaria_total' => 300,
-        ]);
-        
     }
 }

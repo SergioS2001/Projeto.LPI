@@ -18,15 +18,5 @@ class CacifoEstagioSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-
-        Cacifos_Estágios::create([
-            'users_id' => 1,
-            'estágios_id' => 2,
-            'cacifos_id' => 2,
-            'cauções_id' => 2,
-            'fardamento' => true,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
     }
 }

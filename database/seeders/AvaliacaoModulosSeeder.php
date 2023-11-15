@@ -17,17 +17,5 @@ class AvaliacaoModulosSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-        AvaliacaoModulos::create([
-            'avaliações_id' => 1,
-            'modulos_id' => 2,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-        AvaliacaoModulos::create([
-            'avaliações_id' => 2,
-            'modulos_id' => 3,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
     }
 }

@@ -16,12 +16,6 @@ class HistoricoAgendamentosSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
-            [
-                'agendamentos_id' =>  2,
-                'orientação_estagios_id' => 2,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
         ]);
     }
 }
